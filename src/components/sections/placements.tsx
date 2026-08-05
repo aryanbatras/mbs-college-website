@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight, TrendingUp, Users, Award } from "lucide-react";
+import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 
 const RECRUITERS = [
   "Infosys",
@@ -18,7 +21,12 @@ export function PlacementsSection() {
       <div className="page-container section-spacing">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
           {/* Left — content */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
               Placements
             </p>
@@ -51,24 +59,33 @@ export function PlacementsSection() {
               View placement details
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
-          </div>
+          </motion.div>
 
           {/* Right — recruiter logos */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <p className="text-xs font-medium uppercase tracking-widest text-ink-faint mb-6">
               Our Recruiters
             </p>
             <div className="grid grid-cols-2 gap-4">
-              {RECRUITERS.map((name) => (
-                <div
+              {RECRUITERS.map((name, i) => (
+                <motion.div
                   key={name}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 + i * 0.05 }}
                   className="flex items-center justify-center h-16 md:h-20 bg-ink/[0.03] text-sm font-medium text-ink-muted hover:bg-ink/[0.06] transition-colors"
                 >
                   {name}
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

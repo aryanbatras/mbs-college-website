@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import type { SiteConfig } from "@/lib/content";
 
@@ -10,7 +13,13 @@ export function AboutStrip({ config }: AboutStripProps) {
   return (
     <section className="bg-paper" aria-label="About the college">
       <div className="page-container section-spacing">
-        <div className="max-w-3xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center"
+        >
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-4">
             Our Vision
           </p>
@@ -26,7 +35,7 @@ export function AboutStrip({ config }: AboutStripProps) {
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

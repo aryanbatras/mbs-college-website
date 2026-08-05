@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "motion/react";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import type { SiteConfig } from "@/lib/content";
 
@@ -10,7 +13,13 @@ export function ContactCTA({ config }: ContactCTAProps) {
   return (
     <section className="bg-navy text-paper" aria-label="Contact information">
       <div className="page-container section-spacing">
-        <div className="max-w-2xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto text-center"
+        >
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-4">
             Get in Touch
           </p>
@@ -27,9 +36,15 @@ export function ContactCTA({ config }: ContactCTAProps) {
             Contact Us
             <ArrowRight className="size-4" />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16 pt-12 border-t border-paper/10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16 pt-12 border-t border-paper/10"
+        >
           <div className="flex items-start gap-3 text-left">
             <MapPin className="size-4 mt-1 text-accent shrink-0" />
             <div className="text-sm text-paper/60 leading-relaxed">
@@ -50,7 +65,7 @@ export function ContactCTA({ config }: ContactCTAProps) {
               <div>{config.email.deanAcademics}</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
