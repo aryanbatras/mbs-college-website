@@ -99,8 +99,25 @@
   }
 
   /* Typography scale — editorial with serif headings */
-  h1, h2, h3 {
+  h1 {
     @apply font-heading font-semibold tracking-tight text-ink;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: pretty;
+  }
+  h2 {
+    @apply font-heading font-semibold tracking-tight text-ink;
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    text-wrap: pretty;
+  }
+  h3 {
+    @apply font-heading font-semibold tracking-tight text-ink;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
     text-wrap: pretty;
   }
   h4, h5, h6 {
@@ -109,7 +126,14 @@
   }
 
   p {
+    @apply leading-relaxed;
     text-wrap: pretty;
+  }
+
+  /* Body text — generous line height for readability */
+  body {
+    @apply text-[15px] md:text-base;
+    line-height: 1.7;
   }
 
   /* Focus-visible ring for keyboard navigation */
@@ -167,7 +191,10 @@
     text-wrap: balance;
   }
   .section-spacing {
-    @apply py-20 md:py-28 lg:py-36;
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  .section-spacing-lg {
+    @apply py-24 md:py-32 lg:py-40;
   }
   .page-container {
     @apply mx-auto max-w-6xl px-5 md:px-8 lg:px-12;

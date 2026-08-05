@@ -1,4 +1,5 @@
 import { Header } from "@/components/layout/header";
+import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { MobileCTA } from "@/components/layout/mobile-cta";
 import { BackToTop } from "@/components/ui/back-to-top";
@@ -35,6 +36,7 @@ export default function HomePage() {
   return (
     <>
       <EducationalOrgJsonLd />
+      <AnnouncementBar />
       <Header config={config} />
       <main id="main-content">
         <Hero />
