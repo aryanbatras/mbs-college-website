@@ -43,28 +43,61 @@ export function ContactCTA({ config }: ContactCTAProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16 pt-12 border-t border-paper/10"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-12 border-t border-paper/10"
         >
-          <div className="flex items-start gap-3 text-left">
-            <MapPin className="size-4 mt-1 text-accent shrink-0" />
-            <div className="text-sm text-paper/60 leading-relaxed">
-              {config.address.line1}, {config.address.line2}, {config.address.city} — {config.address.pincode}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex items-start gap-4 text-left"
+          >
+            <div className="size-10 flex items-center justify-center bg-accent/20 shrink-0">
+              <MapPin className="size-5 text-accent" />
             </div>
-          </div>
-          <div className="flex items-start gap-3 text-left">
-            <Phone className="size-4 mt-1 text-accent shrink-0" />
-            <div className="text-sm text-paper/60 leading-relaxed">
-              <div>Principal: {config.phone.principal}</div>
-              <div>Inquiry: {config.phone.inquiry.join(" / ")}</div>
+            <div>
+              <h3 className="text-sm font-semibold text-paper mb-1">Address</h3>
+              <div className="text-sm text-paper/50 leading-relaxed">
+                {config.address.line1}, {config.address.line2}, {config.address.city} — {config.address.pincode}
+              </div>
             </div>
-          </div>
-          <div className="flex items-start gap-3 text-left">
-            <Mail className="size-4 mt-1 text-accent shrink-0" />
-            <div className="text-sm text-paper/60 leading-relaxed">
-              <div>{config.email.principal}</div>
-              <div>{config.email.deanAcademics}</div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex items-start gap-4 text-left"
+          >
+            <div className="size-10 flex items-center justify-center bg-accent/20 shrink-0">
+              <Phone className="size-5 text-accent" />
             </div>
-          </div>
+            <div>
+              <h3 className="text-sm font-semibold text-paper mb-1">Phone</h3>
+              <div className="text-sm text-paper/50 leading-relaxed">
+                <div>Principal: {config.phone.principal}</div>
+                <div>Inquiry: {config.phone.inquiry.join(" / ")}</div>
+              </div>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex items-start gap-4 text-left"
+          >
+            <div className="size-10 flex items-center justify-center bg-accent/20 shrink-0">
+              <Mail className="size-5 text-accent" />
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-paper mb-1">Email</h3>
+              <div className="text-sm text-paper/50 leading-relaxed">
+                <div>{config.email.principal}</div>
+                <div>{config.email.deanAcademics}</div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
