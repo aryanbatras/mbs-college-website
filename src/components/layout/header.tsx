@@ -18,6 +18,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/f
 import type { SiteConfig } from "@/lib/content";
 import { SearchModal } from "@/components/ui/search-modal";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { ShortcutsPanel } from "@/components/ui/shortcuts-panel";
 
 const NAV_ITEMS = [
   {
@@ -216,7 +217,8 @@ export function Header({ config }: HeaderProps) {
           {/* Desktop actions + mobile trigger */}
           <div className="flex items-center gap-2">
             <SearchModal />
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-1">
+              <ShortcutsPanel />
               <ThemeToggle />
             </div>
             <Link
