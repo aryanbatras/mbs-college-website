@@ -1,0 +1,7 @@
+[
+  {"name": "Dr. Sanjeev Singh", "designation": "Professor", "qualification": "PhD", "specialization": "Software Define Network"},
+  {"name": "Mr. Parveen Singh", "designation": "Associate Professor", "qualification": "M.E", "specialization": "Digital Signal Processing"},
+  {"name": "Ms. Shalini Sharma", "designation": "Asst. Professor", "qualification": "M.E", "specialization": "Analog & Digital Communication"},
+  {"name": "Mr. Ajay Sharma", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "VLSI & CAD"},
+  {"name": "Mr. Anil Gupta", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Electronics & Communication"}
+]

@@ -1,0 +1,7 @@
+[
+  {"name": "Dr. Nitin Langer", "designation": "Professor", "qualification": "PhD", "specialization": "Power Electronics"},
+  {"name": "Ms. Inderpreet Kour", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Instrumentation & Control"},
+  {"name": "Ms. Kamalpreet Kour", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Instrumentation and Control"},
+  {"name": "Ms. Pallavi Sarngal", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Energy System"},
+  {"name": "Ms. Anchal Wadwa", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Protection"}
+]

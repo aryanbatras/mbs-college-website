@@ -1,0 +1,14 @@
+---
+title: "Five-Days Faculty Development Programme on Digital Marketing at MBSCET"
+date: 2026-07-27
+category: "Campus"
+---
+The five days Faculty Development Programme (FDP) on &#8220;Digital Marketing&#8221; was conducted at Mahant Bachittar Singh College of Engineering & Technology, Jammu, under the banner of ICT Academy coordinated by Mr. Ajaz Yousaf Sr. Relationship Manager – Academic Operations, ICT Academy. The programme concluded successfully after five days of intensive lectures, practical demonstrations, and hands-on training sessions. The resource person Mr. Anmol Duggal, Digital Marketing Specialist, Growth Marketer, Trainer, and Consultant, engaged participants with practical knowledge of emerging digital marketing trends and AI-powered technologies.
+
+Throughout the sessions, participants gained practical exposure to content creation, website development using WordPress, email marketing strategies, customer journey mapping, marketing funnels, Search Engine Optimization (SEO), Search Engine Marketing (SEM), Google Ads, AI-powered keyword research, ChatGPT, Claude, Perplexity, Gemini, NotebookLM, Answer Engine Optimization (AEO), Generative Engine Optimization (GEO), Large Language Model Optimization (LLMO), social media marketing, digital advertising on Facebook, Instagram, YouTube, and LinkedIn, website optimization techniques, and AI-driven search technologies. Live demonstrations, website review activities, and interactive doubt-clearing sessions enabled participants to effectively understand the application of digital marketing tools in teaching, research, and professional practice.
+
+The valedictory function was graced by Prof. (Dr.) Amrik Singh (Principal), Prof. (Dr.) Rajinder Singh (Administrator), Prof. Parveen Singh (Vice Principal), Mr. H.S. Gill (DSW), Mr. Ishpal Singh (Professor of Practice) and Heads of various Departments. Addressing the gathering Dr. Amrik Singh appreciated the successful conducted of the FDP and emphasized the importance of continuous learning and upskilling to meet the demands of the rapidly evolving digital world.
+
+Certificates were awarded to all the participants during the valedictory ceremony. The programme witnessed enthusiastic participation from faculty members of MBSCET as well as faculty representatives from various other colleges from J&K viz. MAM College, Dogra Degree College, NITS Polytechnic, SPMR College, PSPS Govt. College of Women and Govt. Degree College Ramban. Mr. Lovetesh from ICT Academy, State Head – J&K also announced various training programs for faculty and students.
+
+Ms. Ridhika Sharma (Assistant Professor), Department of Computer Science & Engineering, efficiently coordinated the FDP while Ms. Dilpreet Kaur (Asst. Prof, CSE) and Ms. Ankush Sharma (Asst. Prof., APSH) anchored the proceedings of the valedictory function. The programme concluded with a formal vote of thanks by Ms. Ridhika Sharma.
