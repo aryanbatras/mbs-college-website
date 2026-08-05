@@ -244,6 +244,22 @@ export function Header({ config }: HeaderProps) {
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 top-[calc(theme(spacing.0)+48px)] z-40 bg-white overflow-y-auto">
           <div className="px-5 py-6">
+            {/* Billboard - quick access links */}
+            <div className="grid grid-cols-2 gap-2 mb-6">
+              <Link href="/admissions" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 px-4 py-3 bg-accent text-paper text-sm font-medium">
+                Apply Now
+              </Link>
+              <a href="tel:+911912476227" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 px-4 py-3 bg-navy text-paper text-sm font-medium">
+                <Phone className="size-4" />
+                Call Us
+              </a>
+              <Link href="/campus" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 px-4 py-3 bg-ink/[0.03] text-ink text-sm font-medium">
+                Campus Map
+              </Link>
+              <Link href="/contact" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 px-4 py-3 bg-ink/[0.03] text-ink text-sm font-medium">
+                Directory
+              </Link>
+            </div>
             <nav className="flex flex-col" aria-label="Mobile navigation">
               {NAV_ITEMS.map((item) => (
                 <div key={item.label}>
