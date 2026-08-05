@@ -58,7 +58,7 @@ export function WhyChooseUs() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {REASONS.map((reason, i) => (
             <motion.div
               key={reason.title}
@@ -66,13 +66,17 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group"
+              className="group relative"
             >
-              <div className="size-12 flex items-center justify-center bg-accent/20 mb-4 group-hover:bg-accent transition-colors">
-                <reason.icon className="size-6 text-accent group-hover:text-paper transition-colors" />
+              {/* Subtle border top on hover */}
+              <div className="absolute top-0 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-500" />
+              <div className="pt-6">
+                <div className="size-12 flex items-center justify-center bg-paper/5 mb-5 group-hover:bg-accent/20 transition-colors">
+                  <reason.icon className="size-6 text-accent" />
+                </div>
+                <h3 className="text-lg font-semibold text-paper mb-3">{reason.title}</h3>
+                <p className="text-sm text-paper/50 leading-relaxed">{reason.description}</p>
               </div>
-              <h3 className="text-lg font-semibold text-paper mb-2">{reason.title}</h3>
-              <p className="text-sm text-paper/60 leading-relaxed">{reason.description}</p>
             </motion.div>
           ))}
         </div>
