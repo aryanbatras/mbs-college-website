@@ -131,14 +131,15 @@ export function ProgramsSection({ programs }: ProgramsProps) {
             >
               <Link
                 href={`/academics/${program.slug}`}
-                className="group"
+                className="group block"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-ink/5 mb-4">
                   <img
                     src={PROGRAM_IMAGES[program.slug] || "/media/general/DSC_0123-1024x683.jpg"}
                     alt={program.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                   />
+                  <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-300" />
                 </div>
                 <div className="flex items-start justify-between gap-3">
                   <div>
