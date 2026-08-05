@@ -57,7 +57,8 @@ export function CampusSection() {
                   loading={i === 0 ? "eager" : "lazy"}
                 />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-gradient-to-t from-ink/70 to-transparent">
+              <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent">
                 <span className="text-sm md:text-base font-medium text-paper">{facility.name}</span>
               </div>
             </motion.div>
