@@ -40,16 +40,16 @@ export function StatBand() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="text-center"
+              className="text-center group"
             >
-              <div className="inline-flex items-center justify-center size-12 bg-accent/20 mb-4">
+              <div className="inline-flex items-center justify-center size-14 bg-paper/5 mb-4 group-hover:bg-accent/20 transition-colors">
                 <stat.icon className="size-6 text-accent" />
               </div>
-              <div className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-sm font-medium text-paper/80 mt-1">{stat.label}</div>
-              <div className="text-xs text-paper/50 mt-0.5">{stat.description}</div>
+              <div className="text-sm font-medium text-paper/80 mt-2">{stat.label}</div>
+              <div className="text-xs text-paper/50 mt-1">{stat.description}</div>
             </motion.div>
           ))}
         </div>
