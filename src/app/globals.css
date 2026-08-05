@@ -5,10 +5,10 @@
 @theme inline {
   /* === Fonts === */
   --font-sans: var(--font-geist);
-  --font-heading: var(--font-playfair);
+  --font-heading: var(--font-geist);
   --font-mono: var(--font-geist-mono);
 
-  /* === Design tokens (MBSCET — Institutional) === */
+  /* === Design tokens (MBSCET — Yellow & Blue) === */
   --color-paper: var(--paper);
   --color-surface: var(--surface);
   --color-ink: var(--ink);
@@ -50,18 +50,18 @@
 }
 
 :root {
-  /* === MBSCET Palette — Institutional with warmth === */
-  --paper: #FAFAF8;
+  /* === MBSCET Palette — Yellow & Blue === */
+  --paper: #FFFFFF;
   --surface: #FFFFFF;
-  --ink: #1B1F23;
+  --ink: #00274C;
   --ink-muted: #5C6370;
   --ink-faint: #9CA3AF;
   --line: #E5E7EB;
-  --accent: #B45309;
-  --accent-strong: #92400E;
-  --accent-soft: #FEF3C7;
-  --navy: #1E3A5F;
-  --navy-light: #2D4A6F;
+  --accent: #FFCB05;
+  --accent-strong: #FFC107;
+  --accent-soft: #FFF9E6;
+  --navy: #00274C;
+  --navy-light: #1E406B;
 
   /* === shadcn mapping === */
   --background: var(--paper);
@@ -98,31 +98,35 @@
     font-size: 16px;
   }
 
-  /* Typography scale — editorial with serif headings */
+  /* Typography — bold, clean, sans-serif (Geist) */
   h1 {
-    @apply font-heading font-semibold tracking-tight text-ink;
-    font-size: clamp(2.25rem, 5vw, 4rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    text-wrap: pretty;
+    @apply font-sans font-bold tracking-tight;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: #00274C;
   }
   h2 {
-    @apply font-heading font-semibold tracking-tight text-ink;
-    font-size: clamp(1.75rem, 3.5vw, 3rem);
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-    text-wrap: pretty;
+    @apply font-sans font-bold tracking-tight;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    color: #00274C;
   }
   h3 {
-    @apply font-heading font-semibold tracking-tight text-ink;
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    text-wrap: pretty;
+    @apply font-sans font-bold tracking-tight;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: #00274C;
   }
   h4, h5, h6 {
-    @apply font-sans font-semibold tracking-tight text-ink;
-    text-wrap: pretty;
+    @apply font-sans font-bold tracking-tight;
+    text-wrap: balance;
+    color: #00274C;
   }
 
   p {
@@ -130,15 +134,15 @@
     text-wrap: pretty;
   }
 
-  /* Body text — generous line height for readability */
+  /* Body text — generous, readable */
   body {
-    @apply text-[15px] md:text-base;
-    line-height: 1.7;
+    @apply text-base md:text-lg;
+    line-height: 1.75;
   }
 
   /* Focus-visible ring for keyboard navigation */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-ink;
+    @apply outline-2 outline-offset-2 outline-[#FFCB05];
   }
 
   /* Skip-to-content link */
@@ -166,8 +170,8 @@
     overflow: visible;
     clip: auto;
     white-space: normal;
-    background-color: var(--ink);
-    color: var(--paper);
+    background-color: #00274C;
+    color: #FFCB05;
     font-size: 0.875rem;
     font-weight: 500;
   }
@@ -182,20 +186,6 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-  }
-}
-
-/* Shimmer animation for skeleton loading */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@layer utilities {
-  .animate-shimmer {
-    background: linear-gradient(90deg, var(--ink-faint) 25%, var(--line) 50%, var(--ink-faint) 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite linear;
   }
 }
 
@@ -217,28 +207,9 @@
     @apply mx-auto max-w-7xl px-5 md:px-8 lg:px-12;
   }
   .font-heading {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-sans), sans-serif;
   }
   .safe-area-inset-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  /* Card hover effect */
-  .card-hover {
-    @apply transition-all duration-300 ease-out;
-  }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
-  }
-  /* Link underline animation */
-  .link-underline {
-    @apply relative;
-  }
-  .link-underline::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300;
-  }
-  .link-underline:hover::after {
-    @apply w-full;
   }
 }

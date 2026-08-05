@@ -22,6 +22,8 @@ export interface SiteConfig {
     principal: string;
     vicePrincipal: string;
     inquiry: string[];
+    tpCell?: string;
+    landline?: string;
   };
   email: {
     principal: string;
@@ -37,8 +39,10 @@ export interface SiteConfig {
   };
   affiliations: string[];
   accreditation: string;
+  accreditations?: { body: string; department: string; status: string }[];
   programs: { undergraduate: number; postgraduate: number };
   totalSeats: { ug: number; minorityQuota: number };
+  stats?: { established: number; departments: number; totalIntake: number; faculty: number };
   noticeBar: string;
   vision: string;
   mission: string[];

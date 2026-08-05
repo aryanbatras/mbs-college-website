@@ -1,237 +1,145 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { Phone, Mail, MapPin, Send, CheckCircle, Clock, ArrowUpRight } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaArrowUp } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
 
 interface FooterProps {
   config: SiteConfig;
 }
 
-export function Footer({ config }: FooterProps) {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const quickLinks = [
-    { label: "About", href: "/about" },
-    { label: "Academics", href: "/academics" },
-    { label: "Admissions", href: "/admissions" },
-    { label: "Placements", href: "/placements" },
-    { label: "Campus", href: "/campus" },
-    { label: "News", href: "/news" },
-    { label: "Notices", href: "/notices" },
-    { label: "Contact", href: "/contact" },
-  ];
-
-  const programs = [
-    { label: "Computer Science", href: "/academics/computer-science" },
-    { label: "Information Technology", href: "/academics/information-technology" },
-    { label: "Electronics & Comm.", href: "/academics/electronics-communication" },
-    { label: "Electrical Engineering", href: "/academics/electrical" },
-    { label: "Mechanical Engineering", href: "/academics/mechanical" },
+const FOOTER_LINKS = {
+  "About": [
+    { label: "About Us", href: "/about" },
+    { label: "Chairman's Desk", href: "/about/chairman" },
+    { label: "Principal's Desk", href: "/about/principal" },
+    { label: "Management", href: "/about/management" },
+  ],
+  Departments: [
+    { label: "Computer Science", href: "/academics/cse" },
+    { label: "Information Technology", href: "/academics/it" },
+    { label: "Electronics & Comm.", href: "/academics/ece" },
+    { label: "Electrical Engineering", href: "/academics/ee" },
+    { label: "Mechanical Engineering", href: "/academics/me" },
     { label: "Civil Engineering", href: "/academics/civil" },
     { label: "MCA", href: "/academics/mca" },
-  ];
+  ],
+  "Quick Links": [
+    { label: "Admissions", href: "/admissions" },
+    { label: "Placements", href: "/placements" },
+    { label: "Campus Life", href: "/campus" },
+    { label: "News & Events", href: "/news" },
+    { label: "Gallery", href: "/campus/galleries" },
+    { label: "Contact Us", href: "/contact" },
+  ],
+  Resources: [
+    { label: "Mandatory Disclosure", href: "https://www.mbscet.edu.in/mandatory-disclosure/" },
+    { label: "AICTE Approvals", href: "https://www.mbscet.edu.in/acite_approvals" },
+    { label: "Anti Ragging", href: "https://www.mbscet.edu.in/anti-ragging/" },
+    { label: "Grievance Cell", href: "https://www.mbscet.edu.in/grievances-redressal-cell/" },
+    { label: "Alumni Registration", href: "https://www.mbscet.edu.in/alumni-registration/" },
+    { label: "Virtual Tour", href: "https://www.mbscet.edu.in/campus-virtual-tour/" },
+  ],
+};
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail("");
-    }
-  };
-
+export function Footer({ config }: FooterProps) {
   return (
-    <footer className="bg-ink text-paper">
-      {/* Quick action bar */}
-      <div className="bg-accent">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-4">
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-sm font-medium">
-            <Link href="/admissions" className="flex items-center gap-2 text-paper hover:text-paper/80 transition-colors">
-              <ArrowUpRight className="size-4" />
-              Apply Now
-            </Link>
-            <a href={`tel:${config.phone.principal}`} className="flex items-center gap-2 text-paper hover:text-paper/80 transition-colors">
-              <Phone className="size-4" />
-              Call Us
-            </a>
-            <Link href="/campus" className="flex items-center gap-2 text-paper hover:text-paper/80 transition-colors">
-              <MapPin className="size-4" />
-              Campus Map
-            </Link>
-            <Link href="/placements" className="flex items-center gap-2 text-paper hover:text-paper/80 transition-colors">
-              <ArrowUpRight className="size-4" />
-              Placements
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Newsletter section */}
-      <div className="border-b border-paper/10">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-12 md:py-16">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <h3 className="text-lg font-semibold tracking-tight mb-2">Stay Updated</h3>
-              <p className="text-sm text-paper/50">Get the latest news, events, and updates from MBSCET.</p>
-            </div>
-            {subscribed ? (
-              <div className="flex items-center gap-2 text-accent">
-                <CheckCircle className="size-5" />
-                <span className="text-sm font-medium">Thank you for subscribing!</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2 w-full md:w-auto">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 md:w-64 px-4 py-2.5 text-sm bg-paper/10 text-paper placeholder:text-paper/30 border border-paper/10 focus:border-accent focus:outline-none transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium bg-accent text-paper hover:bg-accent-strong transition-colors"
-                >
-                  <Send className="size-4" />
-                  Subscribe
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Main footer content */}
-      <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-16 md:py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5">
-          {/* Identity — wider column */}
+    <footer className="bg-[#00274C] text-white" role="contentinfo">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
+          {/* College info */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-5">
-              <div className="relative size-11 overflow-hidden">
-                <Image
-                  src="/media/logos/mbscetlogo5.png"
-                  alt="MBSCET Logo"
-                  fill
-                  className="object-contain brightness-0 invert"
-                />
+            <div className="mb-6">
+              <div className="text-xl font-bold tracking-tight text-[#FFCB05]">MBSCET</div>
+              <div className="text-sm text-white/60 mt-1">
+                Mahant Bachittar Singh College of
+                <br />
+                Engineering & Technology
               </div>
-              <div>
-                <div className="text-base font-semibold tracking-tight">MBSCET</div>
-                <div className="text-[11px] text-paper/40 mt-0.5">Est. {config.established}</div>
-              </div>
-            </Link>
-            <p className="text-sm leading-relaxed text-paper/50 max-w-[320px] mb-6">
-              {config.name}. AICTE approved and affiliated to the University of Jammu.
-              Committed to excellence in engineering education since 1999.
+            </div>
+            <p className="text-sm text-white/50 leading-relaxed max-w-sm mb-6">
+              Established in 1999 under the Sant Manjit Singh Trust, MBSCET is an AICTE approved, NBA accredited institution affiliated to the University of Jammu.
             </p>
+
+            {/* Accreditation badges */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="text-[10px] font-bold bg-[#FFCB05] text-[#00274C] px-2 py-1">NBA Accredited</span>
+              <span className="text-[10px] font-bold border border-[#FFCB05]/50 text-[#FFCB05] px-2 py-1">AICTE Approved</span>
+            </div>
+
+            <div className="space-y-3">
+              <a href={`tel:${config.phone.landline}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors">
+                <FaPhone className="text-xs text-[#FFCB05] shrink-0" />
+                {config.phone.landline} / {config.phone.principal}
+              </a>
+              <a href={`mailto:${config.email.principal}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors">
+                <FaEnvelope className="text-xs text-[#FFCB05] shrink-0" />
+                {config.email.principal}
+              </a>
+              <div className="flex items-start gap-3 text-sm text-white/50">
+                <FaMapMarkerAlt className="text-xs text-[#FFCB05] mt-1 shrink-0" />
+                <span>
+                  {config.address.line1}, {config.address.line2},
+                  <br />
+                  {config.address.city} — {config.address.pincode}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Link columns */}
+          {Object.entries(FOOTER_LINKS).map(([title, links]) => (
+            <div key={title}>
+              <h3 className="text-sm font-bold text-[#FFCB05] mb-4">{title}</h3>
+              <ul className="space-y-2.5">
+                {links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/50 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t border-[#FFCB05]/20">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-xs text-white/40">
+              &copy; {new Date().getFullYear()} MBSCET. All rights reserved. Affiliated to University of Jammu.
+            </div>
+
             <div className="flex items-center gap-3">
               {config.social.facebook && (
-                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-paper/5 hover:bg-accent/20 text-paper/40 hover:text-accent transition-colors" aria-label="Facebook">
-                  <FaFacebookF className="size-4" />
+                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05] text-[#00274C] hover:bg-white transition-all" aria-label="Facebook">
+                  <FaFacebookF className="text-xs" />
                 </a>
               )}
               {config.social.instagram && (
-                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-paper/5 hover:bg-accent/20 text-paper/40 hover:text-accent transition-colors" aria-label="Instagram">
-                  <FaInstagram className="size-4" />
-                </a>
-              )}
-              {config.social.youtube && (
-                <a href={config.social.youtube} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-paper/5 hover:bg-accent/20 text-paper/40 hover:text-accent transition-colors" aria-label="YouTube">
-                  <FaYoutube className="size-4" />
+                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05] text-[#00274C] hover:bg-white transition-all" aria-label="Instagram">
+                  <FaInstagram className="text-xs" />
                 </a>
               )}
               {config.social.linkedin && (
-                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-paper/5 hover:bg-accent/20 text-paper/40 hover:text-accent transition-colors" aria-label="LinkedIn">
-                  <FaLinkedinIn className="size-4" />
+                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05] text-[#00274C] hover:bg-white transition-all" aria-label="LinkedIn">
+                  <FaLinkedinIn className="text-xs" />
                 </a>
               )}
             </div>
-          </div>
 
-          {/* Quick links */}
-          <div>
-            <h3 className="text-xs font-medium uppercase tracking-widest text-paper/30 mb-5">Quick Links</h3>
-            <ul className="flex flex-col gap-2.5">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-paper/60 transition-colors hover:text-paper hover:translate-x-1 inline-block">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Programs */}
-          <div>
-            <h3 className="text-xs font-medium uppercase tracking-widest text-paper/30 mb-5">Programs</h3>
-            <ul className="flex flex-col gap-2.5">
-              {programs.map((p) => (
-                <li key={p.href}>
-                  <Link href={p.href} className="text-sm text-paper/60 transition-colors hover:text-paper hover:translate-x-1 inline-block">
-                    {p.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-xs font-medium uppercase tracking-widest text-paper/30 mb-5">Contact</h3>
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-3 text-sm text-paper/60">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-accent" />
-                <span className="leading-relaxed">
-                  {config.address.line1}, {config.address.line2}, {config.address.city} — {config.address.pincode}
-                </span>
-              </div>
-              <div className="flex gap-3 text-sm text-paper/60">
-                <Phone className="mt-0.5 size-4 shrink-0 text-accent" />
-                <div className="leading-relaxed">
-                  <div>Principal: {config.phone.principal}</div>
-                  <div>Inquiry: {config.phone.inquiry.join(" / ")}</div>
-                </div>
-              </div>
-              <div className="flex gap-3 text-sm text-paper/60">
-                <Mail className="mt-0.5 size-4 shrink-0 text-accent" />
-                <div className="leading-relaxed">
-                  <div>{config.email.principal}</div>
-                  <div>{config.email.deanAcademics}</div>
-                </div>
-              </div>
-              <div className="flex gap-3 text-sm text-paper/60">
-                <Clock className="mt-0.5 size-4 shrink-0 text-accent" />
-                <div className="leading-relaxed">
-                  <div>Mon - Sat: 9:00 AM - 4:00 PM</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="mt-14 pt-8 border-t border-paper/10">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-paper/40">
-              <span>&copy; {new Date().getFullYear()} {config.shortName}. All rights reserved.</span>
-              <span className="hidden sm:inline">|</span>
-              <Link href="/privacy" className="hover:text-paper transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-paper transition-colors">Terms</Link>
-              <Link href="/sitemap.xml" className="hover:text-paper transition-colors">Sitemap</Link>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-paper/30">
-              <span>AICTE Approved</span>
-              <span>&middot;</span>
-              <span>University of Jammu</span>
-              <span>&middot;</span>
-              <span>UGC</span>
-            </div>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="size-9 flex items-center justify-center bg-[#FFCB05] text-[#00274C] hover:bg-white transition-all"
+              aria-label="Back to top"
+            >
+              <FaArrowUp className="text-xs" />
+            </button>
           </div>
         </div>
       </div>

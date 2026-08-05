@@ -1,85 +1,60 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ChevronDown,
-  Menu,
-  Megaphone,
-  Phone,
-  X,
-  BookOpen,
-  Users,
-  Building,
-  Newspaper,
-} from "lucide-react";
-import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa";
+import { FaBars, FaTimes, FaPhone, FaChevronDown, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
-import { SearchModal } from "@/components/ui/search-modal";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { ShortcutsPanel } from "@/components/ui/shortcuts-panel";
 
 const NAV_ITEMS = [
+  { label: "Home", href: "/" },
   {
     label: "About",
     href: "/about",
     children: [
-      { label: "About the College", href: "/about", icon: Building },
-      { label: "Chairman's Desk", href: "/about/chairman", icon: Users },
-      { label: "Principal's Desk", href: "/about/principal", icon: Users },
-      { label: "Management", href: "/about/management", icon: Users },
+      { label: "About Us", href: "/about" },
+      { label: "College Administration", href: "/about/management" },
+      { label: "Chairman's Desk", href: "/about/chairman" },
+      { label: "Principal's Desk", href: "/about/principal" },
     ],
-    featured: {
-      title: "Our Heritage",
-      description: "Established in 1999 under the Sant Manjit Singh Trust, MBSCET has a legacy of excellence in engineering education.",
-      href: "/about",
-    },
   },
   {
-    label: "Academics",
+    label: "Departments",
     href: "/academics",
     children: [
-      { label: "Overview", href: "/academics", icon: BookOpen },
-      { label: "Computer Science", href: "/academics/computer-science", icon: BookOpen },
-      { label: "Information Technology", href: "/academics/information-technology", icon: BookOpen },
-      { label: "Electronics & Communication", href: "/academics/electronics-communication", icon: BookOpen },
-      { label: "Electrical Engineering", href: "/academics/electrical", icon: BookOpen },
-      { label: "Mechanical Engineering", href: "/academics/mechanical", icon: BookOpen },
-      { label: "Civil Engineering", href: "/academics/civil", icon: BookOpen },
-      { label: "MCA", href: "/academics/mca", icon: BookOpen },
+      { label: "Computer Science & Engg.", href: "/academics/cse", badge: "NBA" },
+      { label: "Information Technology", href: "/academics/it" },
+      { label: "Electronics & Communication", href: "/academics/ece" },
+      { label: "Electrical Engineering", href: "/academics/ee", badge: "NBA" },
+      { label: "Mechanical Engineering", href: "/academics/me", badge: "NBA" },
+      { label: "Civil Engineering", href: "/academics/civil" },
+      { label: "MCA", href: "/academics/mca" },
+      { label: "Applied Science & Humanities", href: "/academics" },
     ],
-    featured: {
-      title: "8 Programs",
-      description: "From Computer Science to Mechanical Engineering, we offer diverse programs to shape future engineers.",
-      href: "/academics",
-    },
   },
+  { label: "Admissions", href: "/admissions" },
   {
-    label: "Admissions",
-    href: "/admissions",
-  },
-  {
-    label: "Placements",
+    label: "Placement",
     href: "/placements",
+    children: [
+      { label: "Placement Cell", href: "/placements" },
+      { label: "Placement Record", href: "/placements" },
+      { label: "Activities", href: "/placements" },
+    ],
   },
   {
     label: "Campus",
     href: "/campus",
     children: [
-      { label: "Facilities", href: "/campus", icon: Building },
-      { label: "Galleries", href: "/campus/galleries", icon: Newspaper },
-      { label: "Video Gallery", href: "/campus/video-gallery", icon: Newspaper },
-      { label: "Student Clubs", href: "/campus/clubs", icon: Users },
+      { label: "Facilities", href: "/campus" },
+      { label: "Photo Gallery", href: "/campus/galleries" },
+      { label: "Video Gallery", href: "/campus/video-gallery" },
+      { label: "Student Clubs", href: "/campus/clubs" },
+      { label: "Virtual Tour", href: "/campus" },
     ],
-    featured: {
-      title: "Campus Life",
-      description: "Explore our modern infrastructure, labs, library, and vibrant student community.",
-      href: "/campus",
-    },
   },
   { label: "News", href: "/news" },
-  { label: "Notices", href: "/notices" },
+  { label: "Contact", href: "/contact" },
 ];
 
 interface HeaderProps {
@@ -90,62 +65,30 @@ export function Header({ config }: HeaderProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full" role="banner">
-      {/* Utility bar — minimal */}
-      <div className="bg-navy text-paper">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8 py-2 text-xs">
-          <div className="flex items-center gap-4">
-            <span className="hidden md:inline text-paper/60">
-              {config.affiliations[0]}
-            </span>
-            <div className="flex items-center gap-1.5 text-paper/70">
-              <Megaphone className="size-3" aria-hidden="true" />
-              <span className="truncate max-w-[180px] md:max-w-none" role="status" aria-live="polite">
-                {config.noticeBar}
-              </span>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href={`tel:${config.phone.principal}`} className="flex items-center gap-1.5 text-paper/60 hover:text-paper transition-colors">
-              <Phone className="size-3" aria-hidden="true" />
-              <span className="hidden sm:inline">{config.phone.principal}</span>
-            </a>
-            <div className="hidden sm:flex items-center gap-2.5">
-              {config.social.facebook && (
-                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-paper/50 hover:text-paper transition-colors" aria-label="Facebook">
-                  <FaFacebookF className="size-3" />
-                </a>
-              )}
-              {config.social.instagram && (
-                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="text-paper/50 hover:text-paper transition-colors" aria-label="Instagram">
-                  <FaInstagram className="size-3" />
-                </a>
-              )}
-              {config.social.youtube && (
-                <a href={config.social.youtube} target="_blank" rel="noopener noreferrer" className="text-paper/50 hover:text-paper transition-colors" aria-label="YouTube">
-                  <FaYoutube className="size-3" />
-                </a>
-              )}
-              {config.social.linkedin && (
-                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-paper/50 hover:text-paper transition-colors" aria-label="LinkedIn">
-                  <FaLinkedinIn className="size-3" />
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Primary nav — clean with mega menu */}
-      <nav className="bg-white/95 backdrop-blur-md" aria-label="Main navigation">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8 py-4">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-sm shadow-sm"
+          : "bg-transparent"
+      }`}
+      role="banner"
+    >
+      <nav aria-label="Main navigation">
+        <div className="mx-auto max-w-7xl flex items-center justify-between px-5 md:px-8 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group" aria-label="MBSCET - Home">
-            <div className="relative size-12 overflow-hidden">
+          <Link href="/" className="flex items-center gap-3" aria-label="MBSCET - Home">
+            <div className="relative size-11 overflow-hidden">
               <Image
-                src="/media/logos/mbscetlogo5.png"
+                src="/logo.png"
                 alt="MBSCET Logo"
                 fill
                 className="object-contain"
@@ -153,10 +96,18 @@ export function Header({ config }: HeaderProps) {
               />
             </div>
             <div className="hidden sm:block">
-              <div className="text-base font-semibold tracking-tight text-ink leading-tight">
+              <div
+                className={`text-sm font-bold tracking-tight leading-tight transition-colors duration-300 ${
+                  scrolled ? "text-[#00274C]" : "text-white"
+                }`}
+              >
                 MBSCET
               </div>
-              <div className="text-[11px] text-ink-muted leading-tight mt-0.5">
+              <div
+                className={`text-[10px] leading-tight mt-0.5 transition-colors duration-300 ${
+                  scrolled ? "text-[#5C6370]" : "text-white/60"
+                }`}
+              >
                 Est. {config.established} &middot; Jammu
               </div>
             </div>
@@ -177,36 +128,41 @@ export function Header({ config }: HeaderProps) {
                   role="menuitem"
                   aria-haspopup={item.children ? "true" : undefined}
                   aria-expanded={item.children ? openDropdown === item.label : undefined}
-                  className="flex items-center gap-1 px-4 py-2.5 text-[13px] font-medium text-ink-muted transition-colors hover:text-ink"
+                  className={`flex items-center gap-1 px-3 py-2.5 text-[13px] font-medium transition-colors ${
+                    scrolled
+                      ? "text-[#5C6370] hover:text-[#00274C]"
+                      : "text-white/80 hover:text-white"
+                  }`}
                 >
                   {item.label}
-                  {item.children && <ChevronDown className="size-3 opacity-40" aria-hidden="true" />}
+                  {item.children && (
+                    <FaChevronDown
+                      className={`text-[8px] transition-transform ${
+                        openDropdown === item.label ? "rotate-180" : ""
+                      } ${scrolled ? "text-[#9CA3AF]" : "text-white/40"}`}
+                    />
+                  )}
                 </Link>
 
-                {/* Mega menu */}
+                {/* Dropdown */}
                 {item.children && openDropdown === item.label && (
                   <div className="absolute top-full left-0 pt-2 z-50" role="menu">
-                    <div className="min-w-[280px] bg-white shadow-xl shadow-black/8 py-3">
+                    <div className="min-w-[240px] bg-white shadow-lg py-2">
                       {item.children.map((child) => (
                         <Link
-                          key={child.href}
+                          key={child.label}
                           href={child.href}
                           role="menuitem"
-                          className="flex items-center gap-3 px-5 py-2.5 text-[13px] text-ink-muted transition-colors hover:text-ink hover:bg-ink/[0.02]"
+                          className="flex items-center justify-between px-5 py-2.5 text-[13px] text-[#5C6370] hover:text-[#00274C] hover:bg-[#FFCB05]/10 transition-colors"
                         >
-                          {child.icon && <child.icon className="size-4 text-ink-faint" />}
-                          {child.label}
+                          <span>{child.label}</span>
+                          {"badge" in child && child.badge && (
+                            <span className="text-[9px] font-bold bg-[#FFCB05] text-[#00274C] px-1.5 py-0.5">
+                              {child.badge}
+                            </span>
+                          )}
                         </Link>
                       ))}
-                      {item.featured && (
-                        <div className="mt-2 px-5 py-3 bg-ink/[0.02]">
-                          <div className="text-xs font-medium text-ink mb-1">{item.featured.title}</div>
-                          <p className="text-[11px] text-ink-muted leading-relaxed">{item.featured.description}</p>
-                          <Link href={item.featured.href} className="text-[11px] font-medium text-accent mt-2 inline-flex items-center gap-1 hover:gap-2 transition-all">
-                            Learn more <ChevronDown className="size-3 -rotate-90" />
-                          </Link>
-                        </div>
-                      )}
                     </div>
                   </div>
                 )}
@@ -214,27 +170,27 @@ export function Header({ config }: HeaderProps) {
             ))}
           </div>
 
-          {/* Desktop actions + mobile trigger */}
-          <div className="flex items-center gap-2">
-            <SearchModal />
-            <div className="hidden md:flex items-center gap-1">
-              <ShortcutsPanel />
-              <ThemeToggle />
-            </div>
+          {/* Desktop CTA + mobile trigger */}
+          <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-medium bg-navy text-paper hover:bg-navy-light transition-colors"
+              className={`hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-bold transition-all ${
+                scrolled
+                  ? "bg-[#00274C] text-[#FFCB05] hover:bg-[#1E406B]"
+                  : "bg-[#FFCB05] text-[#00274C] hover:bg-white"
+              }`}
             >
-              Contact
+              Contact Us
             </Link>
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex items-center justify-center size-10 text-ink"
+              className={`lg:hidden flex items-center justify-center size-10 transition-colors ${
+                scrolled ? "text-[#00274C]" : "text-white"
+              }`}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
-              {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+              {mobileOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
             </button>
           </div>
         </div>
@@ -242,24 +198,51 @@ export function Header({ config }: HeaderProps) {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-[calc(theme(spacing.0)+48px)] z-40 bg-white overflow-y-auto">
+        <div className="lg:hidden fixed inset-0 top-0 z-40 bg-white overflow-y-auto">
           <div className="px-5 py-6">
-            {/* Billboard - quick access links */}
-            <div className="grid grid-cols-2 gap-2 mb-6">
-              <Link href="/admissions" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 px-4 py-3 bg-accent text-paper text-sm font-medium">
+            {/* Mobile header */}
+            <div className="flex items-center justify-between mb-8">
+              <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
+                <div className="relative size-10 overflow-hidden">
+                  <Image src="/logo.png" alt="MBSCET Logo" fill className="object-contain" />
+                </div>
+                <span className="text-sm font-bold text-[#00274C]">MBSCET</span>
+              </Link>
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="size-10 flex items-center justify-center text-[#00274C]"
+                aria-label="Close menu"
+              >
+                <FaTimes className="text-xl" />
+              </button>
+            </div>
+
+            {/* Quick actions */}
+            <div className="grid grid-cols-2 gap-3 mb-8">
+              <Link
+                href="/admissions"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-[#FFCB05] text-[#00274C] text-sm font-bold"
+              >
                 Apply Now
               </Link>
-              <a href="tel:+911912476227" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 px-4 py-3 bg-navy text-paper text-sm font-medium">
-                <Phone className="size-4" />
+              <a
+                href={`tel:${config.phone.principal}`}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-[#00274C] text-[#FFCB05] text-sm font-bold"
+              >
+                <FaPhone className="text-xs" />
                 Call Us
               </a>
-              <Link href="/campus" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 px-4 py-3 bg-ink/[0.03] text-ink text-sm font-medium">
-                Campus Map
-              </Link>
-              <Link href="/contact" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 px-4 py-3 bg-ink/[0.03] text-ink text-sm font-medium">
-                Directory
-              </Link>
             </div>
+
+            {/* NBA Accreditation badge */}
+            <div className="mb-6 p-4 bg-[#FFCB05]/10 border border-[#FFCB05]/30">
+              <p className="text-xs font-bold text-[#00274C] mb-1">NBA Accredited</p>
+              <p className="text-[11px] text-[#5C6370]">CSE, Electrical Engineering, Mechanical Engineering</p>
+            </div>
+
+            {/* Nav links */}
             <nav className="flex flex-col" aria-label="Mobile navigation">
               {NAV_ITEMS.map((item) => (
                 <div key={item.label}>
@@ -267,22 +250,30 @@ export function Header({ config }: HeaderProps) {
                     <>
                       <button
                         onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
-                        className="flex w-full items-center justify-between py-3.5 text-[15px] font-medium text-ink"
+                        className="flex w-full items-center justify-between py-4 text-[15px] font-bold text-[#00274C] border-b border-[#E5E7EB]"
                       >
                         {item.label}
-                        <ChevronDown className={`size-4 text-ink-muted transition-transform ${mobileExpanded === item.label ? "rotate-180" : ""}`} />
+                        <FaChevronDown
+                          className={`text-[10px] text-[#9CA3AF] transition-transform ${
+                            mobileExpanded === item.label ? "rotate-180" : ""
+                          }`}
+                        />
                       </button>
                       {mobileExpanded === item.label && (
                         <div className="pl-4 pb-2">
                           {item.children.map((child) => (
                             <Link
-                              key={child.href}
+                              key={child.label}
                               href={child.href}
                               onClick={() => setMobileOpen(false)}
-                              className="flex items-center gap-2 py-2.5 text-[14px] text-ink-muted hover:text-ink"
+                              className="flex items-center justify-between py-3 text-[14px] text-[#5C6370] hover:text-[#00274C]"
                             >
-                              {child.icon && <child.icon className="size-4" />}
-                              {child.label}
+                              <span>{child.label}</span>
+                              {"badge" in child && child.badge && (
+                                <span className="text-[9px] font-bold bg-[#FFCB05] text-[#00274C] px-1.5 py-0.5">
+                                  {child.badge}
+                                </span>
+                              )}
                             </Link>
                           ))}
                         </div>
@@ -292,26 +283,33 @@ export function Header({ config }: HeaderProps) {
                     <Link
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block py-3.5 text-[15px] font-medium text-ink"
+                      className="block py-4 text-[15px] font-bold text-[#00274C] border-b border-[#E5E7EB]"
                     >
                       {item.label}
                     </Link>
                   )}
                 </div>
               ))}
-              <div className="mt-6 flex flex-col gap-3">
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="block w-full text-center px-5 py-3 text-[14px] font-medium bg-navy text-paper"
-                >
-                  Contact Us
-                </Link>
-                <div className="flex justify-center">
-                  <ThemeToggle />
-                </div>
-              </div>
             </nav>
+
+            {/* Social links */}
+            <div className="flex items-center gap-4 mt-8 pt-6 border-t border-[#E5E7EB]">
+              {config.social.facebook && (
+                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-[#5C6370] hover:text-[#00274C] transition-colors" aria-label="Facebook">
+                  <FaFacebookF className="text-lg" />
+                </a>
+              )}
+              {config.social.instagram && (
+                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="text-[#5C6370] hover:text-[#00274C] transition-colors" aria-label="Instagram">
+                  <FaInstagram className="text-lg" />
+                </a>
+              )}
+              {config.social.linkedin && (
+                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#5C6370] hover:text-[#00274C] transition-colors" aria-label="LinkedIn">
+                  <FaLinkedinIn className="text-lg" />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       )}

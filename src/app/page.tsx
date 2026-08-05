@@ -1,30 +1,18 @@
 import { Header } from "@/components/layout/header";
-import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { MobileCTA } from "@/components/layout/mobile-cta";
 import { BackToTop } from "@/components/ui/back-to-top";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { ChatWidget } from "@/components/ui/chat-widget";
 import { Hero } from "@/components/sections/hero";
-import { StatBand } from "@/components/sections/stats";
-import { RankingsSection } from "@/components/sections/rankings";
-import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { ProgramsSection } from "@/components/sections/programs";
-import { PartnersSection } from "@/components/sections/partners";
 import { AboutStrip } from "@/components/sections/about";
-import { EventsSection } from "@/components/sections/events";
 import { NewsNotices } from "@/components/sections/news-notices";
-import { PlacementsSection } from "@/components/sections/placements";
 import { TestimonialsSection } from "@/components/sections/testimonials";
-import { AlumniStories } from "@/components/sections/alumni-stories";
-import { ResearchSection } from "@/components/sections/research";
 import { CampusSection } from "@/components/sections/campus";
-import { CampusMap } from "@/components/sections/campus-map";
-import { VideoSection } from "@/components/sections/video-section";
-import { SocialFeed } from "@/components/sections/social-feed";
-import { FAQSection } from "@/components/sections/faq";
-import { ContactCTA } from "@/components/sections/contact-cta";
-import { SocialProof } from "@/components/sections/social-proof";
+import { ContactSection } from "@/components/sections/contact-form-section";
+import { GallerySection } from "@/components/sections/gallery-section";
+import { PlacementSection } from "@/components/sections/placement-section";
+import { ClubsSection } from "@/components/sections/clubs-section";
 import { getSiteConfig, getPrograms, getLatestNews, getLatestNotices } from "@/lib/content";
 import { EducationalOrgJsonLd } from "@/components/seo/json-ld";
 
@@ -38,34 +26,22 @@ export default function HomePage() {
     <>
       <EducationalOrgJsonLd />
       <ScrollProgress />
-      <AnnouncementBar />
       <Header config={config} />
       <main id="main-content">
         <Hero />
-        <StatBand />
-        <RankingsSection />
-        <SocialProof />
-        <WhyChooseUs />
-        <ProgramsSection programs={programs} />
-        <PartnersSection />
         <AboutStrip config={config} />
-        <EventsSection />
-        <NewsNotices news={news} notices={notices} />
-        <PlacementsSection />
-        <TestimonialsSection />
-        <AlumniStories />
-        <ResearchSection />
+        <ProgramsSection programs={programs} />
         <CampusSection />
-        <CampusMap />
-        <VideoSection />
-        <SocialFeed />
-        <FAQSection />
-        <ContactCTA config={config} />
+        <PlacementSection />
+        <GallerySection />
+        <ClubsSection />
+        <NewsNotices news={news} notices={notices} />
+        <TestimonialsSection />
+        <ContactSection config={config} />
       </main>
       <Footer config={config} />
       <MobileCTA />
       <BackToTop />
-      <ChatWidget />
     </>
   );
 }

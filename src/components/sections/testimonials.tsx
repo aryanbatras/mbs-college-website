@@ -1,41 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { FaChevronLeft, FaChevronRight, FaQuoteLeft, FaStar } from "react-icons/fa";
 
 const TESTIMONIALS = [
   {
-    name: "Priya Sharma",
-    program: "B.E. Computer Science, 2023",
-    image: "/media/general/1-1024x579.jpg",
-    quote: "MBSCET provided me with the foundation I needed to start my career at Infosys. The faculty support and hands-on lab experience were invaluable.",
-    currentRole: "Software Engineer at Infosys",
-    rating: 5,
+    quote: "MBSCET gave me the foundation I needed. The faculty genuinely cares about every student's growth, both academically and personally.",
+    author: "Priya Sharma",
+    role: "CSE Graduate, 2022",
+    company: "Currently at Infosys",
   },
   {
-    name: "Rohit Kumar",
-    program: "B.E. Electronics & Communication, 2022",
-    image: "/media/general/2-1024x768.jpeg",
-    quote: "The placement cell at MBSCET is exceptional. They prepared us for interviews and connected us with top companies. I landed my dream job right after graduation.",
-    currentRole: "Hardware Engineer at Wipro",
-    rating: 5,
+    quote: "The placement cell prepared us thoroughly. From mock interviews to industry visits, everything was designed to make us industry-ready.",
+    author: "Rahul Kumar",
+    role: "IT Graduate, 2023",
+    company: "Currently at Wipro",
   },
   {
-    name: "Amanpreet Singh",
-    program: "B.E. Mechanical Engineering, 2023",
-    image: "/media/general/10-1024x768.jpeg",
-    quote: "The workshops and industrial visits gave me practical exposure that textbooks cannot provide. MBSCET truly bridges the gap between theory and practice.",
-    currentRole: "Design Engineer at TCS",
-    rating: 5,
+    quote: "As a parent, I felt reassured knowing my child was in safe hands. The college maintains excellent discipline and provides real opportunities.",
+    author: "Sunita Devi",
+    role: "Parent of ECE Student",
+    company: "Jammu",
   },
   {
-    name: "Sneha Gupta",
-    program: "MCA, 2022",
-    image: "/media/general/11-1024x768.jpg",
-    quote: "The MCA program at MBSCET is comprehensive and industry-relevant. The Python and ML workshops helped me transition into data science successfully.",
-    currentRole: "Data Analyst at HCL",
-    rating: 5,
+    quote: "The labs and facilities here are comparable to any top institution. We had hands-on experience with the latest technology from day one.",
+    author: "Amit Singh",
+    role: "EE Graduate, 2021",
+    company: "Currently at NHPC",
   },
 ];
 
@@ -48,114 +39,68 @@ export function TestimonialsSection() {
   const testimonial = TESTIMONIALS[current];
 
   return (
-    <section className="bg-paper" aria-label="Student testimonials">
-      <div className="page-container section-spacing">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
-            Student Voices
+    <section className="bg-[#00274C]" aria-label="Testimonials">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
+        <div>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+            What People Say
           </p>
-          <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-ink">
-            What Our Students Say
+          <h2 className="text-4xl md:text-5xl font-bold text-white leading-[1.05] tracking-tight mb-16">
+            Voices From Our Community
           </h2>
-        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="relative aspect-[4/5] overflow-hidden bg-ink/5"
-              >
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex gap-0.5 mb-2">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} className="size-4 fill-accent text-accent" />
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-end">
+            <div>
+              <div key={current}>
+                <FaQuoteLeft className="text-[#FFCB05] text-3xl mb-6 opacity-60" />
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug tracking-tight mb-8">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
+                <div>
+                  <div className="flex items-center gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="text-[#FFCB05] text-xs" />
                     ))}
                   </div>
+                  <div className="text-base font-bold text-white">
+                    {testimonial.author}
+                  </div>
+                  <div className="text-sm text-white/60 mt-1">
+                    {testimonial.role} &middot; {testimonial.company}
+                  </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
+              </div>
+            </div>
 
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="relative">
-                  <Quote className="size-12 text-accent/20 absolute -top-2 -left-2" />
-                  <blockquote className="font-heading text-xl md:text-2xl lg:text-3xl text-ink leading-relaxed mb-8 relative z-10">
-                    {testimonial.quote}
-                  </blockquote>
-                </div>
-                <div className="mb-8">
-                  <div className="text-lg font-semibold text-ink">{testimonial.name}</div>
-                  <div className="text-sm text-ink-muted mt-1">{testimonial.program}</div>
-                  <div className="text-sm text-accent mt-1">{testimonial.currentRole}</div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Navigation */}
             <div className="flex items-center gap-4">
               <button
                 onClick={prev}
-                className="size-10 flex items-center justify-center text-ink-muted hover:text-ink transition-colors border border-ink/10 hover:border-ink/20"
+                className="size-12 flex items-center justify-center border-2 border-[#FFCB05]/30 text-[#FFCB05]/60 hover:text-[#FFCB05] hover:border-[#FFCB05] transition-colors"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft className="size-5" />
+                <FaChevronLeft className="text-sm" />
               </button>
               <div className="flex gap-2">
                 {TESTIMONIALS.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}
-                    className={`h-1 transition-all duration-300 ${i === current ? "w-8 bg-accent" : "w-4 bg-ink/20"}`}
+                    className={`h-0.5 transition-all duration-300 ${
+                      i === current ? "w-8 bg-[#FFCB05]" : "w-4 bg-white/20"
+                    }`}
                     aria-label={`Go to testimonial ${i + 1}`}
                   />
                 ))}
               </div>
               <button
                 onClick={next}
-                className="size-10 flex items-center justify-center text-ink-muted hover:text-ink transition-colors border border-ink/10 hover:border-ink/20"
+                className="size-12 flex items-center justify-center border-2 border-[#FFCB05]/30 text-[#FFCB05]/60 hover:text-[#FFCB05] hover:border-[#FFCB05] transition-colors"
                 aria-label="Next testimonial"
               >
-                <ChevronRight className="size-5" />
+                <FaChevronRight className="text-sm" />
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -12,40 +12,45 @@
   },
   "phone": {
     "principal": "+91-8082848658",
-    "vicePrincipal": "0191-4050971",
-    "inquiry": ["+91-8825034047", "+91-9419288486"]
+    "vicePrincipal": "+91-9419239050",
+    "inquiry": ["+91-7006969837", "+91-7006962073", "+91-9149509617"],
+    "tpCell": "+91-9419130161",
+    "landline": "0191-2970136"
   },
   "email": {
     "principal": "principal@mbscet.edu.in",
     "vicePrincipal": "vice.principal@mbscet.edu.in",
-    "deanAcademics": "dean.academics@mbscet.edu.in",
+    "deanAcademics": "academics@mbscet.edu.in",
     "tpCell": "tpcell@mbscet.edu.in"
   },
   "social": {
-    "facebook": "https://www.facebook.com/mbscet/",
-    "instagram": "https://www.instagram.com/mbscet/",
-    "youtube": "https://www.youtube.com/@mbscet",
-    "linkedin": "https://www.linkedin.com/school/mbscet/"
+    "facebook": "https://www.facebook.com/mbscet1999/",
+    "instagram": "https://instagram.com/mbscet1999",
+    "youtube": "",
+    "linkedin": "https://www.linkedin.com/company/mbscet-jammu"
   },
   "affiliations": [
-    "AICTE approved",
+    "AICTE Approved, New Delhi",
     "Affiliated to University of Jammu",
-    "UGC recognized"
+    "Sikh Minority Institution"
   ],
-  "accreditation": "Sikh Minority Institution under Sant Manjit Singh Trust",
-  "programs": {
-    "undergraduate": 8,
-    "postgraduate": 4
-  },
-  "totalSeats": {
-    "ug": 360,
-    "minorityQuota": 165
-  },
-  "noticeBar": "Admissions open for 2025-26 B.E. programs. Apply via JKCET / Minority Quota.",
+  "accreditations": [
+    { "body": "NBA", "department": "Computer Science & Engineering", "status": "Accredited" },
+    { "body": "NBA", "department": "Electrical Engineering", "status": "Accredited" },
+    { "body": "NBA", "department": "Mechanical Engineering", "status": "Accredited" }
+  ],
+  "accreditation": "NBA Accredited: CSE, EE, ME Departments",
+  "noticeBar": "Admissions open for 2026-27 B.Tech programs. Apply now!",
   "vision": "To be a globally acclaimed technical institution for providing contemporary education and fostering research, innovation and professional ethics to serve the society.",
   "mission": [
-    "Providing contemporary and advanced knowledge of engineering & sciences among students in a coordinated and integrated manner.",
+    "Providing contemporary and advanced knowledge of engineering and sciences among students in a coordinated and integrated manner.",
     "Inculcating problem-solving, research and innovation skills among students to meet the dynamic industrial and societal needs.",
     "Fostering professional ethics, leadership qualities and human values among students for sustainable development."
-  ]
+  ],
+  "stats": {
+    "established": 1999,
+    "departments": 7,
+    "totalIntake": 490,
+    "faculty": 50
+  }
 }

@@ -1,77 +1,89 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { FaArrowRight } from "react-icons/fa";
+import CountUp from "@/components/design-system/CountUp";
 
-const FACILITIES = [
-  { name: "Computer Labs", image: "/media/general/1-1024x579.jpg" },
-  { name: "Workshop", image: "/media/general/11-1024x768.jpg" },
-  { name: "Seminar Hall", image: "/media/general/10-1024x768.jpeg" },
-  { name: "Library", image: "/media/general/2-1024x768.jpeg" },
+const STATS = [
+  { value: 25, suffix: "+", label: "Acres Campus" },
+  { value: 7, suffix: "", label: "Departments" },
+  { value: 10, suffix: "+", label: "Modern Labs" },
+  { value: 50, suffix: "+", label: "Faculty Members" },
 ];
 
 export function CampusSection() {
   return (
-    <section className="bg-paper" aria-label="Campus facilities">
-      <div className="page-container section-spacing">
-        <div className="flex items-end justify-between mb-12 md:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
-              Campus
+    <section className="bg-[#FFCB05]" aria-label="Campus">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#00274C] mb-4">
+              Our Campus
             </p>
-            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-ink">
-              Our Facilities
+            <h2 className="text-4xl md:text-5xl font-bold text-[#00274C] leading-[1.05] tracking-tight mb-6">
+              A Place to Grow, Learn & Thrive
             </h2>
-          </motion.div>
-          <Link
-            href="/campus"
-            className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent transition-colors group"
-          >
-            Explore campus
-            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        </div>
+            <p className="text-lg text-[#00274C]/70 leading-relaxed mb-8 max-w-lg">
+              Our 25-acre campus in Babliana, Jammu provides a serene environment for learning, with modern labs, a well-stocked library, seminar halls, and green spaces.
+            </p>
 
-        {/* Image grid — masonry-like with staggered reveal */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-          {FACILITIES.map((facility, i) => (
-            <motion.div
-              key={facility.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
-              className={`relative overflow-hidden bg-ink/5 ${i === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="bg-[#00274C]/10 p-4">
+                  <p className="text-2xl font-bold text-[#00274C]">
+                    <CountUp
+                      to={stat.value}
+                      duration={2}
+                      separator=","
+                      className="text-2xl font-bold text-[#00274C]"
+                    />
+                    {stat.suffix}
+                  </p>
+                  <p className="text-xs text-[#00274C]/60">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href="/campus"
+              className="group inline-flex items-center gap-3 bg-[#00274C] text-[#FFCB05] px-8 py-4 text-sm font-bold hover:bg-[#1E406B] transition-colors"
             >
-              <div className={`${i === 0 ? "aspect-square md:aspect-auto md:h-full" : "aspect-[4/3]"}`}>
-                <img
-                  src={facility.image}
-                  alt={facility.name}
-                  className="w-full h-full object-cover"
-                  loading={i === 0 ? "eager" : "lazy"}
-                />
-              </div>
-              <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent">
-                <span className="text-sm md:text-base font-medium text-paper">{facility.name}</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              Explore Campus
+              <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
 
-        <Link
-          href="/campus"
-          className="md:hidden inline-flex items-center gap-1.5 mt-8 text-sm font-medium text-ink hover:text-accent transition-colors group"
-        >
-          Explore campus
-          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-        </Link>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="aspect-[4/5] overflow-hidden">
+              <img
+                src="/media/homepage/central-park.jpg"
+                alt="Campus central park"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="aspect-[4/5] overflow-hidden mt-8">
+              <img
+                src="/media/homepage/admin-block.jpg"
+                alt="Administrative block"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="aspect-[4/5] overflow-hidden -mt-8">
+              <img
+                src="/media/homepage/library.jpg"
+                alt="College library"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="aspect-[4/5] overflow-hidden">
+              <img
+                src="/media/homepage/seminar-hall.jpg"
+                alt="Seminar hall"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
