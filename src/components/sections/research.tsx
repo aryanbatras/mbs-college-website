@@ -111,11 +111,18 @@ export function ResearchSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-6 bg-ink/[0.02] hover:bg-ink/[0.04] transition-colors"
+              className="p-6 bg-ink/[0.02] hover:bg-ink/[0.04] transition-colors group"
             >
-              <h3 className="text-base font-semibold text-ink mb-2">{area.title}</h3>
-              <p className="text-sm text-ink-muted leading-relaxed mb-3">{area.description}</p>
-              <div className="text-xs text-accent font-medium">{area.papers} publications</div>
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <h3 className="text-base font-semibold text-ink group-hover:text-accent transition-colors mb-2">{area.title}</h3>
+                  <p className="text-sm text-ink-muted leading-relaxed">{area.description}</p>
+                </div>
+                <div className="text-right shrink-0">
+                  <div className="text-2xl font-semibold text-accent">{area.papers}</div>
+                  <div className="text-[10px] text-ink-muted uppercase tracking-wider">papers</div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
