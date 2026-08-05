@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { MobileCTA } from "@/components/layout/mobile-cta";
 import { BackToTop } from "@/components/ui/back-to-top";
+import { ChatWidget } from "@/components/ui/chat-widget";
 import { Hero } from "@/components/sections/hero";
 import { StatBand } from "@/components/sections/stats";
 import { RankingsSection } from "@/components/sections/rankings";
@@ -58,6 +59,7 @@ export default function HomePage() {
       <Footer config={config} />
       <MobileCTA />
       <BackToTop />
+      <ChatWidget />
     </>
   );
 }
