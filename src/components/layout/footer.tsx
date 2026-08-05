@@ -1,6 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
 
@@ -9,6 +12,9 @@ interface FooterProps {
 }
 
 export function Footer({ config }: FooterProps) {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
   const quickLinks = [
     { label: "About", href: "/about" },
     { label: "Academics", href: "/academics" },
@@ -30,8 +36,53 @@ export function Footer({ config }: FooterProps) {
     { label: "MCA", href: "/academics/mca" },
   ];
 
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail("");
+    }
+  };
+
   return (
     <footer className="bg-ink text-paper">
+      {/* Newsletter section */}
+      <div className="border-b border-paper/10">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-12 md:py-16">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <h3 className="text-lg font-semibold tracking-tight mb-2">Stay Updated</h3>
+              <p className="text-sm text-paper/50">Get the latest news, events, and updates from MBSCET.</p>
+            </div>
+            {subscribed ? (
+              <div className="flex items-center gap-2 text-accent">
+                <CheckCircle className="size-5" />
+                <span className="text-sm font-medium">Thank you for subscribing!</span>
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex gap-2 w-full md:w-auto">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className="flex-1 md:w-64 px-4 py-2.5 text-sm bg-paper/10 text-paper placeholder:text-paper/30 border border-paper/10 focus:border-accent focus:outline-none transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium bg-accent text-paper hover:bg-accent-strong transition-colors"
+                >
+                  <Send className="size-4" />
+                  Subscribe
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Main footer content */}
       <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Identity */}

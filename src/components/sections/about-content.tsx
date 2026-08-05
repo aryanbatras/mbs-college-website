@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import type { SiteConfig } from "@/lib/content";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 interface AboutContentProps {
   config: SiteConfig;
@@ -15,10 +16,8 @@ export function AboutContent({ config }: AboutContentProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
-          About
-        </p>
-        <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-ink">
+        <Breadcrumb items={[{ label: "About" }]} />
+        <h1 className="mt-4 font-heading text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-ink">
           About the College
         </h1>
         <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-ink-muted">
