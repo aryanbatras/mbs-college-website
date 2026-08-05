@@ -1,5 +1,6 @@
 ---
 title: "M.B.S. College organized B.Tech Induction Program 2024 -25"
+image: "/media/general/Tech-Talk-1-1024x768.jpeg"
 date: 2026-07-27
 category: "Campus"
 ---

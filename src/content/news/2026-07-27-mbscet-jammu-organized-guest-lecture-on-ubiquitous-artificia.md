@@ -1,4 +1,5 @@
 ---
+image: "/media/general/Guest-Lecture-Dr-Karan1-1024x768.jpeg"
 title: "MBSCET, Jammu, organized guest lecture on “Ubiquitous Artificial Intelligence (AI)”"
 date: 2026-07-27
 category: "Campus"

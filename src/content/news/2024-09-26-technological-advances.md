@@ -1,5 +1,6 @@
 ---
 title: "MBS College Holds Program on Recent Technological Advances"
+image: "/media/general/Tech-Talk-1-1024x768.jpeg"
 date: 2024-09-26
 category: "Event"
 ---

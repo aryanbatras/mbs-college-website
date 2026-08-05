@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import type { SiteConfig } from "@/lib/content";
 
 interface AboutStripProps {
@@ -10,50 +8,24 @@ interface AboutStripProps {
 
 export function AboutStrip({ config }: AboutStripProps) {
   return (
-    <section className="border-b border-line bg-accent-soft/30">
-      <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
-          {/* Pull quote */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="md:col-span-3"
-          >
-            <div className="border-l-2 border-accent pl-6">
-              <blockquote className="font-heading text-xl font-semibold leading-snug tracking-tight text-ink md:text-2xl">
-                &ldquo;{config.vision}&rdquo;
-              </blockquote>
-              <div className="mt-4 text-xs uppercase tracking-wider text-ink-faint">
-                — Vision of the Institute
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Mission + link */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="md:col-span-2 flex flex-col justify-center"
-          >
-            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-faint">Our Mission</h3>
-            <ul className="flex flex-col gap-2">
-              {config.mission.slice(0, 2).map((m, i) => (
-                <li key={i} className="text-sm leading-relaxed text-ink-muted">
-                  {m}
-                </li>
-              ))}
-            </ul>
+    <section className="bg-paper" aria-label="About the college">
+      <div className="page-container section-spacing">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-sm font-medium tracking-widest uppercase text-accent mb-4">
+            Our Vision
+          </p>
+          <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium text-ink leading-relaxed tracking-tight">
+            &ldquo;{config.vision}&rdquo;
+          </blockquote>
+          <div className="mt-8 md:mt-10">
             <Link
               href="/about"
-              className="mt-4 text-sm font-medium text-ink transition-colors hover:text-accent"
+              className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-accent transition-colors group"
             >
-              Read more about us →
+              Learn more about us
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

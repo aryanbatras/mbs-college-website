@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import type { SiteConfig } from "@/lib/content";
-import { GraduationCap, Award, Users, Building } from "lucide-react";
 
 interface AboutContentProps {
   config: SiteConfig;
@@ -10,44 +9,41 @@ interface AboutContentProps {
 
 export function AboutContent({ config }: AboutContentProps) {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-      {/* Hero */}
+    <div className="page-container section-spacing">
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex items-center gap-2 text-xs text-ink-muted">
-          <span className="inline-block size-1.5 bg-accent" />
-          ABOUT
-        </div>
-        <h1 className="mt-3 font-heading text-3xl font-bold tracking-tight text-ink md:text-5xl">
+        <p className="text-sm font-medium tracking-widest uppercase text-accent mb-3">
+          About
+        </p>
+        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-ink">
           About the College
         </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
+        <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-ink-muted">
           Mahant Bachittar Singh College of Engineering & Technology (MBSCET) is a
           recognized Sikh minority institution established in 1999 under the Sant
           Manjit Singh Trust, aegis of Dera Sant Pura Nangali Sahib.
         </p>
       </motion.div>
 
-      {/* Key facts */}
+      {/* Key facts — clean, no borders */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4"
+        className="mt-14 grid grid-cols-2 gap-8 md:grid-cols-4"
       >
         {[
-          { icon: GraduationCap, label: "Established", value: "1999" },
-          { icon: Award, label: "AICTE Approved", value: "Yes" },
-          { icon: Users, label: "Minority Quota", value: "165 seats" },
-          { icon: Building, label: "Programs", value: "8 B.E. + 4 M.E." },
+          { label: "Established", value: "1999" },
+          { label: "AICTE Approved", value: "Yes" },
+          { label: "Minority Quota", value: "165 seats" },
+          { label: "Programs", value: "8" },
         ].map((item) => (
-          <div key={item.label} className="border border-line p-4">
-            <item.icon className="mb-2 size-5 text-accent" />
-            <div className="font-heading text-lg font-bold text-ink">{item.value}</div>
-            <div className="text-xs text-ink-faint">{item.label}</div>
+          <div key={item.label}>
+            <div className="text-2xl md:text-3xl font-semibold text-ink tracking-tight">{item.value}</div>
+            <div className="text-sm text-ink-muted mt-1">{item.label}</div>
           </div>
         ))}
       </motion.div>
@@ -57,14 +53,12 @@ export function AboutContent({ config }: AboutContentProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-16"
+        className="mt-16 md:mt-20"
       >
-        <h2 className="font-heading text-2xl font-bold tracking-tight text-ink">Vision</h2>
-        <div className="mt-4 border-l-2 border-accent pl-6">
-          <blockquote className="font-heading text-lg leading-relaxed text-ink">
-            &ldquo;{config.vision}&rdquo;
-          </blockquote>
-        </div>
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Vision</h2>
+        <blockquote className="text-lg md:text-xl leading-relaxed text-ink max-w-2xl">
+          &ldquo;{config.vision}&rdquo;
+        </blockquote>
       </motion.section>
 
       {/* Mission */}
@@ -72,13 +66,13 @@ export function AboutContent({ config }: AboutContentProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-12"
+        className="mt-12 md:mt-16"
       >
-        <h2 className="font-heading text-2xl font-bold tracking-tight text-ink">Mission</h2>
-        <ul className="mt-4 flex flex-col gap-3">
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Mission</h2>
+        <ul className="flex flex-col gap-3 max-w-2xl">
           {config.mission.map((m, i) => (
-            <li key={i} className="flex gap-3 text-sm leading-relaxed text-ink-muted">
-              <span className="mt-1.5 size-1.5 shrink-0 bg-accent" />
+            <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-ink-muted">
+              <span className="mt-2 size-1 shrink-0 bg-accent rounded-full" />
               {m}
             </li>
           ))}
@@ -90,18 +84,18 @@ export function AboutContent({ config }: AboutContentProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="mt-12"
+        className="mt-12 md:mt-16"
       >
-        <h2 className="font-heading text-2xl font-bold tracking-tight text-ink">Affiliations & Approvals</h2>
-        <ul className="mt-4 flex flex-col gap-2">
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Affiliations & Approvals</h2>
+        <ul className="flex flex-col gap-2.5">
           {config.affiliations.map((a, i) => (
-            <li key={i} className="flex gap-3 text-sm text-ink-muted">
-              <span className="mt-1.5 size-1.5 shrink-0 bg-accent" />
+            <li key={i} className="flex gap-3 text-[15px] text-ink-muted">
+              <span className="mt-2 size-1 shrink-0 bg-accent rounded-full" />
               {a}
             </li>
           ))}
-          <li className="flex gap-3 text-sm text-ink-muted">
-            <span className="mt-1.5 size-1.5 shrink-0 bg-accent" />
+          <li className="flex gap-3 text-[15px] text-ink-muted">
+            <span className="mt-2 size-1 shrink-0 bg-accent rounded-full" />
             {config.accreditation}
           </li>
         </ul>

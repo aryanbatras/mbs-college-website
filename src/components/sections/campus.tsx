@@ -1,66 +1,61 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "motion/react";
-import { BookOpen, Wifi, Building, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const FACILITIES = [
-  { icon: BookOpen, label: "Central Library", desc: "Textbooks, journals, digital terminals" },
-  { icon: Wifi, label: "Wi-Fi Campus", desc: "High-speed internet throughout campus" },
-  { icon: Building, label: "Modern Labs", desc: "Department-specific laboratories" },
-  { icon: Users, label: "Hostels", desc: "Separate accommodation for boys and girls" },
+  { name: "Computer Labs", image: "/media/general/1-1024x579.jpg" },
+  { name: "Workshop", image: "/media/general/11-1024x768.jpg" },
+  { name: "Seminar Hall", image: "/media/general/10-1024x768.jpeg" },
+  { name: "Library", image: "/media/general/2-1024x768.jpeg" },
 ];
 
 export function CampusSection() {
   return (
-    <section className="border-b border-line bg-accent-soft/20">
-      <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-        >
-          <div className="flex items-center gap-2 text-xs text-ink-muted">
-            <span className="inline-block size-1.5 bg-accent" />
-            CAMPUS LIFE
+    <section className="bg-surface" aria-label="Campus facilities">
+      <div className="page-container section-spacing">
+        <div className="flex items-end justify-between mb-10 md:mb-14">
+          <div>
+            <p className="text-sm font-medium tracking-widest uppercase text-accent mb-3">
+              Campus
+            </p>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-ink">
+              Our Facilities
+            </h2>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-bold tracking-tight text-ink md:text-3xl">
-            Our Campus
-          </h2>
-        </motion.div>
+          <Link
+            href="/campus"
+            className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent transition-colors group"
+          >
+            Explore campus
+            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {/* Image grid — masonry-like */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {FACILITIES.map((facility, i) => (
-            <motion.div
-              key={facility.label}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }}
-              className="border border-line p-5"
-            >
-              <facility.icon className="mb-3 size-5 text-accent" />
-              <h3 className="font-heading text-sm font-semibold text-ink">{facility.label}</h3>
-              <p className="mt-1 text-xs leading-relaxed text-ink-muted">{facility.desc}</p>
-            </motion.div>
+            <div key={facility.name} className={`relative overflow-hidden bg-ink/5 ${i === 0 ? "md:col-span-2 md:row-span-2" : ""}`}>
+              <div className={`${i === 0 ? "aspect-square md:aspect-auto md:h-full" : "aspect-[4/3]"}`}>
+                <img
+                  src={facility.image}
+                  alt={facility.name}
+                  className="w-full h-full object-cover"
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 bg-gradient-to-t from-ink/60 to-transparent">
+                <span className="text-xs md:text-sm font-medium text-paper">{facility.name}</span>
+              </div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-          className="mt-8 flex flex-wrap gap-4"
+        <Link
+          href="/campus"
+          className="md:hidden inline-flex items-center gap-1.5 mt-6 text-sm font-medium text-ink hover:text-accent transition-colors group"
         >
-          <Link href="/campus/galleries" className="text-sm font-medium text-ink transition-colors hover:text-accent">
-            View Galleries →
-          </Link>
-          <Link href="/campus/clubs" className="text-sm font-medium text-ink transition-colors hover:text-accent">
-            Student Clubs →
-          </Link>
-        </motion.div>
+          Explore campus
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+        </Link>
       </div>
     </section>
   );

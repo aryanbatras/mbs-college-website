@@ -1,5 +1,6 @@
 ---
 title: "MBS Organized Workshop on Mastering WordPress"
+image: "/media/general/Power-Bi-workshop-1-766x1024.jpeg"
 date: 2024-11-23
 category: "Workshop"
 ---

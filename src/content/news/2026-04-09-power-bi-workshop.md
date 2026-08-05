@@ -1,5 +1,6 @@
 ---
 title: "MBS College Organized Two-Day Workshop on Power BI"
+image: "/media/general/Power-Bi-workshop-1-766x1024.jpeg"
 date: 2026-04-09
 category: "Workshop"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "MBSCET Jammu organized Industrial Visit to Sitlee Water Treatment Plant"
+image: "/media/general/Guest-Lecture-Dr-Karan1-1024x768.jpeg"
 date: 2026-07-27
 category: "Campus"
 ---

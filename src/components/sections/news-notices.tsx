@@ -1,126 +1,136 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "motion/react";
+import { ArrowRight, FileText, Calendar } from "lucide-react";
 import type { NewsArticle, Notice } from "@/lib/content";
-import { Badge } from "@/components/ui/badge";
 
 interface NewsNoticesProps {
   news: NewsArticle[];
   notices: Notice[];
 }
 
+function formatDate(dateStr: string): string {
+  if (!dateStr) return "";
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+}
+
 export function NewsNotices({ news, notices }: NewsNoticesProps) {
-  function formatDate(dateStr: string) {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
-  }
+  const featured = news[0];
+  const restNews = news.slice(1, 5);
 
   return (
-    <section className="border-b border-line bg-surface">
-      <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-          {/* News */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-2 text-xs text-ink-muted">
-                    <span className="inline-block size-1.5 bg-accent" />
-                    NEWS
-                  </div>
-                  <h2 className="mt-2 font-heading text-xl font-bold tracking-tight text-ink">
-                    Latest Updates
-                  </h2>
-                </div>
-                <Link href="/news" className="text-xs font-medium text-ink transition-colors hover:text-accent">
-                  View all
-                </Link>
+    <section className="bg-surface" aria-label="Latest news and notices">
+      <div className="page-container section-spacing">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          {/* News column */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
+                  Latest
+                </p>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-ink">
+                  News & Events
+                </h2>
               </div>
-            </motion.div>
+              <Link
+                href="/news"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent transition-colors group"
+              >
+                View all
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
 
-            <div className="mt-6">
-              {news.map((article, i) => (
-                <motion.div
-                  key={article.slug}
-                  initial={{ opacity: 0, y: 6 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.1 + i * 0.04 }}
-                >
-                  <Link
-                    href={`/news/${article.slug}`}
-                    className="group flex items-start gap-3 border-b border-line py-3 transition-colors hover:bg-accent-soft/30 px-2"
-                  >
-                    <span className="shrink-0 text-xs tabular-nums text-ink-faint">
-                      {formatDate(article.date)}
-                    </span>
-                    <span className="text-sm font-medium text-ink transition-colors group-hover:text-accent">
+            {/* Featured article — large with image */}
+            {featured && (
+              <Link href={`/news/${featured.slug}`} className="group block mb-8">
+                <div className="relative aspect-[16/8] overflow-hidden bg-ink/5 mb-4">
+                  {featured.image ? (
+                    <img
+                      src={featured.image}
+                      alt={featured.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-ink/5" />
+                  )}
+                </div>
+                <div className="flex items-center gap-2 text-xs text-ink-faint mb-2">
+                  <Calendar className="size-3" />
+                  <span>{formatDate(featured.date)}</span>
+                  <span>&middot;</span>
+                  <span className="text-accent">{featured.category}</span>
+                </div>
+                <h3 className="text-lg md:text-xl font-semibold text-ink group-hover:text-accent transition-colors leading-snug">
+                  {featured.title}
+                </h3>
+              </Link>
+            )}
+
+            {/* Other articles — compact list */}
+            <div className="flex flex-col gap-5">
+              {restNews.map((article) => (
+                <Link key={article.slug} href={`/news/${article.slug}`} className="group flex gap-4">
+                  {article.image && (
+                    <div className="relative w-24 h-20 md:w-32 md:h-24 shrink-0 overflow-hidden bg-ink/5">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 text-[11px] text-ink-faint mb-1.5">
+                      <span>{formatDate(article.date)}</span>
+                      <span>&middot;</span>
+                      <span className="text-accent">{article.category}</span>
+                    </div>
+                    <h3 className="text-sm md:text-base font-medium text-ink group-hover:text-accent transition-colors leading-snug line-clamp-2">
                       {article.title}
-                    </span>
-                  </Link>
-                </motion.div>
+                    </h3>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* Notices */}
+          {/* Notices column */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-2 text-xs text-ink-muted">
-                    <span className="inline-block size-1.5 bg-accent" />
-                    NOTICES
-                  </div>
-                  <h2 className="mt-2 font-heading text-xl font-bold tracking-tight text-ink">
-                    Official Notices
-                  </h2>
-                </div>
-                <Link href="/notices" className="text-xs font-medium text-ink transition-colors hover:text-accent">
-                  View all
-                </Link>
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
+                  Official
+                </p>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-ink">
+                  Notices
+                </h2>
               </div>
-            </motion.div>
+              <Link
+                href="/notices"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent transition-colors group"
+              >
+                View all
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
 
-            <div className="mt-6">
-              {notices.map((notice, i) => (
-                <motion.div
-                  key={notice.slug}
-                  initial={{ opacity: 0, y: 6 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.1 + i * 0.04 }}
-                >
-                  <Link
-                    href={`/notices/${notice.slug}`}
-                    className="group flex items-start gap-3 border-b border-line py-3 transition-colors hover:bg-accent-soft/30 px-2"
-                  >
-                    <span className="shrink-0 text-xs tabular-nums text-ink-faint">
-                      {formatDate(notice.date)}
-                    </span>
-                    <div className="flex-1">
-                      <span className="text-sm font-medium text-ink transition-colors group-hover:text-accent">
+            <div className="flex flex-col gap-4">
+              {notices.map((notice) => (
+                <div key={notice.slug} className="group">
+                  <div className="flex items-start gap-3">
+                    <FileText className="size-4 mt-0.5 text-ink-faint shrink-0" />
+                    <div>
+                      <h3 className="text-sm font-medium text-ink leading-snug">
                         {notice.title}
-                      </span>
-                      {notice.pdf && (
-                        <Badge variant="secondary" className="ml-2 bg-accent-soft text-ink border border-line rounded-sm text-[10px]">
-                          PDF
-                        </Badge>
-                      )}
+                      </h3>
+                      <div className="flex items-center gap-2 text-[11px] text-ink-faint mt-1.5">
+                        <Calendar className="size-3" />
+                        <span>{formatDate(notice.date)}</span>
+                      </div>
                     </div>
-                  </Link>
-                </motion.div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

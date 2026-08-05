@@ -1,72 +1,53 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="relative border-b border-line bg-paper">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 px-4 py-16 md:grid-cols-2 md:gap-12 md:py-24">
-        {/* Left: text */}
-        <div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <div className="mb-4 flex items-center gap-2 text-xs text-ink-muted">
-              <span className="inline-block size-1.5 bg-accent" />
-              AICTE approved · Affiliated to University of Jammu
-            </div>
+    <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-end" aria-label="Welcome">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/media/general/DSC_0123-1024x683.jpg"
+          alt="MBSCET Campus"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        {/* Gradient overlay — clean, not heavy */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
+      </div>
 
-            <h1 className="font-heading text-3xl font-bold leading-[1.1] tracking-tight text-ink md:text-5xl">
-              Mahant Bachittar Singh College of Engineering & Technology
-            </h1>
-
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-muted">
-              Established in 1999 under the Sant Manjit Singh Trust, MBSCET is a
-              recognized Sikh minority institution offering B.E. and MCA programs in
-              Jammu, Jammu & Kashmir.
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Link href="/admissions">
-                <Button className="bg-ink text-paper hover:bg-ink/90 rounded-sm px-5">
-                  Admissions 2025-26
-                  <ChevronRight className="size-4" />
-                </Button>
-              </Link>
-              <Link href="/academics">
-                <Button variant="outline" className="rounded-sm px-5">
-                  Explore Programs
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Right: image placeholder (campus photo) */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <div className="relative aspect-[4/5] border-2 border-line bg-surface">
-            {/* Replace with real campus photo */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-              <div className="font-heading text-4xl font-bold text-ink/10 md:text-6xl">
-                MBS
-              </div>
-              <div className="mt-3 text-xs text-ink-faint">
-                Campus photograph — replace with actual image
-              </div>
-            </div>
-            {/* Accent rule */}
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent" />
+      {/* Content */}
+      <div className="relative z-10 page-container pb-16 md:pb-24 w-full">
+        <div className="max-w-3xl">
+          <p className="text-sm font-medium tracking-widest uppercase text-accent mb-4 md:mb-6">
+            Mahant Bachittar Singh College of Engineering & Technology
+          </p>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-paper leading-[1.05] tracking-tight mb-6 md:mb-8">
+            Shaping Tomorrow&apos;s Engineers in the Heart of Jammu
+          </h1>
+          <p className="text-base md:text-lg text-paper/70 max-w-xl leading-relaxed mb-8 md:mb-10">
+            AICTE approved, UGC recognized, and affiliated to the University of Jammu.
+            Offering B.E. programs across seven disciplines since 1994.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/admissions"
+              className="inline-flex items-center px-7 py-3.5 text-sm font-medium bg-accent text-paper hover:bg-accent-strong transition-colors"
+            >
+              Apply Now
+            </Link>
+            <Link
+              href="/academics"
+              className="inline-flex items-center px-7 py-3.5 text-sm font-medium text-paper border border-paper/20 hover:border-paper/40 hover:bg-paper/5 transition-colors"
+            >
+              Explore Programs
+            </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

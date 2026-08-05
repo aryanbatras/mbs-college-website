@@ -1,4 +1,5 @@
 ---
+image: "/media/general/Placement-Drive.jpg"
 title: "MBSCET MBS Organizes Campus Placement Drive with Kandhari Beverages Pvt. Ltd."
 date: 2026-07-27
 category: "Campus"

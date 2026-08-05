@@ -1,5 +1,6 @@
 ---
 title: "MBSCET organizes Training in collaboration with ICT Academy and Infosys Foundation using Microsoft Azure Platform"
+image: "/media/general/Placement-Drive.jpg"
 date: 2026-07-27
 category: "Campus"
 ---

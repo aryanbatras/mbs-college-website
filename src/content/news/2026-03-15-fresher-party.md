@@ -1,4 +1,5 @@
 ---
+image: "/media/general/Fresher-Party-2025-Batch-1024x674.jpeg"
 title: "MBSCET Organizes Fresher Party for New Admissions"
 date: 2026-03-15
 category: "Campus"

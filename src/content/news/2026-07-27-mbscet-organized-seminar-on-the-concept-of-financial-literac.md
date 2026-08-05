@@ -1,4 +1,5 @@
 ---
+image: "/media/general/Finance-Literacy-seminar-1024x683.jpeg"
 title: "MBSCET organized Seminar on the Concept of Financial Literacy"
 date: 2026-07-27
 category: "Campus"

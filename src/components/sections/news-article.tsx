@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import { ArrowLeft } from "lucide-react";
 import type { NewsArticle } from "@/lib/content";
 
 interface NewsArticleProps {
@@ -15,35 +16,60 @@ export function NewsArticlePage({ article }: NewsArticleProps) {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16 md:py-24">
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Link href="/news" className="text-xs font-medium text-ink-muted hover:text-accent">
-          ← Back to News
-        </Link>
-        <div className="mt-4 flex items-center gap-3 text-xs text-ink-faint">
-          <span>{formatDate(article.date)}</span>
-          <span>·</span>
-          <span>{article.category}</span>
-        </div>
-        <h1 className="mt-3 font-heading text-2xl font-bold tracking-tight text-ink md:text-3xl">
-          {article.title}
-        </h1>
-      </motion.div>
+    <div>
+      {/* Hero image */}
+      {article.image && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="relative aspect-[16/7] md:aspect-[16/5] overflow-hidden bg-ink/5"
+        >
+          <img
+            src={article.image}
+            alt={article.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/20 to-transparent" />
+        </motion.div>
+      )}
 
-      <motion.article
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="mt-8 max-w-[65ch] text-base leading-relaxed text-ink-muted prose prose-ink"
-      >
-        {article.content.split("\n\n").map((para, i) => (
-          <p key={i} className="mb-4">{para}</p>
-        ))}
-      </motion.article>
+      <div className="page-container py-12 md:py-16">
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <Link
+              href="/news"
+              className="inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-ink transition-colors mb-6"
+            >
+              <ArrowLeft className="size-4" />
+              Back to News
+            </Link>
+            <div className="flex items-center gap-3 text-xs text-ink-faint mb-3">
+              <span>{formatDate(article.date)}</span>
+              <span>&middot;</span>
+              <span className="text-accent font-medium">{article.category}</span>
+            </div>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-ink leading-snug">
+              {article.title}
+            </h1>
+          </motion.div>
+
+          <motion.article
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-8 md:mt-10 max-w-[65ch] text-base md:text-[17px] leading-[1.8] text-ink-muted"
+          >
+            {article.content.split("\n\n").map((para, i) => (
+              <p key={i} className="mb-5">{para}</p>
+            ))}
+          </motion.article>
+        </div>
+      </div>
     </div>
   );
 }

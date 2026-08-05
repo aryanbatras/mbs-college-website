@@ -1,5 +1,6 @@
 ---
-title: "MBS College Organized Seminar on Cyber Security Awareness &#038; Busting Myths about EMR Radiations"
+
+image:  + match.bestImage + 
 date: 2026-07-27
 category: "Campus"
 ---

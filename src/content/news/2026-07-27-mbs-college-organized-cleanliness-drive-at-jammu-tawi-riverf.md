@@ -1,5 +1,6 @@
 ---
 title: "MBS College Organized Cleanliness Drive at Jammu Tawi Riverfront on Durga Ashtami"
+image: "/media/general/Tech-Talk-1-1024x768.jpeg"
 date: 2026-07-27
 category: "Campus"
 ---

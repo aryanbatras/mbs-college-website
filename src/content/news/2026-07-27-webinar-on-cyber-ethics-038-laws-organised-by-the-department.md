@@ -1,5 +1,6 @@
 ---
 title: "Webinar On Cyber Ethics &#038; Laws Organised by the department of CSE, MBSCET"
+image: "/media/general/Finance-Literacy-seminar-1024x683.jpeg"
 date: 2026-07-27
 category: "Campus"
 ---

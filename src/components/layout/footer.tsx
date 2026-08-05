@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { GraduationCap, Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
 
@@ -20,53 +21,57 @@ export function Footer({ config }: FooterProps) {
   ];
 
   const programs = [
-    { label: "CSE (108)", href: "/academics/computer-science" },
-    { label: "IT (54)", href: "/academics/information-technology" },
-    { label: "ECE (30)", href: "/academics/electronics-communication" },
-    { label: "EE (30)", href: "/academics/electrical" },
-    { label: "ME (30)", href: "/academics/mechanical" },
-    { label: "Civil (54)", href: "/academics/civil" },
-    { label: "AI&ML (54)", href: "/academics/computer-science" },
-    { label: "MCA (60)", href: "/academics/mca" },
+    { label: "Computer Science", href: "/academics/computer-science" },
+    { label: "Information Technology", href: "/academics/information-technology" },
+    { label: "Electronics & Comm.", href: "/academics/electronics-communication" },
+    { label: "Electrical Engineering", href: "/academics/electrical" },
+    { label: "Mechanical Engineering", href: "/academics/mechanical" },
+    { label: "Civil Engineering", href: "/academics/civil" },
+    { label: "MCA", href: "/academics/mca" },
   ];
 
   return (
     <footer className="bg-ink text-paper">
-      <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-5 md:px-8 py-16 md:py-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Identity */}
-          <div>
-            <Link href="/" className="mb-4 flex items-center gap-3">
-              <div className="flex size-9 items-center justify-center border border-paper/30 text-paper">
-                <GraduationCap className="size-4" />
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex items-center gap-3 mb-5">
+              <div className="relative size-10 overflow-hidden">
+                <Image
+                  src="/media/logos/mbscetlogo5.png"
+                  alt="MBSCET Logo"
+                  fill
+                  className="object-contain brightness-0 invert"
+                />
               </div>
               <div>
-                <div className="font-heading text-sm font-bold tracking-tight">{config.shortName}</div>
-                <div className="text-[10px] text-paper/50">Est. {config.established}</div>
+                <div className="text-sm font-semibold tracking-tight">MBSCET</div>
+                <div className="text-[10px] text-paper/40 mt-0.5">Est. {config.established}</div>
               </div>
             </Link>
-            <p className="mt-3 text-xs leading-relaxed text-paper/60 max-w-[280px]">
-              {config.name}. {config.accreditation}.
+            <p className="text-sm leading-relaxed text-paper/50 max-w-[280px]">
+              {config.name}. AICTE approved and affiliated to the University of Jammu.
             </p>
-            <div className="mt-4 flex items-center gap-2">
+            <div className="flex items-center gap-3 mt-5">
               {config.social.facebook && (
-                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="flex size-8 items-center justify-center border border-paper/20 text-paper/60 transition-colors hover:border-paper/40 hover:text-paper" aria-label="Facebook">
-                  <FaFacebookF className="size-3" />
+                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-paper/30 hover:text-paper transition-colors" aria-label="Facebook">
+                  <FaFacebookF className="size-4" />
                 </a>
               )}
               {config.social.instagram && (
-                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="flex size-8 items-center justify-center border border-paper/20 text-paper/60 transition-colors hover:border-paper/40 hover:text-paper" aria-label="Instagram">
-                  <FaInstagram className="size-3" />
+                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="text-paper/30 hover:text-paper transition-colors" aria-label="Instagram">
+                  <FaInstagram className="size-4" />
                 </a>
               )}
               {config.social.youtube && (
-                <a href={config.social.youtube} target="_blank" rel="noopener noreferrer" className="flex size-8 items-center justify-center border border-paper/20 text-paper/60 transition-colors hover:border-paper/40 hover:text-paper" aria-label="YouTube">
-                  <FaYoutube className="size-3" />
+                <a href={config.social.youtube} target="_blank" rel="noopener noreferrer" className="text-paper/30 hover:text-paper transition-colors" aria-label="YouTube">
+                  <FaYoutube className="size-4" />
                 </a>
               )}
               {config.social.linkedin && (
-                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="flex size-8 items-center justify-center border border-paper/20 text-paper/60 transition-colors hover:border-paper/40 hover:text-paper" aria-label="LinkedIn">
-                  <FaLinkedinIn className="size-3" />
+                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-paper/30 hover:text-paper transition-colors" aria-label="LinkedIn">
+                  <FaLinkedinIn className="size-4" />
                 </a>
               )}
             </div>
@@ -74,11 +79,11 @@ export function Footer({ config }: FooterProps) {
 
           {/* Quick links */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-paper/40">Quick Links</h3>
-            <ul className="flex flex-col gap-1.5">
+            <h3 className="text-xs font-medium uppercase tracking-widest text-paper/30 mb-5">Quick Links</h3>
+            <ul className="flex flex-col gap-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-paper/70 transition-colors hover:text-paper">
+                  <Link href={link.href} className="text-sm text-paper/60 transition-colors hover:text-paper">
                     {link.label}
                   </Link>
                 </li>
@@ -88,11 +93,11 @@ export function Footer({ config }: FooterProps) {
 
           {/* Programs */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-paper/40">Programs</h3>
-            <ul className="flex flex-col gap-1.5">
+            <h3 className="text-xs font-medium uppercase tracking-widest text-paper/30 mb-5">Programs</h3>
+            <ul className="flex flex-col gap-2.5">
               {programs.map((p) => (
                 <li key={p.href}>
-                  <Link href={p.href} className="text-sm text-paper/70 transition-colors hover:text-paper">
+                  <Link href={p.href} className="text-sm text-paper/60 transition-colors hover:text-paper">
                     {p.label}
                   </Link>
                 </li>
@@ -102,24 +107,24 @@ export function Footer({ config }: FooterProps) {
 
           {/* Contact */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-paper/40">Contact</h3>
-            <div className="flex flex-col gap-3">
-              <div className="flex gap-2 text-sm text-paper/70">
+            <h3 className="text-xs font-medium uppercase tracking-widest text-paper/30 mb-5">Contact</h3>
+            <div className="flex flex-col gap-4">
+              <div className="flex gap-3 text-sm text-paper/60">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-accent" />
-                <span>
+                <span className="leading-relaxed">
                   {config.address.line1}, {config.address.line2}, {config.address.city} — {config.address.pincode}
                 </span>
               </div>
-              <div className="flex gap-2 text-sm text-paper/70">
+              <div className="flex gap-3 text-sm text-paper/60">
                 <Phone className="mt-0.5 size-4 shrink-0 text-accent" />
-                <div>
+                <div className="leading-relaxed">
                   <div>Principal: {config.phone.principal}</div>
                   <div>Inquiry: {config.phone.inquiry.join(" / ")}</div>
                 </div>
               </div>
-              <div className="flex gap-2 text-sm text-paper/70">
+              <div className="flex gap-3 text-sm text-paper/60">
                 <Mail className="mt-0.5 size-4 shrink-0 text-accent" />
-                <div>
+                <div className="leading-relaxed">
                   <div>{config.email.principal}</div>
                   <div>{config.email.deanAcademics}</div>
                 </div>
@@ -129,9 +134,9 @@ export function Footer({ config }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-paper/10 pt-6 text-xs text-paper/40 sm:flex-row">
+        <div className="mt-14 pt-8 flex flex-col items-center justify-between gap-3 text-xs text-paper/30 sm:flex-row">
           <span>&copy; {new Date().getFullYear()} {config.shortName}. All rights reserved.</span>
-          <span>AICTE approved · University of Jammu affiliated · UGC recognized</span>
+          <span>AICTE approved &middot; University of Jammu affiliated &middot; UGC recognized</span>
         </div>
       </div>
     </footer>

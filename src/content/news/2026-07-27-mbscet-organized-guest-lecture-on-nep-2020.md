@@ -1,4 +1,5 @@
 ---
+image: "/media/general/Guest-Lecture-Dr-Karan1-1024x768.jpeg"
 title: "MBSCET organized guest lecture on NEP-2020"
 date: 2026-07-27
 category: "Campus"

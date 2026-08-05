@@ -2,23 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
-  Phone,
   ChevronDown,
   Menu,
   Megaphone,
-  GraduationCap,
+  Phone,
+  X,
 } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 
 const NAV_ITEMS = [
   {
@@ -73,77 +66,82 @@ interface HeaderProps {
 
 export function Header({ config }: HeaderProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 w-full" role="banner">
-      {/* Utility bar */}
-      <div className="bg-ink text-paper" role="complementary" aria-label="College information bar">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-1.5 text-xs">
+      {/* Utility bar — minimal */}
+      <div className="bg-ink text-paper">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8 py-2 text-xs">
           <div className="flex items-center gap-4">
-            <span className="hidden sm:inline text-ink-faint">
-              {config.affiliations.slice(0, 2).join("  ·  ")}
+            <span className="hidden md:inline text-paper/50">
+              {config.affiliations[0]}
             </span>
-            <div className="flex items-center gap-1 text-ink-faint">
+            <div className="flex items-center gap-1.5 text-paper/60">
               <Megaphone className="size-3" aria-hidden="true" />
-              <span className="truncate max-w-[200px] md:max-w-none" role="status" aria-live="polite">
+              <span className="truncate max-w-[180px] md:max-w-none" role="status" aria-live="polite">
                 {config.noticeBar}
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <a href={`tel:${config.phone.principal}`} className="flex items-center gap-1 text-ink-faint hover:text-paper transition-colors" aria-label={`Call principal at ${config.phone.principal}`}>
+          <div className="flex items-center gap-4">
+            <a href={`tel:${config.phone.principal}`} className="flex items-center gap-1.5 text-paper/50 hover:text-paper transition-colors">
               <Phone className="size-3" aria-hidden="true" />
               <span className="hidden sm:inline">{config.phone.principal}</span>
             </a>
-            <span className="text-ink-faint" aria-hidden="true">·</span>
-            <nav aria-label="Social media links">
-              <div className="flex items-center gap-2">
-                {config.social.facebook && (
-                  <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-ink-faint hover:text-paper transition-colors" aria-label="Facebook">
-                    <FaFacebookF className="size-3" aria-hidden="true" />
-                  </a>
-                )}
-                {config.social.instagram && (
-                  <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="text-ink-faint hover:text-paper transition-colors" aria-label="Instagram">
-                    <FaInstagram className="size-3" aria-hidden="true" />
-                  </a>
-                )}
-                {config.social.youtube && (
-                  <a href={config.social.youtube} target="_blank" rel="noopener noreferrer" className="text-ink-faint hover:text-paper transition-colors" aria-label="YouTube">
-                    <FaYoutube className="size-3" aria-hidden="true" />
-                  </a>
-                )}
-                {config.social.linkedin && (
-                  <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-ink-faint hover:text-paper transition-colors" aria-label="LinkedIn">
-                    <FaLinkedinIn className="size-3" aria-hidden="true" />
-                  </a>
-                )}
-              </div>
-            </nav>
+            <div className="hidden sm:flex items-center gap-2.5">
+              {config.social.facebook && (
+                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-paper/40 hover:text-paper transition-colors" aria-label="Facebook">
+                  <FaFacebookF className="size-3" />
+                </a>
+              )}
+              {config.social.instagram && (
+                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="text-paper/40 hover:text-paper transition-colors" aria-label="Instagram">
+                  <FaInstagram className="size-3" />
+                </a>
+              )}
+              {config.social.youtube && (
+                <a href={config.social.youtube} target="_blank" rel="noopener noreferrer" className="text-paper/40 hover:text-paper transition-colors" aria-label="YouTube">
+                  <FaYoutube className="size-3" />
+                </a>
+              )}
+              {config.social.linkedin && (
+                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-paper/40 hover:text-paper transition-colors" aria-label="LinkedIn">
+                  <FaLinkedinIn className="size-3" />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Primary nav */}
-      <nav className="border-b border-line bg-paper/95 backdrop-blur-sm" aria-label="Main navigation">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      {/* Primary nav — no borders, clean */}
+      <nav className="bg-paper/95 backdrop-blur-md" aria-label="Main navigation">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3" aria-label="MBSCET - Home">
-            <div className="flex size-10 items-center justify-center border-2 border-ink text-ink" aria-hidden="true">
-              <GraduationCap className="size-5" />
+          <Link href="/" className="flex items-center gap-3 group" aria-label="MBSCET - Home">
+            <div className="relative size-11 overflow-hidden">
+              <Image
+                src="/media/logos/mbscetlogo5.png"
+                alt="MBSCET Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <div className="hidden sm:block">
-              <div className="font-heading text-sm font-bold leading-tight tracking-tight text-ink">
-                {config.shortName}
+              <div className="text-sm font-semibold tracking-tight text-ink leading-tight">
+                MBSCET
               </div>
-              <div className="text-[10px] leading-tight text-ink-muted">
-                Est. {config.established} · {config.accreditation.split(" ").slice(0, 3).join(" ")}
+              <div className="text-[10px] text-ink-muted leading-tight mt-0.5">
+                Est. {config.established} &middot; Jammu
               </div>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1" role="menubar">
+          <div className="hidden lg:flex items-center gap-0.5" role="menubar">
             {NAV_ITEMS.map((item) => (
               <div
                 key={item.label}
@@ -157,24 +155,26 @@ export function Header({ config }: HeaderProps) {
                   role="menuitem"
                   aria-haspopup={item.children ? "true" : undefined}
                   aria-expanded={item.children ? openDropdown === item.label : undefined}
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink"
+                  className="flex items-center gap-1 px-3.5 py-2 text-[13px] font-medium text-ink-muted transition-colors hover:text-ink"
                 >
                   {item.label}
-                  {item.children && <ChevronDown className="size-3" aria-hidden="true" />}
+                  {item.children && <ChevronDown className="size-3 opacity-40" aria-hidden="true" />}
                 </Link>
 
                 {item.children && openDropdown === item.label && (
-                  <div className="absolute top-full left-0 z-50 min-w-[240px] border border-line bg-surface p-3" role="menu">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        role="menuitem"
-                        className="block px-3 py-2 text-sm text-ink-muted transition-colors hover:bg-accent-soft hover:text-ink"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 pt-2 z-50" role="menu">
+                    <div className="min-w-[220px] bg-surface py-2 shadow-lg shadow-black/5">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          role="menuitem"
+                          className="block px-5 py-2.5 text-[13px] text-ink-muted transition-colors hover:text-ink hover:bg-ink/[0.03]"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -183,59 +183,80 @@ export function Header({ config }: HeaderProps) {
 
           {/* Desktop CTA + mobile trigger */}
           <div className="flex items-center gap-3">
-            <Link href="/contact" className="hidden sm:inline-flex">
-              <Button variant="default" className="bg-accent text-paper hover:bg-accent-strong rounded-sm" aria-label="Contact us">
-                Contact
-              </Button>
+            <Link
+              href="/contact"
+              className="hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-medium bg-ink text-paper hover:bg-ink/90 transition-colors"
+            >
+              Contact
             </Link>
 
-            <Sheet>
-              <SheetTrigger
-                render={<Button variant="ghost" size="icon" aria-label="Open navigation menu" className="lg:hidden" />}
-              >
-                <Menu className="size-5" aria-hidden="true" />
-              </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-sm bg-paper border-line">
-                <SheetHeader>
-                  <SheetTitle className="font-heading text-lg text-ink">Navigation Menu</SheetTitle>
-                </SheetHeader>
-                <nav className="mt-6 flex flex-col gap-1" aria-label="Mobile navigation">
-                  {NAV_ITEMS.map((item) => (
-                    <div key={item.label}>
-                      <Link
-                        href={item.href}
-                        className="block px-3 py-3 text-sm font-medium text-ink transition-colors hover:bg-accent-soft"
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="lg:hidden flex items-center justify-center size-10 text-ink"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            >
+              {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="lg:hidden fixed inset-0 top-[calc(theme(spacing.0)+44px)] z-40 bg-paper overflow-y-auto">
+          <div className="px-5 py-6">
+            <nav className="flex flex-col" aria-label="Mobile navigation">
+              {NAV_ITEMS.map((item) => (
+                <div key={item.label}>
+                  {item.children ? (
+                    <>
+                      <button
+                        onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
+                        className="flex w-full items-center justify-between py-3.5 text-[15px] font-medium text-ink"
                       >
                         {item.label}
-                      </Link>
-                      {item.children && (
-                        <div className="ml-3 flex flex-col gap-0.5 border-l border-line pl-3">
+                        <ChevronDown className={`size-4 text-ink-muted transition-transform ${mobileExpanded === item.label ? "rotate-180" : ""}`} />
+                      </button>
+                      {mobileExpanded === item.label && (
+                        <div className="pl-4 pb-2">
                           {item.children.map((child) => (
                             <Link
                               key={child.href}
                               href={child.href}
-                              className="block py-2 text-xs text-ink-muted transition-colors hover:text-ink"
+                              onClick={() => setMobileOpen(false)}
+                              className="block py-2.5 text-[14px] text-ink-muted hover:text-ink"
                             >
                               {child.label}
                             </Link>
                           ))}
                         </div>
                       )}
-                    </div>
-                  ))}
-                  <div className="mt-4 border-t border-line pt-4">
-                    <Link href="/contact" className="block">
-                      <Button className="w-full bg-accent text-paper hover:bg-accent-strong rounded-sm" aria-label="Contact us">
-                        Contact Us
-                      </Button>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block py-3.5 text-[15px] font-medium text-ink"
+                    >
+                      {item.label}
                     </Link>
-                  </div>
-                </nav>
-              </SheetContent>
-            </Sheet>
+                  )}
+                </div>
+              ))}
+              <div className="mt-6">
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="block w-full text-center px-5 py-3 text-[14px] font-medium bg-ink text-paper"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </nav>
           </div>
         </div>
-      </nav>
+      )}
     </header>
   );
 }

@@ -1,5 +1,6 @@
 ---
 title: "MBSCET Organizes Industrial Visit to Cadila Pharmaceuticals Ltd, Samba"
+image: "/media/general/Placement-Drive.jpg"
 date: 2019-05-10
 category: "Campus"
 ---

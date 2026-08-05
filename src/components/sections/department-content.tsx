@@ -3,158 +3,175 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import type { Program, FacultyMember } from "@/lib/content";
-import { FlaskConical, ArrowLeft, Users } from "lucide-react";
+import { ArrowLeft, Users } from "lucide-react";
 
 interface DepartmentContentProps {
   program: Program;
   faculty?: FacultyMember[];
 }
 
+const DEPT_IMAGES: Record<string, string> = {
+  "computer-science": "/media/general/1-1024x579.jpg",
+  "information-technology": "/media/general/2-1024x768.jpeg",
+  "electronics-communication": "/media/general/1-1-1024x579.jpeg",
+  "electrical": "/media/general/10-1024x768.jpeg",
+  "mechanical": "/media/general/11-1024x768.jpg",
+  "civil": "/media/general/2-1-1024x576.jpg",
+  "mca": "/media/general/3-1024x576.jpeg",
+};
+
 export function DepartmentContent({ program, faculty = [] }: DepartmentContentProps) {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+    <div>
+      {/* Hero image */}
       <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
+        className="relative aspect-[16/6] md:aspect-[16/4] overflow-hidden bg-ink/5"
       >
-        <Link href="/academics" className="inline-flex items-center gap-1 text-xs font-medium text-ink-muted hover:text-accent mb-6">
-          <ArrowLeft className="size-3" />
-          All Programs
-        </Link>
-        <div className="flex items-start justify-between">
-          <div>
-            <div className="flex items-center gap-2 text-xs text-ink-muted">
-              <span className="inline-block size-1.5 bg-accent" />
-              {program.degree} PROGRAM
+        <img
+          src={DEPT_IMAGES[program.slug] || "/media/general/DSC_0123-1024x683.jpg"}
+          alt={program.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 page-container pb-8 md:pb-12">
+          <Link href="/academics" className="inline-flex items-center gap-1 text-xs font-medium text-paper/60 hover:text-paper transition-colors mb-3">
+            <ArrowLeft className="size-3" />
+            All Programs
+          </Link>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-medium tracking-widest uppercase text-accent mb-2">
+                {program.degree} Program
+              </p>
+              <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-paper leading-tight">
+                {program.title}
+              </h1>
             </div>
-            <h1 className="mt-3 font-heading text-3xl font-bold tracking-tight text-ink md:text-5xl">
-              {program.title}
-            </h1>
+            <div className="text-right shrink-0">
+              <div className="text-2xl md:text-3xl font-semibold text-accent">{program.intake}</div>
+              <div className="text-xs text-paper/50">seats</div>
+            </div>
           </div>
-          <div className="text-right">
-            <div className="font-heading text-3xl font-bold text-accent">{program.intake}</div>
-            <div className="text-xs text-ink-faint">seats</div>
+          <div className="mt-3 flex flex-wrap gap-2 text-xs text-paper/50">
+            <span>{program.degree}</span>
+            <span>&middot;</span>
+            <span>{program.duration}</span>
+            <span>&middot;</span>
+            <span>{program.eligibility}</span>
           </div>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-3 text-xs text-ink-faint">
-          <span>{program.degree}</span>
-          <span>·</span>
-          <span>{program.duration}</span>
-          <span>·</span>
-          <span>{program.eligibility}</span>
         </div>
       </motion.div>
 
-      {/* Description */}
-      {program.description && (
-        <motion.section
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-10"
-        >
-          <p className="max-w-[65ch] text-base leading-relaxed text-ink-muted">
-            {program.description}
-          </p>
-        </motion.section>
-      )}
+      <div className="page-container section-spacing">
+        {/* Description */}
+        {program.description && (
+          <motion.section
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="max-w-2xl"
+          >
+            <p className="text-base md:text-lg leading-relaxed text-ink-muted">
+              {program.description}
+            </p>
+          </motion.section>
+        )}
 
-      {/* Vision */}
-      {program.vision && (
-        <motion.section
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-10"
-        >
-          <h2 className="font-heading text-xl font-bold tracking-tight text-ink">Vision</h2>
-          <div className="mt-3 border-l-2 border-accent pl-5">
-            <blockquote className="text-sm leading-relaxed text-ink-muted">
+        {/* Vision */}
+        {program.vision && (
+          <motion.section
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="mt-10 md:mt-14"
+          >
+            <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-4">Vision</h2>
+            <blockquote className="text-base md:text-lg leading-relaxed text-ink max-w-2xl">
               &ldquo;{program.vision}&rdquo;
             </blockquote>
-          </div>
-        </motion.section>
-      )}
+          </motion.section>
+        )}
 
-      {/* Faculty */}
-      {faculty.length > 0 && (
-        <motion.section
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-10"
-        >
-          <div className="flex items-center gap-2 mb-4">
-            <Users className="size-4 text-accent" />
-            <h2 className="font-heading text-xl font-bold tracking-tight text-ink">Faculty</h2>
-            <span className="text-xs text-ink-faint">({faculty.length} members)</span>
-          </div>
-          <div className="border border-line overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-line bg-accent-soft/30">
-                  <th className="px-4 py-3 text-left font-medium text-ink">Name</th>
-                  <th className="px-4 py-3 text-left font-medium text-ink">Designation</th>
-                  <th className="px-4 py-3 text-left font-medium text-ink">Qualification</th>
-                  <th className="px-4 py-3 text-left font-medium text-ink">Specialization</th>
-                </tr>
-              </thead>
-              <tbody>
-                {faculty.map((f, i) => (
-                  <tr key={i} className="border-b border-line last:border-b-0">
-                    <td className="px-4 py-3 text-ink font-medium">{f.name}</td>
-                    <td className="px-4 py-3 text-ink-muted">{f.designation}</td>
-                    <td className="px-4 py-3 text-ink-muted">{f.qualification}</td>
-                    <td className="px-4 py-3 text-ink-muted">{f.specialization}</td>
+        {/* Faculty — clean table, no borders */}
+        {faculty.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-10 md:mt-14"
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <Users className="size-4 text-accent" />
+              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink">Faculty</h2>
+              <span className="text-sm text-ink-faint">({faculty.length} members)</span>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-ink/10">
+                    <th className="pb-3 pr-6 text-left font-medium text-ink">Name</th>
+                    <th className="pb-3 pr-6 text-left font-medium text-ink">Designation</th>
+                    <th className="pb-3 pr-6 text-left font-medium text-ink">Qualification</th>
+                    <th className="pb-3 text-left font-medium text-ink">Specialization</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </motion.section>
-      )}
+                </thead>
+                <tbody>
+                  {faculty.map((f, i) => (
+                    <tr key={i} className="border-b border-ink/5 last:border-b-0">
+                      <td className="py-3.5 pr-6 text-ink font-medium">{f.name}</td>
+                      <td className="py-3.5 pr-6 text-ink-muted">{f.designation}</td>
+                      <td className="py-3.5 pr-6 text-ink-muted">{f.qualification}</td>
+                      <td className="py-3.5 text-ink-muted">{f.specialization}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.section>
+        )}
 
-      {/* Labs */}
-      {program.labs && program.labs.length > 0 && (
-        <motion.section
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-10"
-        >
-          <h2 className="font-heading text-xl font-bold tracking-tight text-ink">Labs & Facilities</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {program.labs.map((lab) => (
-              <div key={lab} className="flex items-center gap-2 border border-line px-3 py-2 text-sm text-ink-muted">
-                <FlaskConical className="size-3.5 text-accent" />
-                {lab}
-              </div>
-            ))}
-          </div>
-        </motion.section>
-      )}
+        {/* Labs */}
+        {program.labs && program.labs.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="mt-10 md:mt-14"
+          >
+            <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Labs & Facilities</h2>
+            <div className="flex flex-wrap gap-2.5">
+              {program.labs.map((lab) => (
+                <div key={lab} className="px-4 py-2 text-sm text-ink-muted bg-ink/[0.03]">
+                  {lab}
+                </div>
+              ))}
+            </div>
+          </motion.section>
+        )}
 
-      {/* Highlights */}
-      {program.highlights && program.highlights.length > 0 && (
-        <motion.section
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10"
-        >
-          <h2 className="font-heading text-xl font-bold tracking-tight text-ink">Highlights</h2>
-          <ul className="mt-4 flex flex-col gap-2">
-            {program.highlights.map((h, i) => (
-              <li key={i} className="flex gap-3 text-sm text-ink-muted">
-                <span className="mt-1.5 size-1.5 shrink-0 bg-accent" />
-                {h}
-              </li>
-            ))}
-          </ul>
-        </motion.section>
-      )}
+        {/* Highlights */}
+        {program.highlights && program.highlights.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10 md:mt-14"
+          >
+            <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Highlights</h2>
+            <ul className="flex flex-col gap-2.5">
+              {program.highlights.map((h, i) => (
+                <li key={i} className="flex gap-3 text-[15px] text-ink-muted">
+                  <span className="mt-2 size-1 shrink-0 bg-accent rounded-full" />
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </motion.section>
+        )}
+      </div>
     </div>
   );
 }

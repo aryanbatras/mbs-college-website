@@ -1,5 +1,6 @@
 ---
 title: "Python Libraries: NumPy, Pandas, Tkinter Workshop concluded"
+image: "/media/general/Python-workshop-1024x577.jpeg"
 date: 2026-07-27
 category: "Campus"
 ---

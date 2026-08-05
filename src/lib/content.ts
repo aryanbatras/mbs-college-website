@@ -65,6 +65,7 @@ export interface NewsArticle {
   date: string;
   category: string;
   content: string;
+  image?: string;
   slug: string;
 }
 
@@ -145,6 +146,7 @@ export function getNews(): NewsArticle[] {
         : "",
       category: (data.category as string) ?? "General",
       content: content ?? "",
+      image: (data.image as string) ?? undefined,
       slug,
     })
   );

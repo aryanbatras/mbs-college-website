@@ -1,5 +1,6 @@
 ---
 title: "MBSCET Organizes Seminar on “Applications of AI” in association with ICT"
+image: "/media/general/Placement-Drive.jpg"
 date: 2026-07-27
 category: "Campus"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "MBS organized Workshop on “Mastering WordPress: Build and Customize Your Website from Scratch” in collaboration with Techno Solutions Pvt. Ltd."
+image: "/media/general/Placement-Drive.jpg"
 date: 2026-07-27
 category: "Campus"
 ---
