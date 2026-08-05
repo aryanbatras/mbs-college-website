@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle, ExternalLink, ArrowUpRight } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
 
@@ -185,9 +185,23 @@ export function Footer({ config }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-8 flex flex-col items-center justify-between gap-3 text-xs text-paper/30 sm:flex-row">
-          <span>&copy; {new Date().getFullYear()} {config.shortName}. All rights reserved.</span>
-          <span>AICTE approved &middot; University of Jammu affiliated &middot; UGC recognized</span>
+        <div className="mt-14 pt-8 border-t border-paper/10">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-paper/40">
+              <span>&copy; {new Date().getFullYear()} {config.shortName}. All rights reserved.</span>
+              <span className="hidden sm:inline">|</span>
+              <Link href="/privacy" className="hover:text-paper transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-paper transition-colors">Terms</Link>
+              <Link href="/sitemap.xml" className="hover:text-paper transition-colors">Sitemap</Link>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-paper/30">
+              <span>AICTE Approved</span>
+              <span>&middot;</span>
+              <span>University of Jammu</span>
+              <span>&middot;</span>
+              <span>UGC</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
