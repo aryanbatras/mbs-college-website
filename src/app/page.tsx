@@ -7,11 +7,15 @@ import { StatBand } from "@/components/sections/stats";
 import { RankingsSection } from "@/components/sections/rankings";
 import { ProgramsSection } from "@/components/sections/programs";
 import { AboutStrip } from "@/components/sections/about";
-import { NewsNotices } from "@/components/sections/news-notices";
 import { EventsSection } from "@/components/sections/events";
+import { NewsNotices } from "@/components/sections/news-notices";
 import { PlacementsSection } from "@/components/sections/placements";
 import { TestimonialsSection } from "@/components/sections/testimonials";
+import { AlumniStories } from "@/components/sections/alumni-stories";
+import { ResearchSection } from "@/components/sections/research";
 import { CampusSection } from "@/components/sections/campus";
+import { CampusMap } from "@/components/sections/campus-map";
+import { SocialFeed } from "@/components/sections/social-feed";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { getSiteConfig, getPrograms, getLatestNews, getLatestNotices } from "@/lib/content";
 import { EducationalOrgJsonLd } from "@/components/seo/json-ld";
@@ -36,7 +40,11 @@ export default function HomePage() {
         <NewsNotices news={news} notices={notices} />
         <PlacementsSection />
         <TestimonialsSection />
+        <AlumniStories />
+        <ResearchSection />
         <CampusSection />
+        <CampusMap />
+        <SocialFeed />
         <ContactCTA config={config} />
       </main>
       <Footer config={config} />
