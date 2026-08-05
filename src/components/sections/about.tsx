@@ -23,10 +23,15 @@ export function AboutStrip({ config }: AboutStripProps) {
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-4">
             Our Vision
           </p>
-          <blockquote className="font-heading text-xl md:text-2xl lg:text-3xl font-medium text-ink leading-relaxed tracking-tight">
-            &ldquo;{config.vision}&rdquo;
-          </blockquote>
-          <div className="mt-10 md:mt-12">
+          <div className="relative">
+            {/* Decorative quote mark */}
+            <div className="absolute -top-8 -left-4 text-6xl text-accent/20 font-serif select-none">&ldquo;</div>
+            <blockquote className="font-heading text-xl md:text-2xl lg:text-3xl font-medium text-ink leading-relaxed tracking-tight relative z-10">
+              {config.vision}
+            </blockquote>
+            <div className="absolute -bottom-8 -right-4 text-6xl text-accent/20 font-serif select-none">&rdquo;</div>
+          </div>
+          <div className="mt-12 md:mt-16">
             <Link
               href="/about"
               className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-accent transition-colors group"
