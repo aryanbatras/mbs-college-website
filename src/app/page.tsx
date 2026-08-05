@@ -22,6 +22,7 @@ import { VideoSection } from "@/components/sections/video-section";
 import { SocialFeed } from "@/components/sections/social-feed";
 import { FAQSection } from "@/components/sections/faq";
 import { ContactCTA } from "@/components/sections/contact-cta";
+import { SocialProof } from "@/components/sections/social-proof";
 import { getSiteConfig, getPrograms, getLatestNews, getLatestNotices } from "@/lib/content";
 import { EducationalOrgJsonLd } from "@/components/seo/json-ld";
 
@@ -39,6 +40,7 @@ export default function HomePage() {
         <Hero />
         <StatBand />
         <RankingsSection />
+        <SocialProof />
         <WhyChooseUs />
         <ProgramsSection programs={programs} />
         <PartnersSection />

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
@@ -28,6 +29,16 @@ const HERO_SLIDES = [
 export function Hero() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
@@ -47,15 +58,17 @@ export function Hero() {
 
   return (
     <section
-      className="relative min-h-[90vh] md:min-h-[95vh] flex items-end"
+      ref={ref}
+      className="relative min-h-[100vh] flex items-end overflow-hidden"
       aria-label="Welcome"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background images */}
+      {/* Background images with parallax */}
       {HERO_SLIDES.map((s, i) => (
-        <div
+        <motion.div
           key={i}
+          style={{ y, scale }}
           className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? "opacity-100" : "opacity-0"}`}
         >
           <img
@@ -64,30 +77,53 @@ export function Hero() {
             className="w-full h-full object-cover"
             loading={i === 0 ? "eager" : "lazy"}
           />
-        </div>
+        </motion.div>
       ))}
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20" />
 
       {/* Content */}
-      <div className="relative z-10 page-container pb-20 md:pb-28 w-full">
+      <motion.div
+        style={{ opacity }}
+        className="relative z-10 page-container pb-20 md:pb-28 w-full"
+      >
         <div className="max-w-3xl">
-          <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-accent mb-4 md:mb-6">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-accent mb-4 md:mb-6"
+          >
             {slide.tagline}
-          </p>
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-semibold text-paper leading-[1.05] tracking-tight mb-6 md:mb-8">
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="font-heading text-4xl md:text-6xl lg:text-7xl font-semibold text-paper leading-[1.05] tracking-tight mb-6 md:mb-8"
+          >
             {slide.title}
-          </h1>
-          <p className="text-base md:text-lg text-paper/70 max-w-xl leading-relaxed mb-10 md:mb-12">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-base md:text-lg text-paper/70 max-w-xl leading-relaxed mb-10 md:mb-12"
+          >
             {slide.description}
-          </p>
-          <div className="flex flex-wrap gap-4">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-wrap gap-4"
+          >
             <Link
               href="/admissions"
-              className="inline-flex items-center gap-2 px-8 py-4 text-sm font-medium bg-accent text-paper hover:bg-accent-strong transition-all duration-300"
+              className="group inline-flex items-center gap-2 px-8 py-4 text-sm font-medium bg-accent text-paper hover:bg-accent-strong transition-all duration-300"
             >
               Apply Now
-              <ArrowRight className="size-4" />
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/academics"
@@ -95,7 +131,7 @@ export function Hero() {
             >
               Explore Programs
             </Link>
-          </div>
+          </motion.div>
         </div>
 
         {/* Slide navigation */}
@@ -125,7 +161,7 @@ export function Hero() {
             <ChevronRight className="size-5" />
           </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
