@@ -9,15 +9,15 @@ import {
   Megaphone,
   Phone,
   X,
-  GraduationCap,
   BookOpen,
   Users,
   Building,
   Newspaper,
-  Mail,
 } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
+import { SearchModal } from "@/components/ui/search-modal";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const NAV_ITEMS = [
   {
@@ -213,11 +213,15 @@ export function Header({ config }: HeaderProps) {
             ))}
           </div>
 
-          {/* Desktop CTA + mobile trigger */}
-          <div className="flex items-center gap-3">
+          {/* Desktop actions + mobile trigger */}
+          <div className="flex items-center gap-2">
+            <SearchModal />
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center px-6 py-2.5 text-[13px] font-medium bg-navy text-paper hover:bg-navy-light transition-colors"
+              className="hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-medium bg-navy text-paper hover:bg-navy-light transition-colors"
             >
               Contact
             </Link>
@@ -277,7 +281,7 @@ export function Header({ config }: HeaderProps) {
                   )}
                 </div>
               ))}
-              <div className="mt-6">
+              <div className="mt-6 flex flex-col gap-3">
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
@@ -285,6 +289,9 @@ export function Header({ config }: HeaderProps) {
                 >
                   Contact Us
                 </Link>
+                <div className="flex justify-center">
+                  <ThemeToggle />
+                </div>
               </div>
             </nav>
           </div>
