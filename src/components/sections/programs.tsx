@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight, Clock, Users } from "lucide-react";
 import type { Program } from "@/lib/content";
+import { HorizontalScroll } from "@/components/ui/horizontal-scroll";
 
 interface ProgramsProps {
   programs: Program[];
@@ -88,8 +89,38 @@ export function ProgramsSection({ programs }: ProgramsProps) {
           </motion.div>
         )}
 
-        {/* Program grid — with staggered reveal */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Program grid — mobile horizontal scroll, desktop grid */}
+        <div className="md:hidden">
+          <HorizontalScroll snap={false}>
+            {rest.map((program) => (
+              <Link
+                key={program.slug}
+                href={`/academics/${program.slug}`}
+                className="group min-w-[280px] max-w-[280px] snap-start"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-ink/5 mb-4">
+                  <img
+                    src={PROGRAM_IMAGES[program.slug] || "/media/general/DSC_0123-1024x683.jpg"}
+                    alt={program.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <h3 className="font-heading text-lg font-semibold text-ink group-hover:text-accent transition-colors">
+                  {program.title}
+                </h3>
+                <div className="flex items-center gap-3 text-sm text-ink-muted mt-1.5">
+                  <span className="flex items-center gap-1">
+                    <Users className="size-3.5" />
+                    {program.intake} seats
+                  </span>
+                  <span>&middot;</span>
+                  <span>{program.degree}</span>
+                </div>
+              </Link>
+            ))}
+          </HorizontalScroll>
+        </div>
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {rest.map((program, i) => (
             <motion.div
               key={program.slug}
