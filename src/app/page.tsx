@@ -3,6 +3,7 @@ import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Footer } from "@/components/layout/footer";
 import { MobileCTA } from "@/components/layout/mobile-cta";
 import { BackToTop } from "@/components/ui/back-to-top";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { ChatWidget } from "@/components/ui/chat-widget";
 import { Hero } from "@/components/sections/hero";
 import { StatBand } from "@/components/sections/stats";
@@ -36,6 +37,7 @@ export default function HomePage() {
   return (
     <>
       <EducationalOrgJsonLd />
+      <ScrollProgress />
       <AnnouncementBar />
       <Header config={config} />
       <main id="main-content">
