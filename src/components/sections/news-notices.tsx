@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, FileText, Calendar } from "lucide-react";
+import { motion } from "motion/react";
+import { ArrowRight, FileText, Calendar, Clock } from "lucide-react";
 import type { NewsArticle, Notice } from "@/lib/content";
 
 interface NewsNoticesProps {
@@ -20,7 +21,7 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
   return (
     <section className="bg-paper" aria-label="Latest news and notices">
       <div className="page-container section-spacing">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-14 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* News column */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-10">
