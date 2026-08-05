@@ -49,7 +49,7 @@ export function RankingsSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {ACCREDITATIONS.map((item, i) => (
             <motion.div
               key={item.title}
@@ -57,14 +57,14 @@ export function RankingsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
-              className="text-center"
+              className="text-center group p-6 bg-white hover:bg-ink/[0.02] transition-colors"
             >
-              <div className="inline-flex items-center justify-center size-14 bg-accent/10 mb-4">
+              <div className="inline-flex items-center justify-center size-14 bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors">
                 <item.icon className="size-6 text-accent" />
               </div>
               <h3 className="text-sm font-semibold text-ink">{item.title}</h3>
-              <p className="text-xs text-ink-muted mt-1">{item.description}</p>
-              <p className="text-[10px] font-medium text-accent mt-2 tracking-wider uppercase">{item.year}</p>
+              <p className="text-xs text-ink-muted mt-1 leading-relaxed">{item.description}</p>
+              <p className="text-[10px] font-medium text-accent mt-3 tracking-wider uppercase">{item.year}</p>
             </motion.div>
           ))}
         </div>
