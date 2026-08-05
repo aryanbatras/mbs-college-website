@@ -83,9 +83,9 @@ export function EventsSection() {
               transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
               className="group"
             >
-              <div className="flex gap-4">
+              <div className="flex gap-4 p-4 bg-ink/[0.02] group-hover:bg-ink/[0.04] transition-colors">
                 {/* Date badge */}
-                <div className="shrink-0 w-16 h-16 flex flex-col items-center justify-center bg-navy text-paper">
+                <div className="shrink-0 w-16 h-16 flex flex-col items-center justify-center bg-navy text-paper group-hover:bg-accent transition-colors">
                   <span className="text-xl font-semibold leading-none">{event.day}</span>
                   <span className="text-[10px] font-medium tracking-wider uppercase mt-0.5">{event.month}</span>
                 </div>
