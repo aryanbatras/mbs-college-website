@@ -114,10 +114,12 @@ export function TestimonialsSection() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <Quote className="size-10 text-accent/30 mb-6" />
-                <blockquote className="font-heading text-xl md:text-2xl lg:text-3xl text-ink leading-relaxed mb-8">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </blockquote>
+                <div className="relative">
+                  <Quote className="size-12 text-accent/20 absolute -top-2 -left-2" />
+                  <blockquote className="font-heading text-xl md:text-2xl lg:text-3xl text-ink leading-relaxed mb-8 relative z-10">
+                    {testimonial.quote}
+                  </blockquote>
+                </div>
                 <div className="mb-8">
                   <div className="text-lg font-semibold text-ink">{testimonial.name}</div>
                   <div className="text-sm text-ink-muted mt-1">{testimonial.program}</div>
