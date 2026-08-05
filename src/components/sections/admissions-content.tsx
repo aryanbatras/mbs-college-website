@@ -2,116 +2,135 @@
 
 import { motion } from "motion/react";
 import type { SiteConfig } from "@/lib/content";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { InquiryForm } from "@/components/sections/inquiry-form";
+import { AdmissionTimeline } from "@/components/sections/admission-timeline";
 
 interface AdmissionsContentProps {
   config: SiteConfig;
 }
 
-const STEPS = [
-  { step: 1, title: "Eligibility", desc: "10+2 with Physics, Chemistry & Mathematics (PCM) from a recognized board." },
-  { step: 2, title: "Apply via JKCET", desc: "Register and appear for Jammu & Kashmir Common Entrance Test (JKCET) conducted by BOPEE." },
-  { step: 3, title: "Minority Quota", desc: "Alternatively, apply through the MBS Minority Seats Entrance Test for management/minority quota." },
-  { step: 4, title: "Document Verification", desc: "Submit required documents: 10+2 marksheet, JKCET scorecard, domicile, category certificate." },
-  { step: 5, title: "Fee Payment", desc: "Pay tuition fee as per J&K Fee Fixation Committee guidelines (~₹45,000–49,000/year)." },
-];
-
-const FAQ = [
-  { q: "What is the admission process?", a: "Admissions are conducted through JKCET (BOPEE) for government quota seats. For minority quota, candidates apply directly through the college entrance test." },
-  { q: "What is the fee structure?", a: "The tuition fee is approximately ₹45,000–49,000 per annum for B.E. programs, as regulated by the J&K Fee Fixation Committee." },
-  { q: "Are hostel facilities available?", a: "Yes, separate hostel accommodations are available for both boys and girls coming from outstation areas." },
-  { q: "Is there a minority quota?", a: "Yes, MBSCET is a recognized Sikh minority institution with approximately 165 seats reserved under the minority quota." },
-  { q: "What documents are required?", a: "10+2 marksheet, JKCET/entrance test scorecard, domicile certificate, category certificate (if applicable), passport-size photographs, and migration certificate." },
+const FEE_STRUCTURE = [
+  { program: "B.E. (CSE/IT/ECE/EE/ME/Civil)", tuition: "₹45,000", total: "₹49,000" },
+  { program: "B.E. (AI&ML)", tuition: "₹45,000", total: "₹49,000" },
+  { program: "MCA", tuition: "₹50,000", total: "₹55,000" },
 ];
 
 export function AdmissionsContent({ config }: AdmissionsContentProps) {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+    <div>
       {/* Hero */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="flex items-center gap-2 text-xs text-ink-muted">
-          <span className="inline-block size-1.5 bg-accent" />
-          ADMISSIONS
+      <div className="bg-navy text-paper py-16 md:py-20">
+        <div className="page-container">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Breadcrumb items={[{ label: "Admissions" }]} />
+            <h1 className="mt-4 font-heading text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight">
+              Admissions 2026-27
+            </h1>
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-paper/70">
+              Join MBSCET for B.E. programs in CSE, IT, ECE, EE, ME, Civil, AI&ML, and
+              MCA. Admissions are conducted through JEE Main/JKBOPEE and Minority Quota.
+            </p>
+          </motion.div>
         </div>
-        <h1 className="mt-3 font-heading text-3xl font-bold tracking-tight text-ink md:text-5xl">
-          Admissions 2025-26
-        </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
-          Join MBSCET for B.E. programs in CSE, IT, ECE, EE, ME, Civil, AI&ML, and
-          MCA. Admissions are conducted through JKCET and Minority Quota.
-        </p>
-      </motion.div>
+      </div>
 
-      {/* Process timeline */}
-      <motion.section
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="mt-12"
-      >
-        <h2 className="font-heading text-2xl font-bold tracking-tight text-ink">Admission Process</h2>
-        <div className="mt-6 flex flex-col gap-0">
-          {STEPS.map((step) => (
-            <div key={step.step} className="flex gap-4 border-b border-line py-5 last:border-b-0">
-              <div className="flex size-8 shrink-0 items-center justify-center border border-accent text-sm font-bold text-accent">
-                {step.step}
-              </div>
-              <div>
-                <h3 className="font-heading text-base font-semibold text-ink">{step.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-ink-muted">{step.desc}</p>
-              </div>
+      {/* Admission Timeline */}
+      <AdmissionTimeline />
+
+      {/* Fee Structure */}
+      <section className="bg-paper">
+        <div className="page-container section-spacing">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="font-heading text-2xl md:text-3xl font-semibold tracking-tight text-ink mb-8">
+              Fee Structure
+            </h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-ink/10">
+                    <th className="pb-4 pr-6 text-left font-medium text-ink">Program</th>
+                    <th className="pb-4 pr-6 text-left font-medium text-ink">Tuition Fee</th>
+                    <th className="pb-4 text-left font-medium text-ink">Total (incl. other fees)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {FEE_STRUCTURE.map((item) => (
+                    <tr key={item.program} className="border-b border-ink/5 last:border-b-0">
+                      <td className="py-4 pr-6 text-ink font-medium">{item.program}</td>
+                      <td className="py-4 pr-6 text-ink-muted">{item.tuition}/year</td>
+                      <td className="py-4 text-ink-muted">{item.total}/year</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          ))}
+            <p className="mt-4 text-xs text-ink-faint">
+              Fee is regulated by the J&K Fee Fixation Committee. Total fee for 4-year B.E. is approximately ₹1.80-1.96 Lakh.
+            </p>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Fee structure */}
-      <motion.section
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-12"
-      >
-        <h2 className="font-heading text-2xl font-bold tracking-tight text-ink">Fee Structure</h2>
-        <div className="mt-4 border border-line p-6">
-          <div className="font-heading text-3xl font-bold text-ink">₹45,000–49,000</div>
-          <div className="mt-1 text-sm text-ink-faint">per annum (tuition fee, B.E. programs)</div>
-          <p className="mt-3 text-xs text-ink-faint">
-            Fee is regulated by the J&K Fee Fixation Committee / BOPEE guidelines. Total fee for 4-year B.E. is approximately ₹1.80–1.84 Lakh.
-          </p>
+      {/* Inquiry Form */}
+      <section className="bg-white">
+        <div className="page-container section-spacing">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="font-heading text-2xl md:text-3xl font-semibold tracking-tight text-ink mb-4">
+                Quick Inquiry
+              </h2>
+              <p className="text-ink-muted leading-relaxed mb-6">
+                Have questions about admissions? Fill out this quick form and our admissions
+                team will get back to you within 24 hours.
+              </p>
+              <div className="space-y-4 text-sm text-ink-muted">
+                <div className="flex items-start gap-3">
+                  <div className="size-2 bg-accent rounded-full mt-2" />
+                  <span>Personalized counseling session</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="size-2 bg-accent rounded-full mt-2" />
+                  <span>Campus tour安排</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="size-2 bg-accent rounded-full mt-2" />
+                  <span>Scholarship information</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="size-2 bg-accent rounded-full mt-2" />
+                  <span>Hostel facility details</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="bg-ink/[0.02] p-6 md:p-8">
+                <InquiryForm />
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </motion.section>
-
-      {/* FAQ */}
-      <motion.section
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-12"
-      >
-        <h2 className="font-heading text-2xl font-bold tracking-tight text-ink">Frequently Asked Questions</h2>
-        <Accordion className="mt-4">
-          {FAQ.map((item, i) => (
-            <AccordionItem key={i} value={`faq-${i}`}>
-              <AccordionTrigger className="text-left text-sm font-medium text-ink py-4">
-                {item.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-ink-muted pb-4">
-                {item.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </motion.section>
+      </section>
     </div>
   );
 }

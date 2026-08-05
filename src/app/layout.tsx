@@ -50,12 +50,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geist.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col pb-16 lg:pb-0">
-        {/* Skip to content link for keyboard users */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:outline-none"
         >
-          Skip to content
+          Skip to main content
         </a>
         {children}
       </body>
