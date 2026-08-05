@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock, Users } from "lucide-react";
 import type { Program } from "@/lib/content";
 
 interface ProgramsProps {
@@ -21,75 +21,87 @@ export function ProgramsSection({ programs }: ProgramsProps) {
   const rest = programs.slice(1);
 
   return (
-    <section className="bg-surface" aria-label="Academic programs">
+    <section className="bg-white" aria-label="Academic programs">
       <div className="page-container section-spacing">
         {/* Section header */}
-        <div className="mb-12 md:mb-16">
-          <p className="text-sm font-medium tracking-widest uppercase text-accent mb-3">
+        <div className="mb-14 md:mb-18">
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
             Academics
           </p>
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink">
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-ink">
             Programs Offered
           </h2>
-          <p className="text-base text-ink-muted mt-3 max-w-lg leading-relaxed">
+          <p className="text-base md:text-lg text-ink-muted mt-4 max-w-lg leading-relaxed">
             Seven undergraduate programs and one postgraduate program, each designed
             to prepare students for the demands of modern industry.
           </p>
         </div>
 
-        {/* Featured program — large */}
+        {/* Featured program — large with hover effect */}
         {featured && (
           <Link
             href={`/academics/${featured.slug}`}
-            className="group block mb-6"
+            className="group block mb-8"
           >
             <div className="relative aspect-[16/7] overflow-hidden bg-ink/5">
               <img
                 src={PROGRAM_IMAGES[featured.slug] || "/media/general/DSC_0123-1024x683.jpg"}
                 alt={featured.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6 md:p-10">
-                <span className="text-xs font-medium tracking-widest uppercase text-accent mb-2 block">
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-8 md:p-12">
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3 block">
                   Featured Program
                 </span>
-                <h3 className="text-2xl md:text-3xl font-semibold text-paper tracking-tight mb-2">
+                <h3 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold text-paper tracking-tight mb-3">
                   {featured.title}
                 </h3>
-                <p className="text-sm text-paper/70 max-w-md">
-                  {featured.intake} seats &middot; {featured.duration} &middot; {featured.eligibility}
-                </p>
+                <div className="flex items-center gap-4 text-sm text-paper/70">
+                  <span className="flex items-center gap-1.5">
+                    <Users className="size-4" />
+                    {featured.intake} seats
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="size-4" />
+                    {featured.duration}
+                  </span>
+                </div>
               </div>
             </div>
           </Link>
         )}
 
-        {/* Program grid — clean, no borders */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Program grid — clean, with hover effects */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {rest.map((program) => (
             <Link
               key={program.slug}
               href={`/academics/${program.slug}`}
               className="group"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-ink/5 mb-3">
+              <div className="relative aspect-[16/10] overflow-hidden bg-ink/5 mb-4">
                 <img
                   src={PROGRAM_IMAGES[program.slug] || "/media/general/DSC_0123-1024x683.jpg"}
                   alt={program.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
               </div>
-              <div className="flex items-start justify-between gap-2">
+              <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-base font-semibold text-ink group-hover:text-accent transition-colors">
+                  <h3 className="font-heading text-lg font-semibold text-ink group-hover:text-accent transition-colors">
                     {program.title}
                   </h3>
-                  <p className="text-sm text-ink-muted mt-0.5">
-                    {program.intake} seats &middot; {program.degree}
-                  </p>
+                  <div className="flex items-center gap-3 text-sm text-ink-muted mt-1.5">
+                    <span className="flex items-center gap-1">
+                      <Users className="size-3.5" />
+                      {program.intake} seats
+                    </span>
+                    <span>&middot;</span>
+                    <span>{program.degree}</span>
+                  </div>
                 </div>
-                <ArrowRight className="size-4 mt-1 text-ink-faint group-hover:text-accent transition-colors shrink-0" />
+                <ArrowRight className="size-5 mt-1 text-ink-faint group-hover:text-accent transition-all group-hover:translate-x-1 shrink-0" />
               </div>
             </Link>
           ))}

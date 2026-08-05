@@ -24,10 +24,10 @@ export function NewsArchive({ news }: NewsArchiveProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-sm font-medium tracking-widest uppercase text-accent mb-3">
+        <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
           Latest
         </p>
-        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-ink">
+        <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-ink">
           News &amp; Updates
         </h1>
       </motion.div>
@@ -38,24 +38,24 @@ export function NewsArchive({ news }: NewsArchiveProps) {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-10"
+          className="mt-12"
         >
           <Link href={`/news/${featured.slug}`} className="group block">
             {featured.image && (
-              <div className="relative aspect-[16/8] overflow-hidden bg-ink/5 mb-4">
+              <div className="relative aspect-[16/8] overflow-hidden bg-ink/5 mb-5">
                 <img
                   src={featured.image}
                   alt={featured.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
               </div>
             )}
-            <div className="flex items-center gap-2 text-xs text-ink-faint mb-2">
+            <div className="flex items-center gap-2 text-xs text-ink-faint mb-2.5">
               <span>{formatDate(featured.date)}</span>
               <span>&middot;</span>
               <span className="text-accent">{featured.category}</span>
             </div>
-            <h2 className="text-xl md:text-2xl font-semibold text-ink group-hover:text-accent transition-colors leading-snug">
+            <h2 className="font-heading text-xl md:text-2xl font-semibold text-ink group-hover:text-accent transition-colors leading-snug">
               {featured.title}
             </h2>
           </Link>
@@ -63,7 +63,7 @@ export function NewsArchive({ news }: NewsArchiveProps) {
       )}
 
       {/* Article list with images */}
-      <div className="mt-10 flex flex-col gap-0">
+      <div className="mt-12 flex flex-col gap-0">
         {rest.map((article, i) => (
           <motion.div
             key={article.slug}
@@ -73,10 +73,10 @@ export function NewsArchive({ news }: NewsArchiveProps) {
           >
             <Link
               href={`/news/${article.slug}`}
-              className="group flex gap-5 py-5 transition-colors hover:bg-ink/[0.02] px-4 -mx-4"
+              className="group flex gap-5 py-6 transition-colors hover:bg-ink/[0.02] px-4 -mx-4"
             >
               {article.image && (
-                <div className="relative w-28 h-20 md:w-40 md:h-28 shrink-0 overflow-hidden bg-ink/5">
+                <div className="relative w-32 h-24 md:w-44 md:h-32 shrink-0 overflow-hidden bg-ink/5">
                   <img
                     src={article.image}
                     alt={article.title}
@@ -85,12 +85,12 @@ export function NewsArchive({ news }: NewsArchiveProps) {
                 </div>
               )}
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 text-[11px] text-ink-faint mb-1.5">
+                <div className="flex items-center gap-2 text-[11px] text-ink-faint mb-2">
                   <span>{formatDate(article.date)}</span>
                   <span>&middot;</span>
                   <span className="text-accent">{article.category}</span>
                 </div>
-                <h3 className="text-sm md:text-base font-medium text-ink group-hover:text-accent transition-colors leading-snug">
+                <h3 className="font-heading text-sm md:text-base font-semibold text-ink group-hover:text-accent transition-colors leading-snug">
                   {article.title}
                 </h3>
               </div>

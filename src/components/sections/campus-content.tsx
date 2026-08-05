@@ -21,20 +21,20 @@ export function CampusContent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-sm font-medium tracking-widest uppercase text-accent mb-3">
+        <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
           Campus
         </p>
-        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-ink">
+        <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-ink">
           Campus Facilities
         </h1>
-        <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-ink-muted">
+        <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-ink-muted">
           MBSCET provides comprehensive infrastructure to support academic
           excellence and holistic development of students.
         </p>
       </motion.div>
 
       {/* Facilities grid with images */}
-      <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {FACILITIES.map((f, i) => (
           <motion.div
             key={f.title}
@@ -42,7 +42,7 @@ export function CampusContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 + i * 0.05 }}
           >
-            <div className="relative aspect-[4/3] overflow-hidden bg-ink/5 mb-3">
+            <div className="relative aspect-[4/3] overflow-hidden bg-ink/5 mb-4">
               <img
                 src={f.image}
                 alt={f.title}
@@ -50,8 +50,8 @@ export function CampusContent() {
                 loading="lazy"
               />
             </div>
-            <h3 className="text-base font-semibold text-ink">{f.title}</h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{f.desc}</p>
+            <h3 className="font-heading text-base font-semibold text-ink">{f.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">{f.desc}</p>
           </motion.div>
         ))}
       </div>
@@ -61,12 +61,12 @@ export function CampusContent() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="mt-14 md:mt-16"
+        className="mt-16 md:mt-20"
       >
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Student Clubs</h2>
+        <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Student Clubs</h2>
         <div className="flex flex-wrap gap-3">
           {["Drone Club", "Technical Club", "Cultural Club"].map((club) => (
-            <div key={club} className="px-5 py-2.5 text-sm font-medium text-ink bg-ink/[0.03]">
+            <div key={club} className="px-6 py-3 text-sm font-medium text-ink bg-ink/[0.03]">
               {club}
             </div>
           ))}

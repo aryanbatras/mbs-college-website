@@ -35,18 +35,18 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
           alt={program.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 page-container pb-8 md:pb-12">
-          <Link href="/academics" className="inline-flex items-center gap-1 text-xs font-medium text-paper/60 hover:text-paper transition-colors mb-3">
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 page-container pb-10 md:pb-14">
+          <Link href="/academics" className="inline-flex items-center gap-1 text-xs font-medium text-paper/60 hover:text-paper transition-colors mb-4">
             <ArrowLeft className="size-3" />
             All Programs
           </Link>
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-medium tracking-widest uppercase text-accent mb-2">
+              <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-2">
                 {program.degree} Program
               </p>
-              <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-paper leading-tight">
+              <h1 className="font-heading text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-paper leading-tight">
                 {program.title}
               </h1>
             </div>
@@ -86,10 +86,10 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="mt-10 md:mt-14"
+            className="mt-12 md:mt-16"
           >
-            <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-4">Vision</h2>
-            <blockquote className="text-base md:text-lg leading-relaxed text-ink max-w-2xl">
+            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Vision</h2>
+            <blockquote className="font-heading text-base md:text-lg leading-relaxed text-ink max-w-2xl">
               &ldquo;{program.vision}&rdquo;
             </blockquote>
           </motion.section>
@@ -101,30 +101,30 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-10 md:mt-14"
+            className="mt-12 md:mt-16"
           >
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-8">
               <Users className="size-4 text-accent" />
-              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink">Faculty</h2>
+              <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink">Faculty</h2>
               <span className="text-sm text-ink-faint">({faculty.length} members)</span>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-ink/10">
-                    <th className="pb-3 pr-6 text-left font-medium text-ink">Name</th>
-                    <th className="pb-3 pr-6 text-left font-medium text-ink">Designation</th>
-                    <th className="pb-3 pr-6 text-left font-medium text-ink">Qualification</th>
-                    <th className="pb-3 text-left font-medium text-ink">Specialization</th>
+                    <th className="pb-4 pr-6 text-left font-medium text-ink">Name</th>
+                    <th className="pb-4 pr-6 text-left font-medium text-ink">Designation</th>
+                    <th className="pb-4 pr-6 text-left font-medium text-ink">Qualification</th>
+                    <th className="pb-4 text-left font-medium text-ink">Specialization</th>
                   </tr>
                 </thead>
                 <tbody>
                   {faculty.map((f, i) => (
                     <tr key={i} className="border-b border-ink/5 last:border-b-0">
-                      <td className="py-3.5 pr-6 text-ink font-medium">{f.name}</td>
-                      <td className="py-3.5 pr-6 text-ink-muted">{f.designation}</td>
-                      <td className="py-3.5 pr-6 text-ink-muted">{f.qualification}</td>
-                      <td className="py-3.5 text-ink-muted">{f.specialization}</td>
+                      <td className="py-4 pr-6 text-ink font-medium">{f.name}</td>
+                      <td className="py-4 pr-6 text-ink-muted">{f.designation}</td>
+                      <td className="py-4 pr-6 text-ink-muted">{f.qualification}</td>
+                      <td className="py-4 text-ink-muted">{f.specialization}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -139,12 +139,12 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="mt-10 md:mt-14"
+            className="mt-12 md:mt-16"
           >
-            <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Labs & Facilities</h2>
-            <div className="flex flex-wrap gap-2.5">
+            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Labs & Facilities</h2>
+            <div className="flex flex-wrap gap-3">
               {program.labs.map((lab) => (
-                <div key={lab} className="px-4 py-2 text-sm text-ink-muted bg-ink/[0.03]">
+                <div key={lab} className="px-5 py-2.5 text-sm text-ink-muted bg-ink/[0.03]">
                   {lab}
                 </div>
               ))}
@@ -158,10 +158,10 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-10 md:mt-14"
+            className="mt-12 md:mt-16"
           >
-            <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Highlights</h2>
-            <ul className="flex flex-col gap-2.5">
+            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Highlights</h2>
+            <ul className="flex flex-col gap-3">
               {program.highlights.map((h, i) => (
                 <li key={i} className="flex gap-3 text-[15px] text-ink-muted">
                   <span className="mt-2 size-1 shrink-0 bg-accent rounded-full" />

@@ -32,12 +32,12 @@ export function Footer({ config }: FooterProps) {
 
   return (
     <footer className="bg-ink text-paper">
-      <div className="mx-auto max-w-7xl px-5 md:px-8 py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Identity */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-5">
-              <div className="relative size-10 overflow-hidden">
+              <div className="relative size-11 overflow-hidden">
                 <Image
                   src="/media/logos/mbscetlogo5.png"
                   alt="MBSCET Logo"
@@ -46,8 +46,8 @@ export function Footer({ config }: FooterProps) {
                 />
               </div>
               <div>
-                <div className="text-sm font-semibold tracking-tight">MBSCET</div>
-                <div className="text-[10px] text-paper/40 mt-0.5">Est. {config.established}</div>
+                <div className="text-base font-semibold tracking-tight">MBSCET</div>
+                <div className="text-[11px] text-paper/40 mt-0.5">Est. {config.established}</div>
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-paper/50 max-w-[280px]">

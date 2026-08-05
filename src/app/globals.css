@@ -5,10 +5,10 @@
 @theme inline {
   /* === Fonts === */
   --font-sans: var(--font-geist);
-  --font-heading: var(--font-geist);
+  --font-heading: var(--font-playfair);
   --font-mono: var(--font-geist-mono);
 
-  /* === Design tokens (MBSCET — Editorial) === */
+  /* === Design tokens (MBSCET — Institutional) === */
   --color-paper: var(--paper);
   --color-surface: var(--surface);
   --color-ink: var(--ink);
@@ -18,6 +18,8 @@
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
 
   /* === shadcn semantic mapping === */
   --color-background: var(--background);
@@ -48,16 +50,18 @@
 }
 
 :root {
-  /* === MBSCET Palette — Clean editorial === */
-  --paper: #F8F6F1;
+  /* === MBSCET Palette — Institutional with warmth === */
+  --paper: #FAFAF8;
   --surface: #FFFFFF;
-  --ink: #1A1A1A;
-  --ink-muted: #6B6B6B;
-  --ink-faint: #A0A0A0;
-  --line: #E8E5DF;
-  --accent: #C2410C;
-  --accent-strong: #9A3412;
-  --accent-soft: #FFF7ED;
+  --ink: #1B1F23;
+  --ink-muted: #5C6370;
+  --ink-faint: #9CA3AF;
+  --line: #E5E7EB;
+  --accent: #B45309;
+  --accent-strong: #92400E;
+  --accent-soft: #FEF3C7;
+  --navy: #1E3A5F;
+  --navy-light: #2D4A6F;
 
   /* === shadcn mapping === */
   --background: var(--paper);
@@ -66,7 +70,7 @@
   --card-foreground: var(--ink);
   --popover: var(--surface);
   --popover-foreground: var(--ink);
-  --primary: var(--ink);
+  --primary: var(--navy);
   --primary-foreground: var(--paper);
   --secondary: var(--accent-soft);
   --secondary-foreground: var(--ink);
@@ -94,8 +98,12 @@
     font-size: 16px;
   }
 
-  /* Typography scale — editorial, spacious */
-  h1, h2, h3, h4, h5, h6 {
+  /* Typography scale — editorial with serif headings */
+  h1, h2, h3 {
+    @apply font-heading font-semibold tracking-tight text-ink;
+    text-wrap: pretty;
+  }
+  h4, h5, h6 {
     @apply font-sans font-semibold tracking-tight text-ink;
     text-wrap: pretty;
   }
@@ -153,18 +161,21 @@
   }
 }
 
-/* Utility classes for the editorial design */
+/* Utility classes for the institutional design */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
   .section-spacing {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-20 md:py-28 lg:py-36;
   }
   .page-container {
-    @apply mx-auto max-w-6xl px-5 md:px-8;
+    @apply mx-auto max-w-6xl px-5 md:px-8 lg:px-12;
   }
   .page-container-wide {
-    @apply mx-auto max-w-7xl px-5 md:px-8;
+    @apply mx-auto max-w-7xl px-5 md:px-8 lg:px-12;
+  }
+  .font-heading {
+    font-family: var(--font-playfair), Georgia, serif;
   }
 }

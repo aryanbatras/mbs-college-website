@@ -15,13 +15,13 @@ export function AboutContent({ config }: AboutContentProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-sm font-medium tracking-widest uppercase text-accent mb-3">
+        <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
           About
         </p>
-        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-ink">
+        <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-ink">
           About the College
         </h1>
-        <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-ink-muted">
+        <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-ink-muted">
           Mahant Bachittar Singh College of Engineering & Technology (MBSCET) is a
           recognized Sikh minority institution established in 1999 under the Sant
           Manjit Singh Trust, aegis of Dera Sant Pura Nangali Sahib.
@@ -33,7 +33,7 @@ export function AboutContent({ config }: AboutContentProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="mt-14 grid grid-cols-2 gap-8 md:grid-cols-4"
+        className="mt-16 grid grid-cols-2 gap-10 md:grid-cols-4"
       >
         {[
           { label: "Established", value: "1999" },
@@ -53,10 +53,10 @@ export function AboutContent({ config }: AboutContentProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-16 md:mt-20"
+        className="mt-20 md:mt-24"
       >
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Vision</h2>
-        <blockquote className="text-lg md:text-xl leading-relaxed text-ink max-w-2xl">
+        <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Vision</h2>
+        <blockquote className="font-heading text-lg md:text-xl leading-relaxed text-ink max-w-2xl">
           &ldquo;{config.vision}&rdquo;
         </blockquote>
       </motion.section>
@@ -66,10 +66,10 @@ export function AboutContent({ config }: AboutContentProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-12 md:mt-16"
+        className="mt-16 md:mt-20"
       >
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Mission</h2>
-        <ul className="flex flex-col gap-3 max-w-2xl">
+        <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Mission</h2>
+        <ul className="flex flex-col gap-4 max-w-2xl">
           {config.mission.map((m, i) => (
             <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-ink-muted">
               <span className="mt-2 size-1 shrink-0 bg-accent rounded-full" />
@@ -84,10 +84,10 @@ export function AboutContent({ config }: AboutContentProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="mt-12 md:mt-16"
+        className="mt-16 md:mt-20"
       >
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Affiliations & Approvals</h2>
-        <ul className="flex flex-col gap-2.5">
+        <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Affiliations & Approvals</h2>
+        <ul className="flex flex-col gap-3">
           {config.affiliations.map((a, i) => (
             <li key={i} className="flex gap-3 text-[15px] text-ink-muted">
               <span className="mt-2 size-1 shrink-0 bg-accent rounded-full" />

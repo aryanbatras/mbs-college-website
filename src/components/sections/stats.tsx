@@ -1,21 +1,21 @@
 export function StatBand() {
   const stats = [
-    { value: "7", label: "Programs" },
-    { value: "30+", label: "Faculty Members" },
-    { value: "490", label: "Total Seats" },
-    { value: "25+", label: "Years of Excellence" },
+    { value: "8", label: "Programs", suffix: "+" },
+    { value: "30", label: "Faculty Members", suffix: "+" },
+    { value: "490", label: "Total Seats", suffix: "" },
+    { value: "25", label: "Years of Excellence", suffix: "+" },
   ];
 
   return (
-    <section className="bg-paper" aria-label="Key statistics">
-      <div className="page-container py-12 md:py-16">
+    <section className="bg-navy text-paper" aria-label="Key statistics">
+      <div className="page-container py-14 md:py-18">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center md:text-left">
-              <div className="text-3xl md:text-4xl font-semibold text-ink tracking-tight">
-                {stat.value}
+              <div className="text-3xl md:text-4xl font-semibold tracking-tight">
+                {stat.value}<span className="text-accent">{stat.suffix}</span>
               </div>
-              <div className="text-sm text-ink-muted mt-1.5">
+              <div className="text-sm text-paper/60 mt-1.5">
                 {stat.label}
               </div>
             </div>

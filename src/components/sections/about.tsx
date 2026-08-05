@@ -11,13 +11,13 @@ export function AboutStrip({ config }: AboutStripProps) {
     <section className="bg-paper" aria-label="About the college">
       <div className="page-container section-spacing">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-accent mb-4">
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-4">
             Our Vision
           </p>
-          <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium text-ink leading-relaxed tracking-tight">
+          <blockquote className="font-heading text-xl md:text-2xl lg:text-3xl font-medium text-ink leading-relaxed tracking-tight">
             &ldquo;{config.vision}&rdquo;
           </blockquote>
-          <div className="mt-8 md:mt-10">
+          <div className="mt-10 md:mt-12">
             <Link
               href="/about"
               className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-accent transition-colors group"
