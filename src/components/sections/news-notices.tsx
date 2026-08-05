@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, FileText, Calendar, Clock } from "lucide-react";
+import { ArrowRight, FileText, Calendar, Clock, ArrowUpRight } from "lucide-react";
 import type { NewsArticle, Notice } from "@/lib/content";
 
 interface NewsNoticesProps {
@@ -50,17 +52,21 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
                     <img
                       src={featured.image}
                       alt={featured.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
                   ) : (
                     <div className="w-full h-full bg-ink/5" />
                   )}
+                  <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-300" />
+                  <div className="absolute top-4 right-4 size-10 bg-paper/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ArrowUpRight className="size-5 text-ink" />
+                  </div>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-ink-faint mb-2.5">
                   <Calendar className="size-3" />
                   <span>{formatDate(featured.date)}</span>
                   <span>&middot;</span>
-                  <span className="text-accent">{featured.category}</span>
+                  <span className="text-accent font-medium">{featured.category}</span>
                 </div>
                 <h3 className="font-heading text-lg md:text-xl font-semibold text-ink group-hover:text-accent transition-colors leading-snug">
                   {featured.title}
@@ -69,29 +75,38 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
             )}
 
             {/* Other articles — compact list with images */}
-            <div className="flex flex-col gap-6">
-              {restNews.map((article) => (
-                <Link key={article.slug} href={`/news/${article.slug}`} className="group flex gap-5">
-                  {article.image && (
-                    <div className="relative w-28 h-20 md:w-36 md:h-24 shrink-0 overflow-hidden bg-ink/5">
-                      <img
-                        src={article.image}
-                        alt={article.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                      />
+            <div className="flex flex-col gap-5">
+              {restNews.map((article, i) => (
+                <motion.div
+                  key={article.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                >
+                  <Link href={`/news/${article.slug}`} className="group flex gap-5 p-4 bg-ink/[0.02] hover:bg-ink/[0.04] transition-colors">
+                    {article.image && (
+                      <div className="relative w-28 h-20 md:w-36 md:h-24 shrink-0 overflow-hidden bg-ink/5">
+                        <img
+                          src={article.image}
+                          alt={article.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 text-[11px] text-ink-faint mb-1.5">
+                        <span>{formatDate(article.date)}</span>
+                        <span>&middot;</span>
+                        <span className="text-accent font-medium">{article.category}</span>
+                      </div>
+                      <h3 className="text-sm md:text-base font-medium text-ink group-hover:text-accent transition-colors leading-snug line-clamp-2">
+                        {article.title}
+                      </h3>
                     </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 text-[11px] text-ink-faint mb-1.5">
-                      <span>{formatDate(article.date)}</span>
-                      <span>&middot;</span>
-                      <span className="text-accent">{article.category}</span>
-                    </div>
-                    <h3 className="text-sm md:text-base font-medium text-ink group-hover:text-accent transition-colors leading-snug line-clamp-2">
-                      {article.title}
-                    </h3>
-                  </div>
-                </Link>
+                    <ArrowRight className="size-4 mt-2 text-ink-faint group-hover:text-accent transition-all group-hover:translate-x-1 shrink-0" />
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -116,13 +131,22 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
               </Link>
             </div>
 
-            <div className="flex flex-col gap-5">
-              {notices.map((notice) => (
-                <div key={notice.slug} className="group">
+            <div className="flex flex-col gap-4">
+              {notices.map((notice, i) => (
+                <motion.div
+                  key={notice.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="group p-4 bg-ink/[0.02] hover:bg-ink/[0.04] transition-colors"
+                >
                   <div className="flex items-start gap-3">
-                    <FileText className="size-4 mt-0.5 text-ink-faint shrink-0" />
-                    <div>
-                      <h3 className="text-sm font-medium text-ink leading-snug">
+                    <div className="size-8 bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
+                      <FileText className="size-4 text-accent" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-medium text-ink leading-snug group-hover:text-accent transition-colors">
                         {notice.title}
                       </h3>
                       <div className="flex items-center gap-2 text-[11px] text-ink-faint mt-1.5">
@@ -131,7 +155,7 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
