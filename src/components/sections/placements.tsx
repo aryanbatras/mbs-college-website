@@ -39,18 +39,33 @@ export function PlacementsSection() {
               an average of ₹4.5 LPA across all branches.
             </p>
             <div className="grid grid-cols-3 gap-6 mb-10">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
                 <div className="text-2xl md:text-3xl font-semibold text-ink tracking-tight">₹7.2L</div>
                 <div className="text-sm text-ink-muted mt-1">Highest Package</div>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <div className="text-2xl md:text-3xl font-semibold text-ink tracking-tight">₹4.5L</div>
                 <div className="text-sm text-ink-muted mt-1">Average Package</div>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
                 <div className="text-2xl md:text-3xl font-semibold text-ink tracking-tight">85%</div>
                 <div className="text-sm text-ink-muted mt-1">Placement Rate</div>
-              </div>
+              </motion.div>
             </div>
             <Link
               href="/placements"
