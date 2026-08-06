@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaPlay, FaTimes, FaImages, FaExpand, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Portal } from "@/components/ui/portal";
 
 const FEATURED_VIDEO = {
   title: "Campus Tour",
@@ -247,8 +248,9 @@ export function GallerySection() {
         </div>
       </div>
 
-      {/* Video Lightbox */}
+      {/* Video Lightbox - portaled to body to escape ScrollSmoother transform */}
       {playingVideo && (
+        <Portal>
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-2 sm:p-4"
           onClick={() => setPlayingVideo(null)}
@@ -280,10 +282,12 @@ export function GallerySection() {
             </div>
           </div>
         </div>
+        </Portal>
       )}
 
-      {/* Image Lightbox */}
+      {/* Image Lightbox - portaled to body to escape ScrollSmoother transform */}
       {lightboxImage && (
+        <Portal>
         <div
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-2 sm:p-4"
           onClick={() => setLightboxImage(null)}
@@ -324,6 +328,7 @@ export function GallerySection() {
             {currentImageIndex + 1} / {visibleImages.length}
           </div>
         </div>
+        </Portal>
       )}
 
       {/* Hide scrollbar utility */}

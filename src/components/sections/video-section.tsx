@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Play, ExternalLink } from "lucide-react";
+import { Portal } from "@/components/ui/portal";
 
 const VIDEOS = [
   {
@@ -117,8 +118,9 @@ export function VideoSection() {
           ))}
         </div>
 
-        {/* Video modal */}
+        {/* Video modal - portaled to body to escape ScrollSmoother transform */}
         {activeVideo && (
+          <Portal>
           <div
             className="fixed inset-0 z-[200] bg-ink/95 flex items-center justify-center p-4"
             onClick={() => setActiveVideo(null)}
@@ -157,6 +159,7 @@ export function VideoSection() {
               </div>
             </motion.div>
           </div>
+          </Portal>
         )}
       </div>
     </section>

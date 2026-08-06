@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Portal } from "@/components/ui/portal";
 
 interface LightboxImage {
   src: string;
@@ -26,16 +27,17 @@ export function Lightbox({ images, startIndex = 0, isOpen, onClose }: LightboxPr
   const image = images[currentIndex];
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[200] bg-ink/95 flex items-center justify-center"
-          onClick={onClose}
-        >
+    <Portal>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[200] bg-ink/95 flex items-center justify-center"
+            onClick={onClose}
+          >
           {/* Close button */}
           <button
             onClick={onClose}
@@ -90,8 +92,9 @@ export function Lightbox({ images, startIndex = 0, isOpen, onClose }: LightboxPr
             )}
           </motion.div>
         </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </Portal>
   );
 }
 

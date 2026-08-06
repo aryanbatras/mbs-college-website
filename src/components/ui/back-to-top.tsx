@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
+import { Portal } from "@/components/ui/portal";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -15,12 +16,14 @@ export function BackToTop() {
   if (!visible) return null;
 
   return (
-    <button
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-20 right-5 z-40 size-11 flex items-center justify-center bg-[#00274C] text-white hover:bg-[#1E406B] transition-colors shadow-lg"
-      aria-label="Back to top"
-    >
-      <FaArrowUp className="text-sm" />
-    </button>
+    <Portal>
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-20 right-5 z-40 size-11 flex items-center justify-center bg-[#00274C] text-white hover:bg-[#1E406B] transition-colors shadow-lg"
+        aria-label="Back to top"
+      >
+        <FaArrowUp className="text-sm" />
+      </button>
+    </Portal>
   );
 }

@@ -226,8 +226,8 @@ export function Footer({ config }: FooterProps) {
               </div>
             </div>
 
-            {/* Lanyard 3D Card - hidden on small mobile */}
-            <div ref={lanyardRef} className="mb-6 hidden sm:block">
+            {/* Lanyard 3D Card - shown on all screen sizes */}
+            <div ref={lanyardRef} className="mb-6">
               <LanyardErrorBoundary
                 fallback={
                   <div className="mb-6">
@@ -243,11 +243,6 @@ export function Footer({ config }: FooterProps) {
                   animate={isVisible}
                 />
               </LanyardErrorBoundary>
-            </div>
-
-            {/* Mobile: Show ID card instead of Lanyard */}
-            <div className="mb-6 sm:hidden">
-              <CollegeIdCard />
             </div>
 
             {/* Contact info - always visible */}
