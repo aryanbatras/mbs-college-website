@@ -1,0 +1,68 @@
+{
+  "slug": "ee",
+  "title": "Electrical Engineering",
+  "degree": "B.Tech",
+  "intake": 30,
+  "duration": "4 years",
+  "eligibility": "10+2 (PCM) with JKCET / JEE Main / Management Quota",
+  "established": 1999,
+  "nba": true,
+  "hod": {
+    "name": "Dr. Nitin Langer",
+    "email": "hod.ee@mbscet.edu.in",
+    "phone": "+91-9419130161"
+  },
+  "description": "The Department of Electrical Engineering, established in 1999, addresses power systems, electrical machine design, and Industry 4.0 technological innovations. The department has been NBA accredited, recognizing its commitment to quality education. Till date 21 batches of Electrical Engineering Graduates have been awarded degrees.",
+  "vision": "To evolve as a leading program in the field of Electrical Engineering with exposure to contemporary technologies by encouraging ignited minds for future professional challenges.",
+  "mission": [
+    "Providing interface with the industry, educational organizations and alumni in the field of curriculum development, training for empirical social development & changing needs of society.",
+    "Promoting holistic development among students and faculty by engaging in joint ventures with internationally acclaimed academia & industrial organizations."
+  ],
+  "peos": [
+    "Outrival in employment, higher education, globalized technology services and to be competent entrepreneur.",
+    "Communicate conceptual understanding of core Electrical Engineering courses which enable electrical technocrats to analysis, evaluate, and provide intelligent elucidation to meet professional challenges."
+  ],
+  "labs": [
+    "Electrical Machines Lab",
+    "Power Electronics Lab",
+    "Control Systems Lab",
+    "Power Systems Lab",
+    "Measurements & Instrumentation Lab",
+    "Network Analysis Lab",
+    "Project Lab"
+  ],
+  "images": {
+    "hero": "/media/general/10-1024x768.jpeg",
+    "labs": ["/media/departments/ee/labs/lab1.png", "/media/departments/ee/labs/lab2.png", "/media/departments/ee/labs/lab3.png"],
+    "alumni": [
+      "/media/departments/ee/alumni/e1.png",
+      "/media/departments/ee/alumni/e2.png",
+      "/media/departments/ee/alumni/e3.png",
+      "/media/departments/ee/alumni/e4.png",
+      "/media/departments/ee/alumni/e6.png",
+      "/media/departments/ee/alumni/e7.png",
+      "/media/departments/ee/alumni/karamdeep.jpg",
+      "/media/departments/ee/alumni/prabjyot.jpg"
+    ]
+  },
+  "videos": [],
+  "syllabus": [
+    { "title": "EE Syllabus", "file": "/docs/ee/syllabus.pdf" }
+  ],
+  "notices": [],
+  "highlights": [
+    "NBA Accredited Department",
+    "Industry-oriented curriculum",
+    "Modern laboratory infrastructure"
+  ],
+  "relatedTabs": [
+    { "label": "Vision & Mission", "url": "https://www.mbscet.edu.in/electrical-v1/vision-mission-elect/" },
+    { "label": "PEO's, PO's & PSO's", "url": "https://www.mbscet.edu.in/electrical-v1/peos-psos-pos-elect/" },
+    { "label": "Faculty Profile", "url": "https://www.mbscet.edu.in/electrical-v1/faculty-profile/" },
+    { "label": "Staff", "url": "https://www.mbscet.edu.in/electrical-v1/elect-staff/" },
+    { "label": "Infrastructure", "url": "https://www.mbscet.edu.in/electrical-v1/infrastructure/" },
+    { "label": "Achievements", "url": "https://www.mbscet.edu.in/electrical-v1/achievements/" },
+    { "label": "Previous Year Papers", "url": "https://www.mbscet.edu.in/ee-previous-papers/" },
+    { "label": "Notices", "url": "https://www.mbscet.edu.in/electrical-v1/notices/" }
+  ]
+}

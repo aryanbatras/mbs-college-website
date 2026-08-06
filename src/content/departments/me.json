@@ -1,0 +1,26 @@
+{
+  "slug": "me",
+  "title": "Mechanical Engineering",
+  "degree": "B.Tech",
+  "intake": 30,
+  "duration": "4 years",
+  "eligibility": "10+2 (PCM) with JKCET / JEE Main / Management Quota",
+  "established": 1999,
+  "nba": true,
+  "hod": { "name": "Dr. Ritesh Sharma", "email": "hod.me@mbscet.edu.in", "phone": "+91-9419130161" },
+  "description": "The Department of Mechanical Engineering was established in 1999. The department has been NBA accredited, recognizing its commitment to quality education.",
+  "vision": "To become a recognized centre of excellence for aspiring technocrats in Mechanical Engineering.",
+  "mission": ["Providing contemporary and advanced knowledge of Mechanical Engineering.", "Creating culture of excellence in teaching-learning."],
+  "peos": ["The graduates will have quality education to keep pace with advancement in technologies.", "The graduates will attain essential competence in basic sciences and mechanical engineering fundamentals."],
+  "labs": ["CAD/CAM Lab", "Fluid Mechanics Lab", "Thermal Engineering Lab", "Manufacturing Processes Lab", "Strength of Materials Lab", "Theory of Machines Lab", "Project Lab"],
+  "images": { "hero": "/media/general/11-1024x768.jpg", "labs": ["/media/general/11-1024x768.jpg"], "alumni": [] },
+  "videos": [],
+  "syllabus": [{ "title": "ME Syllabus", "file": "/docs/me/syllabus.pdf" }],
+  "notices": [],
+  "highlights": ["NBA Accredited Department", "Industry-oriented curriculum", "Virtual Lab access"],
+  "relatedTabs": [
+    { "label": "Vision & Mission", "url": "https://www.mbscet.edu.in/mechanical-engineering-v1/vision-mission-mech/" },
+    { "label": "Faculty Profile", "url": "https://www.mbscet.edu.in/mechanical-engineering-v1/faculty-profile/" },
+    { "label": "Notices", "url": "https://www.mbscet.edu.in/mechanical-engineering-v1/notices/" }
+  ]
+}

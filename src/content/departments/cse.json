@@ -1,0 +1,94 @@
+{
+  "slug": "cse",
+  "title": "Computer Science & Engineering",
+  "degree": "B.Tech",
+  "intake": 120,
+  "duration": "4 years",
+  "eligibility": "10+2 (PCM) with JKCET / JEE Main / Management Quota",
+  "established": 1999,
+  "nba": true,
+  "hod": {
+    "name": "Dr. Amrik Singh",
+    "email": "hod.cse@mbscet.edu.in",
+    "phone": "+91-9419130161"
+  },
+  "description": "Computer Engineering is a dynamic field that bridges the gap between the physical and the elusive realm of software. It equips you with the knowledge and skills to design, develop, and implement the very foundation of modern technology. The Department of Computer Science & Engineering was established in 1999 as one of the founding departments of MBSCET.",
+  "vision": "To develop competent professionals in the field of Computer Science & Engineering to meet the challenges of Industry & Society.",
+  "mission": [
+    "Providing contextual and advance knowledge to students in line with industrial trends.",
+    "Promoting effective Teaching and Learning Practices using modern tools and techniques.",
+    "Promoting research and design environment by providing training in emerging softwares and technologies for fostering student's growth.",
+    "Encouraging comprehensive development of the students by inculcating soft skills and ethics in their personality."
+  ],
+  "peos": [
+    "Our graduates will have professional competency built with strong foundation in Computer Science and Engineering for global acceptance in industries, higher studies and research.",
+    "Our graduates will develop computing systems, which enables them to analyze, evaluate and provide intelligent elucidation to meet industry challenges.",
+    "Our graduates will compete with the challenges of social and professional concern by use of modern tools and softwares.",
+    "Our graduates will exhibit leadership quality, ethics, communication and lifelong learning skills."
+  ],
+  "labs": [
+    "Programming Lab",
+    "Data Structures Lab",
+    "Operating Systems Lab",
+    "Database Management Systems Lab",
+    "Computer Networks Lab",
+    "Software Engineering Lab",
+    "Web Technologies Lab",
+    "Artificial Intelligence Lab",
+    "Machine Learning Lab",
+    "Cloud Computing Lab"
+  ],
+  "images": {
+    "hero": "/media/general/1-1024x579.jpg",
+    "labs": ["/media/departments/cse/labs/lab1.jpg", "/media/departments/cse/labs/lab2.jpg"],
+    "alumni": [
+      "/media/departments/cse/alumni/al1.jpg",
+      "/media/departments/cse/alumni/al2.jpg",
+      "/media/departments/cse/alumni/al3.jpg",
+      "/media/departments/cse/alumni/al4.jpg",
+      "/media/departments/cse/alumni/al5.jpg",
+      "/media/departments/cse/alumni/al6.jpg",
+      "/media/departments/cse/alumni/al8.jpg",
+      "/media/departments/cse/alumni/al9.jpg",
+      "/media/departments/cse/alumni/al10.jpg"
+    ]
+  },
+  "videos": [
+    { "title": "FCFS Scheduling Algorithm", "src": "/media/departments/cse/innovative/fcfs.mp4" },
+    { "title": "Process Scheduling Animation", "src": "/media/departments/cse/innovative/scheduling.mp4" }
+  ],
+  "syllabus": [
+    { "title": "1st & 2nd Semester (2022)", "file": "/docs/cse/syllabus/syllabus-1st-2nd.pdf" },
+    { "title": "3rd & 4th Semester (2022)", "file": "/docs/cse/syllabus/syllabus-3rd-4th.pdf" },
+    { "title": "5th to 8th Semester (2022)", "file": "/docs/cse/syllabus/syllabus-5th-to-8th.pdf" }
+  ],
+  "notices": [
+    { "title": "B.Tech Additional Form 2024", "file": "/docs/cse/notices/btech-add-form-2024.pdf" }
+  ],
+  "highlights": [
+    "NBA Accredited Department",
+    "Power BI and Python certification workshops",
+    "Industry collaboration with tech firms",
+    "Active coding clubs and hackathons",
+    "ICT Academy collaborative programs"
+  ],
+  "relatedTabs": [
+    { "label": "Vision & Mission", "url": "https://www.mbscet.edu.in/computer-science/vision-mission-cse/" },
+    { "label": "PEO's, PO's & PSO's", "url": "https://www.mbscet.edu.in/computer-science/peos-psos-pos-cse/" },
+    { "label": "Faculty Profile", "url": "https://www.mbscet.edu.in/computer-science/faculty-profile/" },
+    { "label": "Staff", "url": "https://www.mbscet.edu.in/computer-science/csestaff/" },
+    { "label": "Labs", "url": "https://www.mbscet.edu.in/computer-science/cseinfrastructure/cselabs/" },
+    { "label": "Facilities", "url": "https://www.mbscet.edu.in/computer-science/cseinfrastructure/csefacilities/" },
+    { "label": "Classrooms", "url": "https://www.mbscet.edu.in/computer-science/cseinfrastructure/cseclassrooms/" },
+    { "label": "Contact", "url": "https://www.mbscet.edu.in/computer-science/csecontact/" },
+    { "label": "Teaching Learning Process", "url": "https://www.mbscet.edu.in/computer-science/cse-teaching-learning-process/" },
+    { "label": "Innovative Teaching Methods", "url": "https://www.mbscet.edu.in/computer-science/innovative-teaching-methods/" },
+    { "label": "Alumni Views", "url": "https://www.mbscet.edu.in/computer-science/cse-alumini-views/" },
+    { "label": "Research Papers", "url": "https://www.mbscet.edu.in/computer-science/research-papers/" },
+    { "label": "Staff Achievements", "url": "https://www.mbscet.edu.in/computer-science/achievements/staff-v1/" },
+    { "label": "Student Achievements", "url": "https://www.mbscet.edu.in/computer-science/achievements/student-v1/" },
+    { "label": "NBA Accreditation", "url": "https://www.mbscet.edu.in/cse-nba/" },
+    { "label": "Previous Year Papers", "url": "https://www.mbscet.edu.in/cse-previous-papers/" },
+    { "label": "Notices", "url": "https://www.mbscet.edu.in/computer-science/notices-v1/" }
+  ]
+}

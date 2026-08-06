@@ -1,0 +1,26 @@
+{
+  "slug": "ece",
+  "title": "Electronics & Communication Engineering",
+  "degree": "B.Tech",
+  "intake": 30,
+  "duration": "4 years",
+  "eligibility": "10+2 (PCM) with JKCET / JEE Main / Management Quota",
+  "established": 1999,
+  "nba": false,
+  "hod": { "name": "Dr. Sanjeev Singh", "email": "hod.ece@mbscet.edu.in", "+91-9419130161" },
+  "description": "Electronics & Communication Engineering applies science and math to practical communication problems, involving research, design, development, and testing of electronic equipment used in various communication systems.",
+  "vision": "To emerge as one of the leading Electronics and Communication Engineering programs in the region.",
+  "mission": ["Providing professional competencies in the field of Electronics and Communication engineering.", "Promoting holistic development among students and faculty."],
+  "peos": ["The graduate will be able to exhibit professional competency in the field of Electronics and Communication engineering.", "The graduate will be able to develop innovative ideas and find creative solutions."],
+  "labs": ["Analog Electronics Lab", "Digital Electronics Lab", "Communication Systems Lab", "Signal Processing Lab", "VLSI Design Lab", "Microprocessor & Microcontroller Lab", "Project Lab"],
+  "images": { "hero": "/media/general/1-1-1024x579.jpeg", "labs": ["/media/general/10-1024x768.jpeg"], "alumni": [] },
+  "videos": [],
+  "syllabus": [{ "title": "ECE Syllabus", "file": "/docs/ece/syllabus.pdf" }],
+  "notices": [],
+  "highlights": ["Industry-oriented curriculum", "Modern laboratory infrastructure", "Nanotechnology workshops"],
+  "relatedTabs": [
+    { "label": "Vision & Mission", "url": "https://www.mbscet.edu.in/electronic-and-communication-v1/vision-mission-ece/" },
+    { "label": "Faculty Profile", "url": "https://www.mbscet.edu.in/electronic-and-communication-v1/faculty-profile/" },
+    { "label": "Notices", "url": "https://www.mbscet.edu.in/electronic-and-communication-v1/notices/" }
+  ]
+}
