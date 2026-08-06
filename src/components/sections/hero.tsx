@@ -72,10 +72,10 @@ const HeroContent = memo(function HeroContent() {
         <ShinyText
           text="MAHANT BACHITTAR SINGH"
           speed={4}
-          color="#ffffff"
-          shineColor="#FFCB05"
+          color="#FFCB05"
+          shineColor="#FFFFFF"
           spread={100}
-          className="text-[10vw] sm:text-[9vw] md:text-[7vw] lg:text-[5.5vw] font-black text-white uppercase leading-[0.9] tracking-tighter block"
+          className="text-[10vw] sm:text-[9vw] md:text-[7vw] lg:text-[5.5vw] font-black uppercase leading-[0.9] tracking-tighter block"
         />
       </div>
 
