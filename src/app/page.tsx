@@ -1,7 +1,7 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BackToTop } from "@/components/ui/back-to-top";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
+
 import { Hero } from "@/components/sections/hero";
 import { AboutStrip } from "@/components/sections/about";
 import { ManagementSection } from "@/components/sections/management-section";
@@ -28,7 +28,6 @@ export default function HomePage() {
   return (
     <>
       <EducationalOrgJsonLd />
-      <ScrollProgress />
       <Header config={config} transparent />
       <main id="main-content">
         <Hero />

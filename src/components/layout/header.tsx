@@ -91,11 +91,7 @@ export function Header({ config, transparent = false }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-sm"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm"
       role="banner"
     >
       <nav aria-label="Main navigation">
@@ -112,18 +108,10 @@ export function Header({ config, transparent = false }: HeaderProps) {
               />
             </div>
             <div className="sm:block">
-              <div
-                className={`text-sm font-bold tracking-tight leading-tight transition-colors duration-300 ${
-                  isScrolled ? "text-[#00274C]" : "text-white"
-                }`}
-              >
+              <div className="text-sm font-bold tracking-tight leading-tight text-[#00274C]">
                 MBSCET
               </div>
-              <div
-                className={`text-[10px] leading-tight mt-0.5 transition-colors duration-300 ${
-                  isScrolled ? "text-[#5C6370]" : "text-white/60"
-                }`}
-              >
+              <div className="text-[10px] leading-tight mt-0.5 text-[#5C6370]">
                 Est. {config.established} &middot; Jammu
               </div>
             </div>
@@ -144,18 +132,14 @@ export function Header({ config, transparent = false }: HeaderProps) {
                   role="menuitem"
                   aria-haspopup={item.children ? "true" : undefined}
                   aria-expanded={item.children ? openDropdown === item.label : undefined}
-                  className={`flex items-center gap-1 px-3 py-2.5 text-[13px] font-medium transition-colors ${
-                    isScrolled
-                      ? "text-[#5C6370] hover:text-[#00274C]"
-                      : "text-white/80 hover:text-white"
-                  }`}
+                  className="flex items-center gap-1 px-3 py-2.5 text-[13px] font-medium text-[#5C6370] hover:text-[#00274C] transition-colors"
                 >
                   {item.label}
                   {item.children && (
                     <FaChevronDown
-                      className={`text-[8px] transition-transform ${
+                      className={`text-[8px] text-[#9CA3AF] transition-transform ${
                         openDropdown === item.label ? "rotate-180" : ""
-                      } ${isScrolled ? "text-[#9CA3AF]" : "text-white/40"}`}
+                      }`}
                     />
                   )}
                 </Link>
@@ -190,20 +174,14 @@ export function Header({ config, transparent = false }: HeaderProps) {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className={`hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-bold transition-all ${
-                isScrolled
-                  ? "bg-[#00274C] text-white hover:bg-[#1E406B]"
-                  : "bg-white text-[#00274C] hover:bg-gray-100"
-              }`}
+              className="hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-bold bg-[#00274C] text-white hover:bg-[#1E406B] transition-all"
             >
               Contact Us
             </Link>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={`lg:hidden flex items-center justify-center size-10 transition-colors ${
-                isScrolled ? "text-[#00274C]" : "text-white"
-              }`}
+              className="lg:hidden flex items-center justify-center size-10 text-[#00274C]"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
               {mobileOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
