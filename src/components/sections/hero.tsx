@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, memo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BlurText from "@/components/ui/blur-text";
 import ShinyText from "@/components/ui/shiny-text";
 import { HeroSubtitle } from "@/components/ui/hero-subtitle";
 import { DotPattern } from "@/components/design-system/DotPattern";

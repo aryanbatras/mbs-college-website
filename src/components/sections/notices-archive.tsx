@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import type { Notice } from "@/lib/content";
-import { Badge } from "@/components/ui/badge";
 import { FileText } from "lucide-react";
 
 interface NoticesArchiveProps {

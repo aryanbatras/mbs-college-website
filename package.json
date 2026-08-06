@@ -10,7 +10,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@base-ui/react": "^1.7.0",
     "@embedpdf/react-pdf-viewer": "^2.15.0",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.7.0",

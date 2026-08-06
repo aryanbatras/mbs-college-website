@@ -1,4 +1,4 @@
-import { PageHeaderSkeleton, ContentSkeleton } from "@/components/ui/page-skeleton";
+import { PageHeaderSkeleton } from "@/components/ui/page-skeleton";
 
 export default function AboutLoading() {
   return (

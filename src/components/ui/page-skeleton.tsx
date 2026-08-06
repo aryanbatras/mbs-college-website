@@ -35,13 +35,3 @@ export function HeroSkeleton() {
   );
 }
 
-export function ContentSkeleton() {
-  return (
-    <div className="min-h-screen pt-24 pb-24">
-      <div className="max-w-6xl mx-auto px-5 space-y-12">
-        <PageHeaderSkeleton />
-        <CardGridSkeleton />
-      </div>
-    </div>
-  );
-}
