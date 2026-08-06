@@ -30,20 +30,75 @@ export default function HomePage() {
       <EducationalOrgJsonLd />
       <Header config={config} />
       <main id="main-content">
-        <Hero />
-        <AboutStrip config={config} />
-        <ManagementSection config={config} />
-        <ProgramsSection />
-        <CampusSection />
-        <ActivitiesSection />
-        <PlacementSection />
-        <GallerySection />
-        <ClubsSection />
-        <ImportantLinks />
-        <CampusNewsSection />
-        <NewsNotices news={news} notices={notices} />
-        <TestimonialsSection />
-        <ContactSection config={config} />
+        {/* Hero - subtle slow parallax */}
+        <div data-speed="0.8">
+          <Hero />
+        </div>
+
+        {/* About - medium parallax for depth */}
+        <div data-speed="0.9">
+          <AboutStrip config={config} />
+        </div>
+
+        {/* Management - normal speed */}
+        <div data-speed="1">
+          <ManagementSection config={config} />
+        </div>
+
+        {/* Programs - slight fast parallax */}
+        <div data-speed="1.1">
+          <ProgramsSection />
+        </div>
+
+        {/* Campus - slow parallax for depth */}
+        <div data-speed="0.85">
+          <CampusSection />
+        </div>
+
+        {/* Activities - normal speed */}
+        <div data-speed="1">
+          <ActivitiesSection />
+        </div>
+
+        {/* Placement - subtle parallax */}
+        <div data-speed="0.95">
+          <PlacementSection />
+        </div>
+
+        {/* Gallery - normal speed */}
+        <div data-speed="1">
+          <GallerySection />
+        </div>
+
+        {/* Clubs - slight fast parallax */}
+        <div data-speed="1.05">
+          <ClubsSection />
+        </div>
+
+        {/* Important Links - normal speed */}
+        <div data-speed="1">
+          <ImportantLinks />
+        </div>
+
+        {/* Campus News - slow parallax */}
+        <div data-speed="0.9">
+          <CampusNewsSection />
+        </div>
+
+        {/* News & Notices - normal speed */}
+        <div data-speed="1">
+          <NewsNotices news={news} notices={notices} />
+        </div>
+
+        {/* Testimonials - subtle parallax */}
+        <div data-speed="0.95">
+          <TestimonialsSection />
+        </div>
+
+        {/* Contact - normal speed */}
+        <div data-speed="1">
+          <ContactSection config={config} />
+        </div>
       </main>
       <Footer config={config} />
       <BackToTop />
