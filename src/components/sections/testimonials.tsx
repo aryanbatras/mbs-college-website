@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaChevronLeft, FaChevronRight, FaQuoteLeft, FaStar } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
 
 const TESTIMONIALS = [
   {
@@ -57,11 +57,6 @@ export function TestimonialsSection() {
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
                 <div>
-                  <div className="flex items-center gap-1 mb-2">
-                    {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} className="text-[#FFCB05] text-xs" />
-                    ))}
-                  </div>
                   <div className="text-base font-bold text-white">
                     {testimonial.author}
                   </div>

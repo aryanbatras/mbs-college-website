@@ -16,7 +16,7 @@ export async function ProgramsSection() {
             Departments & Programs
           </h2>
           <p className="text-lg text-[#5C6370] mt-4 max-w-2xl">
-            AICTE approved B.Tech programs across 7 departments. NBA accreditation in CSE, EE, and ME. M.Tech programs approved in CSE, EE, ME, and ECE.
+            AICTE approved B.Tech programs across 7 departments. NBA accreditation in CSE, EE, and ME.
           </p>
         </div>
 
@@ -25,7 +25,7 @@ export async function ProgramsSection() {
             <Link
               key={program.code}
               href={`/academics/${program.slug}`}
-              className="group block p-8 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors border border-[#E5E7EB] hover:border-[#00274C]"
+              className="group block p-8 bg-gray-50 hover:bg-[#00274C] transition-colors"
             >
               <div className="mb-5">
                 <span className="text-xs font-bold text-[#00274C] group-hover:text-[#FFCB05] transition-colors tracking-wider">
@@ -38,7 +38,7 @@ export async function ProgramsSection() {
               <p className="text-sm text-[#5C6370] group-hover:text-white/60 mb-4 transition-colors leading-relaxed line-clamp-3">
                 {program.description}
               </p>
-              <div className="flex items-center justify-between mt-auto pt-4 border-t border-[#E5E7EB] group-hover:border-white/10 transition-colors">
+              <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200 group-hover:border-white/10 transition-colors">
                 <span className="text-xs text-[#9CA3AF] group-hover:text-white/40 transition-colors">
                   {program.duration} &middot; {program.intake} Seats
                 </span>

@@ -38,19 +38,19 @@ const NAV_ITEMS = [
     href: "/placements",
     children: [
       { label: "Placement Cell", href: "/placements" },
-      { label: "Placement Record", href: "/placements" },
-      { label: "Training Activities", href: "/placements" },
+      { label: "Placement Record", href: "/placements#records" },
+      { label: "Training Activities", href: "/placements#training" },
     ],
   },
   {
     label: "Campus",
     href: "/campus",
     children: [
-      { label: "Facilities", href: "/campus" },
+      { label: "Campus Facilities", href: "/campus" },
       { label: "Student Clubs", href: "/campus/clubs" },
       { label: "Photo Gallery", href: "/campus/galleries" },
       { label: "Video Gallery", href: "/campus/video-gallery" },
-      { label: "Virtual Tour", href: "/campus" },
+      { label: "Virtual Tour", href: "/campus/virtual-tour" },
     ],
   },
   { label: "News", href: "/news" },

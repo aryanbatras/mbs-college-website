@@ -1,22 +1,18 @@
 "use client";
 
 import { motion } from "motion/react";
-import { AnimatedCounter } from "@/components/ui/animated-counter";
-import { GraduationCap, Users, Building, Award, TrendingUp, BookOpen } from "lucide-react";
 
 const STATS = [
-  { icon: GraduationCap, value: 8, suffix: "+", label: "Programs", description: "B.E. & MCA" },
-  { icon: Users, value: 30, suffix: "+", label: "Faculty", description: "PhD qualified" },
-  { icon: Building, value: 490, suffix: "", label: "Total Seats", description: "Across all programs" },
-  { icon: Award, value: 25, suffix: "+", label: "Years", description: "Of excellence" },
-  { icon: TrendingUp, value: 85, suffix: "%", label: "Placement Rate", description: "Annual average" },
-  { icon: BookOpen, value: 50, suffix: "+", label: "Labs", description: "Modern equipment" },
+  { value: "1999", label: "Established", description: "Over 25 years of technical education" },
+  { value: "6", label: "Departments", description: "B.Tech programs" },
+  { value: "330", label: "Annual Intake", description: "Students per year" },
+  { value: "3", label: "NBA Accredited", description: "CSE, EE, ME departments" },
 ];
 
 export function StatBand() {
   return (
-    <section className="bg-navy text-paper" aria-label="Key statistics">
-      <div className="page-container py-16 md:py-20">
+    <section className="bg-[#00274C]" aria-label="Key statistics">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -24,15 +20,15 @@ export function StatBand() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-3">
-            By The Numbers
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-3">
+            Key Facts
           </p>
-          <h2 className="font-heading text-2xl md:text-3xl font-semibold tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
             MBSCET at a Glance
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -40,16 +36,13 @@ export function StatBand() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="text-center group"
+              className="text-center"
             >
-              <div className="inline-flex items-center justify-center size-14 bg-paper/5 mb-4 group-hover:bg-accent/20 transition-colors">
-                <stat.icon className="size-6 text-accent" />
+              <div className="text-4xl md:text-5xl font-bold text-[#FFCB05] mb-2">
+                {stat.value}
               </div>
-              <div className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              </div>
-              <div className="text-sm font-medium text-paper/80 mt-2">{stat.label}</div>
-              <div className="text-xs text-paper/50 mt-1">{stat.description}</div>
+              <div className="text-sm font-bold text-white mb-1">{stat.label}</div>
+              <div className="text-xs text-white/50">{stat.description}</div>
             </motion.div>
           ))}
         </div>
