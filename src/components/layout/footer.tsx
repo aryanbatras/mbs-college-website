@@ -1,8 +1,21 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaArrowUp } from "react-icons/fa";
+import { ErrorBoundary } from "@/components/ui/error-boundary";
 import type { SiteConfig } from "@/lib/content";
+
+// Dynamically import Lanyard to avoid SSR issues
+const Lanyard = dynamic(() => import("@/components/ui/lanyard"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[400px] flex items-center justify-center text-white/20 text-sm">
+      Loading...
+    </div>
+  ),
+});
 
 interface FooterProps {
   config: SiteConfig;
@@ -51,11 +64,17 @@ const FOOTER_LINKS = {
 };
 
 export function Footer({ config }: FooterProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <footer className="bg-[#00274C] text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
-          {/* Brand column */}
+          {/* Brand column with Lanyard */}
           <div className="lg:col-span-2">
             <div className="mb-6">
               <div className="text-xl font-bold tracking-tight text-[#FFCB05]">MBSCET</div>
@@ -65,14 +84,26 @@ export function Footer({ config }: FooterProps) {
               </div>
             </div>
 
-            <p className="text-sm text-white/50 leading-relaxed max-w-sm mb-6">
-              Established in 1999 under the Sant Manjit Singh Trust, MBSCET is an AICTE approved, NBA accredited institution affiliated to the University of Jammu.
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="text-[10px] font-bold bg-[#FFCB05] text-[#00274C] px-2 py-1">NBA Accredited</span>
-              <span className="text-[10px] font-bold border border-[#FFCB05] text-[#FFCB05] px-2 py-1">AICTE Approved</span>
-            </div>
+            {/* Lanyard 3D Card */}
+            {mounted && (
+              <ErrorBoundary
+                fallback={
+                  <div className="w-full h-[300px] flex items-center justify-center border border-white/10 text-white/30 text-sm">
+                    College ID Card
+                  </div>
+                }
+              >
+                <div className="mb-6">
+                  <Lanyard
+                    position={[0, 0, 24]}
+                    gravity={[0, -40, 0]}
+                    frontImage="/logo.png"
+                    backImage="/lanyard/card-back.svg"
+                    bandColor="#00274C"
+                  />
+                </div>
+              </ErrorBoundary>
+            )}
 
             <div className="space-y-3">
               <a href={`tel:${config.phone.landline}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors">

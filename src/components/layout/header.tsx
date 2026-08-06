@@ -80,41 +80,22 @@ export function Header({ config }: HeaderProps) {
   }, []);
 
   const toggleExpand = useCallback((label: string) => {
-    setExpandedItem(prev => prev === label ? null : label);
+    setExpandedItem(prev => (prev === label ? null : label));
   }, []);
 
   return (
     <>
-      {/* Utility bar */}
-      <div className="bg-[#00274C] text-white text-xs py-1.5 hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <a href={`tel:${config.phone.landline}`} className="flex items-center gap-1.5 hover:text-[#FFCB05] transition-colors">
-              <FaPhone className="text-[10px]" />
-              <span>{config.phone.landline}</span>
-            </a>
-            <a href={`mailto:${config.email.principal}`} className="flex items-center gap-1.5 hover:text-[#FFCB05] transition-colors">
-              <FaEnvelope className="text-[10px]" />
-              <span>{config.email.principal}</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-white/60">AICTE Approved &middot; NBA Accredited</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Fixed header bar */}
-      <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-16">
+      {/* Fixed header - glass/translucent throughout entire page */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
+        <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-18 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3" onClick={closeMobile}>
-            <div className="relative w-10 h-10">
+            <div className="relative w-11 h-11 md:w-12 md:h-12">
               <Image src="/logo.png" alt="MBSCET" fill className="object-contain" priority />
             </div>
             <div className="hidden sm:block">
-              <div className="text-sm font-bold text-[#00274C] tracking-tight">MBSCET</div>
-              <div className="text-[10px] text-gray-500">Est. 1999</div>
+              <div className="text-sm md:text-base font-bold text-white tracking-tight">MBSCET</div>
+              <div className="text-[10px] md:text-xs text-white/60">Est. 1999</div>
             </div>
           </Link>
 
@@ -129,21 +110,21 @@ export function Header({ config }: HeaderProps) {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-[#00274C] transition-colors"
+                  className="flex items-center gap-1 px-3 py-2 text-[15px] font-medium text-white/80 hover:text-white transition-colors"
                 >
                   {item.label}
                   {item.children && (
-                    <FaChevronDown className="text-[8px] text-gray-400" />
+                    <FaChevronDown className="text-[8px] text-white/40" />
                   )}
                 </Link>
                 {item.children && desktopDropdown === item.label && (
                   <div className="absolute top-full left-0 pt-1 z-50">
-                    <div className="bg-white shadow-lg border border-gray-100 py-1 min-w-[220px]">
+                    <div className="bg-white/95 backdrop-blur-md shadow-xl border border-white/20 py-1 min-w-[240px]">
                       {item.children.map((child) => (
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-600 hover:text-[#00274C] hover:bg-gray-50 transition-colors"
+                          className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:text-[#00274C] hover:bg-gray-50 transition-colors"
                         >
                           <span>{child.label}</span>
                           {child.badge && (
@@ -170,10 +151,10 @@ export function Header({ config }: HeaderProps) {
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#00274C]"
+              className="lg:hidden w-10 h-10 flex items-center justify-center text-white"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
-              {mobileOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+              {mobileOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
             </button>
           </div>
         </nav>
@@ -184,9 +165,9 @@ export function Header({ config }: HeaderProps) {
         <div className="fixed inset-0 z-40 lg:hidden">
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/20" onClick={closeMobile} />
-          
+
           {/* Menu panel */}
-          <div className="absolute top-[calc(1.5rem+4rem)] left-0 right-0 bottom-0 bg-white overflow-y-auto">
+          <div className="absolute top-[72px] md:top-[80px] left-0 right-0 bottom-0 bg-white overflow-y-auto">
             <div className="p-4">
               {/* Logo in mobile menu */}
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
@@ -195,7 +176,7 @@ export function Header({ config }: HeaderProps) {
                 </div>
                 <div>
                   <div className="text-sm font-bold text-[#00274C]">MBSCET</div>
-                  <div className="text-[10px] text-gray-500">Est. 1999 &middot; Jammu</div>
+                  <div className="text-[10px] text-gray-500">Est. 1999</div>
                 </div>
               </div>
 
