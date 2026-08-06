@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MBSCET College Website
 
-## Getting Started
+Official website for **Mahant Bachittar Singh College of Engineering & Technology, Jammu** — a modern, content-driven rebuild of the legacy WordPress site (mbscet.edu.in).
 
-First, run the development server:
+**Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · GSAP · Motion
+**Hosting:** Vercel (static generation, free tier)
+**CMS:** [Pages CMS](https://pagescms.org) — free, open-source, GitHub-backed. No database, no backend.
+
+---
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # install dependencies
+npm run dev      # dev server → http://localhost:3000
+npm run build    # production build (runs prebuild first)
+npm start        # serve the production build
+npm run lint     # lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Content is **decoupled from code**. Everything an editor touches lives in two root folders, fully outside `src/`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+content/   → structured content (JSON + Markdown): news, notices, programs, departments, faculty, placements
+media/     → all images, PDFs, videos, organized by department/type
+src/       → code only (Next.js app)
+```
 
-## Learn More
+**How it works at build time:**
 
-To learn more about Next.js, take a look at the following resources:
+```
+                     ┌──────────────────────────────────────────────┐
+                     │  npm run build (Vercel / local)              │
+                     └──────────────────────────────────────────────┘
+content/  ──►  src/lib/content.ts + src/lib/departments.ts   ──►  Next.js SSG pages
+media/    ──►  scripts/copy-media.mjs (prebuild hook)        ──►  public/media/ + public/docs/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. `prebuild` (`scripts/copy-media.mjs`) copies `media/` → `public/media/` and `media/docs/` → `public/docs/`, so static assets are served by Next.js. `public/media` and `public/docs` are gitignored — they are regenerated on every build.
+2. Pages are statically generated at build time (SSG). No server, no database, no runtime rendering — fast, secure, free to host.
+3. **Pages CMS** (`.pages.yml`) gives non-technical staff a web UI that commits content changes directly to GitHub. Every push triggers a Vercel rebuild (~1–2 min deploy).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Folder Structure
 
-## Deploy on Vercel
+```
+├── content/          # ALL website content (JSON + Markdown)
+│   ├── site.json     # global settings, contact, leadership, stats
+│   ├── departments/  # per-department JSON (HOD, syllabus, labs, notices…)
+│   ├── programs/     # program pages (Markdown)
+│   ├── news/         # news articles (Markdown, date-prefixed)
+│   ├── notices/      # notices (Markdown)
+│   ├── faculty/      # faculty data (JSON)
+│   └── placements/   # placement records (JSON)
+├── media/            # ALL media (images, PDFs, videos)
+├── src/              # code only
+│   ├── app/          # Next.js routes (/about, /academics/[slug], /campus…)
+│   ├── components/   # layout, sections, ui, seo, design-system
+│   └── lib/          # content loaders + utils
+├── scripts/          # build scripts (copy-media.mjs)
+├── public/           # build output (media/ + docs/ are gitignored)
+├── .pages.yml        # Pages CMS configuration
+└── next.config.ts    # legacy WordPress URL → new route redirects
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Content Management
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Type | Location | Format |
+|------|----------|--------|
+| News & Notices | `content/news/`, `content/notices/` | Markdown + frontmatter |
+| Programs | `content/programs/` | Markdown |
+| Departments | `content/departments/` | JSON |
+| Faculty | `content/faculty/` | JSON |
+| Placements | `content/placements/` | JSON |
+| Site settings | `content/site.json` | JSON |
+
+**To edit content:** open [pagescms.org](https://pagescms.org), sign in with GitHub, connect `mbs-college-website`, and edit/upload through the web UI. Changes are committed to the repo and auto-deployed — no code or Git knowledge required.
+
+**To add media:** upload via Pages CMS into `media/` (categories: images, documents/PDFs, videos). The prebuild copies everything to `public/` at build time.
+
+## Key Notes
+
+- **Legacy URLs redirect** — old WordPress paths (`/computer-science/`, `/chairman/`, `/placement-brochure/`, …) permanently redirect to new routes via `next.config.ts`.
+- **PDFs render inline** with `@embedpdf/react-pdf-viewer` — no downloads or external viewers.
+- **Build output is disposable** — `public/media` and `public/docs` are gitignored and regenerated by `prebuild`; never commit them.
+- **No environment variables** are required for basic builds and deploys.

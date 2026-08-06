@@ -44,3 +44,9 @@ next-env.d.ts
 storybook-static
 public/media
 public/docs
+
+# AI/docs — local-only markdown, not part of the website
+/AI-DOCS/
+
+# stray dev-server pid files
+server.pid
