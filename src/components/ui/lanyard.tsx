@@ -18,10 +18,6 @@ import * as THREE from "three";
 // Extend Three.js with meshline components
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-// Blank pixel for fallback textures
-const BLANK_PIXEL =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
-
 const LANYARD_PNG_URL = "/lanyard/lanyard.png";
 
 interface LanyardProps {
@@ -66,17 +62,11 @@ export default function Lanyard({
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) =>
-          gl.setClearColor(
-            new THREE.Color(0x000000),
-            transparent ? 0 : 1
-          )
+          gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
         }
       >
         <ambientLight intensity={Math.PI} />
-        <Physics
-          gravity={gravity}
-          timeStep={isMobile ? 1 / 30 : 1 / 60}
-        >
+        <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
           <Band
             isMobile={isMobile}
             frontImage={frontImage}
@@ -134,12 +124,33 @@ interface BandProps {
   bandColor: string;
 }
 
+// Helper to draw rounded rectangle
+function roundRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number
+) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
 function Band({
   maxSpeed = 50,
   minSpeed = 0,
   isMobile = false,
   frontImage,
-  backImage,
   imageFit,
   lanyardImage,
   lanyardWidth,
@@ -164,63 +175,154 @@ function Band({
     linearDamping: 4,
   };
 
-  // Create card geometry programmatically
+  // Create card geometry
   const cardGeometry = useMemo(() => {
-    const geo = new THREE.BoxGeometry(1.6, 2.25, 0.02);
-    return geo;
+    return new THREE.BoxGeometry(1.6, 2.25, 0.02);
   }, []);
 
-  // Create textures for front/back
+  // Create lanyard texture
   const texture = useTexture(lanyardImage || LANYARD_PNG_URL);
-  const frontTex = useTexture(frontImage || BLANK_PIXEL);
-  const backTex = useTexture(backImage || BLANK_PIXEL);
+  const logoTexture = useTexture(frontImage || "/logo.png");
 
-  // Create card material with front/back faces
+  // Create improved card material with detailed texture
   const cardMaterial = useMemo(() => {
-    const baseColor = new THREE.Color(0x00274C);
-
-    // Create canvas texture for the card
     const canvas = document.createElement("canvas");
-    canvas.width = 512;
-    canvas.height = 720;
+    canvas.width = 600;
+    canvas.height = 850;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return new THREE.MeshPhysicalMaterial({ color: baseColor });
+    if (!ctx) return new THREE.MeshPhysicalMaterial({ color: 0x00274C });
 
-    // Draw background
-    ctx.fillStyle = "#00274C";
-    ctx.fillRect(0, 0, 512, 720);
+    const W = canvas.width;
+    const H = canvas.height;
 
-    // Draw yellow accents
+    // Background gradient
+    const gradient = ctx.createLinearGradient(0, 0, W, H);
+    gradient.addColorStop(0, "#00274C");
+    gradient.addColorStop(0.5, "#00274C");
+    gradient.addColorStop(1, "#1E406B");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, W, H);
+
+    // Subtle pattern overlay
+    ctx.globalAlpha = 0.03;
+    for (let i = 0; i < W; i += 20) {
+      for (let j = 0; j < H; j += 20) {
+        ctx.fillStyle = "#FFFFFF";
+        ctx.beginPath();
+        ctx.arc(i, j, 1, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+
+    // Yellow top accent bar
+    const topGradient = ctx.createLinearGradient(0, 0, W, 0);
+    topGradient.addColorStop(0, "#FFCB05");
+    topGradient.addColorStop(0.5, "#FFC107");
+    topGradient.addColorStop(1, "#FFCB05");
+    ctx.fillStyle = topGradient;
+    ctx.fillRect(0, 0, W, 16);
+
+    // Yellow bottom accent bar
+    ctx.fillStyle = topGradient;
+    ctx.fillRect(0, H - 16, W, 16);
+
+    // Logo - draw the college logo
+    const logoImage = logoTexture.image as HTMLImageElement | HTMLCanvasElement | null;
+    if (logoImage && logoImage.width > 0) {
+      const logoSize = 120;
+      const logoX = (W - logoSize) / 2;
+      const logoY = 80;
+
+      // Logo background circle
+      ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+      ctx.beginPath();
+      ctx.arc(W / 2, logoY + logoSize / 2, logoSize / 2 + 10, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw logo
+      ctx.drawImage(logoImage, logoX, logoY, logoSize, logoSize);
+    } else {
+      // Fallback: Draw text logo
+      const logoSize = 120;
+      ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+      ctx.beginPath();
+      ctx.arc(W / 2, 140, logoSize / 2 + 10, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#FFCB05";
+      ctx.font = "bold 32px Arial, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("MBSCET", W / 2, 148);
+    }
+
+    // College acronym
     ctx.fillStyle = "#FFCB05";
-    ctx.fillRect(0, 0, 512, 12);
-    ctx.fillRect(0, 708, 512, 12);
-
-    // Draw college name
-    ctx.fillStyle = "#FFCB05";
-    ctx.font = "bold 24px sans-serif";
+    ctx.font = "bold 48px Arial, sans-serif";
     ctx.textAlign = "center";
-    ctx.fillText("MBSCET", 256, 200);
+    ctx.fillText("MBSCET", W / 2, 260);
 
+    // Decorative line
+    const lineGradient = ctx.createLinearGradient(W / 2 - 100, 0, W / 2 + 100, 0);
+    lineGradient.addColorStop(0, "transparent");
+    lineGradient.addColorStop(0.3, "#FFCB05");
+    lineGradient.addColorStop(0.7, "#FFCB05");
+    lineGradient.addColorStop(1, "transparent");
+    ctx.strokeStyle = lineGradient;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(W / 2 - 120, 280);
+    ctx.lineTo(W / 2 + 120, 280);
+    ctx.stroke();
+
+    // College name
     ctx.fillStyle = "#FFFFFF";
-    ctx.font = "16px sans-serif";
-    ctx.fillText("Mahant Bachittar Singh", 256, 240);
-    ctx.fillText("College of Engineering", 256, 265);
-    ctx.fillText("& Technology", 256, 290);
+    ctx.font = "bold 22px Arial, sans-serif";
+    ctx.fillText("Mahant Bachittar Singh", W / 2, 330);
 
-    // Draw year
+    ctx.font = "18px Arial, sans-serif";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.fillText("College of Engineering", W / 2, 365);
+    ctx.fillText("& Technology", W / 2, 395);
+
+    // Decorative line
+    ctx.strokeStyle = lineGradient;
+    ctx.beginPath();
+    ctx.moveTo(W / 2 - 80, 420);
+    ctx.lineTo(W / 2 + 80, 420);
+    ctx.stroke();
+
+    // Established year
     ctx.fillStyle = "#FFCB05";
-    ctx.font = "bold 32px sans-serif";
-    ctx.fillText("Est. 1999", 256, 400);
+    ctx.font = "bold 36px Arial, sans-serif";
+    ctx.fillText("Est. 1999", W / 2, 480);
 
-    // Draw location
-    ctx.fillStyle = "#FFFFFF";
-    ctx.font = "14px sans-serif";
-    ctx.fillText("Babliana, Jammu", 256, 450);
+    // Location
+    ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
+    ctx.font = "16px Arial, sans-serif";
+    ctx.fillText("📍 Babliana, Jammu", W / 2, 530);
 
-    // Draw accreditations
+    // Accreditations
     ctx.fillStyle = "#FFCB05";
-    ctx.font = "bold 12px sans-serif";
-    ctx.fillText("NBA Accredited  •  AICTE Approved", 256, 550);
+    ctx.font = "bold 14px Arial, sans-serif";
+    ctx.fillText("NBA Accredited  •  AICTE Approved", W / 2, 580);
+
+    // Programs
+    ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+    ctx.font = "13px Arial, sans-serif";
+    ctx.fillText("CSE • IT • ECE • EE • ME • Civil • MCA", W / 2, 620);
+
+    // Bottom decorative element
+    ctx.strokeStyle = "rgba(255, 203, 5, 0.3)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(40, H - 60);
+    ctx.lineTo(W - 40, H - 60);
+    ctx.stroke();
+
+    // Website
+    ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+    ctx.font = "12px Arial, sans-serif";
+    ctx.fillText("www.mbscet.edu.in", W / 2, H - 35);
 
     const canvasTexture = new THREE.CanvasTexture(canvas);
     canvasTexture.colorSpace = THREE.SRGBColorSpace;
@@ -228,11 +330,12 @@ function Band({
     return new THREE.MeshPhysicalMaterial({
       map: canvasTexture,
       clearcoat: 1,
-      clearcoatRoughness: 0.15,
-      roughness: 0.9,
-      metalness: 0.8,
+      clearcoatRoughness: 0.1,
+      roughness: 0.85,
+      metalness: 0.7,
+      envMapIntensity: 0.5,
     });
-  }, []);
+  }, [logoTexture]);
 
   const [curve] = useState(
     () =>
@@ -261,9 +364,7 @@ function Band({
 
   useFrame((state, delta) => {
     if (dragged) {
-      vec
-        .set(state.pointer.x, state.pointer.y, 0.5)
-        .unproject(state.camera);
+      vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
       vec.add(dir.multiplyScalar(state.camera.position.length()));
       [card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp());
@@ -281,7 +382,10 @@ function Band({
           );
         const clampedDistance = Math.max(
           0.1,
-          Math.min(1, ref.current.lerped.distanceTo(ref.current.translation()))
+          Math.min(
+            1,
+            ref.current.lerped.distanceTo(ref.current.translation())
+          )
         );
         ref.current.lerped.lerp(
           ref.current.translation(),
