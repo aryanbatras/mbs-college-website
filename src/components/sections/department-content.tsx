@@ -34,7 +34,7 @@ const DEPT_DATA: Record<string, {
   },
   "ee": {
     image: "/media/general/10-1024x768.jpeg",
-    description: "The Department of Electrical Engineering was established in 1999. It offers B.Tech in Electrical Engineering with an intake of 30 students. The department is NBA accredited and provides quality education in power systems, control systems, and electrical machines.",
+    description: "The Electrical Engineering department was established in the year 1999 as one among the five engineering departments initiated under Mahant Bachittar Singh College of Engineering and Technology. The department was approved by All India Council for Technical Education (AICTE), with sanctioned intake of 60 students. Till date 21 batches of Electrical Engineering Graduate have been awarded degrees. The Electrical Engineering Department is striving to achieve its goal of quality and cost effective education. The department is presently NBA accredited.",
     labs: ["Electrical Machines Lab", "Power Electronics Lab", "Control Systems Lab", "Power Systems Lab", "Measurements & Instrumentation Lab", "Network Analysis Lab", "Project Lab"],
     labImages: ["/media/ee/labs/lab1.png", "/media/ee/labs/lab2.png", "/media/ee/labs/lab3.png"],
     alumniImages: ["/media/ee/alumni/e1.png", "/media/ee/alumni/e2.png", "/media/ee/alumni/e3.png", "/media/ee/alumni/e4.png", "/media/ee/alumni/e6.png", "/media/ee/alumni/e7.png", "/media/ee/alumni/karamdeep.jpg", "/media/ee/alumni/prabjyot.jpg"],
@@ -45,7 +45,7 @@ const DEPT_DATA: Record<string, {
   },
   "ece": {
     image: "/media/general/1-1-1024x579.jpeg",
-    description: "The Department of Electronics & Communication Engineering was established in 1999. It offers B.Tech in ECE with an intake of 30 students. The department focuses on analog and digital transmission, radio engineering, telecommunication, and signal processing.",
+    description: "Electronics & Communication Engineering applies science and math to practical communication problems, involving research, design, development, and testing of electronic equipment used in various communication systems. ECE jobs represent over 50% of all available engineering jobs, with 60% of government jobs in India belonging to this sector. Rapid technological innovations such as nanotechnology, robotics, embedded systems, and high-speed automated processors drive high demand for ECE professionals.",
     labs: ["Analog Electronics Lab", "Digital Electronics Lab", "Communication Systems Lab", "Signal Processing Lab", "VLSI Design Lab", "Microprocessor & Microcontroller Lab", "Project Lab"],
     labImages: ["/media/general/10-1024x768.jpeg"],
     alumniImages: [],
@@ -56,7 +56,7 @@ const DEPT_DATA: Record<string, {
   },
   "me": {
     image: "/media/general/11-1024x768.jpg",
-    description: "The Department of Mechanical Engineering was established in 1999. It offers B.Tech in Mechanical Engineering with an intake of 30 students. The department is NBA accredited and focuses on design, analysis, and manufacturing of mechanical systems.",
+    description: "The Department of Mechanical Engineering was established in 1999. It offers B.Tech in Mechanical Engineering with an intake of 30 students. The department is NBA accredited and focuses on combining engineering physics with mathematics for design, analysis, and manufacturing of mechanical systems.",
     labs: ["CAD/CAM Lab", "Fluid Mechanics Lab", "Thermal Engineering Lab", "Manufacturing Processes Lab", "Strength of Materials Lab", "Theory of Machines Lab", "Project Lab"],
     labImages: ["/media/general/11-1024x768.jpg"],
     alumniImages: [],
@@ -67,7 +67,7 @@ const DEPT_DATA: Record<string, {
   },
   "civil": {
     image: "/media/general/2-1-1024x576.jpg",
-    description: "The Department of Civil Engineering was established in 1999. It offers B.Tech in Civil Engineering with an intake of 60 students. The department focuses on designing, constructing, and maintaining the physical and naturally built environment.",
+    description: "Civil Engineering Department started in MBS College of Engineering and Technology, Jammu in the year 2023 with an intake of 60 students. The main areas of the course includes Environmental Engineering, Structure analysis, Building Construction and Materials, Surveying, Engineering Geology, Water Supply Engineering, Fluid Mechanics, Geotechnical Engineering, Construction Planning & Management, Design of Steel Structures, Design of Hydraulic Structures and Disaster Management and Mitigations.",
     labs: ["Survey Lab", "Fluid Mechanics Lab", "Strength of Materials Lab", "Geotechnical Engineering Lab", "Transportation Engineering Lab", "Environmental Engineering Lab"],
     labImages: ["/media/general/2-1-1024x576.jpg"],
     alumniImages: [],
@@ -78,7 +78,7 @@ const DEPT_DATA: Record<string, {
   },
   "it": {
     image: "/media/general/2-1024x768.jpeg",
-    description: "The Department of Information Technology was established in 1999. It offers B.Tech in IT with an intake of 60 students. The department focuses on the application of computing and telecommunications systems to store, retrieve, and transmit data.",
+    description: "The department of Information Technology in MBS College of Engineering and Technology was established in 1999. We are one of the best among few institutions growing in the state in the field of Information Technology. Our students are placed in reputed companies like Google, Microsoft, Intel, Adobe, TCS, Infosys, Wipro, HCL, Banking Sector, Government Sector etc. The IT Department aims at IT based Learning, Development of Entrepreneurship among student and become a Centre of Excellence.",
     labs: ["Programming Lab", "Web Technologies Lab", "Database Lab", "Network Lab", "Software Engineering Lab", "Cloud Computing Lab"],
     labImages: ["/media/general/2-1024x768.jpeg"],
     alumniImages: [],
