@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteBackground } from "@/components/layout/site-background";
+import { SmoothScroll } from "@/components/layout/smooth-scroll";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -52,7 +53,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to main content
         </a>
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
