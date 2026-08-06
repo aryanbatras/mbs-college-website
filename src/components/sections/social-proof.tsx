@@ -32,7 +32,7 @@ export function SocialProof() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-3">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-3">
             Recognized & Accredited
           </p>
           <h2 className="text-xl md:text-2xl font-bold text-[#00274C] tracking-tight">

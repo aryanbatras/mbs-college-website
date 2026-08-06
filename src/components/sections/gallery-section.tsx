@@ -205,7 +205,7 @@ export function GallerySection() {
             </h3>
             <button
               onClick={() => setShowAllImages(!showAllImages)}
-              className="inline-flex items-center justify-center gap-2 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors py-2 sm:py-0"
+              className="inline-flex items-center justify-center gap-2 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors py-2 sm:py-0"
             >
               <FaImages className="text-xs" />
               {showAllImages ? "Show Less" : `View All (${GALLERY_IMAGES.length})`}
@@ -254,7 +254,7 @@ export function GallerySection() {
         >
           <button
             onClick={() => setPlayingVideo(null)}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 size-10 sm:size-12 flex items-center justify-center text-white hover:text-[#FFCB05] transition-colors z-10"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 size-10 sm:size-12 flex items-center justify-center text-white hover:text-gray-400 transition-colors z-10"
             aria-label="Close video"
           >
             <FaTimes className="text-lg sm:text-xl" />
@@ -289,7 +289,7 @@ export function GallerySection() {
         >
           <button
             onClick={() => setLightboxImage(null)}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 size-10 sm:size-12 flex items-center justify-center text-white hover:text-[#FFCB05] transition-colors z-10"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 size-10 sm:size-12 flex items-center justify-center text-white hover:text-gray-400 transition-colors z-10"
             aria-label="Close image"
           >
             <FaTimes className="text-lg sm:text-xl" />
@@ -298,14 +298,14 @@ export function GallerySection() {
           {/* Navigation arrows - visible on all screens */}
           <button
             onClick={(e) => { e.stopPropagation(); navigateImage("prev"); }}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 size-10 sm:size-12 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white hover:text-[#FFCB05] transition-colors z-10"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 size-10 sm:size-12 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white hover:text-gray-400 transition-colors z-10"
             aria-label="Previous image"
           >
             <FaChevronLeft className="text-sm sm:text-base" />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); navigateImage("next"); }}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 size-10 sm:size-12 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white hover:text-[#FFCB05] transition-colors z-10"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 size-10 sm:size-12 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white hover:text-gray-400 transition-colors z-10"
             aria-label="Next image"
           >
             <FaChevronRight className="text-sm sm:text-base" />

@@ -50,7 +50,7 @@ export function CampusNewsSection() {
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="flex items-center justify-between mb-12">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-2">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">
               Campus News
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#00274C] tracking-tight">
@@ -59,7 +59,7 @@ export function CampusNewsSection() {
           </div>
           <Link
             href="/news"
-            className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors group"
+            className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors group"
           >
             View all
             <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
@@ -79,7 +79,7 @@ export function CampusNewsSection() {
               <h3 className="text-base font-medium text-[#00274C] group-hover:text-white transition-colors mt-2 leading-snug">
                 {news.title}
               </h3>
-              <span className="inline-flex items-center gap-2 text-sm font-bold text-[#FFCB05] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              <span className="inline-flex items-center gap-2 text-sm font-bold text-gray-400 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 Read more
                 <FaArrowRight className="text-xs" />
               </span>
@@ -90,7 +90,7 @@ export function CampusNewsSection() {
         <div className="mt-8 text-center md:hidden">
           <Link
             href="/news"
-            className="inline-flex items-center gap-2 text-base font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
+            className="inline-flex items-center gap-2 text-base font-bold text-[#00274C] hover:text-gray-400 transition-colors"
           >
             View all news
             <FaArrowRight className="text-sm" />

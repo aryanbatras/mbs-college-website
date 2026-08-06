@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Award, Shield, GraduationCap, Star } from "lucide-react";
+import { Award, Shield, GraduationCap, Star } from "react-icons/fa";
 
 const ACCREDITATIONS = [
   {

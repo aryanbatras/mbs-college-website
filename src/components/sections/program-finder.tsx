@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
-import { Search, Filter, ArrowRight, Users, Clock, BookOpen } from "lucide-react";
+import { Search, Filter, ArrowRight, Users, Clock, BookOpen } from "react-icons/fa";
 import type { Program } from "@/lib/content";
 
 interface ProgramFinderProps {

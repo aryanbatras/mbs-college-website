@@ -15,7 +15,7 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
           <div>
             <div className="flex items-center justify-between mb-10">
               <div>
-                <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-2">
+                <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">
                   Latest News
                 </p>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#00274C] tracking-tight">
@@ -24,7 +24,7 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
               </div>
               <Link
                 href="/news"
-                className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors group"
+                className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors group"
               >
                 View all
                 <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
@@ -47,11 +47,11 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
                           year: "numeric",
                         })}
                       </time>
-                      <h3 className="text-base font-medium text-[#00274C] group-hover:text-[#FFCB05] transition-colors mt-1 leading-snug">
+                      <h3 className="text-base font-medium text-[#00274C] group-hover:text-gray-400 transition-colors mt-1 leading-snug">
                         {article.title}
                       </h3>
                     </div>
-                    <FaArrowRight className="text-[#9CA3AF] group-hover:text-[#FFCB05] transition-colors mt-1 shrink-0 text-xs" />
+                    <FaArrowRight className="text-[#9CA3AF] group-hover:text-gray-400 transition-colors mt-1 shrink-0 text-xs" />
                   </div>
                 </Link>
               ))}
@@ -61,7 +61,7 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
           <div>
             <div className="flex items-center justify-between mb-10">
               <div>
-                <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-2">
+                <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">
                   Official Notices
                 </p>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#00274C] tracking-tight">
@@ -70,7 +70,7 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
               </div>
               <Link
                 href="/notices"
-                className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors group"
+                className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors group"
               >
                 View all
                 <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
@@ -93,11 +93,11 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
                           year: "numeric",
                         })}
                       </time>
-                      <h3 className="text-base font-medium text-[#00274C] group-hover:text-[#FFCB05] transition-colors mt-1 leading-snug">
+                      <h3 className="text-base font-medium text-[#00274C] group-hover:text-gray-400 transition-colors mt-1 leading-snug">
                         {notice.title}
                       </h3>
                     </div>
-                    <FaArrowRight className="text-[#9CA3AF] group-hover:text-[#FFCB05] transition-colors mt-1 shrink-0 text-xs" />
+                    <FaArrowRight className="text-[#9CA3AF] group-hover:text-gray-400 transition-colors mt-1 shrink-0 text-xs" />
                   </div>
                 </Link>
               ))}

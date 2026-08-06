@@ -52,7 +52,7 @@ export function AdmissionsContent({ config }: AdmissionsContentProps) {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b-2 border-[#FFCB05]">
+                <tr className="border-b-2 border-gray-200">
                   <th className="pb-4 pr-6 text-left font-bold text-[#00274C]">Program</th>
                   <th className="pb-4 pr-6 text-left font-bold text-[#00274C]">Tuition Fee</th>
                   <th className="pb-4 text-left font-bold text-[#00274C]">Total (incl. other fees)</th>
@@ -76,7 +76,7 @@ export function AdmissionsContent({ config }: AdmissionsContentProps) {
       </section>
 
       {/* Inquiry Form */}
-      <section className="bg-[#FFCB05]/5">
+      <section className="bg-gray-100/5">
         <div className="page-container section-spacing">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <div>
@@ -90,7 +90,7 @@ export function AdmissionsContent({ config }: AdmissionsContentProps) {
               <div className="space-y-4 text-sm text-[#5C6370]">
                 {BENEFITS.map((benefit) => (
                   <div key={benefit} className="flex items-start gap-3">
-                    <FaCheckCircle className="text-[#FFCB05] mt-0.5 shrink-0" />
+                    <FaCheckCircle className="text-gray-400 mt-0.5 shrink-0" />
                     <span>{benefit}</span>
                   </div>
                 ))}

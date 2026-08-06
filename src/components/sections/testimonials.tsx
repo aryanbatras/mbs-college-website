@@ -42,7 +42,7 @@ export function TestimonialsSection() {
     <section className="bg-[#00274C]" aria-label="Testimonials">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div>
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
             What People Say
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-white leading-[1.05] tracking-tight mb-16">
@@ -52,7 +52,7 @@ export function TestimonialsSection() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-end">
             <div>
               <div key={current}>
-                <FaQuoteLeft className="text-[#FFCB05] text-3xl mb-6 opacity-60" />
+                <FaQuoteLeft className="text-gray-400 text-3xl mb-6 opacity-60" />
                 <blockquote className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug tracking-tight mb-8">
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
@@ -70,7 +70,7 @@ export function TestimonialsSection() {
             <div className="flex items-center gap-4">
               <button
                 onClick={prev}
-                className="size-12 flex items-center justify-center border-2 border-[#FFCB05]/30 text-[#FFCB05]/60 hover:text-[#FFCB05] hover:border-[#FFCB05] transition-colors"
+                className="size-12 flex items-center justify-center border-2 border-gray-200/30 text-gray-400/60 hover:text-gray-400 hover:border-gray-200 transition-colors"
                 aria-label="Previous testimonial"
               >
                 <FaChevronLeft className="text-sm" />
@@ -81,7 +81,7 @@ export function TestimonialsSection() {
                     key={i}
                     onClick={() => setCurrent(i)}
                     className={`h-0.5 transition-all duration-300 ${
-                      i === current ? "w-8 bg-[#FFCB05]" : "w-4 bg-white/20"
+                      i === current ? "w-8 bg-gray-100" : "w-4 bg-white/20"
                     }`}
                     aria-label={`Go to testimonial ${i + 1}`}
                   />
@@ -89,7 +89,7 @@ export function TestimonialsSection() {
               </div>
               <button
                 onClick={next}
-                className="size-12 flex items-center justify-center border-2 border-[#FFCB05]/30 text-[#FFCB05]/60 hover:text-[#FFCB05] hover:border-[#FFCB05] transition-colors"
+                className="size-12 flex items-center justify-center border-2 border-gray-200/30 text-gray-400/60 hover:text-gray-400 hover:border-gray-200 transition-colors"
                 aria-label="Next testimonial"
               >
                 <FaChevronRight className="text-sm" />

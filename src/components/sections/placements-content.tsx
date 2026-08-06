@@ -25,7 +25,7 @@ export function PlacementsContent() {
       {/* Hero */}
       <div className="bg-[#00274C] py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
             Training & Placement Cell
           </p>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
@@ -50,12 +50,12 @@ export function PlacementsContent() {
                 <p className="text-sm text-[#5C6370] mb-4">Incharge, Training & Placement Cell</p>
                 <div className="space-y-2 text-sm text-[#5C6370]">
                   <p className="flex items-center gap-2">
-                    <FaPhone className="text-[#FFCB05] text-xs" />
-                    <a href="tel:+91-9419130161" className="hover:text-[#FFCB05] transition-colors">+91-9419130161</a>
+                    <FaPhone className="text-gray-400 text-xs" />
+                    <a href="tel:+91-9419130161" className="hover:text-gray-400 transition-colors">+91-9419130161</a>
                   </p>
                   <p className="flex items-center gap-2">
-                    <FaEnvelope className="text-[#FFCB05] text-xs" />
-                    <a href="mailto:tpcell@mbscet.edu.in" className="hover:text-[#FFCB05] transition-colors">tpcell@mbscet.edu.in</a>
+                    <FaEnvelope className="text-gray-400 text-xs" />
+                    <a href="mailto:tpcell@mbscet.edu.in" className="hover:text-gray-400 transition-colors">tpcell@mbscet.edu.in</a>
                   </p>
                 </div>
               </div>
@@ -84,7 +84,7 @@ export function PlacementsContent() {
                   href="https://www.mbscet.edu.in/placement-brochure/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#FFCB05] text-[#00274C] px-6 py-3 text-sm font-bold hover:bg-white transition-colors"
+                  className="inline-flex items-center gap-2 bg-gray-100 text-[#00274C] px-6 py-3 text-sm font-bold hover:bg-white transition-colors"
                 >
                   View Brochure
                   <FaExternalLinkAlt className="text-xs" />
@@ -92,7 +92,7 @@ export function PlacementsContent() {
               </div>
               <div className="w-full md:w-48 aspect-[3/4] bg-white/10 flex items-center justify-center">
                 <div className="text-center">
-                  <FaDownload className="w-8 h-8 mx-auto text-[#FFCB05] mb-2" />
+                  <FaDownload className="w-8 h-8 mx-auto text-gray-400 mb-2" />
                   <p className="text-xs text-white/60">PDF Document</p>
                 </div>
               </div>
@@ -117,10 +117,10 @@ export function PlacementsContent() {
                 className="group p-6 bg-[#F9FAFB] border border-[#E5E7EB] hover:bg-[#00274C] transition-colors"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <span className="text-xs font-bold text-[#FFCB05] group-hover:text-[#FFCB05] tracking-wider">
+                  <span className="text-xs font-bold text-gray-400 group-hover:text-gray-400 tracking-wider">
                     {record.department}
                   </span>
-                  <FaDownload className="text-[#9CA3AF] group-hover:text-[#FFCB05] text-xs" />
+                  <FaDownload className="text-[#9CA3AF] group-hover:text-gray-400 text-xs" />
                 </div>
                 <h3 className="text-base font-bold text-[#00274C] group-hover:text-white transition-colors mb-1">
                   {record.title}
@@ -138,7 +138,7 @@ export function PlacementsContent() {
               href="https://www.mbscet.edu.in/placement-record/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors"
             >
               View all records on official website
               <FaExternalLinkAlt className="text-xs" />
@@ -167,7 +167,7 @@ export function PlacementsContent() {
         <div className="pt-8 border-t border-[#E5E7EB]">
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
+            className="group inline-flex items-center gap-3 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors"
           >
             <FaArrowRight className="text-xs rotate-180 transition-transform group-hover:-translate-x-1" />
             Back to Home

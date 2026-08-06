@@ -40,7 +40,7 @@ export function WhyChooseUs() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 md:mb-16"
         >
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-3">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-3">
             Why MBSCET
           </p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white">

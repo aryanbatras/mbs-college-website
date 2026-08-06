@@ -78,7 +78,7 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
             </Link>
             <div className="flex items-end justify-between gap-8">
               <div>
-                <p className="text-sm font-semibold tracking-widest uppercase text-[#FFCB05] mb-3">
+                <p className="text-sm font-semibold tracking-widest uppercase text-gray-400 mb-3">
                   {program.degree} Program
                 </p>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
@@ -89,7 +89,7 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
                 </p>
               </div>
               <div className="hidden md:block text-right shrink-0">
-                <div className="text-5xl font-bold text-[#FFCB05]">{program.intake}</div>
+                <div className="text-5xl font-bold text-gray-400">{program.intake}</div>
                 <div className="text-sm text-white/60 mt-1">Annual Intake</div>
               </div>
             </div>
@@ -102,19 +102,19 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#FFCB05]">{program.intake}</div>
+              <div className="text-3xl font-bold text-gray-400">{program.intake}</div>
               <div className="text-sm text-white/70 mt-1">Seats</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#FFCB05]">{faculty.length}+</div>
+              <div className="text-3xl font-bold text-gray-400">{faculty.length}+</div>
               <div className="text-sm text-white/70 mt-1">Faculty</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#FFCB05]">{LABS.length}</div>
+              <div className="text-3xl font-bold text-gray-400">{LABS.length}</div>
               <div className="text-sm text-white/70 mt-1">Labs</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#FFCB05]">NBA</div>
+              <div className="text-3xl font-bold text-gray-400">NBA</div>
               <div className="text-sm text-white/70 mt-1">Accredited</div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-5 py-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? "border-[#FFCB05] text-[#00274C]"
+                    ? "border-gray-200 text-[#00274C]"
                     : "border-transparent text-gray-500 hover:text-[#00274C]"
                 }`}
               >
@@ -182,8 +182,8 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
                 <h3 className="text-xl font-bold text-[#00274C] mb-4">Highlights</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {program.highlights.map((h, i) => (
-                    <div key={i} className="flex items-center gap-3 p-4 bg-[#FFCB05]/10 border border-[#FFCB05]/20">
-                      <div className="w-2 h-2 bg-[#FFCB05] rounded-full shrink-0" />
+                    <div key={i} className="flex items-center gap-3 p-4 bg-gray-100/10 border border-gray-200/20">
+                      <div className="w-2 h-2 bg-gray-100 rounded-full shrink-0" />
                       <span className="text-gray-700">{h}</span>
                     </div>
                   ))}
@@ -219,7 +219,7 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
             <div>
               <h2 className="text-3xl font-bold text-[#00274C] mb-6">Vision</h2>
               {program.vision && (
-                <blockquote className="text-lg text-gray-600 leading-relaxed border-l-4 border-[#FFCB05] pl-6 italic">
+                <blockquote className="text-lg text-gray-600 leading-relaxed border-l-4 border-gray-200 pl-6 italic">
                   {program.vision}
                 </blockquote>
               )}
@@ -231,7 +231,7 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
                 <ul className="space-y-4">
                   {program.mission.map((m, i) => (
                     <li key={i} className="flex gap-4 text-gray-600">
-                      <span className="mt-2 w-2 h-2 shrink-0 bg-[#FFCB05] rounded-full" />
+                      <span className="mt-2 w-2 h-2 shrink-0 bg-gray-100 rounded-full" />
                       <span className="text-lg leading-relaxed">{m}</span>
                     </li>
                   ))}
@@ -263,7 +263,7 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
             <div className="p-6 bg-gray-50 border border-gray-100">
               <p className="text-gray-600">
                 For detailed Program Outcomes (POs) and Program Specific Outcomes (PSOs), please refer to the official curriculum documents available on the{" "}
-                <a href="https://www.mbscet.edu.in/computer-science/peos-psos-pos-cse/" target="_blank" rel="noopener noreferrer" className="text-[#00274C] underline hover:text-[#FFCB05]">
+                <a href="https://www.mbscet.edu.in/computer-science/peos-psos-pos-cse/" target="_blank" rel="noopener noreferrer" className="text-[#00274C] underline hover:text-gray-400">
                   department website
                 </a>.
               </p>
@@ -355,7 +355,7 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
                 <div key={item.file} className="bg-gray-50 border border-gray-100">
                   <div className="flex items-center justify-between p-6">
                     <div className="flex items-center gap-4">
-                      <FaFileAlt className="text-[#FFCB05] text-xl" />
+                      <FaFileAlt className="text-gray-400 text-xl" />
                       <div>
                         <h3 className="text-base font-bold text-[#00274C]">{item.title}</h3>
                         <p className="text-sm text-gray-500">PDF Document</p>
@@ -390,7 +390,7 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
                 <div key={item.file} className="bg-gray-50 border border-gray-100">
                   <div className="flex items-center justify-between p-6">
                     <div className="flex items-center gap-4">
-                      <FaNewspaper className="text-[#FFCB05] text-xl" />
+                      <FaNewspaper className="text-gray-400 text-xl" />
                       <div>
                         <h3 className="text-base font-bold text-[#00274C]">{item.title}</h3>
                         <p className="text-sm text-gray-500">PDF Document</p>
@@ -444,12 +444,12 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
               <h3 className="text-xl font-bold text-[#00274C] mb-2">Dr. Amrik Singh</h3>
               <p className="text-gray-500 mb-6">Head of Department, CSE</p>
               <div className="space-y-4">
-                <a href="tel:+919419130161" className="flex items-center gap-3 text-gray-600 hover:text-[#FFCB05] transition-colors">
-                  <FaPhone className="text-[#FFCB05]" />
+                <a href="tel:+919419130161" className="flex items-center gap-3 text-gray-600 hover:text-gray-400 transition-colors">
+                  <FaPhone className="text-gray-400" />
                   +91-9419130161
                 </a>
-                <a href="mailto:hod.cse@mbscet.edu.in" className="flex items-center gap-3 text-gray-600 hover:text-[#FFCB05] transition-colors">
-                  <FaEnvelope className="text-[#FFCB05]" />
+                <a href="mailto:hod.cse@mbscet.edu.in" className="flex items-center gap-3 text-gray-600 hover:text-gray-400 transition-colors">
+                  <FaEnvelope className="text-gray-400" />
                   hod.cse@mbscet.edu.in
                 </a>
               </div>

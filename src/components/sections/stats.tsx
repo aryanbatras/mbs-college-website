@@ -20,7 +20,7 @@ export function StatBand() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-3">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-3">
             Key Facts
           </p>
           <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
@@ -38,7 +38,7 @@ export function StatBand() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#FFCB05] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-gray-400 mb-2">
                 {stat.value}
               </div>
               <div className="text-sm font-bold text-white mb-1">{stat.label}</div>

@@ -23,7 +23,7 @@ export function ScrollExpandSection() {
         className="h-[100dvh]"
       >
         <div className="text-center">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
             Welcome to MBSCET
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight mb-4">

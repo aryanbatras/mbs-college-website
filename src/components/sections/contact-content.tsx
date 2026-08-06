@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import type { SiteConfig } from "@/lib/content";
-import { MapPin, Phone, Mail, Send, CheckCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Send, CheckCircle } from "react-icons/fa";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 interface ContactContentProps {

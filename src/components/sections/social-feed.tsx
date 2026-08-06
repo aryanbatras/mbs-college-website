@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { FaInstagram, FaYoutube, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink } from "react-icons/fa";
 
 const SOCIAL_POSTS = [
   { image: "/media/general/DSC_0123-1024x683.jpg", likes: 124, platform: "instagram" },

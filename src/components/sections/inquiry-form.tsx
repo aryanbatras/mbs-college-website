@@ -47,7 +47,7 @@ export function InquiryForm() {
   if (submitted) {
     return (
       <div className="text-center py-16">
-        <FaCheckCircle className="text-[#FFCB05] text-6xl mx-auto mb-6" />
+        <FaCheckCircle className="text-gray-400 text-6xl mx-auto mb-6" />
         <h3 className="text-2xl font-bold text-[#00274C] mb-3">Inquiry Submitted!</h3>
         <p className="text-[#5C6370] max-w-md mx-auto">
           Thank you for your interest in MBSCET. Our admissions team will contact you within 24 hours.
@@ -66,9 +66,9 @@ export function InquiryForm() {
               <div
                 className={`size-10 flex items-center justify-center transition-colors ${
                   currentStep > step.id
-                    ? "bg-[#FFCB05] text-[#00274C]"
+                    ? "bg-gray-100 text-[#00274C]"
                     : currentStep === step.id
-                    ? "bg-[#00274C] text-[#FFCB05]"
+                    ? "bg-[#00274C] text-gray-400"
                     : "bg-[#E5E7EB] text-[#9CA3AF]"
                 }`}
               >
@@ -83,7 +83,7 @@ export function InquiryForm() {
             {i < STEPS.length - 1 && (
               <div
                 className={`w-12 sm:w-20 h-0.5 mx-2 ${
-                  currentStep > step.id ? "bg-[#FFCB05]" : "bg-[#E5E7EB]"
+                  currentStep > step.id ? "bg-gray-100" : "bg-[#E5E7EB]"
                 }`}
               />
             )}
@@ -103,7 +103,7 @@ export function InquiryForm() {
                 required
                 value={formData.firstName}
                 onChange={(e) => updateForm("firstName", e.target.value)}
-                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-[#FFCB05] focus:outline-none transition-colors"
+                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-gray-200 focus:outline-none transition-colors"
                 placeholder="Enter your first name"
               />
             </div>
@@ -115,7 +115,7 @@ export function InquiryForm() {
                 required
                 value={formData.lastName}
                 onChange={(e) => updateForm("lastName", e.target.value)}
-                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-[#FFCB05] focus:outline-none transition-colors"
+                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-gray-200 focus:outline-none transition-colors"
                 placeholder="Enter your last name"
               />
             </div>
@@ -132,7 +132,7 @@ export function InquiryForm() {
                 required
                 value={formData.email}
                 onChange={(e) => updateForm("email", e.target.value)}
-                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-[#FFCB05] focus:outline-none transition-colors"
+                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-gray-200 focus:outline-none transition-colors"
                 placeholder="your@email.com"
               />
             </div>
@@ -144,7 +144,7 @@ export function InquiryForm() {
                 required
                 value={formData.phone}
                 onChange={(e) => updateForm("phone", e.target.value)}
-                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-[#FFCB05] focus:outline-none transition-colors"
+                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-gray-200 focus:outline-none transition-colors"
                 placeholder="+91 XXXXX XXXXX"
               />
             </div>
@@ -160,7 +160,7 @@ export function InquiryForm() {
                 required
                 value={formData.program}
                 onChange={(e) => updateForm("program", e.target.value)}
-                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-[#FFCB05] focus:outline-none transition-colors text-[#00274C]"
+                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-gray-200 focus:outline-none transition-colors text-[#00274C]"
               >
                 <option value="">Select a program</option>
                 {PROGRAMS.map((p) => (
@@ -175,7 +175,7 @@ export function InquiryForm() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => updateForm("message", e.target.value)}
-                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-[#FFCB05] focus:outline-none transition-colors resize-none"
+                className="px-4 py-3 text-sm bg-white border-2 border-[#E5E7EB] focus:border-gray-200 focus:outline-none transition-colors resize-none"
                 placeholder="Any specific questions or requirements..."
               />
             </div>
@@ -186,25 +186,25 @@ export function InquiryForm() {
           <div className="space-y-4">
             <h3 className="text-base font-bold text-[#00274C] mb-4">Review Your Information</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 bg-[#FFCB05]/5">
+              <div className="p-4 bg-gray-100/5">
                 <div className="text-xs text-[#9CA3AF] mb-1">Name</div>
                 <div className="text-sm font-bold text-[#00274C]">{formData.firstName} {formData.lastName}</div>
               </div>
-              <div className="p-4 bg-[#FFCB05]/5">
+              <div className="p-4 bg-gray-100/5">
                 <div className="text-xs text-[#9CA3AF] mb-1">Email</div>
                 <div className="text-sm font-bold text-[#00274C]">{formData.email}</div>
               </div>
-              <div className="p-4 bg-[#FFCB05]/5">
+              <div className="p-4 bg-gray-100/5">
                 <div className="text-xs text-[#9CA3AF] mb-1">Phone</div>
                 <div className="text-sm font-bold text-[#00274C]">{formData.phone}</div>
               </div>
-              <div className="p-4 bg-[#FFCB05]/5">
+              <div className="p-4 bg-gray-100/5">
                 <div className="text-xs text-[#9CA3AF] mb-1">Program</div>
                 <div className="text-sm font-bold text-[#00274C]">{formData.program || "Not selected"}</div>
               </div>
             </div>
             {formData.message && (
-              <div className="p-4 bg-[#FFCB05]/5">
+              <div className="p-4 bg-gray-100/5">
                 <div className="text-xs text-[#9CA3AF] mb-1">Message</div>
                 <div className="text-sm text-[#00274C]">{formData.message}</div>
               </div>
@@ -218,7 +218,7 @@ export function InquiryForm() {
         {currentStep > 1 ? (
           <button
             onClick={prevStep}
-            className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors"
           >
             <FaArrowLeft className="text-xs" />
             Back
@@ -229,7 +229,7 @@ export function InquiryForm() {
         {currentStep < 4 ? (
           <button
             onClick={nextStep}
-            className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold bg-[#00274C] text-[#FFCB05] hover:bg-[#1E406B] transition-colors"
+            className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold bg-[#00274C] text-gray-400 hover:bg-[#1E406B] transition-colors"
           >
             Continue
             <FaArrowRight className="text-xs" />
@@ -237,7 +237,7 @@ export function InquiryForm() {
         ) : (
           <button
             onClick={handleSubmit}
-            className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold bg-[#FFCB05] text-[#00274C] hover:bg-white transition-colors"
+            className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold bg-gray-100 text-[#00274C] hover:bg-white transition-colors"
           >
             <FaPaperPlane className="text-xs" />
             Submit Inquiry

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { MapPin, Search, Filter, Building, BookOpen, Users, Car } from "lucide-react";
+import { MapPin, Search, Filter, Building, BookOpen, Users, Car } from "react-icons/fa";
 
 const BUILDINGS = [
   { name: "Main Block", type: "academic", x: 45, y: 40, description: "Administrative offices and classrooms" },

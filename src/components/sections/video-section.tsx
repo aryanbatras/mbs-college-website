@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Play, ExternalLink } from "lucide-react";
+import { Play, ExternalLink } from "react-icons/fa";
 
 const VIDEOS = [
   {

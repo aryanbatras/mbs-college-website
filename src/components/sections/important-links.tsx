@@ -20,7 +20,7 @@ export function ImportantLinks() {
     <section className="bg-[#F9FAFB]" aria-label="Important Links">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-20">
         <div className="mb-10">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
             Resources
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#00274C] tracking-tight">
@@ -40,7 +40,7 @@ export function ImportantLinks() {
               <span className="text-sm font-medium text-[#00274C] group-hover:text-white transition-colors flex-1">
                 {link.label}
               </span>
-              <FaExternalLinkAlt className="text-[10px] text-[#9CA3AF] group-hover:text-[#FFCB05] transition-colors shrink-0" />
+              <FaExternalLinkAlt className="text-[10px] text-[#9CA3AF] group-hover:text-gray-400 transition-colors shrink-0" />
             </a>
           ))}
         </div>

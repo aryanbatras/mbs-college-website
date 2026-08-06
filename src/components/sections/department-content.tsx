@@ -130,11 +130,11 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
           </Link>
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-2">{program.degree} Program</p>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">{program.degree} Program</p>
               <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">{program.title}</h1>
             </div>
             <div className="text-right shrink-0">
-              <div className="text-2xl md:text-3xl font-bold text-[#FFCB05]">{program.intake}</div>
+              <div className="text-2xl md:text-3xl font-bold text-gray-400">{program.intake}</div>
               <div className="text-xs text-white/50">seats</div>
             </div>
           </div>
@@ -146,7 +146,7 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
         <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
           <div className="flex overflow-x-auto scrollbar-hide gap-0">
             {TABS.map((tab) => (
-              <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex items-center gap-2 px-4 py-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${activeTab === tab.id ? "border-[#FFCB05] text-[#00274C]" : "border-transparent text-[#5C6370] hover:text-[#00274C]"}`}>
+              <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex items-center gap-2 px-4 py-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${activeTab === tab.id ? "border-gray-200 text-[#00274C]" : "border-transparent text-[#5C6370] hover:text-[#00274C]"}`}>
                 <tab.icon className="text-xs" />
                 {tab.label}
               </button>
@@ -186,8 +186,8 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
         {activeTab === "vision" && (
           <div>
             <h2 className="text-2xl font-bold text-[#00274C] mb-8">Vision & Mission</h2>
-            {program.vision && (<div className="mb-8"><h3 className="text-lg font-bold text-[#00274C] mb-4">Vision</h3><blockquote className="text-[#5C6370] leading-relaxed border-l-2 border-[#FFCB05] pl-6">{program.vision}</blockquote></div>)}
-            {program.mission && program.mission.length > 0 && (<div><h3 className="text-lg font-bold text-[#00274C] mb-4">Mission</h3><ul className="space-y-3">{program.mission.map((m, i) => (<li key={i} className="flex gap-3 text-[#5C6370]"><span className="mt-2 size-1.5 shrink-0 bg-[#FFCB05] rounded-full" />{m}</li>))}</ul></div>)}
+            {program.vision && (<div className="mb-8"><h3 className="text-lg font-bold text-[#00274C] mb-4">Vision</h3><blockquote className="text-[#5C6370] leading-relaxed border-l-2 border-gray-200 pl-6">{program.vision}</blockquote></div>)}
+            {program.mission && program.mission.length > 0 && (<div><h3 className="text-lg font-bold text-[#00274C] mb-4">Mission</h3><ul className="space-y-3">{program.mission.map((m, i) => (<li key={i} className="flex gap-3 text-[#5C6370]"><span className="mt-2 size-1.5 shrink-0 bg-gray-100 rounded-full" />{m}</li>))}</ul></div>)}
           </div>
         )}
 
@@ -234,14 +234,14 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
         {activeTab === "syllabus" && (
           <div>
             <h2 className="text-2xl font-bold text-[#00274C] mb-8">Syllabus</h2>
-            <div className="space-y-4">{deptData.syllabus.map((item) => (<a key={item.file} href={item.file} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors group"><div className="flex items-center gap-4"><FaFileAlt className="text-[#FFCB05] text-lg" /><div><h3 className="text-base font-bold text-[#00274C] group-hover:text-white transition-colors">{item.title}</h3><p className="text-xs text-[#9CA3AF] group-hover:text-white/50 transition-colors">PDF Document</p></div></div><FaDownload className="text-[#9CA3AF] group-hover:text-[#FFCB05] transition-colors" /></a>))}</div>
+            <div className="space-y-4">{deptData.syllabus.map((item) => (<a key={item.file} href={item.file} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors group"><div className="flex items-center gap-4"><FaFileAlt className="text-gray-400 text-lg" /><div><h3 className="text-base font-bold text-[#00274C] group-hover:text-white transition-colors">{item.title}</h3><p className="text-xs text-[#9CA3AF] group-hover:text-white/50 transition-colors">PDF Document</p></div></div><FaDownload className="text-[#9CA3AF] group-hover:text-gray-400 transition-colors" /></a>))}</div>
           </div>
         )}
 
         {activeTab === "notices" && (
           <div>
             <h2 className="text-2xl font-bold text-[#00274C] mb-8">Department Notices</h2>
-            <div className="space-y-4">{deptData.notices.map((item) => (<a key={item.file} href={item.file} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors group"><div className="flex items-center gap-4"><FaNewspaper className="text-[#FFCB05] text-lg" /><div><h3 className="text-base font-bold text-[#00274C] group-hover:text-white transition-colors">{item.title}</h3><p className="text-xs text-[#9CA3AF] group-hover:text-white/50 transition-colors">PDF Document</p></div></div><FaDownload className="text-[#9CA3AF] group-hover:text-[#FFCB05] transition-colors" /></a>))}</div>
+            <div className="space-y-4">{deptData.notices.map((item) => (<a key={item.file} href={item.file} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors group"><div className="flex items-center gap-4"><FaNewspaper className="text-gray-400 text-lg" /><div><h3 className="text-base font-bold text-[#00274C] group-hover:text-white transition-colors">{item.title}</h3><p className="text-xs text-[#9CA3AF] group-hover:text-white/50 transition-colors">PDF Document</p></div></div><FaDownload className="text-[#9CA3AF] group-hover:text-gray-400 transition-colors" /></a>))}</div>
           </div>
         )}
 
@@ -261,8 +261,8 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
               <h3 className="text-lg font-bold text-[#00274C] mb-2">{deptData.contactHod.name}</h3>
               <p className="text-sm text-[#5C6370] mb-4">Head of Department</p>
               <div className="space-y-3 text-sm text-[#5C6370]">
-                <p className="flex items-center gap-2"><FaPhone className="text-[#FFCB05] text-xs" /><a href={`tel:${deptData.contactHod.phone}`} className="hover:text-[#FFCB05] transition-colors">{deptData.contactHod.phone}</a></p>
-                <p className="flex items-center gap-2"><FaEnvelope className="text-[#FFCB05] text-xs" /><a href={`mailto:${deptData.contactHod.email}`} className="hover:text-[#FFCB05] transition-colors">{deptData.contactHod.email}</a></p>
+                <p className="flex items-center gap-2"><FaPhone className="text-gray-400 text-xs" /><a href={`tel:${deptData.contactHod.phone}`} className="hover:text-gray-400 transition-colors">{deptData.contactHod.phone}</a></p>
+                <p className="flex items-center gap-2"><FaEnvelope className="text-gray-400 text-xs" /><a href={`mailto:${deptData.contactHod.email}`} className="hover:text-gray-400 transition-colors">{deptData.contactHod.email}</a></p>
               </div>
             </div>
           </div>

@@ -78,25 +78,25 @@ export function ContactSection({ config }: ContactSectionProps) {
                   <h3 className="text-base font-bold text-[#00274C] mb-1">Call Us</h3>
                   <p className="text-sm text-[#5C6370]">
                     Landline:{" "}
-                    <a href={`tel:${config.phone.landline}`} className="hover:text-[#FFCB05] transition-colors">
+                    <a href={`tel:${config.phone.landline}`} className="hover:text-gray-400 transition-colors">
                       {config.phone.landline}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
                     Principal:{" "}
-                    <a href={`tel:${config.phone.principal}`} className="hover:text-[#FFCB05] transition-colors">
+                    <a href={`tel:${config.phone.principal}`} className="hover:text-gray-400 transition-colors">
                       {config.phone.principal}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
                     Vice-Principal:{" "}
-                    <a href={`tel:${config.phone.vicePrincipal}`} className="hover:text-[#FFCB05] transition-colors">
+                    <a href={`tel:${config.phone.vicePrincipal}`} className="hover:text-gray-400 transition-colors">
                       {config.phone.vicePrincipal}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
                     Placement Cell:{" "}
-                    <a href={`tel:${config.phone.tpCell}`} className="hover:text-[#FFCB05] transition-colors">
+                    <a href={`tel:${config.phone.tpCell}`} className="hover:text-gray-400 transition-colors">
                       {config.phone.tpCell}
                     </a>
                   </p>
@@ -104,7 +104,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                     Admissions:{" "}
                     {config.phone.inquiry.map((phone, i) => (
                       <span key={phone}>
-                        <a href={`tel:${phone}`} className="hover:text-[#FFCB05] transition-colors">
+                        <a href={`tel:${phone}`} className="hover:text-gray-400 transition-colors">
                           {phone}
                         </a>
                         {i < config.phone.inquiry.length - 1 && " / "}
@@ -122,18 +122,18 @@ export function ContactSection({ config }: ContactSectionProps) {
                 <div>
                   <h3 className="text-base font-bold text-[#00274C] mb-1">Email Us</h3>
                   <p className="text-sm text-[#5C6370]">
-                    <a href={`mailto:${config.email.principal}`} className="hover:text-[#FFCB05] transition-colors">
+                    <a href={`mailto:${config.email.principal}`} className="hover:text-gray-400 transition-colors">
                       {config.email.principal}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
-                    <a href={`mailto:${config.email.deanAcademics}`} className="hover:text-[#FFCB05] transition-colors">
+                    <a href={`mailto:${config.email.deanAcademics}`} className="hover:text-gray-400 transition-colors">
                       {config.email.deanAcademics}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
                     Placement:{" "}
-                    <a href={`mailto:${config.email.tpCell}`} className="hover:text-[#FFCB05] transition-colors">
+                    <a href={`mailto:${config.email.tpCell}`} className="hover:text-gray-400 transition-colors">
                       {config.email.tpCell}
                     </a>
                   </p>
@@ -165,13 +165,13 @@ export function ContactSection({ config }: ContactSectionProps) {
           <div>
             {submitted ? (
               <div className="bg-[#00274C] p-12 md:p-16 flex flex-col items-center justify-center text-center min-h-[500px]">
-                <div className="size-16 flex items-center justify-center bg-[#FFCB05] mb-6">
+                <div className="size-16 flex items-center justify-center bg-gray-100 mb-6">
                   <FaCheckCircle className="text-3xl text-[#00274C]" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">Message Ready</h3>
                 <p className="text-white/70 mb-6 max-w-sm">
                   Your email client should open shortly. If not, reach us at{" "}
-                  <a href={`mailto:${config.email.principal}`} className="text-[#FFCB05] font-bold hover:underline">
+                  <a href={`mailto:${config.email.principal}`} className="text-gray-400 font-bold hover:underline">
                     {config.email.principal}
                   </a>
                 </p>
@@ -180,7 +180,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                     setSubmitted(false);
                     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
                   }}
-                  className="text-sm font-bold text-[#FFCB05] hover:underline"
+                  className="text-sm font-bold text-gray-400 hover:underline"
                 >
                   Send another message
                 </button>
@@ -332,7 +332,7 @@ export function ContactSection({ config }: ContactSectionProps) {
               href="https://www.google.com/maps/place/MBS+College+of+Engineering+%26+Technology/@32.646,74.815,17z"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
+              className="text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors"
             >
               Open in Google Maps →
             </a>

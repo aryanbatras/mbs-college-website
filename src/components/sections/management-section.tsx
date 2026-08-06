@@ -11,7 +11,7 @@ export function ManagementSection({ config }: ManagementSectionProps) {
     <section className="bg-white" aria-label="College Management">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="mb-12 md:mb-16">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
             Leadership
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00274C] leading-[1.05] tracking-tight">

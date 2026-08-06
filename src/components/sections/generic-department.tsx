@@ -53,11 +53,11 @@ export function GenericDepartmentContent({
             </Link>
             <div className="flex items-end justify-between gap-8">
               <div>
-                <p className="text-sm font-semibold tracking-widest uppercase text-[#FFCB05] mb-3">{program.degree} Program</p>
+                <p className="text-sm font-semibold tracking-widest uppercase text-gray-400 mb-3">{program.degree} Program</p>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">{program.title}</h1>
               </div>
               <div className="hidden md:block text-right shrink-0">
-                <div className="text-5xl font-bold text-[#FFCB05]">{program.intake}</div>
+                <div className="text-5xl font-bold text-gray-400">{program.intake}</div>
                 <div className="text-sm text-white/60 mt-1">Annual Intake</div>
               </div>
             </div>
@@ -70,19 +70,19 @@ export function GenericDepartmentContent({
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#FFCB05]">{program.intake}</div>
+              <div className="text-3xl font-bold text-gray-400">{program.intake}</div>
               <div className="text-sm text-white/70 mt-1">Seats</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#FFCB05]">{faculty.length}+</div>
+              <div className="text-3xl font-bold text-gray-400">{faculty.length}+</div>
               <div className="text-sm text-white/70 mt-1">Faculty</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#FFCB05]">{labs.length}</div>
+              <div className="text-3xl font-bold text-gray-400">{labs.length}</div>
               <div className="text-sm text-white/70 mt-1">Labs</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#FFCB05]">{program.established}</div>
+              <div className="text-3xl font-bold text-gray-400">{program.established}</div>
               <div className="text-sm text-white/70 mt-1">Established</div>
             </div>
           </div>
@@ -99,7 +99,7 @@ export function GenericDepartmentContent({
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-5 py-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? "border-[#FFCB05] text-[#00274C]"
+                    ? "border-gray-200 text-[#00274C]"
                     : "border-transparent text-gray-500 hover:text-[#00274C]"
                 }`}
               >
@@ -163,7 +163,7 @@ export function GenericDepartmentContent({
             <div>
               <h2 className="text-3xl font-bold text-[#00274C] mb-6">Vision</h2>
               {program.vision && (
-                <blockquote className="text-lg text-gray-600 leading-relaxed border-l-4 border-[#FFCB05] pl-6 italic">{program.vision}</blockquote>
+                <blockquote className="text-lg text-gray-600 leading-relaxed border-l-4 border-gray-200 pl-6 italic">{program.vision}</blockquote>
               )}
             </div>
             {program.mission && program.mission.length > 0 && (
@@ -172,7 +172,7 @@ export function GenericDepartmentContent({
                 <ul className="space-y-4">
                   {program.mission.map((m, i) => (
                     <li key={i} className="flex gap-4 text-gray-600">
-                      <span className="mt-2 w-2 h-2 shrink-0 bg-[#FFCB05] rounded-full" />
+                      <span className="mt-2 w-2 h-2 shrink-0 bg-gray-100 rounded-full" />
                       <span className="text-lg leading-relaxed">{m}</span>
                     </li>
                   ))}
@@ -289,7 +289,7 @@ export function GenericDepartmentContent({
                   <div key={item.file} className="bg-gray-50 border border-gray-100">
                     <div className="flex items-center justify-between p-6">
                       <div className="flex items-center gap-4">
-                        <FaFileAlt className="text-[#FFCB05] text-xl" />
+                        <FaFileAlt className="text-gray-400 text-xl" />
                         <div>
                           <h3 className="text-base font-bold text-[#00274C]">{item.title}</h3>
                           <p className="text-sm text-gray-500">PDF Document</p>
@@ -322,7 +322,7 @@ export function GenericDepartmentContent({
                   <div key={item.file} className="bg-gray-50 border border-gray-100">
                     <div className="flex items-center justify-between p-6">
                       <div className="flex items-center gap-4">
-                        <FaNewspaper className="text-[#FFCB05] text-xl" />
+                        <FaNewspaper className="text-gray-400 text-xl" />
                         <div>
                           <h3 className="text-base font-bold text-[#00274C]">{item.title}</h3>
                           <p className="text-sm text-gray-500">PDF Document</p>
@@ -372,12 +372,12 @@ export function GenericDepartmentContent({
               <h3 className="text-xl font-bold text-[#00274C] mb-2">{contactHod.name}</h3>
               <p className="text-gray-500 mb-6">Head of Department</p>
               <div className="space-y-4">
-                <a href={`tel:${contactHod.phone}`} className="flex items-center gap-3 text-gray-600 hover:text-[#FFCB05] transition-colors">
-                  <FaPhone className="text-[#FFCB05]" />
+                <a href={`tel:${contactHod.phone}`} className="flex items-center gap-3 text-gray-600 hover:text-gray-400 transition-colors">
+                  <FaPhone className="text-gray-400" />
                   {contactHod.phone}
                 </a>
-                <a href={`mailto:${contactHod.email}`} className="flex items-center gap-3 text-gray-600 hover:text-[#FFCB05] transition-colors">
-                  <FaEnvelope className="text-[#FFCB05]" />
+                <a href={`mailto:${contactHod.email}`} className="flex items-center gap-3 text-gray-600 hover:text-gray-400 transition-colors">
+                  <FaEnvelope className="text-gray-400" />
                   {contactHod.email}
                 </a>
               </div>

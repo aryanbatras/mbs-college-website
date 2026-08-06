@@ -3,12 +3,12 @@ import { FaArrowRight, FaDownload, FaExclamationTriangle } from "react-icons/fa"
 
 export function AdmissionNotice() {
   return (
-    <section className="bg-[#FFCB05]" aria-label="Admission Notice">
+    <section className="bg-gray-100" aria-label="Admission Notice">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-12 md:py-16">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="flex items-start gap-4">
             <div className="size-10 flex items-center justify-center bg-[#00274C] shrink-0">
-              <FaExclamationTriangle className="text-[#FFCB05] text-sm" />
+              <FaExclamationTriangle className="text-gray-400 text-sm" />
             </div>
             <div>
               <h2 className="text-xl md:text-2xl font-bold text-[#00274C] mb-2">
@@ -28,14 +28,14 @@ export function AdmissionNotice() {
               href="https://www.mbscet.edu.in/wp-content/uploads/2026/06/B.Tech-2026-Admission-Form.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#00274C] text-[#FFCB05] px-6 py-3 text-sm font-bold hover:bg-[#1E406B] transition-colors"
+              className="inline-flex items-center gap-2 bg-[#00274C] text-gray-400 px-6 py-3 text-sm font-bold hover:bg-[#1E406B] transition-colors"
             >
               <FaDownload className="text-xs" />
               Download Form
             </a>
             <Link
               href="/admissions"
-              className="inline-flex items-center gap-2 border-2 border-[#00274C] text-[#00274C] px-6 py-3 text-sm font-bold hover:bg-[#00274C] hover:text-[#FFCB05] transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-[#00274C] text-[#00274C] px-6 py-3 text-sm font-bold hover:bg-[#00274C] hover:text-gray-400 transition-colors"
             >
               Admission Details
               <FaArrowRight className="text-xs" />

@@ -52,7 +52,7 @@ export function AboutContent({ config }: AboutContentProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-16 md:mb-24">
           <section>
             <h2 className="text-xl md:text-2xl font-bold text-[#00274C] mb-6">Vision</h2>
-            <blockquote className="text-lg leading-relaxed text-[#5C6370] border-l-2 border-[#FFCB05] pl-6">
+            <blockquote className="text-lg leading-relaxed text-[#5C6370] border-l-2 border-gray-200 pl-6">
               {config.vision}
             </blockquote>
           </section>
@@ -62,7 +62,7 @@ export function AboutContent({ config }: AboutContentProps) {
             <ul className="flex flex-col gap-4">
               {config.mission.map((m, i) => (
                 <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-[#5C6370]">
-                  <FaCheckCircle className="text-[#FFCB05] text-sm mt-1 shrink-0" />
+                  <FaCheckCircle className="text-gray-400 text-sm mt-1 shrink-0" />
                   {m}
                 </li>
               ))}
@@ -102,11 +102,11 @@ export function AboutContent({ config }: AboutContentProps) {
                   </div>
                 )}
                 <div className="flex-1">
-                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-3">
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-3">
                     Chairman&apos;s Message
                   </p>
                   {config.chairman.message && (
-                    <blockquote className="text-base text-[#5C6370] leading-relaxed mb-4 border-l-2 border-[#FFCB05] pl-4">
+                    <blockquote className="text-base text-[#5C6370] leading-relaxed mb-4 border-l-2 border-gray-200 pl-4">
                       {config.chairman.message}
                     </blockquote>
                   )}
@@ -133,11 +133,11 @@ export function AboutContent({ config }: AboutContentProps) {
                   </div>
                 )}
                 <div className="flex-1">
-                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-3">
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-3">
                     Principal&apos;s Message
                   </p>
                   {config.principal.message && (
-                    <blockquote className="text-base text-[#5C6370] leading-relaxed mb-4 border-l-2 border-[#FFCB05] pl-4">
+                    <blockquote className="text-base text-[#5C6370] leading-relaxed mb-4 border-l-2 border-gray-200 pl-4">
                       {config.principal.message}
                     </blockquote>
                   )}
@@ -159,7 +159,7 @@ export function AboutContent({ config }: AboutContentProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[...config.affiliations, config.accreditation].map((item, i) => (
               <div key={i} className="flex items-center gap-3 p-4 bg-[#F9FAFB] border border-[#E5E7EB]">
-                <FaAward className="text-[#FFCB05] shrink-0" />
+                <FaAward className="text-gray-400 shrink-0" />
                 <span className="text-sm text-[#00274C]">{item}</span>
               </div>
             ))}
@@ -170,7 +170,7 @@ export function AboutContent({ config }: AboutContentProps) {
         <div className="pt-8 border-t border-[#E5E7EB]">
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
+            className="group inline-flex items-center gap-3 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors"
           >
             <FaArrowRight className="text-xs rotate-180 transition-transform group-hover:-translate-x-1" />
             Back to Home

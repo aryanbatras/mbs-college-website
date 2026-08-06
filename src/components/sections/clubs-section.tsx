@@ -25,7 +25,7 @@ export function ClubsSection() {
           </div>
           <Link
             href="/campus/clubs"
-            className="inline-flex items-center gap-2 text-base font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors group"
+            className="inline-flex items-center gap-2 text-base font-bold text-[#00274C] hover:text-gray-400 transition-colors group"
           >
             View all clubs
             <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
