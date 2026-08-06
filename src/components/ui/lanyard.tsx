@@ -40,6 +40,7 @@ interface LanyardProps {
   imageFit?: "cover" | "contain";
   lanyardImage?: string | null;
   lanyardWidth?: number;
+  bandColor?: string;
 }
 
 export default function Lanyard({
@@ -52,6 +53,7 @@ export default function Lanyard({
   imageFit = "cover",
   lanyardImage = null,
   lanyardWidth = 1,
+  bandColor = "#00274C",
 }: LanyardProps) {
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== "undefined" && window.innerWidth < 768
@@ -88,6 +90,7 @@ export default function Lanyard({
             imageFit={imageFit}
             lanyardImage={lanyardImage}
             lanyardWidth={lanyardWidth}
+            bandColor={bandColor}
           />
         </Physics>
         <Environment blur={0.75}>
@@ -134,6 +137,7 @@ interface BandProps {
   imageFit: string;
   lanyardImage: string | null;
   lanyardWidth: number;
+  bandColor: string;
 }
 
 function Band({
@@ -145,6 +149,7 @@ function Band({
   imageFit,
   lanyardImage,
   lanyardWidth,
+  bandColor,
 }: BandProps) {
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
@@ -358,7 +363,7 @@ function Band({
         <meshLineGeometry />
         {/* @ts-ignore - meshline extension */}
         <meshLineMaterial
-          color="white"
+          color={bandColor}
           depthTest={false}
           resolution={isMobile ? [1000, 2000] : [1000, 1000]}
           useMap

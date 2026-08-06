@@ -86,6 +86,7 @@ export function Footer({ config }: FooterProps) {
                 imageFit="contain"
                 lanyardImage="/lanyard/lanyard.png"
                 lanyardWidth={1.2}
+                bandColor="#00274C"
               />
             </div>
 
