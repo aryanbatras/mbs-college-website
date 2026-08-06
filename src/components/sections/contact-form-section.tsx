@@ -89,6 +89,12 @@ export function ContactSection({ config }: ContactSectionProps) {
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
+                    Vice-Principal:{" "}
+                    <a href={`tel:${config.phone.vicePrincipal}`} className="hover:text-[#FFCB05] transition-colors">
+                      {config.phone.vicePrincipal}
+                    </a>
+                  </p>
+                  <p className="text-sm text-[#5C6370] mt-1">
                     Placement Cell:{" "}
                     <a href={`tel:${config.phone.tpCell}`} className="hover:text-[#FFCB05] transition-colors">
                       {config.phone.tpCell}
@@ -293,6 +299,43 @@ export function ContactSection({ config }: ContactSectionProps) {
                 </p>
               </form>
             )}
+          </div>
+        </div>
+
+        {/* Google Maps */}
+        <div className="mt-16 md:mt-24">
+          <div className="mb-8">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+              Find Us
+            </p>
+            <h3 className="text-2xl md:text-3xl font-bold text-[#00274C] tracking-tight">
+              Our Location
+            </h3>
+          </div>
+          <div className="w-full h-[400px] bg-[#F9FAFB] overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.5!2d74.815!3d32.646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391e9b3f8037351f%3A0xb9054afb3d23d080!2sMBS%20College%20of%20Engineering%20%26%20Technology!5e0!3m2!1sen!2sin!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="MBS College of Engineering & Technology Location"
+            />
+          </div>
+          <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-sm text-[#5C6370]">
+              {config.address.line1}, {config.address.line2}, {config.address.city} — {config.address.pincode}
+            </p>
+            <a
+              href="https://www.google.com/maps/place/MBS+College+of+Engineering+%26+Technology/@32.646,74.815,17z"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
+            >
+              Open in Google Maps →
+            </a>
           </div>
         </div>
       </div>

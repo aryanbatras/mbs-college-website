@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaArrowRight, FaFileAlt } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import type { NewsArticle, Notice } from "@/lib/content";
 
 interface NewsNoticesProps {
@@ -12,7 +12,6 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
     <section className="bg-white" aria-label="News and notices">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* News */}
           <div>
             <div className="flex items-center justify-between mb-10">
               <div>
@@ -41,14 +40,14 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <time className="text-xs font-medium text-[#9CA3AF]">
+                      <time className="text-xs text-[#9CA3AF]">
                         {new Date(article.date).toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric",
                           year: "numeric",
                         })}
                       </time>
-                      <h3 className="text-base font-semibold text-[#00274C] group-hover:text-[#FFCB05] transition-colors mt-1 leading-snug">
+                      <h3 className="text-base font-medium text-[#00274C] group-hover:text-[#FFCB05] transition-colors mt-1 leading-snug">
                         {article.title}
                       </h3>
                     </div>
@@ -59,7 +58,6 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
             </div>
           </div>
 
-          {/* Notices */}
           <div>
             <div className="flex items-center justify-between mb-10">
               <div>
@@ -87,22 +85,17 @@ export function NewsNotices({ news, notices }: NewsNoticesProps) {
                   className="block py-5 group"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-start gap-3">
-                      <div className="size-8 flex items-center justify-center bg-[#FFCB05]/20 shrink-0 mt-0.5">
-                        <FaFileAlt className="text-[#FFCB05] text-xs" />
-                      </div>
-                      <div>
-                        <time className="text-xs font-medium text-[#9CA3AF]">
-                          {new Date(notice.date).toLocaleDateString("en-US", {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })}
-                        </time>
-                        <h3 className="text-base font-semibold text-[#00274C] group-hover:text-[#FFCB05] transition-colors mt-1 leading-snug">
-                          {notice.title}
-                        </h3>
-                      </div>
+                    <div>
+                      <time className="text-xs text-[#9CA3AF]">
+                        {new Date(notice.date).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </time>
+                      <h3 className="text-base font-medium text-[#00274C] group-hover:text-[#FFCB05] transition-colors mt-1 leading-snug">
+                        {notice.title}
+                      </h3>
                     </div>
                     <FaArrowRight className="text-[#9CA3AF] group-hover:text-[#FFCB05] transition-colors mt-1 shrink-0 text-xs" />
                   </div>

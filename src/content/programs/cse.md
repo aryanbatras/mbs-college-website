@@ -1,28 +1,75 @@
 ---
 code: "CSE"
 title: "Computer Science & Engineering"
-degree: "B.E."
-intake: 108
+degree: "B.Tech"
+intake: 120
 duration: "4 years"
-eligibility: "10+2 (PCM) with JKCET / Minority Quota"
+eligibility: "10+2 (PCM) with JKCET / JEE Main / Management Quota"
 established: 1999
-description: "The Department of Computer Science & Engineering was established in 1999 as one of the founding departments. It focuses on foundational computing, advanced software engineering, AI/ML, data analytics, and web technologies."
+description: "Computer Engineering is a dynamic field that bridges the gap between the physical and the elusive realm of software. It equips you with the knowledge and skills to design, develop, and implement the very foundation of modern technology. The Department of Computer Science & Engineering was established in 1999 as one of the founding departments of MBSCET."
 vision: "To develop competent professionals in the field of Computer Science & Engineering to meet the challenges of Industry & Society."
-mission: [
-  "Imparting quality education in computer science and engineering.",
-  "Fostering research-oriented thinking and robust problem-solving skills.",
-  "Building industry-ready professionals with strong ethical foundations."
-]
-labs: [
-  "Advanced Computing Lab",
-  "Networking & Security Lab",
-  "AI & Machine Learning Lab",
-  "Data Analytics Lab",
-  "Software Engineering Lab"
-]
-highlights: [
-  "Power BI and Python certification workshops",
-  "Industry collaboration with tech firms",
-  "Active coding clubs and hackathons"
-]
+mission:
+  - "Providing contextual and advance knowledge to students in line with industrial trends."
+  - "Promoting effective Teaching and Learning Practices using modern tools and techniques."
+  - "Promoting research and design environment by providing training in emerging softwares and technologies for fostering student's growth."
+  - "Encouraging comprehensive development of the students by inculcating soft skills and ethics in their personality."
+peos:
+  - "Our graduates will have professional competency built with strong foundation in Computer Science and Engineering for global acceptance in industries, higher studies and research."
+  - "Our graduates will develop computing systems, which enables them to analyze, evaluate and provide intelligent elucidation to meet industry challenges."
+  - "Our graduates will compete with the challenges of social and professional concern by use of modern tools and softwares."
+  - "Our graduates will exhibit leadership quality, ethics, communication and lifelong learning skills."
+labs:
+  - "Programming Lab"
+  - "Data Structures Lab"
+  - "Database Management System Lab"
+  - "Computer Networks Lab"
+  - "Operating System Lab"
+  - "Software Engineering Lab"
+  - "Web Technologies Lab"
+  - "Artificial Intelligence Lab"
+  - "Machine Learning Lab"
+  - "Data Analytics Lab"
+  - "Cloud Computing Lab"
+  - "Cyber Security Lab"
+highlights:
+  - "NBA Accredited Department"
+  - "Power BI and Python certification workshops"
+  - "Industry collaboration with tech firms"
+  - "Active coding clubs and hackathons"
+  - "ICT Academy collaborative programs"
+relatedTabs:
+  - label: "Vision & Mission"
+    url: "https://www.mbscet.edu.in/computer-science/vision-mission-cse/"
+  - label: "PEO's, PO's & PSO's"
+    url: "https://www.mbscet.edu.in/computer-science/peos-psos-pos-cse/"
+  - label: "Faculty Profile"
+    url: "https://www.mbscet.edu.in/computer-science/faculty-profile/"
+  - label: "Staff"
+    url: "https://www.mbscet.edu.in/computer-science/csestaff/"
+  - label: "Labs"
+    url: "https://www.mbscet.edu.in/computer-science/cseinfrastructure/cselabs/"
+  - label: "Facilities"
+    url: "https://www.mbscet.edu.in/computer-science/cseinfrastructure/csefacilities/"
+  - label: "Classrooms"
+    url: "https://www.mbscet.edu.in/computer-science/cseinfrastructure/cseclassrooms/"
+  - label: "Contact"
+    url: "https://www.mbscet.edu.in/computer-science/csecontact/"
+  - label: "Teaching Learning Process"
+    url: "https://www.mbscet.edu.in/computer-science/cse-teaching-learning-process/"
+  - label: "Innovative Teaching Methods"
+    url: "https://www.mbscet.edu.in/computer-science/innovative-teaching-methods/"
+  - label: "Alumni Views"
+    url: "https://www.mbscet.edu.in/computer-science/cse-alumini-views/"
+  - label: "Research Papers"
+    url: "https://www.mbscet.edu.in/computer-science/research-papers/"
+  - label: "Staff Achievements"
+    url: "https://www.mbscet.edu.in/computer-science/achievements/staff-v1/"
+  - label: "Student Achievements"
+    url: "https://www.mbscet.edu.in/computer-science/achievements/student-v1/"
+  - label: "NBA Accreditation"
+    url: "https://www.mbscet.edu.in/cse-nba/"
+  - label: "Previous Year Papers"
+    url: "https://www.mbscet.edu.in/cse-previous-papers/"
+  - label: "Notices"
+    url: "https://www.mbscet.edu.in/computer-science/notices-v1/"
 ---

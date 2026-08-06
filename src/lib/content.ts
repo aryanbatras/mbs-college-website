@@ -10,6 +10,7 @@ export interface SiteConfig {
   name: string;
   shortName: string;
   established: number;
+  tagline?: string;
   address: {
     line1: string;
     line2: string;
@@ -30,6 +31,7 @@ export interface SiteConfig {
     vicePrincipal: string;
     deanAcademics: string;
     tpCell: string;
+    cseHead?: string;
   };
   social: {
     facebook: string;
@@ -40,12 +42,23 @@ export interface SiteConfig {
   affiliations: string[];
   accreditation: string;
   accreditations?: { body: string; department: string; status: string }[];
-  programs: { undergraduate: number; postgraduate: number };
-  totalSeats: { ug: number; minorityQuota: number };
-  stats?: { established: number; departments: number; totalIntake: number; faculty: number };
+  stats?: { established: number; departments: number; totalIntake: number; faculty: number; alumni?: string; campusAcres?: number };
   noticeBar: string;
   vision: string;
+  about?: string;
+  aboutExtended?: string;
   mission: string[];
+  chairman?: { name: string; title: string; organization: string; photo?: string; message?: string };
+  advisor?: { name: string; title: string; organization?: string; photo?: string; message?: string };
+  principal?: { name: string; title: string; organization?: string; photo?: string; message?: string };
+  admissionInfo?: { totalIntake: number; governmentQuota: number; minorityQuota: number; tuitionFee: string; note: string; eligibility?: string; admissionProcess?: string };
+  placementInfo?: { incharge: string; contact: string; email: string; highestPackage?: string; averagePackage?: string };
+  departments?: { code: string; name: string; intake: number; nba: boolean }[];
+  topRecruiters?: string[];
+  clubs?: string[];
+  activities?: string[];
+  management?: { name: string; title: string; organization: string; photo: string }[];
+  importantLinks?: { label: string; url: string }[];
 }
 
 export interface Program {
@@ -59,8 +72,10 @@ export interface Program {
   description?: string;
   vision?: string;
   mission?: string[];
+  peos?: string[];
   labs?: string[];
   highlights?: string[];
+  relatedTabs?: { label: string; url: string }[];
   slug: string;
 }
 
@@ -130,8 +145,10 @@ export function getPrograms(): Program[] {
     description: data.description as string | undefined,
     vision: data.vision as string | undefined,
     mission: data.mission as string[] | undefined,
+    peos: data.peos as string[] | undefined,
     labs: data.labs as string[] | undefined,
     highlights: data.highlights as string[] | undefined,
+    relatedTabs: data.relatedTabs as { label: string; url: string }[] | undefined,
     slug,
   }));
 }

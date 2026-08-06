@@ -1,22 +1,19 @@
+"use client";
+
 import Link from "next/link";
-import { FaArrowRight, FaAward } from "react-icons/fa";
-import type { Program } from "@/lib/content";
+import { FaArrowRight } from "react-icons/fa";
 
 const PROGRAMS_DATA = [
-  { code: "CSE", title: "Computer Science & Engineering", intake: 180, duration: "4 Years", nba: true },
-  { code: "IT", title: "Information Technology", intake: 60, duration: "4 Years", nba: false },
-  { code: "ECE", title: "Electronics & Communication", intake: 60, duration: "4 Years", nba: false },
-  { code: "EE", title: "Electrical Engineering", intake: 60, duration: "4 Years", nba: true },
-  { code: "ME", title: "Mechanical Engineering", intake: 60, duration: "4 Years", nba: true },
-  { code: "CE", title: "Civil Engineering", intake: 60, duration: "4 Years", nba: false },
-  { code: "CSE (AI&ML)", title: "CSE with AI & ML", intake: 60, duration: "4 Years", nba: false },
+  { code: "CSE", title: "Computer Science & Engineering", intake: 120, duration: "4 Years", nba: true, description: "Bridging the gap between the physical and the elusive realm of software, equipping students with skills to design, develop, and implement the foundation of modern technology." },
+  { code: "CSE-AIML", title: "CSE with AI & ML", intake: 60, duration: "4 Years", nba: false, description: "Specialized program focusing on artificial intelligence and machine learning applications in computer science." },
+  { code: "IT", title: "Information Technology", intake: 60, duration: "4 Years", nba: false, description: "Focusing on the application of computing and telecommunications systems to store, retrieve, and transmit data." },
+  { code: "ECE", title: "Electronics & Communication Engineering", intake: 30, duration: "4 Years", nba: false, description: "Covering analog and digital transmission, radio engineering, telecommunication, and signal processing." },
+  { code: "EE", title: "Electrical Engineering", intake: 30, duration: "4 Years", nba: true, description: "Dealing with the study and application of electricity, electronics, and electromagnetism across diverse fields." },
+  { code: "ME", title: "Mechanical Engineering", intake: 30, duration: "4 Years", nba: true, description: "Combining engineering physics with mathematics for design, analysis, and manufacturing of mechanical systems." },
+  { code: "CE", title: "Civil Engineering", intake: 60, duration: "4 Years", nba: false, description: "Designing, constructing, and maintaining the physical and naturally built environment including infrastructure." },
 ];
 
-interface ProgramsSectionProps {
-  programs: Program[];
-}
-
-export function ProgramsSection({ programs }: ProgramsSectionProps) {
+export function ProgramsSection() {
   return (
     <section className="bg-white" aria-label="Programs">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
@@ -28,45 +25,50 @@ export function ProgramsSection({ programs }: ProgramsSectionProps) {
             Departments & Programs
           </h2>
           <p className="text-lg text-[#5C6370] mt-4 max-w-2xl">
-            AICTE approved B.Tech programs across 7 departments, with NBA accreditation in CSE, EE, and ME.
+            AICTE approved B.Tech programs across 7 departments. NBA accreditation in CSE, EE, and ME. M.Tech programs approved in CSE, EE, ME, and ECE.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROGRAMS_DATA.map((program) => (
-            <div
+            <Link
               key={program.code}
-              className="group border border-[#E5E7EB] hover:border-[#FFCB05] transition-colors p-6 md:p-8"
+              href={`/academics/${program.code.toLowerCase().replace(/[^a-z]/g, "")}`}
+              className="group block p-8 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="text-xs font-bold text-[#FFCB05] bg-[#FFCB05]/10 px-2 py-1">
+              <div className="flex items-center justify-between mb-5">
+                <span className="text-xs font-bold text-[#00274C] group-hover:text-[#FFCB05] transition-colors tracking-wider">
                   {program.code}
-                </div>
+                </span>
                 {program.nba && (
-                  <div className="flex items-center gap-1 text-[9px] font-bold text-[#00274C] bg-[#FFCB05] px-1.5 py-0.5">
-                    <FaAward className="text-[8px]" />
+                  <span className="text-[9px] font-bold bg-[#FFCB05] text-[#00274C] px-1.5 py-0.5">
                     NBA
-                  </div>
+                  </span>
                 )}
               </div>
-              <h3 className="text-base md:text-lg font-bold text-[#00274C] leading-tight mb-3">
+              <h3 className="text-lg font-bold text-[#00274C] group-hover:text-white leading-tight mb-3 transition-colors">
                 {program.title}
               </h3>
-              <p className="text-sm text-[#5C6370] mb-4">
-                {program.duration} &middot; {program.intake} Seats
+              <p className="text-sm text-[#5C6370] group-hover:text-white/60 mb-4 transition-colors leading-relaxed">
+                {program.description}
               </p>
-              <Link
-                href={`/academics/${program.code.toLowerCase().replace(/[^a-z]/g, '')}`}
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors group/link"
-              >
-                Learn More
-                <FaArrowRight className="text-xs transition-transform group-hover/link:translate-x-1" />
-              </Link>
-            </div>
+              <div className="flex items-center justify-between mt-auto pt-4 border-t border-[#E5E7EB] group-hover:border-white/10 transition-colors">
+                <span className="text-xs text-[#9CA3AF] group-hover:text-white/40 transition-colors">
+                  {program.duration} &middot; {program.intake} Seats
+                </span>
+                <span className="inline-flex items-center gap-1 text-sm font-bold text-[#00274C] group-hover:text-[#FFCB05] transition-colors">
+                  Details
+                  <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-sm text-[#5C6370]">
+            M.Tech programs approved by AICTE in CSE, EE, ME, and ECE
+          </p>
           <Link
             href="/academics"
             className="inline-flex items-center gap-2 text-base font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors group"

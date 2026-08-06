@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import type { Program, FacultyMember } from "@/lib/content";
-import { ArrowLeft, Users } from "lucide-react";
+import { ArrowLeft, Users, ExternalLink } from "lucide-react";
 
 interface DepartmentContentProps {
   program: Program;
@@ -169,6 +169,51 @@ export function DepartmentContent({ program, faculty = [] }: DepartmentContentPr
                 </li>
               ))}
             </ul>
+          </motion.section>
+        )}
+
+        {/* PEOs */}
+        {program.peos && program.peos.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="mt-12 md:mt-16"
+          >
+            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Program Educational Objectives (PEOs)</h2>
+            <ol className="flex flex-col gap-4 list-decimal list-inside">
+              {program.peos.map((peo, i) => (
+                <li key={i} className="text-[15px] text-ink-muted pl-2">
+                  <span className="font-medium text-ink">PEO{i + 1}:</span> {peo}
+                </li>
+              ))}
+            </ol>
+          </motion.section>
+        )}
+
+        {/* Related Tabs / Resources */}
+        {program.relatedTabs && program.relatedTabs.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-12 md:mt-16"
+          >
+            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Related Resources</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {program.relatedTabs.map((tab, i) => (
+                <a
+                  key={i}
+                  href={tab.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 px-4 py-3 text-sm text-ink-muted bg-ink/[0.03] hover:bg-ink/[0.06] transition-colors"
+                >
+                  <ExternalLink className="size-3.5 shrink-0 text-ink-faint group-hover:text-accent transition-colors" />
+                  <span>{tab.label}</span>
+                </a>
+              ))}
+            </div>
           </motion.section>
         )}
       </div>

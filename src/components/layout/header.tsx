@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaBars, FaTimes, FaPhone, FaChevronDown, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaBars, FaTimes, FaChevronDown, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
 
 const NAV_ITEMS = [
@@ -15,6 +15,7 @@ const NAV_ITEMS = [
       { label: "About Us", href: "/about" },
       { label: "College Administration", href: "/about/management" },
       { label: "Chairman's Desk", href: "/about/chairman" },
+      { label: "Advisor's Desk", href: "/about/chairman" },
       { label: "Principal's Desk", href: "/about/principal" },
     ],
   },
@@ -28,7 +29,6 @@ const NAV_ITEMS = [
       { label: "Electrical Engineering", href: "/academics/ee", badge: "NBA" },
       { label: "Mechanical Engineering", href: "/academics/me", badge: "NBA" },
       { label: "Civil Engineering", href: "/academics/civil" },
-      { label: "MCA", href: "/academics/mca" },
       { label: "Applied Science & Humanities", href: "/academics" },
     ],
   },
@@ -39,7 +39,7 @@ const NAV_ITEMS = [
     children: [
       { label: "Placement Cell", href: "/placements" },
       { label: "Placement Record", href: "/placements" },
-      { label: "Activities", href: "/placements" },
+      { label: "Training Activities", href: "/placements" },
     ],
   },
   {
@@ -47,9 +47,9 @@ const NAV_ITEMS = [
     href: "/campus",
     children: [
       { label: "Facilities", href: "/campus" },
+      { label: "Student Clubs", href: "/campus/clubs" },
       { label: "Photo Gallery", href: "/campus/galleries" },
       { label: "Video Gallery", href: "/campus/video-gallery" },
-      { label: "Student Clubs", href: "/campus/clubs" },
       { label: "Virtual Tour", href: "/campus" },
     ],
   },
@@ -73,6 +73,18 @@ export function Header({ config }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -95,7 +107,7 @@ export function Header({ config }: HeaderProps) {
                 priority
               />
             </div>
-            <div className="hidden sm:block">
+            <div className="sm:block">
               <div
                 className={`text-sm font-bold tracking-tight leading-tight transition-colors duration-300 ${
                   scrolled ? "text-[#00274C]" : "text-white"
@@ -206,7 +218,10 @@ export function Header({ config }: HeaderProps) {
                 <div className="relative size-10 overflow-hidden">
                   <Image src="/logo.png" alt="MBSCET Logo" fill className="object-contain" />
                 </div>
-                <span className="text-sm font-bold text-[#00274C]">MBSCET</span>
+                <div>
+                  <span className="text-sm font-bold text-[#00274C]">MBSCET</span>
+                  <span className="block text-[10px] text-[#5C6370]">Est. {config.established} &middot; Jammu</span>
+                </div>
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}
@@ -215,31 +230,6 @@ export function Header({ config }: HeaderProps) {
               >
                 <FaTimes className="text-xl" />
               </button>
-            </div>
-
-            {/* Quick actions */}
-            <div className="grid grid-cols-2 gap-3 mb-8">
-              <Link
-                href="/admissions"
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-[#FFCB05] text-[#00274C] text-sm font-bold"
-              >
-                Apply Now
-              </Link>
-              <a
-                href={`tel:${config.phone.principal}`}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-[#00274C] text-[#FFCB05] text-sm font-bold"
-              >
-                <FaPhone className="text-xs" />
-                Call Us
-              </a>
-            </div>
-
-            {/* NBA Accreditation badge */}
-            <div className="mb-6 p-4 bg-[#FFCB05]/10 border border-[#FFCB05]/30">
-              <p className="text-xs font-bold text-[#00274C] mb-1">NBA Accredited</p>
-              <p className="text-[11px] text-[#5C6370]">CSE, Electrical Engineering, Mechanical Engineering</p>
             </div>
 
             {/* Nav links */}
@@ -292,8 +282,18 @@ export function Header({ config }: HeaderProps) {
               ))}
             </nav>
 
+            {/* Contact info */}
+            <div className="mt-8 pt-6 border-t border-[#E5E7EB]">
+              <p className="text-xs font-bold text-[#00274C] mb-3">Contact</p>
+              <div className="space-y-2 text-sm text-[#5C6370]">
+                <p>Landline: {config.phone.landline}</p>
+                <p>Principal: {config.phone.principal}</p>
+                <p>Email: {config.email.principal}</p>
+              </div>
+            </div>
+
             {/* Social links */}
-            <div className="flex items-center gap-4 mt-8 pt-6 border-t border-[#E5E7EB]">
+            <div className="flex items-center gap-4 mt-6">
               {config.social.facebook && (
                 <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-[#5C6370] hover:text-[#00274C] transition-colors" aria-label="Facebook">
                   <FaFacebookF className="text-lg" />

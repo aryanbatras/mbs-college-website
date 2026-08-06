@@ -2,6 +2,7 @@
   "name": "Mahant Bachittar Singh College of Engineering & Technology",
   "shortName": "MBSCET",
   "established": 1999,
+  "tagline": "AICTE Approved &middot; Affiliated to University of Jammu",
   "address": {
     "line1": "Babliana, Jeevan Nagar Road",
     "line2": "P.O. Miran Sahib",
@@ -20,13 +21,14 @@
   "email": {
     "principal": "principal@mbscet.edu.in",
     "vicePrincipal": "vice.principal@mbscet.edu.in",
-    "deanAcademics": "academics@mbscet.edu.in",
-    "tpCell": "tpcell@mbscet.edu.in"
+    "deanAcademics": "dean.academics@mbscet.edu.in",
+    "tpCell": "tpcell@mbscet.edu.in",
+    "cseHead": "head.cse@mbscet.edu.in"
   },
   "social": {
     "facebook": "https://www.facebook.com/mbscet1999/",
     "instagram": "https://instagram.com/mbscet1999",
-    "youtube": "",
+    "youtube": "https://www.youtube.com/@mbscetjammu",
     "linkedin": "https://www.linkedin.com/company/mbscet-jammu"
   },
   "affiliations": [
@@ -40,17 +42,177 @@
     { "body": "NBA", "department": "Mechanical Engineering", "status": "Accredited" }
   ],
   "accreditation": "NBA Accredited: CSE, EE, ME Departments",
-  "noticeBar": "Admissions open for 2026-27 B.Tech programs. Apply now!",
-  "vision": "To be a globally acclaimed technical institution for providing contemporary education and fostering research, innovation and professional ethics to serve the society.",
+  "noticeBar": "Admissions open for 2026-27 B.Tech programs. Session 2026-27 has started. Apply now!",
+  "vision": "To be globally acclaimed technical institution for aspiring technocrats and continuously striving to explore new vistas of opportunities.",
   "mission": [
-    "Providing contemporary and advanced knowledge of engineering and sciences among students in a coordinated and integrated manner.",
+    "Providing contemporary and advanced knowledge of engineering & sciences among students in a coordinated and integrated manner.",
     "Inculcating problem-solving, research and innovation skills among students to meet the dynamic industrial and societal needs.",
     "Fostering professional ethics, leadership qualities and human values among students for sustainable development."
   ],
+  "about": "Mahant Bachittar Singh College of Engineering & Technology has been established by Sant Manjit Singh Trust registered under the aegis of Dera Sant Pura Nangali Sahib Poonch, J&K (UT), India. The Dera traces its roots back to three disciples of the 10th Sikh Guru, Guru Gobind Singh Ji, who were sent to the hilly state of Jammu & Kashmir to preach the message of love, universal brotherhood, oneness of God, and service to humanity.",
+  "aboutExtended": "The fourth successor, Sant Bhai Mela Singh Ji, established a permanent center called a Dera at village Nangali on the Drungly stream (5 km off Poonch Town) in 1803 AD, known as Shiromani Sant Pura Dera Nangali Sahib. The Dera has historically been visited by Maharaja Ranjit Singh (in 1814), Maharaja Gulab Singh, and numerous other dignitaries and devotees. In 1947, Mahant Bachittar Singh Ji foresaw the uprooting of over 90% of the Hindu-Sikh population from Poonch, Muzaffarabad, and Kashmir, leading to their resettlement in Jammu. He purchased land at Digiana (Jammu) and established the Sant Mela Singh Technical Ashram, which became a socio-religious-economic-educational hub for the Sikh minority in J&K. Recognizing that technical education was essential for the future and noting that deserving minority students secured very few seats in government institutions, Late Mahant Bachittar Singh Ji initiated the establishment of an engineering college as a minority institution prior to his passing in November 1991. The mission was carried forward by his successor, Sant Manjit Singh. The project was initiated in 1993, received final approval from the J&K Government in 1998 and AICTE in 1999, and obtained affiliation with the University of Jammu in July 1999 (with the first batch starting in October 1999-2000).",
+  "management": [
+    {
+      "name": "S. Gurnam Singh",
+      "title": "Chairman",
+      "organization": "Sant Manjit Singh Trust",
+      "photo": "/media/management/chairman.png"
+    },
+    {
+      "name": "S. Lakhbir Singh Bawa",
+      "title": "Advisor",
+      "organization": "Sant Manjit Singh Trust",
+      "photo": "/media/management/advisor.png"
+    },
+    {
+      "name": "Dr. Nitin Ghawghawe",
+      "title": "Principal",
+      "organization": "MBSCET",
+      "photo": "/media/management/principal.jpeg"
+    },
+    {
+      "name": "Vice-Principal",
+      "title": "Vice-Principal",
+      "organization": "MBSCET",
+      "photo": "/media/management/vice-principal.jpg"
+    },
+    {
+      "name": "Dean Academics",
+      "title": "Dean Academics",
+      "organization": "MBSCET",
+      "photo": "/media/management/dean.png"
+    },
+    {
+      "name": "DSW",
+      "title": "Dean Student Welfare",
+      "organization": "MBSCET",
+      "photo": "/media/management/dsw.png"
+    }
+  ],
+  "chairman": {
+    "name": "S. Gurnam Singh",
+    "title": "Chairman",
+    "organization": "Sant Manjit Singh Trust",
+    "photo": "/media/management/chairman.png",
+    "message": "We in the MBSCET are into enabling and honing the young and dynamic minds with desirable human values dovetailed with the state of art technology in the ever challenging and refined realm of Engineering science. Our sincere endeavor shall be to launch suitably trained human material into higher orbits of an even-keeled society. To achieve the above stated goals we humbly claim that all necessary ingredients and matrix are in place in the College thought, philosophy and ambient campus. Having already admitted the 19th batch of students in the five permitted disciplines of Engineering sciences, the MBSCET has earned the unique honor of being the oldest and most popular College in the J&K State in the Non-Governmental sector. Its minority character is an additional grace to the community."
+  },
+  "advisor": {
+    "name": "S. Lakhbir Singh Bawa",
+    "title": "Advisor",
+    "organization": "Sant Manjit Singh Trust",
+    "photo": "/media/management/advisor.png",
+    "message": ""
+  },
+  "principal": {
+    "name": "Dr. Nitin Ghawghawe",
+    "title": "Principal",
+    "organization": "MBSCET",
+    "photo": "/media/management/principal.jpeg",
+    "message": "The Institute, commonly referred as MBSCET, was started functioning in 1999 with 6 Under Graduate Engineering Programmes under the administrative control of Sant Manjit Singh Trust. The Institute strives to impart quality technical education to the students who have always proved their excellence in university and other competitive examinations. Although academics is the top priority, the students are motivated to participate in co-curricular and extracurricular activities. A conducive environment and opportunities are made available to each one of the students so that the focus is always on their 360-degree development."
+  },
+  "admissionInfo": {
+    "totalIntake": 330,
+    "governmentQuota": 165,
+    "minorityQuota": 165,
+    "tuitionFee": "45,000",
+    "note": "Annual Tuition fee 45000/- plus University & Other charges (as applicable)",
+    "eligibility": "10+2 with Physics, Mathematics and Chemistry from a recognized board",
+    "admissionProcess": "Through JKBOPEE / JEE Main counseling and Management/Minority quota"
+  },
+  "placementInfo": {
+    "incharge": "Prof. Dr. Sanjeev Singh",
+    "contact": "+91-9419130161",
+    "email": "tpcell@mbscet.edu.in",
+    "highestPackage": "7.2 LPA",
+    "averagePackage": "3.5 LPA"
+  },
+  "departments": [
+    { "code": "CSE", "name": "Computer Science & Engineering", "intake": 120, "nba": true },
+    { "code": "IT", "name": "Information Technology", "intake": 60, "nba": false },
+    { "code": "ECE", "name": "Electronics & Communication Engineering", "intake": 30, "nba": false },
+    { "code": "EE", "name": "Electrical Engineering", "intake": 30, "nba": true },
+    { "code": "ME", "name": "Mechanical Engineering", "intake": 30, "nba": true },
+    { "code": "CE", "name": "Civil Engineering", "intake": 60, "nba": false }
+  ],
+  "topRecruiters": [
+    "TCS",
+    "Infosys",
+    "Wipro",
+    "HCL Technologies",
+    "Tech Mahindra",
+    "L&T",
+    "Kandhari Beverages (Coca-Cola)",
+    "Ceasefire Industries",
+    "Indian Army",
+    "Indian Air Force",
+    "NHPC",
+    "PlanetSpark",
+    "Manhattan Associates",
+    "Itenic Solutions",
+    "Avi Software"
+  ],
+  "clubs": [
+    "Astronomy Club",
+    "Coding and Language Club",
+    "Virina Club",
+    "Music Club",
+    "Electrical & Electronics Hobby Club",
+    "Automobile Club",
+    "Robotics Club",
+    "Drone Club",
+    "E-Yantra Club",
+    "Trishakti Club"
+  ],
+  "activities": [
+    "Aarohan — Annual Techno-Cultural Festival",
+    "Fresher Fiesta — Welcome Event for New Students",
+    "Engineering Day Celebrations",
+    "NSS Old Age Home Visits",
+    "Blood Donation Camps",
+    "Industrial Visits & Factory Tours",
+    "Technical Seminars & Workshops",
+    "Faculty Development Programmes",
+    "SOTI Snap Training by Winnovation",
+    "ICT Academy Collaborative Programs",
+    "GDG Build with AI Workshop",
+    "Traffic Rules Awareness Program",
+    "MSME Seminars",
+    "Guest Speaker Sessions"
+  ],
+  "importantLinks": [
+    { "label": "Mandatory Disclosure", "url": "https://www.mbscet.edu.in/mandatory-disclosure/" },
+    { "label": "AICTE Approvals", "url": "https://www.mbscet.edu.in/acite_approvals" },
+    { "label": "Anti Ragging", "url": "https://www.mbscet.edu.in/anti-ragging/" },
+    { "label": "Grievance Cell", "url": "https://www.mbscet.edu.in/grievances-redressal-cell/" },
+    { "label": "Vidya Luxumi Education Loans", "url": "https://www.mbscet.edu.in/vidya-luxumi/" },
+    { "label": "JGate Journals Subscription", "url": "https://www.mbscet.edu.in/jgate/" },
+    { "label": "AICTE Suggested Books", "url": "https://www.mbscet.edu.in/ict-books/" },
+    { "label": "National Digital Library", "url": "https://www.mbscet.edu.in/national-digital-library/" },
+    { "label": "College Magazine", "url": "https://www.mbscet.edu.in/college-magazine/" },
+    { "label": "College Newsletter", "url": "https://www.mbscet.edu.in/college-newsletter/" },
+    { "label": "College Calendar", "url": "https://www.mbscet.edu.in/college-calendar/" },
+    { "label": "Alumni Registration", "url": "https://www.mbscet.edu.in/alumni-registration/" },
+    { "label": "Virtual Tour", "url": "https://www.mbscet.edu.in/campus-virtual-tour/" },
+    { "label": "AICTE Feedback", "url": "https://www.mbscet.edu.in/aicte-feedback/" }
+  ],
+  "recentNews": [
+    "Five-Days Faculty Development Programme on Digital Marketing at MBSCET",
+    "MBSCET Organizes Campus Placement Drive with Kandhari Beverages Pvt. Ltd.",
+    "MBSCET organized Seminar on the Concept of Financial Literacy",
+    "Department of IT Organized One Day Session on PowerBI",
+    "GDG 'Build with AI' Workshop held on 11th May 2024",
+    "Traffic Rules Awareness Program on 3rd May 2024",
+    "Mannat Abrol placed at PlanetSpark through campus recruitment",
+    "Blood Donation Camp organized by NSS unit",
+    "MSME Seminar on emerging technologies",
+    "Industrial Visit to MDL Sewerage Treatment Plant by Mechanical Engineering"
+  ],
   "stats": {
     "established": 1999,
-    "departments": 7,
-    "totalIntake": 490,
-    "faculty": 50
+    "departments": 6,
+    "totalIntake": 330,
+    "faculty": 50,
+    "alumni": "2500+",
+    "campusAcres": 25
   }
 }

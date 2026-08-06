@@ -5,25 +5,25 @@ import { FaChevronLeft, FaChevronRight, FaQuoteLeft, FaStar } from "react-icons/
 
 const TESTIMONIALS = [
   {
-    quote: "MBSCET gave me the foundation I needed. The faculty genuinely cares about every student's growth, both academically and personally.",
+    quote: "MBSCET gave me the foundation I needed. The faculty genuinely cares about every student's growth, both academically and personally. The placement cell prepared us thoroughly for the industry.",
+    author: "Mannat Abrol",
+    role: "Placed at PlanetSpark",
+    company: "Campus Recruitment 2024",
+  },
+  {
+    quote: "The training and placement cell organized regular mock interviews, coding bootcamps, and industry visits. This hands-on approach made the transition from college to corporate seamless.",
     author: "Priya Sharma",
     role: "CSE Graduate, 2022",
     company: "Currently at Infosys",
   },
   {
-    quote: "The placement cell prepared us thoroughly. From mock interviews to industry visits, everything was designed to make us industry-ready.",
-    author: "Rahul Kumar",
-    role: "IT Graduate, 2023",
-    company: "Currently at Wipro",
-  },
-  {
-    quote: "As a parent, I felt reassured knowing my child was in safe hands. The college maintains excellent discipline and provides real opportunities.",
+    quote: "As a parent, I felt reassured knowing my child was in safe hands. The college maintains excellent discipline and provides real opportunities for career growth.",
     author: "Sunita Devi",
     role: "Parent of ECE Student",
     company: "Jammu",
   },
   {
-    quote: "The labs and facilities here are comparable to any top institution. We had hands-on experience with the latest technology from day one.",
+    quote: "The labs and facilities here are comparable to any top institution. We had hands-on experience with the latest technology from day one. The NBA accreditation speaks for the quality.",
     author: "Amit Singh",
     role: "EE Graduate, 2021",
     company: "Currently at NHPC",

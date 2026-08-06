@@ -1,24 +1,26 @@
 import Link from "next/link";
-import { FaArrowRight, FaBuilding, FaGraduationCap, FaLaptop, FaUsers } from "react-icons/fa";
+import { FaArrowRight, FaPhone, FaEnvelope } from "react-icons/fa";
 
 const STATS = [
-  { icon: FaBuilding, value: "20+", label: "Companies Visited" },
-  { icon: FaGraduationCap, value: "80%", label: "Placement Rate" },
-  { icon: FaLaptop, value: "7.2L", label: "Highest Package" },
-  { icon: FaUsers, value: "490+", label: "Students Placed" },
+  { value: "15+", label: "Recruiting Companies" },
+  { value: "7.2 LPA", label: "Highest Package" },
+  { value: "3.5 LPA", label: "Average Package" },
+  { value: "80%", label: "Placement Rate" },
 ];
 
 const TOP_RECRUITERS = [
+  "TCS",
   "Infosys",
   "Wipro",
+  "HCL Technologies",
+  "Tech Mahindra",
   "L&T",
   "Kandhari Beverages",
-  "Ceasefire Industries",
+  "NHPC",
   "Indian Army",
   "Indian Air Force",
+  "Ceasefire Industries",
   "PlanetSpark",
-  "RVS iGlobal",
-  "Avi Software",
 ];
 
 export function PlacementSection() {
@@ -26,7 +28,6 @@ export function PlacementSection() {
     <section className="bg-[#00274C]" aria-label="Placements">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left - Stats */}
           <div>
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
               Training & Placement
@@ -40,14 +41,26 @@ export function PlacementSection() {
 
             <div className="grid grid-cols-2 gap-6 mb-10">
               {STATS.map((stat) => (
-                <div key={stat.label} className="border-t border-[#FFCB05]/30 pt-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <stat.icon className="text-[#FFCB05] text-lg" />
-                    <span className="text-3xl md:text-4xl font-bold text-white">{stat.value}</span>
-                  </div>
+                <div key={stat.label} className="border-t border-white/10 pt-4">
+                  <p className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</p>
                   <p className="text-sm text-white/60">{stat.label}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="p-6 bg-white/5 mb-8">
+              <h4 className="text-base font-bold text-white mb-4">Contact T&P Cell</h4>
+              <div className="space-y-3 text-sm text-white/70">
+                <p className="font-medium text-white/90">Prof. Dr. Sanjeev Singh (Incharge)</p>
+                <p className="flex items-center gap-2">
+                  <FaPhone className="text-[#FFCB05] text-xs" />
+                  <a href="tel:+91-9419130161" className="hover:text-[#FFCB05] transition-colors">+91-9419130161</a>
+                </p>
+                <p className="flex items-center gap-2">
+                  <FaEnvelope className="text-[#FFCB05] text-xs" />
+                  <a href="mailto:tpcell@mbscet.edu.in" className="hover:text-[#FFCB05] transition-colors">tpcell@mbscet.edu.in</a>
+                </p>
+              </div>
             </div>
 
             <Link
@@ -59,28 +72,17 @@ export function PlacementSection() {
             </Link>
           </div>
 
-          {/* Right - Recruiters */}
           <div>
             <h3 className="text-xl font-bold text-white mb-8">Top Recruiters</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 mb-10">
               {TOP_RECRUITERS.map((company) => (
                 <div
                   key={company}
-                  className="bg-[#1E406B] p-4 flex items-center justify-center text-center"
+                  className="bg-white/5 p-4 flex items-center justify-center text-center"
                 >
-                  <span className="text-sm font-bold text-white/80">{company}</span>
+                  <span className="text-sm font-medium text-white/80">{company}</span>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-8 p-6 bg-[#FFCB05]/10 border border-[#FFCB05]/30">
-              <h4 className="text-base font-bold text-[#FFCB05] mb-2">Placement Highlights</h4>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li>Highest Package: 7.2 LPA</li>
-                <li>Average Package: 3.5 LPA</li>
-                <li>Companies: Infosys, Wipro, L&T, and more</li>
-                <li>Sectors: IT, Core Engineering, Defense</li>
-              </ul>
             </div>
           </div>
         </div>

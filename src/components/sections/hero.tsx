@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
 import BlurText from "@/components/design-system/BlurText";
 
 const HERO_IMAGES = [
   "/media/homepage/admin-block.jpg",
   "/media/homepage/auditorium.jpg",
   "/media/homepage/central-park.jpg",
+  "/media/homepage/library.jpg",
+  "/media/homepage/seminar-hall.jpg",
+  "/media/homepage/campus-view-1.jpg",
+  "/media/homepage/playground.jpg",
 ];
 
 export function Hero() {
@@ -26,7 +28,7 @@ export function Hero() {
       className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
       aria-label="Welcome"
     >
-      {/* Background images */}
+      {/* Background images with crossfade */}
       {HERO_IMAGES.map((src, i) => (
         <div
           key={src}
@@ -37,77 +39,54 @@ export function Hero() {
           <img
             src={src}
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105"
             loading={i === 0 ? "eager" : "lazy"}
           />
         </div>
       ))}
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         {/* NBA Badge */}
-        <div className="inline-flex items-center gap-2 bg-[#FFCB05] text-[#00274C] px-4 py-1.5 text-xs font-bold mb-8 uppercase tracking-wider">
-          NBA Accredited &middot; CSE, EE, ME
+        <div className="inline-flex items-center gap-2 bg-[#FFCB05]/95 text-[#00274C] px-5 py-2 text-xs font-bold mb-8 uppercase tracking-widest">
+          NBA Accredited &middot; CSE, EE &amp; ME
         </div>
 
         {/* Title - Line 1 */}
-        <div className="mb-2">
+        <div className="mb-3">
           <BlurText
             text="MAHANT BACHITTAR SINGH"
-            delay={100}
+            delay={50}
             animateBy="words"
             direction="top"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white uppercase tracking-tight"
           />
         </div>
 
         {/* Title - Line 2 */}
-        <div className="mb-8">
+        <div className="mb-10">
           <BlurText
             text="COLLEGE OF ENGINEERING & TECHNOLOGY"
-            delay={300}
+            delay={80}
             animateBy="words"
             direction="top"
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#FFCB05] uppercase tracking-tight"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#FFCB05] uppercase tracking-tight"
           />
         </div>
 
         {/* Affiliations */}
-        <p className="text-sm sm:text-base text-white/60 font-medium tracking-widest uppercase mb-10">
+        <p className="text-xs sm:text-sm text-white/60 font-medium tracking-widest uppercase">
           AICTE Approved &middot; Affiliated to University of Jammu &middot; Est. 1999
         </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/admissions"
-            className="inline-flex items-center gap-3 bg-[#FFCB05] text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-white transition-colors"
-          >
-            Apply Now
-            <FaArrowRight className="text-xs" />
-          </Link>
-          <Link
-            href="/academics"
-            className="inline-flex items-center gap-3 border-2 border-white/40 text-white px-8 py-4 text-sm font-bold hover:border-white hover:bg-white/10 transition-all"
-          >
-            Our Departments
-          </Link>
-        </div>
       </div>
 
-      {/* Slide indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
-        {HERO_IMAGES.map((_, i) => (
-          <div
-            key={i}
-            className={`h-0.5 transition-all duration-700 ${
-              i === current ? "w-8 bg-[#FFCB05]" : "w-4 bg-white/30"
-            }`}
-          />
-        ))}
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="text-[10px] text-white/40 uppercase tracking-widest">Scroll</span>
+        <div className="w-[1px] h-8 bg-gradient-to-b from-white/40 to-transparent" />
       </div>
     </section>
   );

@@ -1,17 +1,54 @@
 ---
 code: "ECE"
 title: "Electronics & Communication Engineering"
-degree: "B.E."
+degree: "B.Tech"
 intake: 30
 duration: "4 years"
-eligibility: "10+2 (PCM) with JKCET / Minority Quota"
-description: "The Department of Electronics & Communication Engineering covers core electronics, signal processing, embedded systems, and interdisciplinary workshops including nanotechnology."
-vision: "To produce skilled electronics engineers capable of contributing to technological advancement and societal development."
-labs: [
-  "Analog & Digital Electronics Lab",
-  "Communication Systems Lab",
-  "Embedded Systems Lab",
-  "VLSI Design Lab",
-  "Signal Processing Lab"
-]
+eligibility: "10+2 (PCM) with JKCET / JEE Main / Management Quota"
+established: 1999
+description: "The Department of Electronics & Communication Engineering covers core electronics, signal processing, embedded systems, and interdisciplinary workshops including nanotechnology. The department focuses on creating professionals with strong technical foundations."
+vision: "To emerge as one of the leading Electronics and Communication Engineering programs in the region committed to achieve excellence consistent with industrial and social demands."
+mission:
+  - "Providing professional competencies in the field of Electronics and Communication engineering through modular programs in addition to existing curriculum."
+  - "Promoting holistic development among students and faculty by engaging in joint ventures with internationally acclaimed academia & industrial organizations."
+  - "Creating culture of excellence in teaching-learning using hi-tech techniques and collaborating with other institutions along with focus on faculty development programmes."
+peos:
+  - "The graduate will be able to exhibit professional competency in the field of Electronics and Communication engineering to synthesize optimal and socially acceptable solutions."
+  - "The graduate will be able to develop innovative ideas and find creative solutions to meet professional challenges."
+  - "The graduate will be able to pursue post graduate and research-based programs to outrival in employment, higher education and industries in allied and diverse fields."
+  - "The graduate will be able to demonstrate high professional ethics and strive for lifelong learning while working in a team or as an individual."
+labs:
+  - "Analog & Digital Electronics Lab"
+  - "Communication Systems Lab"
+  - "Embedded Systems Lab"
+  - "VLSI Design Lab"
+  - "Signal Processing Lab"
+  - "Microwave Engineering Lab"
+highlights:
+  - "Industry-oriented curriculum"
+  - "Modern laboratory infrastructure"
+  - "Nanotechnology workshops"
+relatedTabs:
+  - label: "Vision & Mission"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/vision-mission-ece/"
+  - label: "PEO's, PO's & PSO's"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/peos-psos-pos-ece/"
+  - label: "Faculty Profile"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/faculty-profile/"
+  - label: "Staff"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/ece-staff/"
+  - label: "Syllabus"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/syllabus/"
+  - label: "Achievements"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/achievements/"
+  - label: "Staff Achievements"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/achievements/staff/"
+  - label: "Student Achievements"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/achievements/student/"
+  - label: "Innovative Teaching Techniques"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/innovative-teaching-techniques-ec/"
+  - label: "Previous Year Papers"
+    url: "https://www.mbscet.edu.in/ece-previous-papers/"
+  - label: "Notices"
+    url: "https://www.mbscet.edu.in/electronic-and-communication-v1/notices/"
 ---

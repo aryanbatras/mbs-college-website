@@ -1,17 +1,64 @@
 ---
 code: "ME"
 title: "Mechanical Engineering"
-degree: "B.E."
+degree: "B.Tech"
 intake: 30
 duration: "4 years"
-eligibility: "10+2 (PCM) with JKCET / Minority Quota"
-description: "The Department of Mechanical Engineering covers manufacturing processes, additive manufacturing, thermal engineering, and mechanical design. Faculty include specialists in additive manufacturing and mechanical design."
-vision: "To produce competent mechanical engineers with strong technical and practical skills."
-labs: [
-  "Manufacturing Workshop",
-  "Thermal Engineering Lab",
-  "CAD/CAM Lab",
-  "Fluid Mechanics Lab",
-  "Additive Manufacturing Lab"
-]
+eligibility: "10+2 (PCM) with JKCET / JEE Main / Management Quota"
+established: 1999
+description: "The Department of Mechanical Engineering covers manufacturing processes, additive manufacturing, thermal engineering, and mechanical design. The department has been NBA accredited, recognizing its commitment to quality education."
+vision: "To become a recognized centre of excellence for aspiring technocrats in Mechanical Engineering."
+mission:
+  - "Providing contemporary and advanced knowledge of Mechanical Engineering amongst the students through a curriculum consisting of modern laboratories, interdisciplinary subjects and industrial trainings; created by means of industry – institute interactions."
+  - "Creating culture of excellence in teaching – learning using hi-tech techniques and collaborating with other institutions along with focus on faculty development programmes."
+  - "Promoting design and research environment, incorporating latest software's in mechanical domain with a focus on enabling viable and economical innovations for the benefit of the society at large."
+peos:
+  - "The graduates will have quality education to keep pace with advancement in technologies, hence encouraging them to contribute to the field of education & research, and industry related to mechanical engineering as well as other allied fields."
+  - "The graduates will attain essential competence in basic sciences and mechanical engineering fundamentals required to formulate, analyse and solve engineering problems that will empower them to have effective career in core mechanical as well as interdisciplinary industries, and as entrepreneurs."
+  - "The graduates will enhance their knowledge and soft skills, encouraging them to innovate and develop sustainable solutions for a progressive society."
+  - "The graduates will maintain high ethical standards, establish potential leadership & teamwork abilities, inculcate effective interpersonal skills and engage in lifelong learning for a successful professional career."
+labs:
+  - "Manufacturing Workshop"
+  - "Thermal Engineering Lab"
+  - "CAD/CAM Lab"
+  - "Fluid Mechanics Lab"
+  - "Additive Manufacturing Lab"
+  - "Theory of Machines Lab"
+  - "Heat Transfer Lab"
+highlights:
+  - "NBA Accredited Department"
+  - "Industry-oriented curriculum"
+  - "Virtual Lab access"
+  - "Modern laboratory infrastructure"
+relatedTabs:
+  - label: "Vision & Mission"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/vision-mission-mech/"
+  - label: "PEO's, PO's & PSO's"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/peos-pos-psos-mech/"
+  - label: "Faculty Profile"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/faculty-profile/"
+  - label: "Syllabus"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/syllabus/"
+  - label: "Labs"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/infrastructure/mech-labs/"
+  - label: "Virtual Lab"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/virtual-lab/"
+  - label: "Facilities"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/infrastructure/facilities/"
+  - label: "Classrooms"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/infrastructure/classrooms/"
+  - label: "Achievements"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/achievements/"
+  - label: "Staff Achievements"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/achievements/staff/"
+  - label: "Student Achievements"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/achievements/student/"
+  - label: "Research Papers"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/research-papers/"
+  - label: "Innovative Teaching Methods"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/innovative-teaching-methods/"
+  - label: "Previous Year Papers"
+    url: "https://www.mbscet.edu.in/mechanical-previous-papers/"
+  - label: "Notices"
+    url: "https://www.mbscet.edu.in/mechanical-engineering-v1/notices/"
 ---

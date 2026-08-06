@@ -1,16 +1,53 @@
 ---
 code: "IT"
 title: "Information Technology"
-degree: "B.E."
-intake: 54
+degree: "B.Tech"
+intake: 60
 duration: "4 years"
-eligibility: "10+2 (PCM) with JKCET / Minority Quota"
-description: "The Department of Information Technology equips students with modern IT skills including software development, cloud computing, database management, and web technologies."
-vision: "To produce globally competent IT professionals contributing to industry and society."
-labs: [
-  "Software Development Lab",
-  "Cloud Computing Lab",
-  "Database Systems Lab",
-  "Web Technologies Lab"
-]
+eligibility: "10+2 (PCM) with JKCET / JEE Main / Management Quota"
+established: 1999
+description: "The Department of Information Technology equips students with modern IT skills including software development, cloud computing, database management, and web technologies. The department focuses on creating industry-ready professionals."
+vision: "Transforming IT aspirants into technocrats for adapting to rapid technological advancements in Industry and contributing to society."
+mission:
+  - "Integrating academics and research to address challenges of industry."
+  - "Maintaining labs with hardware and software where students and faculty can enhance their technological skills."
+  - "Providing IT solutions to problems related to interdisciplinary fields."
+  - "Bringing out graduates with high quality knowledge, innovation, ethical and social responsibilities."
+peos:
+  - "Design and develop systems and applications to solve real life problems."
+  - "Develop professionalism, communication skills, leadership and team work enabling them to adapt the current trends in technology."
+  - "To inculcate an attitude for life-long learning."
+  - "To prepare students for higher education."
+labs:
+  - "Software Development Lab"
+  - "Cloud Computing Lab"
+  - "Database Systems Lab"
+  - "Web Technologies Lab"
+  - "Networking Lab"
+  - "Mobile Application Development Lab"
+highlights:
+  - "Industry-oriented curriculum"
+  - "Modern laboratory infrastructure"
+  - "Focus on emerging technologies"
+relatedTabs:
+  - label: "Vision & Mission"
+    url: "https://www.mbscet.edu.in/information-technology-v1/vision-mission-it/"
+  - label: "PEO's, PSO's & PO's"
+    url: "https://www.mbscet.edu.in/information-technology-v1/peos-psos-pos-it/"
+  - label: "Faculty Profile"
+    url: "https://www.mbscet.edu.in/information-technology-v1/it-faculty-profile/"
+  - label: "Labs"
+    url: "https://www.mbscet.edu.in/lab-it/"
+  - label: "Syllabus"
+    url: "https://www.mbscet.edu.in/information-technology-v1/syllabus/"
+  - label: "Achievements"
+    url: "https://www.mbscet.edu.in/information-technology-v1/achievements/"
+  - label: "Staff Achievements"
+    url: "https://www.mbscet.edu.in/information-technology-v1/achievements/staff/"
+  - label: "Student Achievements"
+    url: "https://www.mbscet.edu.in/information-technology-v1/achievements/student/"
+  - label: "Previous Year Papers"
+    url: "https://www.mbscet.edu.in/it-previous-papers/"
+  - label: "Notices"
+    url: "https://www.mbscet.edu.in/information-technology-v1/notices/"
 ---
