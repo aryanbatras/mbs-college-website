@@ -82,8 +82,8 @@ export function Footer({ config }: FooterProps) {
                 position={[0, 0, 24]}
                 gravity={[0, -40, 0]}
                 frontImage="/logo.png"
-                backImage="/logo.png"
-                imageFit="contain"
+                backImage="/lanyard/card-back.svg"
+                imageFit="cover"
                 lanyardImage="/lanyard/lanyard.png"
                 lanyardWidth={1.2}
                 bandColor="#00274C"
