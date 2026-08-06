@@ -169,11 +169,11 @@ export function Header({ config, transparent = false }: HeaderProps) {
                           key={child.label}
                           href={child.href}
                           role="menuitem"
-                          className="flex items-center justify-between px-5 py-2.5 text-[13px] text-[#5C6370] hover:text-[#00274C] hover:bg-[#FFCB05]/10 transition-colors"
+                          className="flex items-center justify-between px-5 py-2.5 text-[13px] text-[#5C6370] hover:text-[#00274C] hover:bg-gray-50 transition-colors"
                         >
                           <span>{child.label}</span>
                           {"badge" in child && child.badge && (
-                            <span className="text-[9px] font-bold bg-[#FFCB05] text-[#00274C] px-1.5 py-0.5">
+                            <span className="text-[9px] font-bold bg-[#00274C] text-white px-1.5 py-0.5">
                               {child.badge}
                             </span>
                           )}
@@ -192,8 +192,8 @@ export function Header({ config, transparent = false }: HeaderProps) {
               href="/contact"
               className={`hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-bold transition-all ${
                 isScrolled
-                  ? "bg-[#00274C] text-[#FFCB05] hover:bg-[#1E406B]"
-                  : "bg-[#FFCB05] text-[#00274C] hover:bg-white"
+                  ? "bg-[#00274C] text-white hover:bg-[#1E406B]"
+                  : "bg-white text-[#00274C] hover:bg-gray-100"
               }`}
             >
               Contact Us
@@ -264,7 +264,7 @@ export function Header({ config, transparent = false }: HeaderProps) {
                             >
                               <span>{child.label}</span>
                               {"badge" in child && child.badge && (
-                                <span className="text-[9px] font-bold bg-[#FFCB05] text-[#00274C] px-1.5 py-0.5">
+                                <span className="text-[9px] font-bold bg-[#00274C] text-white px-1.5 py-0.5">
                                   {child.badge}
                                 </span>
                               )}
