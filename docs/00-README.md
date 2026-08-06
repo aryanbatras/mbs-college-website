@@ -70,32 +70,29 @@ npm start
 
 ```
 mbs-college-website/
-├── src/                          # Source code
+├── content/                      # ALL CONTENT (separate from code)
+│   ├── site.json                 # Site configuration
+│   ├── departments/              # Department data (JSON)
+│   ├── programs/                 # Program descriptions (Markdown)
+│   ├── news/                     # News articles (Markdown)
+│   ├── notices/                  # Official notices (Markdown)
+│   └── faculty/                  # Faculty data (JSON)
+├── media/                        # ALL MEDIA (images, PDFs, videos)
+│   ├── departments/              # Department-specific media
+│   ├── homepage/                 # Homepage media
+│   ├── management/               # Leadership photos
+│   └── docs/                     # PDF documents
+├── src/                          # SOURCE CODE ONLY
 │   ├── app/                      # Next.js pages (routing)
-│   │   ├── page.tsx              # Homepage
-│   │   ├── academics/            # Department pages
-│   │   ├── about/                # About pages
-│   │   ├── campus/               # Campus pages
-│   │   ├── contact/              # Contact page
-│   │   ├── news/                 # News articles
-│   │   ├── notices/              # Official notices
-│   │   └── placements/           # Placement records
 │   ├── components/               # React components
-│   │   ├── sections/             # Page sections
-│   │   ├── ui/                   # Reusable UI components
-│   │   └── layout/               # Header, Footer
-│   ├── content/                  # Content files (THE DATABASE)
-│   │   ├── departments/          # Department JSON files
-│   │   ├── programs/             # Program markdown files
-│   │   ├── news/                 # News articles (markdown)
-│   │   ├── notices/              # Notices (markdown)
-│   │   └── faculty/              # Faculty data (JSON)
 │   └── lib/                      # Utilities and helpers
-├── public/                       # Static assets (images, PDFs)
-│   └── media/                    # Media files organized by type
+├── public/                       # Build output (auto-generated)
+├── scripts/                      # Build scripts
 ├── docs/                         # This documentation
 └── package.json                  # Dependencies
 ```
+
+**Key Design Decision:** Content and media are stored **outside** the source code, making it easy for non-technical staff to manage without touching code.
 
 ---
 

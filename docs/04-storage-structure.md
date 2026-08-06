@@ -6,87 +6,46 @@ The MBSCET Website uses a hierarchical file structure for organizing all content
 
 ---
 
-## Public Media Structure
+## Project Structure
 
 ```
-public/
-├── media/
-│   ├── departments/           # Department-specific media
+mbs-college-website/
+├── content/                    # ALL CONTENT (separate from code)
+│   ├── site.json               # Site configuration
+│   ├── departments/            # Department data (JSON)
+│   │   ├── cse.json
+│   │   ├── ee.json
+│   │   ├── ece.json
+│   │   ├── me.json
+│   │   ├── civil.json
+│   │   ├── it.json
+│   │   └── mca.json
+│   ├── programs/               # Program descriptions (Markdown)
+│   │   ├── cse.md
+│   │   ├── ee.md
+│   │   └── ...
+│   ├── news/                   # News articles (Markdown)
+│   ├── notices/                # Official notices (Markdown)
+│   └── faculty/                # Faculty data (JSON)
+├── media/                      # ALL MEDIA (images, PDFs, videos)
+│   ├── departments/            # Department-specific media
 │   │   ├── cse/
-│   │   │   ├── faculty/      # Faculty photos
-│   │   │   ├── alumni/       # Alumni photos
-│   │   │   ├── labs/         # Lab photos
-│   │   │   ├── innovative/   # Teaching videos
-│   │   │   ├── syllabus/     # Syllabus PDFs
-│   │   │   └── notices/      # Notice PDFs
+│   │   │   ├── faculty/       # Faculty photos
+│   │   │   ├── alumni/        # Alumni photos
+│   │   │   ├── labs/          # Lab photos
+│   │   │   └── innovative/    # Teaching videos
 │   │   ├── ee/
-│   │   ├── ece/
-│   │   ├── me/
-│   │   ├── civil/
-│   │   ├── it/
-│   │   └── mca/
-│   ├── homepage/             # Homepage media
-│   │   ├── hero/            # Hero section images
-│   │   ├── campus/          # Campus photos
-│   │   ├── gallery/         # Photo gallery
-│   │   └── events/          # Event photos
-│   ├── management/           # Leadership photos
-│   │   ├── chairman/
-│   │   ├── advisor/
-│   │   ├── principal/
-│   │   ├── dean/
-│   │   └── dsw/
-│   ├── news/                 # News article images
-│   ├── notices/              # Notice images
-│   └── placements/           # Placement photos
-├── docs/                     # PDF documents
-│   ├── cse/
-│   │   ├── syllabus/
-│   │   └── notices/
-│   ├── ee/
-│   ├── ece/
-│   ├── me/
-│   └── placement/
-└── logo.png                  # College logo
+│   │   └── ...
+│   ├── homepage/               # Homepage media
+│   ├── management/             # Leadership photos
+│   └── docs/                   # PDF documents
+├── src/                        # SOURCE CODE ONLY
+├── public/                     # Build output (auto-generated)
+├── scripts/                    # Build scripts
+└── docs/                       # Documentation
 ```
 
----
-
-## Content Structure
-
-```
-src/content/
-├── site.json                 # Site configuration
-├── departments/              # Department data (JSON)
-│   ├── cse.json
-│   ├── ee.json
-│   ├── ece.json
-│   ├── me.json
-│   ├── civil.json
-│   ├── it.json
-│   └── mca.json
-├── programs/                 # Program descriptions (Markdown)
-│   ├── cse.md
-│   ├── ee.md
-│   ├── ece.md
-│   ├── me.md
-│   ├── civil.md
-│   ├── it.md
-│   └── mca.md
-├── news/                     # News articles (Markdown)
-│   ├── 2024-01-15-article.md
-│   └── 2024-01-20-article.md
-├── notices/                  # Official notices (Markdown)
-│   ├── 2024-01-10-notice.md
-│   └── 2024-01-15-notice.md
-└── faculty/                  # Faculty data (JSON)
-    ├── cse.json
-    ├── ee.json
-    ├── ece.json
-    ├── me.json
-    ├── ce.json
-    └── mca.json
-```
+**Key Design:** Content (`content/`) and media (`media/`) are stored at the root level, completely separate from source code (`src/`). This makes it easy for non-technical staff to manage content without touching code.
 
 ---
 
@@ -272,11 +231,11 @@ git push
 ### Manual Backup
 
 ```bash
-# Backup entire content folder
-tar -czf backup-$(date +%Y%m%d).tar.gz src/content/
+# Backup content folder
+tar -czf backup-$(date +%Y%m%d).tar.gz content/
 
 # Backup media folder
-tar -czf media-backup-$(date +%Y%m%d).tar.gz public/media/
+tar -czf media-backup-$(date +%Y%m%d).tar.gz media/
 ```
 
 ---
