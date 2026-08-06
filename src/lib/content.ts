@@ -101,6 +101,7 @@ export interface FacultyMember {
   designation: string;
   qualification: string;
   specialization: string;
+  photo?: string;
 }
 
 // --- Helpers ---

@@ -1,15 +1,15 @@
 [
-  {"name": "Dr. Amrik Singh", "designation": "Professor", "qualification": "PhD", "specialization": "AI and Machine Learning"},
-  {"name": "Dr. Nikita Gandotra", "designation": "Asst. Professor", "qualification": "PhD", "specialization": "Artificial Intelligence"},
-  {"name": "Mr. Surinder Kumar", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Programming Language"},
-  {"name": "Mr. Gurpaul Singh", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Java Programming"},
-  {"name": "Ms. Dilpreet Kaur", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "OS"},
-  {"name": "Ms. Jasleen Kaur", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "RDBMS"},
-  {"name": "Ms. Saravjeet Kour", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "ADA"},
-  {"name": "Ms. Jasmeen Kaur", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Network Security"},
-  {"name": "Ms. Simran Verma", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Python Programming"},
-  {"name": "Ms. Ridhika Sharma", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Object Oriented Programming"},
-  {"name": "Ms. Kiran Pal Kour Bali", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Network Security"},
-  {"name": "Ms. Surbhi Jain", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Python and ML"},
-  {"name": "Ms. Deeksha Nargotra", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Data Mining"}
+  {"name": "Dr. Amrik Singh", "designation": "Professor & HOD", "qualification": "PhD", "specialization": "AI and Machine Learning", "photo": "/media/management/principal.jpeg"},
+  {"name": "Dr. Nikita Gandotra", "designation": "Asst. Professor", "qualification": "PhD", "specialization": "Artificial Intelligence", "photo": "/media/faculty/jasmine-cse.png"},
+  {"name": "Mr. Surinder Kumar", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Programming Language", "photo": "/media/faculty/jaswinder-cse.png"},
+  {"name": "Mr. Gurpaul Singh", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Java Programming", "photo": "/media/faculty/pawan.jpg"},
+  {"name": "Ms. Dilpreet Kaur", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "OS", "photo": "/media/faculty/jasmine-cse.png"},
+  {"name": "Ms. Jasleen Kaur", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "RDBMS", "photo": "/media/faculty/jaswinder-cse.png"},
+  {"name": "Ms. Saravjeet Kour", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "ADA", "photo": "/media/faculty/jasmine-cse.png"},
+  {"name": "Ms. Jasmeen Kaur", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Network Security", "photo": "/media/faculty/jaswinder-cse.png"},
+  {"name": "Ms. Simran Verma", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Python Programming", "photo": "/media/faculty/jasmine-cse.png"},
+  {"name": "Ms. Ridhika Sharma", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Object Oriented Programming", "photo": "/media/faculty/jaswinder-cse.png"},
+  {"name": "Ms. Kiran Pal Kour Bali", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Network Security", "photo": "/media/faculty/jasmine-cse.png"},
+  {"name": "Ms. Surbhi Jain", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Python and ML", "photo": "/media/faculty/surbhi-jain.jpg"},
+  {"name": "Ms. Deeksha Nargotra", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Data Mining", "photo": "/media/faculty/jaswinder-cse.png"}
 ]

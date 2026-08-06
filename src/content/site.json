@@ -56,58 +56,58 @@
       "name": "S. Gurnam Singh",
       "title": "Chairman",
       "organization": "Sant Manjit Singh Trust",
-      "photo": "/media/management/chairman.png"
+      "photo": "/media/management/chairman-new.jpg"
     },
     {
       "name": "S. Lakhbir Singh Bawa",
       "title": "Advisor",
       "organization": "Sant Manjit Singh Trust",
-      "photo": "/media/management/advisor.png"
+      "photo": "/media/management/advisor-new.jpg"
     },
     {
       "name": "Dr. Nitin Ghawghawe",
       "title": "Principal",
       "organization": "MBSCET",
-      "photo": "/media/management/principal.jpeg"
+      "photo": "/media/management/principal-new.jpeg"
     },
     {
-      "name": "Vice-Principal",
-      "title": "Vice-Principal",
-      "organization": "MBSCET",
-      "photo": "/media/management/vice-principal.jpg"
+    "name": "Dr. Nitin Langer",
+    "title": "HOD Electrical Engineering",
+    "organization": "MBSCET",
+    "photo": "/media/management/sole-trustee-new.png"
     },
     {
-      "name": "Dean Academics",
-      "title": "Dean Academics",
-      "organization": "MBSCET",
-      "photo": "/media/management/dean.png"
+    "name": "Dr. Sanjeev Singh",
+    "title": "Dean Academics & HOD ECE",
+    "organization": "MBSCET",
+    "photo": "/media/management/dean-new.png"
     },
     {
-      "name": "DSW",
-      "title": "Dean Student Welfare",
-      "organization": "MBSCET",
-      "photo": "/media/management/dsw.png"
+    "name": "Dean Student Welfare",
+    "title": "Dean Student Welfare",
+    "organization": "MBSCET",
+    "photo": "/media/management/dsw-new.png"
     }
   ],
   "chairman": {
     "name": "S. Gurnam Singh",
     "title": "Chairman",
     "organization": "Sant Manjit Singh Trust",
-    "photo": "/media/management/chairman.png",
+    "photo": "/media/management/chairman-new.jpg",
     "message": "We in the MBSCET are into enabling and honing the young and dynamic minds with desirable human values dovetailed with the state of art technology in the ever challenging and refined realm of Engineering science. Our sincere endeavor shall be to launch suitably trained human material into higher orbits of an even-keeled society. To achieve the above stated goals we humbly claim that all necessary ingredients and matrix are in place in the College thought, philosophy and ambient campus. Having already admitted the 19th batch of students in the five permitted disciplines of Engineering sciences, the MBSCET has earned the unique honor of being the oldest and most popular College in the J&K State in the Non-Governmental sector. Its minority character is an additional grace to the community."
   },
   "advisor": {
     "name": "S. Lakhbir Singh Bawa",
     "title": "Advisor",
     "organization": "Sant Manjit Singh Trust",
-    "photo": "/media/management/advisor.png",
+    "photo": "/media/management/advisor-new.jpg",
     "message": ""
   },
   "principal": {
-    "name": "Dr. Nitin Ghawghawe",
+    "name": "Dr. Amrik Singh",
     "title": "Principal",
     "organization": "MBSCET",
-    "photo": "/media/management/principal.jpeg",
+    "photo": "/media/management/principal-new.jpeg",
     "message": "The Institute, commonly referred as MBSCET, was started functioning in 1999 with 6 Under Graduate Engineering Programmes under the administrative control of Sant Manjit Singh Trust. The Institute strives to impart quality technical education to the students who have always proved their excellence in university and other competitive examinations. Although academics is the top priority, the students are motivated to participate in co-curricular and extracurricular activities. A conducive environment and opportunities are made available to each one of the students so that the focus is always on their 360-degree development."
   },
   "admissionInfo": {
