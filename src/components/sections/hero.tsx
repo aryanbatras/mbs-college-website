@@ -1,9 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BlurText from "@/components/ui/blur-text";
 import { HeroSubtitle } from "@/components/ui/hero-subtitle";
 import { DotPattern } from "@/components/design-system/DotPattern";
+
+// Register plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const HERO_IMAGES = [
   "/media/homepage/admin-block.jpg",
@@ -14,6 +21,9 @@ const HERO_IMAGES = [
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const imagesRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -22,27 +32,64 @@ export function Hero() {
     return () => clearInterval(timer);
   }, []);
 
+  // Parallax effect on scroll
+  useEffect(() => {
+    if (!sectionRef.current || !imagesRef.current || !contentRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Images parallax - moves slower than scroll
+      gsap.to(imagesRef.current, {
+        yPercent: 20, // Images move down 20% as you scroll
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true, // Smooth scrubbing
+        },
+      });
+
+      // Content parallax - moves faster than scroll
+      gsap.to(contentRef.current, {
+        yPercent: -30, // Content moves up 30% as you scroll
+        opacity: 0, // Fade out as you scroll
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "center top",
+          scrub: true,
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="relative h-[100dvh] flex items-center justify-center overflow-hidden"
       aria-label="Welcome"
     >
-      {/* Background images with crossfade */}
-      {HERO_IMAGES.map((src, i) => (
-        <div
-          key={src}
-          className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
-            i === current ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <img
-            src={src}
-            alt=""
-            className="w-full h-full object-cover"
-            loading={i === 0 ? "eager" : "lazy"}
-          />
-        </div>
-      ))}
+      {/* Background images with crossfade and parallax */}
+      <div ref={imagesRef} className="absolute inset-0 scale-110">
+        {HERO_IMAGES.map((src, i) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
+              i === current ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={src}
+              alt=""
+              className="w-full h-full object-cover"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
 
       {/* Dark overlay with blue tint */}
       <div className="absolute inset-0 bg-[#00274C]/70" />
@@ -57,8 +104,8 @@ export function Hero() {
         />
       </div>
 
-      {/* Content - full width, no margins */}
-      <div className="relative z-10 w-full text-center px-4 sm:px-8">
+      {/* Content - full width, no margins, with parallax */}
+      <div ref={contentRef} className="relative z-10 w-full text-center px-4 sm:px-8">
         {/* Main title - word by word blur */}
         <div className="mb-4">
           <BlurText
