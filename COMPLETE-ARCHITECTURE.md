@@ -186,8 +186,91 @@ files in a GitHub repository directly** — there is no separate CMS database.
 | Department Videos | `media/departments/` | video |
 
 **Why `.pages.yml` is trustworthy:** every construct in it was validated against the
-official Pages CMS documentation (field types, `list: true` arrays, filename templates,
-media sources, settings). It is the exact contract between the editor UI and the content files.
+official Pages CMS documentation **and against the Pages CMS source code itself** (the
+`config-schema.ts` file that pagescms.org runs). It is the exact contract between the
+editor UI and the content files.
+
+### `.pages.yml` field syntax — the rules that matter
+
+These are the exact, source-verified rules. Getting any of them wrong makes the CMS
+show validation errors (and **misleading ones** — e.g. `'items' must be an array of
+content entries` is actually the fallback error from the group-schema branch, not the
+real problem). The three that bite people:
+
+**1. `select` fields need `options: { values: [...] }` — an object, not a plain array.**
+
+The Pages CMS editor reads `field.options?.values` to build the dropdown, and the config
+schema requires `options` to be an **object**. A plain array is invalid.
+
+```yaml
+# ✅ Correct
+- name: category
+  type: select
+  options:
+    values:
+      - Campus
+      - Event
+      - Workshop
+
+# ❌ Invalid — pagescms.org shows "Expected object, received array"
+- name: category
+  type: select
+  options:
+    - Campus
+    - Event
+    - Workshop
+```
+
+**2. `view.sort` must be an array of field names — never a single string.**
+
+```yaml
+# ✅ Correct
+view:
+  primary: title
+  default:
+    sort: [date]        # or: sort: [date, title]
+    order: desc
+
+# ❌ Invalid — "'sort' must be an array of strings"
+view:
+  primary: title
+  sort: date
+```
+
+**3. `view.order` lives inside `view.default` — there is no top-level `view.order`.**
+
+The `view` object is strict; unknown keys like a top-level `order` are rejected with
+"Unrecognized key". Sort + order always pair up under `default`:
+
+```yaml
+# ✅ Correct
+view:
+  primary: title
+  default:
+    sort: [date]
+    order: desc
+  fields:
+    - title
+    - date
+```
+
+**Other field rules worth remembering** (all in use in this project's `.pages.yml`):
+
+| Concept | Correct syntax | Notes |
+|---------|----------------|-------|
+| Scalar array (list of strings) | `type: text` + `list: true` | `type: list` does **not** exist |
+| Array of objects | `type: object` + `list: true` + `fields:` | e.g. `relatedTabs`, `members`, `videos` |
+| Image / file picker | `type: image`/`file` + `options: { media: images }` | `media:` must match a media source name |
+| Multiple image upload | `options: { media: images, multiple: { max: 10 } }` | |
+| Required field | `required: true` | |
+| Regex validation | `pattern: "^[A-Z]+$"` | string or `{ regex, message }` |
+| Read-only field | `readonly: true` | e.g. department `slug` |
+| Filename template | `filename: "{fields.code}.md"` | date tokens: `{year}-{month}-{day}-{primary}.md` |
+
+> **Pro tip:** if pagescms.org reports a confusing error on a collection, suspect the
+> `select` field options or the `view` block first — those two are the source of almost
+> every "invalid collection" report. The schema accepts `options` as an object, `view.sort`
+> as an array, and `order` only under `default`.
 
 ### The end-to-end editing flow
 
