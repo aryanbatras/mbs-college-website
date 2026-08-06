@@ -359,13 +359,14 @@ content:
         label: Category
         type: select
         options:
-          - Campus
-          - Event
-          - Workshop
-          - Seminar
-          - Achievement
-          - Placement
-          - General
+          values:
+            - Campus
+            - Event
+            - Workshop
+            - Seminar
+            - Achievement
+            - Placement
+            - General
       - name: image
         label: Featured Image
         type: image
@@ -376,8 +377,9 @@ content:
         type: rich-text
     view:
       primary: title
-      sort: date
-      order: desc
+      default:
+        sort: date
+        order: desc
       fields:
         - title
         - date
@@ -418,8 +420,9 @@ content:
         type: rich-text
     view:
       primary: title
-      sort: date
-      order: desc
+      default:
+        sort: date
+        order: desc
       fields:
         - title
         - date
@@ -454,9 +457,10 @@ content:
         label: Degree
         type: select
         options:
-          - B.Tech
-          - MCA
-          - M.Tech
+          values:
+            - B.Tech
+            - MCA
+            - M.Tech
       - name: intake
         label: Intake (Students)
         type: number
@@ -669,13 +673,14 @@ content:
         type: select
         required: true
         options:
-          - cse
-          - ee
-          - ece
-          - me
-          - ce
-          - it
-          - mca
+          values:
+            - cse
+            - ee
+            - ece
+            - me
+            - ce
+            - it
+            - mca
       - name: members
         label: Faculty Members
         type: object
@@ -689,12 +694,13 @@ content:
             label: Designation
             type: select
             options:
-              - Professor & HOD
-              - Professor
-              - Associate Professor
-              - Asst. Professor
-              - Prof. of Practice
-              - Lecturer
+              values:
+                - Professor & HOD
+                - Professor
+                - Associate Professor
+                - Asst. Professor
+                - Prof. of Practice
+                - Lecturer
           - name: qualification
             label: Qualification
             type: string
@@ -732,13 +738,14 @@ content:
         label: Department
         type: select
         options:
-          - All
-          - CSE
-          - EE
-          - ECE
-          - ME
-          - IT
-          - Civil
+          values:
+            - All
+            - CSE
+            - EE
+            - ECE
+            - ME
+            - IT
+            - Civil
       - name: pdf
         label: PDF Document
         type: file
@@ -746,8 +753,9 @@ content:
           media: documents
     view:
       primary: title
-      sort: year
-      order: desc
+      default:
+        sort: year
+        order: desc
 
 # ============================================================
 # SETTINGS
