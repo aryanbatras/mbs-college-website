@@ -430,45 +430,7 @@ All interactive elements are focusable:
 
 ---
 
-## Storybook
 
-### Running Storybook
-
-```bash
-npm run storybook
-```
-
-### Available Stories
-
-- Button variants
-- Card layouts
-- Form inputs
-- Badge styles
-- Table components
-
-### Creating a Story
-
-```tsx
-import type { Meta, StoryObj } from '@storybook/react';
-import Button from './Button';
-
-const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
-  component: Button,
-};
-
-export default meta;
-type Story = StoryObj<typeof Button>;
-
-export const Primary: Story = {
-  args: {
-    children: 'Button',
-    variant: 'primary',
-  },
-};
-```
-
----
 
 ## Best Practices
 
@@ -495,4 +457,3 @@ export const Primary: Story = {
 - [Tailwind CSS Docs](https://tailwindcss.com/docs)
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Framer Motion](https://www.framer.com/motion/)
-- [Storybook](https://storybook.js.org/)

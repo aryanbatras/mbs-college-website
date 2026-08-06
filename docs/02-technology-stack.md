@@ -250,19 +250,6 @@ import { PDFViewer } from "@embedpdf/react-pdf-viewer";
 
 ---
 
-### Storybook
-
-**What it is:** UI component development environment
-
-**Purpose:** Build and test components in isolation
-
-```bash
-npm run storybook  # Start Storybook
-npm run build-storybook  # Build Storybook
-```
-
----
-
 ## Build & Deployment
 
 ### npm Scripts
@@ -273,9 +260,7 @@ npm run build-storybook  # Build Storybook
     "dev": "next dev",           // Development server
     "build": "next build",       // Production build
     "start": "next start",       // Start production server
-    "lint": "eslint",           // Run linter
-    "storybook": "storybook dev -p 6006",  // Storybook
-    "build-storybook": "storybook build"   // Build Storybook
+    "lint": "eslint"            // Run linter
   }
 }
 ```
@@ -303,7 +288,6 @@ npm run build-storybook  # Build Storybook
 | Package | Purpose |
 |---------|---------|
 | typescript | Type checking |
-| @storybook/* | Component development |
 | eslint | Code linting |
 
 ---
