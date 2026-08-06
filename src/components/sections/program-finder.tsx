@@ -11,13 +11,23 @@ interface ProgramFinderProps {
 }
 
 const PROGRAM_IMAGES: Record<string, string> = {
-  "computer-science": "/media/general/1-1024x579.jpg",
-  "information-technology": "/media/general/2-1024x768.jpeg",
-  "electronics-communication": "/media/general/1-1-1024x579.jpeg",
-  "electrical": "/media/general/10-1024x768.jpeg",
-  "mechanical": "/media/general/11-1024x768.jpg",
+  "cse": "/media/general/1-1024x579.jpg",
+  "it": "/media/general/2-1024x768.jpeg",
+  "ece": "/media/general/1-1-1024x579.jpeg",
+  "ee": "/media/general/10-1024x768.jpeg",
+  "me": "/media/general/11-1024x768.jpg",
   "civil": "/media/general/2-1-1024x576.jpg",
   "mca": "/media/general/3-1024x576.jpeg",
+};
+
+const DEPARTMENT_ROUTES: Record<string, string> = {
+  "cse": "/academics/cse",
+  "ee": "/academics/ee",
+  "ece": "/academics/ece",
+  "me": "/academics/me",
+  "civil": "/academics/civil",
+  "it": "/academics/it",
+  "mca": "/academics/mca",
 };
 
 const DEGREE_TYPES = ["All", "B.E.", "MCA"];
@@ -138,7 +148,7 @@ export function ProgramFinder({ programs }: ProgramFinderProps) {
                 transition={{ duration: 0.3, delay: i * 0.05 }}
               >
                 <Link
-                  href={`/academics/${program.slug}`}
+                  href={DEPARTMENT_ROUTES[program.slug] || `/academics/${program.slug}`}
                   className="group block"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-ink/5 mb-4">
@@ -190,7 +200,7 @@ export function ProgramFinder({ programs }: ProgramFinderProps) {
                 transition={{ duration: 0.3, delay: i * 0.03 }}
               >
                 <Link
-                  href={`/academics/${program.slug}`}
+                  href={DEPARTMENT_ROUTES[program.slug] || `/academics/${program.slug}`}
                   className="group flex items-center gap-5 py-4 border-b border-ink/5 hover:bg-ink/[0.02] px-4 -mx-4 transition-colors"
                 >
                   <div className="relative w-20 h-16 shrink-0 overflow-hidden bg-ink/5">

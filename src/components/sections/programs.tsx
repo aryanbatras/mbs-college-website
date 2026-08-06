@@ -25,7 +25,7 @@ export async function ProgramsSection() {
             <Link
               key={program.code}
               href={`/academics/${program.slug}`}
-              className="group block p-8 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors"
+              className="group block p-8 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors border border-[#E5E7EB] hover:border-[#00274C]"
             >
               <div className="mb-5">
                 <span className="text-xs font-bold text-[#00274C] group-hover:text-[#FFCB05] transition-colors tracking-wider">
