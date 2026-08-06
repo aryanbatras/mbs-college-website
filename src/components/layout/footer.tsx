@@ -1,8 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaArrowUp } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
+
+// Dynamic import for Lanyard (requires client-side rendering)
+const Lanyard = dynamic(() => import("@/components/ui/lanyard"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[400px] bg-[#1E406B] flex items-center justify-center">
+      <div className="text-white/50 text-sm">Loading 3D Card...</div>
+    </div>
+  ),
+});
 
 interface FooterProps {
   config: SiteConfig;
@@ -55,7 +66,7 @@ export function Footer({ config }: FooterProps) {
     <footer className="bg-[#00274C] text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
-          {/* Brand column */}
+          {/* Brand column with Lanyard */}
           <div className="lg:col-span-2">
             <div className="mb-6">
               <div className="text-xl font-bold tracking-tight text-[#FFCB05]">MBSCET</div>
@@ -64,6 +75,20 @@ export function Footer({ config }: FooterProps) {
                 Engineering & Technology
               </div>
             </div>
+
+            {/* 3D Lanyard Card */}
+            <div className="mb-6 h-[300px] md:h-[350px] overflow-hidden rounded-lg">
+              <Lanyard
+                position={[0, 0, 24]}
+                gravity={[0, -40, 0]}
+                frontImage="/logo.png"
+                backImage="/logo.png"
+                imageFit="contain"
+                lanyardImage="/lanyard/lanyard.png"
+                lanyardWidth={1.2}
+              />
+            </div>
+
             <p className="text-sm text-white/50 leading-relaxed max-w-sm mb-6">
               Established in 1999 under the Sant Manjit Singh Trust, MBSCET is an AICTE approved, NBA accredited institution affiliated to the University of Jammu.
             </p>
