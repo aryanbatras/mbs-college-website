@@ -8,6 +8,8 @@ const CAMPUS_FEATURES = [
   { label: "Modern Laboratories", description: "State-of-the-art labs for all departments" },
   { label: "Seminar Halls", description: "Fully equipped seminar and conference halls" },
   { label: "Sports Facilities", description: "Playgrounds and indoor sports amenities" },
+  { label: "Wi-Fi Campus", description: "High-speed internet connectivity throughout" },
+  { label: "Auditorium", description: "Air-conditioned auditorium for events" },
 ];
 
 export function CampusSection() {
@@ -77,8 +79,8 @@ export function CampusSection() {
             </div>
             <div className="aspect-[4/5] overflow-hidden">
               <img
-                src="/media/homepage/seminar-hall.jpg"
-                alt="Seminar hall"
+                src="/media/homepage/auditorium.jpg"
+                alt="College auditorium"
                 className="w-full h-full object-cover"
               />
             </div>

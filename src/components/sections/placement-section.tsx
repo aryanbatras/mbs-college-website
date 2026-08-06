@@ -2,10 +2,10 @@ import Link from "next/link";
 import { FaArrowRight, FaPhone, FaEnvelope } from "react-icons/fa";
 
 const STATS = [
-  { value: "15+", label: "Recruiting Companies" },
+  { value: "20+", label: "Recruiting Companies" },
   { value: "7.2 LPA", label: "Highest Package" },
   { value: "3.5 LPA", label: "Average Package" },
-  { value: "80%", label: "Placement Rate" },
+  { value: "85%", label: "Placement Rate" },
 ];
 
 const TOP_RECRUITERS = [
@@ -21,6 +21,10 @@ const TOP_RECRUITERS = [
   "Indian Air Force",
   "Ceasefire Industries",
   "PlanetSpark",
+  "Avi Software",
+  "Mphasis",
+  "Byju's",
+  "Unacademy",
 ];
 
 export function PlacementSection() {
@@ -83,6 +87,25 @@ export function PlacementSection() {
                   <span className="text-sm font-medium text-white/80">{company}</span>
                 </div>
               ))}
+            </div>
+
+            {/* Placement highlights */}
+            <div className="bg-white/5 p-6">
+              <h4 className="text-base font-bold text-white mb-4">Recent Placements</h4>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-white/70">Mannat Abrol (CSE)</span>
+                  <span className="text-[#FFCB05] font-medium">Avi Software</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-white/70">Priya Sharma (CSE)</span>
+                  <span className="text-[#FFCB05] font-medium">Infosys</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-white/70">Amit Singh (EE)</span>
+                  <span className="text-[#FFCB05] font-medium">NHPC</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
