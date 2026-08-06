@@ -1,30 +1,17 @@
 import Link from "next/link";
 import { FaArrowRight, FaPhone, FaEnvelope } from "react-icons/fa";
 
-const STATS = [
-  { value: "20+", label: "Recruiting Companies" },
-  { value: "7.2 LPA", label: "Highest Package" },
-  { value: "3.5 LPA", label: "Average Package" },
-  { value: "85%", label: "Placement Rate" },
-];
-
 const TOP_RECRUITERS = [
-  "TCS",
-  "Infosys",
-  "Wipro",
-  "HCL Technologies",
-  "Tech Mahindra",
-  "L&T",
   "Kandhari Beverages",
+  "Cloud Analogy",
+  "Vision India Services",
+  "Pentagon Space",
+  "RVS iGlobal",
+  "PlanetSpark",
+  "Avi Software",
   "NHPC",
   "Indian Army",
   "Indian Air Force",
-  "Ceasefire Industries",
-  "PlanetSpark",
-  "Avi Software",
-  "Mphasis",
-  "Byju's",
-  "Unacademy",
 ];
 
 export function PlacementSection() {
@@ -42,15 +29,6 @@ export function PlacementSection() {
             <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-lg">
               Our Training & Placement Cell bridges academia and industry, preparing students for successful careers through internships, workshops, and campus recruitment drives.
             </p>
-
-            <div className="grid grid-cols-2 gap-6 mb-10">
-              {STATS.map((stat) => (
-                <div key={stat.label} className="border-t border-white/10 pt-4">
-                  <p className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</p>
-                  <p className="text-sm text-white/60">{stat.label}</p>
-                </div>
-              ))}
-            </div>
 
             <div className="p-6 bg-white/5 mb-8">
               <h4 className="text-base font-bold text-white mb-4">Contact T&P Cell</h4>
@@ -71,14 +49,14 @@ export function PlacementSection() {
               href="/placements"
               className="group inline-flex items-center gap-3 bg-[#FFCB05] text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-white transition-colors"
             >
-              View Placement Details
+              View Placement Records
               <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-white mb-8">Top Recruiters</h3>
-            <div className="grid grid-cols-2 gap-4 mb-10">
+            <h3 className="text-xl font-bold text-white mb-8">Recruiters</h3>
+            <div className="grid grid-cols-2 gap-4">
               {TOP_RECRUITERS.map((company) => (
                 <div
                   key={company}
@@ -88,8 +66,6 @@ export function PlacementSection() {
                 </div>
               ))}
             </div>
-
-
           </div>
         </div>
       </div>
