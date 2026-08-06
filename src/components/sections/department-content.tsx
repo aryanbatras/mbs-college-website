@@ -1,222 +1,419 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { FaArrowRight, FaArrowLeft, FaDownload, FaExternalLinkAlt, FaPhone, FaEnvelope, FaUsers, FaBook, FaFlask, FaGraduationCap, FaNewspaper, FaFileAlt, FaVideo, FaStar } from "react-icons/fa";
 import type { Program, FacultyMember } from "@/lib/content";
-import { ArrowLeft, Users, ExternalLink } from "lucide-react";
 
 interface DepartmentContentProps {
   program: Program;
   faculty?: FacultyMember[];
 }
 
-const DEPT_IMAGES: Record<string, string> = {
-  "computer-science": "/media/general/1-1024x579.jpg",
-  "information-technology": "/media/general/2-1024x768.jpeg",
-  "electronics-communication": "/media/general/1-1-1024x579.jpeg",
-  "electrical": "/media/general/10-1024x768.jpeg",
-  "mechanical": "/media/general/11-1024x768.jpg",
-  "civil": "/media/general/2-1-1024x576.jpg",
-  "mca": "/media/general/3-1024x576.jpeg",
+const DEPT_DATA: Record<string, {
+  image: string;
+  description: string;
+  labs: string[];
+  labImages: string[];
+  alumniImages: string[];
+  videos: { title: string; src: string }[];
+  syllabus: { title: string; file: string }[];
+  notices: { title: string; file: string }[];
+  contactHod: { name: string; email: string; phone: string };
+  teachingLearning: string;
+}> = {
+  "cse": {
+    image: "/media/general/1-1024x579.jpg",
+    description: "Computer Engineering is a dynamic field that bridges the gap between the physical and the elusive realm of software. It equips you with the knowledge and skills to design, develop, and implement the very foundation of modern technology. The Department of Computer Science & Engineering was established in 1999 as one of the founding departments of MBSCET.",
+    labs: [
+      "Programming Lab",
+      "Data Structures Lab",
+      "Operating Systems Lab",
+      "Database Management Systems Lab",
+      "Computer Networks Lab",
+      "Software Engineering Lab",
+      "Web Technologies Lab",
+      "Artificial Intelligence Lab",
+      "Machine Learning Lab",
+      "Cloud Computing Lab",
+    ],
+    labImages: ["/media/cse/labs/lab1.jpg", "/media/cse/labs/lab2.jpg"],
+    alumniImages: ["/media/cse/alumni/al1.jpg", "/media/cse/alumni/al2.jpg", "/media/cse/alumni/al3.jpg", "/media/cse/alumni/al4.jpg", "/media/cse/alumni/al5.jpg", "/media/cse/alumni/al6.jpg", "/media/cse/alumni/al8.jpg", "/media/cse/alumni/al9.jpg", "/media/cse/alumni/al10.jpg"],
+    videos: [
+      { title: "FCFS Scheduling Algorithm", src: "/media/cse/innovative/fcfs.mp4" },
+      { title: "Process Scheduling Animation", src: "/media/cse/innovative/scheduling.mp4" },
+    ],
+    syllabus: [
+      { title: "Syllabus 3rd & 4th Semester (2022)", file: "/docs/cse/syllabus/syllabus-3rd-4th.pdf" },
+      { title: "Syllabus 5th to 8th Semester (2022)", file: "/docs/cse/syllabus/syllabus-5th-to-8th.pdf" },
+    ],
+    notices: [
+      { title: "B.Tech Additional Form 2024", file: "/docs/cse/notices/btech-add-form-2024.pdf" },
+    ],
+    contactHod: {
+      name: "Dr. Amrik Singh",
+      email: "hod.cse@mbscet.edu.in",
+      phone: "+91-9419130161",
+    },
+    teachingLearning: "/docs/cse/syllabus/syllabus-3rd-4th.pdf",
+  },
 };
 
+const TABS = [
+  { id: "overview", label: "Overview", icon: FaBook },
+  { id: "vision", label: "Vision & Mission", icon: FaStar },
+  { id: "peos", label: "PEOs/POs/PSOs", icon: FaGraduationCap },
+  { id: "faculty", label: "Faculty", icon: FaUsers },
+  { id: "labs", label: "Labs", icon: FaFlask },
+  { id: "alumni", label: "Alumni", icon: FaUsers },
+  { id: "syllabus", label: "Syllabus", icon: FaFileAlt },
+  { id: "notices", label: "Notices", icon: FaNewspaper },
+  { id: "innovative", label: "Innovative Teaching", icon: FaVideo },
+  { id: "contact", label: "Contact HOD", icon: FaPhone },
+];
+
 export function DepartmentContent({ program, faculty = [] }: DepartmentContentProps) {
+  const [activeTab, setActiveTab] = useState("overview");
+  const deptData = DEPT_DATA[program.slug] || DEPT_DATA["cse"];
+
   return (
-    <div>
-      {/* Hero image */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="relative aspect-[16/6] md:aspect-[16/4] overflow-hidden bg-ink/5"
-      >
+    <div className="bg-white">
+      {/* Hero */}
+      <div className="relative aspect-[16/6] md:aspect-[16/4] overflow-hidden">
         <img
-          src={DEPT_IMAGES[program.slug] || "/media/general/DSC_0123-1024x683.jpg"}
+          src={deptData.image}
           alt={program.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 page-container pb-10 md:pb-14">
-          <Link href="/academics" className="inline-flex items-center gap-1 text-xs font-medium text-paper/60 hover:text-paper transition-colors mb-4">
-            <ArrowLeft className="size-3" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#00274C] via-[#00274C]/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 pb-10 md:pb-14">
+          <Link href="/academics" className="inline-flex items-center gap-1 text-xs font-medium text-white/60 hover:text-white transition-colors mb-4">
+            <FaArrowLeft className="text-[10px]" />
             All Programs
           </Link>
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent mb-2">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-2">
                 {program.degree} Program
               </p>
-              <h1 className="font-heading text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-paper leading-tight">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
                 {program.title}
               </h1>
             </div>
             <div className="text-right shrink-0">
-              <div className="text-2xl md:text-3xl font-semibold text-accent">{program.intake}</div>
-              <div className="text-xs text-paper/50">seats</div>
+              <div className="text-2xl md:text-3xl font-bold text-[#FFCB05]">{program.intake}</div>
+              <div className="text-xs text-white/50">seats</div>
             </div>
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2 text-xs text-paper/50">
-            <span>{program.degree}</span>
-            <span>&middot;</span>
-            <span>{program.duration}</span>
-            <span>&middot;</span>
-            <span>{program.eligibility}</span>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      <div className="page-container section-spacing">
-        {/* Description */}
-        {program.description && (
-          <motion.section
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-2xl"
-          >
-            <p className="text-base md:text-lg leading-relaxed text-ink-muted">
-              {program.description}
-            </p>
-          </motion.section>
-        )}
+      {/* Tabs */}
+      <div className="sticky top-16 z-40 bg-white border-b border-[#E5E7EB]">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+          <div className="flex overflow-x-auto scrollbar-hide gap-0">
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-4 py-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
+                  activeTab === tab.id
+                    ? "border-[#FFCB05] text-[#00274C]"
+                    : "border-transparent text-[#5C6370] hover:text-[#00274C]"
+                }`}
+              >
+                <tab.icon className="text-xs" />
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
-        {/* Vision */}
-        {program.vision && (
-          <motion.section
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="mt-12 md:mt-16"
-          >
-            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-5">Vision</h2>
-            <blockquote className="font-heading text-base md:text-lg leading-relaxed text-ink max-w-2xl">
-              &ldquo;{program.vision}&rdquo;
-            </blockquote>
-          </motion.section>
-        )}
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-12 md:py-16">
+        {/* Overview Tab */}
+        {activeTab === "overview" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-6">About the Department</h2>
+            <p className="text-[#5C6370] leading-relaxed mb-8 max-w-3xl">{deptData.description}</p>
 
-        {/* Faculty — clean table, no borders */}
-        {faculty.length > 0 && (
-          <motion.section
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-12 md:mt-16"
-          >
-            <div className="flex items-center gap-2 mb-8">
-              <Users className="size-4 text-accent" />
-              <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink">Faculty</h2>
-              <span className="text-sm text-ink-faint">({faculty.length} members)</span>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+              <div className="p-6 bg-[#F9FAFB]">
+                <div className="text-2xl font-bold text-[#00274C]">{program.intake}</div>
+                <div className="text-sm text-[#5C6370] mt-1">Annual Intake</div>
+              </div>
+              <div className="p-6 bg-[#F9FAFB]">
+                <div className="text-2xl font-bold text-[#00274C]">{faculty.length}+</div>
+                <div className="text-sm text-[#5C6370] mt-1">Faculty Members</div>
+              </div>
+              <div className="p-6 bg-[#F9FAFB]">
+                <div className="text-2xl font-bold text-[#00274C]">{deptData.labs.length}</div>
+                <div className="text-sm text-[#5C6370] mt-1">Labs</div>
+              </div>
+              <div className="p-6 bg-[#F9FAFB]">
+                <div className="text-2xl font-bold text-[#00274C]">NBA</div>
+                <div className="text-sm text-[#5C6370] mt-1">Accredited</div>
+              </div>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-ink/10">
-                    <th className="pb-4 pr-6 text-left font-medium text-ink">Name</th>
-                    <th className="pb-4 pr-6 text-left font-medium text-ink">Designation</th>
-                    <th className="pb-4 pr-6 text-left font-medium text-ink">Qualification</th>
-                    <th className="pb-4 text-left font-medium text-ink">Specialization</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {faculty.map((f, i) => (
-                    <tr key={i} className="border-b border-ink/5 last:border-b-0">
-                      <td className="py-4 pr-6 text-ink font-medium">{f.name}</td>
-                      <td className="py-4 pr-6 text-ink-muted">{f.designation}</td>
-                      <td className="py-4 pr-6 text-ink-muted">{f.qualification}</td>
-                      <td className="py-4 text-ink-muted">{f.specialization}</td>
-                    </tr>
+
+            {/* Related Tabs */}
+            {program.relatedTabs && program.relatedTabs.length > 0 && (
+              <div>
+                <h3 className="text-lg font-bold text-[#00274C] mb-4">Quick Links</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {program.relatedTabs.map((tab, i) => (
+                    <a
+                      key={i}
+                      href={tab.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-3 text-sm text-[#5C6370] bg-[#F9FAFB] hover:bg-[#00274C] hover:text-white transition-colors"
+                    >
+                      <FaExternalLinkAlt className="text-[10px] shrink-0" />
+                      <span>{tab.label}</span>
+                    </a>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          </motion.section>
+                </div>
+              </div>
+            )}
+          </div>
         )}
 
-        {/* Labs */}
-        {program.labs && program.labs.length > 0 && (
-          <motion.section
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="mt-12 md:mt-16"
-          >
-            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Labs & Facilities</h2>
-            <div className="flex flex-wrap gap-3">
-              {program.labs.map((lab) => (
-                <div key={lab} className="px-5 py-2.5 text-sm text-ink-muted bg-ink/[0.03]">
+        {/* Vision Tab */}
+        {activeTab === "vision" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">Vision & Mission</h2>
+            {program.vision && (
+              <div className="mb-8">
+                <h3 className="text-lg font-bold text-[#00274C] mb-4">Vision</h3>
+                <blockquote className="text-[#5C6370] leading-relaxed border-l-2 border-[#FFCB05] pl-6">
+                  {program.vision}
+                </blockquote>
+              </div>
+            )}
+            {program.mission && program.mission.length > 0 && (
+              <div>
+                <h3 className="text-lg font-bold text-[#00274C] mb-4">Mission</h3>
+                <ul className="space-y-3">
+                  {program.mission.map((m, i) => (
+                    <li key={i} className="flex gap-3 text-[#5C6370]">
+                      <span className="mt-2 size-1.5 shrink-0 bg-[#FFCB05] rounded-full" />
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* PEOs Tab */}
+        {activeTab === "peos" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">PEOs, POs & PSOs</h2>
+            {program.peos && program.peos.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-lg font-bold text-[#00274C] mb-4">Program Educational Objectives (PEOs)</h3>
+                <ol className="space-y-4 list-decimal list-inside">
+                  {program.peos.map((peo, i) => (
+                    <li key={i} className="text-[#5C6370] pl-2">
+                      <span className="font-bold text-[#00274C]">PEO{i + 1}:</span> {peo}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+            <div className="bg-[#F9FAFB] p-6">
+              <p className="text-sm text-[#5C6370]">
+                For detailed POs and PSOs, please refer to the official curriculum documents.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Faculty Tab */}
+        {activeTab === "faculty" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">Faculty Members</h2>
+            {faculty.length > 0 ? (
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-[#E5E7EB]">
+                      <th className="pb-4 pr-6 text-left font-bold text-[#00274C]">Name</th>
+                      <th className="pb-4 pr-6 text-left font-bold text-[#00274C]">Designation</th>
+                      <th className="pb-4 pr-6 text-left font-bold text-[#00274C]">Qualification</th>
+                      <th className="pb-4 text-left font-bold text-[#00274C]">Specialization</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {faculty.map((f, i) => (
+                      <tr key={i} className="border-b border-[#E5E7EB]/50 last:border-b-0">
+                        <td className="py-4 pr-6 text-[#00274C] font-medium">{f.name}</td>
+                        <td className="py-4 pr-6 text-[#5C6370]">{f.designation}</td>
+                        <td className="py-4 pr-6 text-[#5C6370]">{f.qualification}</td>
+                        <td className="py-4 text-[#5C6370]">{f.specialization}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="text-[#5C6370]">Faculty data will be updated soon.</p>
+            )}
+          </div>
+        )}
+
+        {/* Labs Tab */}
+        {activeTab === "labs" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">Labs & Infrastructure</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              {deptData.labImages.map((img, i) => (
+                <div key={i} className="aspect-[4/3] overflow-hidden bg-[#F9FAFB]">
+                  <img src={img} alt={`CSE Lab ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                </div>
+              ))}
+            </div>
+            <h3 className="text-lg font-bold text-[#00274C] mb-4">Available Labs</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {deptData.labs.map((lab) => (
+                <div key={lab} className="px-4 py-3 bg-[#F9FAFB] text-sm text-[#5C6370]">
                   {lab}
                 </div>
               ))}
             </div>
-          </motion.section>
+          </div>
         )}
 
-        {/* Highlights */}
-        {program.highlights && program.highlights.length > 0 && (
-          <motion.section
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-12 md:mt-16"
-          >
-            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Highlights</h2>
-            <ul className="flex flex-col gap-3">
-              {program.highlights.map((h, i) => (
-                <li key={i} className="flex gap-3 text-[15px] text-ink-muted">
-                  <span className="mt-2 size-1 shrink-0 bg-accent rounded-full" />
-                  {h}
-                </li>
+        {/* Alumni Tab */}
+        {activeTab === "alumni" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">CSE Alumni</h2>
+            <p className="text-[#5C6370] mb-8 max-w-3xl">
+              Our alumni have gone on to work at leading companies and organizations.
+              Here are some of our distinguished alumni.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {deptData.alumniImages.map((img, i) => (
+                <div key={i} className="aspect-square overflow-hidden bg-[#F9FAFB]">
+                  <img src={img} alt={`Alumni ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                </div>
               ))}
-            </ul>
-          </motion.section>
+            </div>
+          </div>
         )}
 
-        {/* PEOs */}
-        {program.peos && program.peos.length > 0 && (
-          <motion.section
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="mt-12 md:mt-16"
-          >
-            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Program Educational Objectives (PEOs)</h2>
-            <ol className="flex flex-col gap-4 list-decimal list-inside">
-              {program.peos.map((peo, i) => (
-                <li key={i} className="text-[15px] text-ink-muted pl-2">
-                  <span className="font-medium text-ink">PEO{i + 1}:</span> {peo}
-                </li>
-              ))}
-            </ol>
-          </motion.section>
-        )}
-
-        {/* Related Tabs / Resources */}
-        {program.relatedTabs && program.relatedTabs.length > 0 && (
-          <motion.section
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-12 md:mt-16"
-          >
-            <h2 className="font-heading text-xl md:text-2xl font-semibold tracking-tight text-ink mb-6">Related Resources</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {program.relatedTabs.map((tab, i) => (
+        {/* Syllabus Tab */}
+        {activeTab === "syllabus" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">Syllabus</h2>
+            <div className="space-y-4">
+              {deptData.syllabus.map((item) => (
                 <a
-                  key={i}
-                  href={tab.url}
+                  key={item.file}
+                  href={item.file}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2 px-4 py-3 text-sm text-ink-muted bg-ink/[0.03] hover:bg-ink/[0.06] transition-colors"
+                  className="flex items-center justify-between p-6 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors group"
                 >
-                  <ExternalLink className="size-3.5 shrink-0 text-ink-faint group-hover:text-accent transition-colors" />
-                  <span>{tab.label}</span>
+                  <div className="flex items-center gap-4">
+                    <FaFileAlt className="text-[#FFCB05] text-lg" />
+                    <div>
+                      <h3 className="text-base font-bold text-[#00274C] group-hover:text-white transition-colors">{item.title}</h3>
+                      <p className="text-xs text-[#9CA3AF] group-hover:text-white/50 transition-colors">PDF Document</p>
+                    </div>
+                  </div>
+                  <FaDownload className="text-[#9CA3AF] group-hover:text-[#FFCB05] transition-colors" />
                 </a>
               ))}
             </div>
-          </motion.section>
+          </div>
+        )}
+
+        {/* Notices Tab */}
+        {activeTab === "notices" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">Department Notices</h2>
+            <div className="space-y-4">
+              {deptData.notices.map((item) => (
+                <a
+                  key={item.file}
+                  href={item.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-6 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors group"
+                >
+                  <div className="flex items-center gap-4">
+                    <FaNewspaper className="text-[#FFCB05] text-lg" />
+                    <div>
+                      <h3 className="text-base font-bold text-[#00274C] group-hover:text-white transition-colors">{item.title}</h3>
+                      <p className="text-xs text-[#9CA3AF] group-hover:text-white/50 transition-colors">PDF Document</p>
+                    </div>
+                  </div>
+                  <FaDownload className="text-[#9CA3AF] group-hover:text-[#FFCB05] transition-colors" />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Innovative Teaching Tab */}
+        {activeTab === "innovative" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">Innovative Teaching Methods</h2>
+            <p className="text-[#5C6370] mb-8 max-w-3xl">
+              The CSE department uses innovative teaching methods including video lectures,
+              animations, and interactive demonstrations to enhance learning.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {deptData.videos.map((video) => (
+                <div key={video.src} className="bg-[#F9FAFB] p-4">
+                  <video
+                    src={video.src}
+                    className="w-full aspect-video object-cover rounded"
+                    controls
+                    preload="metadata"
+                  />
+                  <p className="text-sm font-bold text-[#00274C] mt-3">{video.title}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Contact HOD Tab */}
+        {activeTab === "contact" && (
+          <div>
+            <h2 className="text-2xl font-bold text-[#00274C] mb-8">Contact Head of Department</h2>
+            <div className="bg-[#F9FAFB] p-8 max-w-lg">
+              <h3 className="text-lg font-bold text-[#00274C] mb-2">{deptData.contactHod.name}</h3>
+              <p className="text-sm text-[#5C6370] mb-4">Head of Department, CSE</p>
+              <div className="space-y-3 text-sm text-[#5C6370]">
+                <p className="flex items-center gap-2">
+                  <FaPhone className="text-[#FFCB05] text-xs" />
+                  <a href={`tel:${deptData.contactHod.phone}`} className="hover:text-[#FFCB05] transition-colors">{deptData.contactHod.phone}</a>
+                </p>
+                <p className="flex items-center gap-2">
+                  <FaEnvelope className="text-[#FFCB05] text-xs" />
+                  <a href={`mailto:${deptData.contactHod.email}`} className="hover:text-[#FFCB05] transition-colors">{deptData.contactHod.email}</a>
+                </p>
+              </div>
+            </div>
+          </div>
         )}
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }
