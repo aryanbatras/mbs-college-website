@@ -1,19 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaArrowUp } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
-
-// Dynamic import for Lanyard (requires client-side rendering)
-const Lanyard = dynamic(() => import("@/components/ui/lanyard"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-[400px] bg-[#1E406B] flex items-center justify-center">
-      <div className="text-white/50 text-sm">Loading 3D Card...</div>
-    </div>
-  ),
-});
 
 interface FooterProps {
   config: SiteConfig;
@@ -66,21 +55,13 @@ export function Footer({ config }: FooterProps) {
     <footer className="bg-[#00274C] text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
-          {/* Brand column with Lanyard */}
+          {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="mb-6">
               <div className="text-xl font-bold tracking-tight text-[#FFCB05]">MBSCET</div>
               <div className="text-sm text-white/60 mt-1 leading-relaxed">
                 Mahant Bachittar Singh College of<br />
                 Engineering & Technology
-              </div>
-            </div>
-
-            {/* 3D Lanyard Card - Temporarily disabled for testing */}
-            <div className="mb-6 h-[300px] md:h-[350px] overflow-hidden rounded-lg bg-[#1E406B] flex items-center justify-center">
-              <div className="text-center text-white/50">
-                <div className="text-4xl mb-2">🎓</div>
-                <div className="text-sm">College ID Card</div>
               </div>
             </div>
 
