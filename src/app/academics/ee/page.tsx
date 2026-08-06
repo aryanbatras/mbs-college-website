@@ -18,8 +18,8 @@ export default function EEDepartmentPage() {
           faculty={faculty}
           heroImage="/media/general/10-1024x768.jpeg"
           labs={["Electrical Machines Lab", "Power Electronics Lab", "Control Systems Lab", "Power Systems Lab", "Measurements & Instrumentation Lab", "Network Analysis Lab", "Project Lab"]}
-          labImages={["/media/ee/labs/lab1.png", "/media/ee/labs/lab2.png", "/media/ee/labs/lab3.png"]}
-          alumniImages={["/media/ee/alumni/e1.png", "/media/ee/alumni/e2.png", "/media/ee/alumni/e3.png", "/media/ee/alumni/e4.png", "/media/ee/alumni/e6.png", "/media/ee/alumni/e7.png", "/media/ee/alumni/karamdeep.jpg", "/media/ee/alumni/prabjyot.jpg"]}
+          labImages={["/media/departments/ee/labs/lab1.png", "/media/departments/ee/labs/lab2.png", "/media/departments/ee/labs/lab3.png"]}
+          alumniImages={["/media/departments/ee/alumni/e1.png", "/media/departments/ee/alumni/e2.png", "/media/departments/ee/alumni/e3.png", "/media/departments/ee/alumni/e4.png", "/media/departments/ee/alumni/e6.png", "/media/departments/ee/alumni/e7.png", "/media/departments/ee/alumni/karamdeep.jpg", "/media/departments/ee/alumni/prabjyot.jpg"]}
           videos={[]}
           syllabus={[{ title: "EE Syllabus", file: "/docs/ee/syllabus.pdf" }]}
           notices={[]}

@@ -13,12 +13,6 @@ const FEATURED_VIDEO = {
 
 const TESTIMONIAL_VIDEOS = [
   {
-    name: "Aayushman",
-    department: "CSE",
-    src: "/media/videos/aayushman-cse.mp4",
-    ratio: "9:16" as const,
-  },
-  {
     name: "Mansi Sharma",
     department: "ECE",
     src: "/media/videos/mansi-sharma-ece.mp4",
@@ -34,12 +28,6 @@ const TESTIMONIAL_VIDEOS = [
     name: "Rishika Gupta",
     department: "IT",
     src: "/media/videos/rishika-gupta-it.mp4",
-    ratio: "9:16" as const,
-  },
-  {
-    name: "Satinderjeet Singh",
-    department: "ECE",
-    src: "/media/videos/satinderjeet-singh-ece.mp4",
     ratio: "9:16" as const,
   },
 ];

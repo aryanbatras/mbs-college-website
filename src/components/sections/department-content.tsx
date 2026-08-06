@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FaArrowRight, FaArrowLeft, FaDownload, FaExternalLinkAlt, FaPhone, FaEnvelope, FaUsers, FaBook, FaFlask, FaGraduationCap, FaNewspaper, FaFileAlt, FaVideo, FaStar } from "react-icons/fa";
+import { FaArrowLeft, FaDownload, FaExternalLinkAlt, FaPhone, FaEnvelope, FaUsers, FaBook, FaFlask, FaGraduationCap, FaNewspaper, FaFileAlt, FaVideo, FaStar } from "react-icons/fa";
 import type { Program, FacultyMember } from "@/lib/content";
 
 interface DepartmentContentProps {
@@ -25,9 +25,9 @@ const DEPT_DATA: Record<string, {
     image: "/media/general/1-1024x579.jpg",
     description: "Computer Engineering is a dynamic field that bridges the gap between the physical and the elusive realm of software. It equips you with the knowledge and skills to design, develop, and implement the very foundation of modern technology. The Department of Computer Science & Engineering was established in 1999 as one of the founding departments of MBSCET.",
     labs: ["Programming Lab", "Data Structures Lab", "Operating Systems Lab", "Database Management Systems Lab", "Computer Networks Lab", "Software Engineering Lab", "Web Technologies Lab", "Artificial Intelligence Lab", "Machine Learning Lab", "Cloud Computing Lab"],
-    labImages: ["/media/cse/labs/lab1.jpg", "/media/cse/labs/lab2.jpg"],
-    alumniImages: ["/media/cse/alumni/al1.jpg", "/media/cse/alumni/al2.jpg", "/media/cse/alumni/al3.jpg", "/media/cse/alumni/al4.jpg", "/media/cse/alumni/al5.jpg", "/media/cse/alumni/al6.jpg", "/media/cse/alumni/al8.jpg", "/media/cse/alumni/al9.jpg", "/media/cse/alumni/al10.jpg"],
-    videos: [{ title: "FCFS Scheduling Algorithm", src: "/media/cse/innovative/fcfs.mp4" }, { title: "Process Scheduling Animation", src: "/media/cse/innovative/scheduling.mp4" }],
+    labImages: ["/media/departments/cse/labs/lab1.jpg", "/media/departments/cse/labs/lab2.jpg"],
+    alumniImages: ["/media/departments/cse/alumni/al1.jpg", "/media/departments/cse/alumni/al2.jpg", "/media/departments/cse/alumni/al3.jpg", "/media/departments/cse/alumni/al4.jpg", "/media/departments/cse/alumni/al5.jpg", "/media/departments/cse/alumni/al6.jpg", "/media/departments/cse/alumni/al8.jpg", "/media/departments/cse/alumni/al9.jpg", "/media/departments/cse/alumni/al10.jpg"],
+    videos: [{ title: "FCFS Scheduling Algorithm", src: "/media/departments/cse/innovative/fcfs.mp4" }, { title: "Process Scheduling Animation", src: "/media/departments/cse/innovative/scheduling.mp4" }],
     syllabus: [{ title: "Syllabus 3rd & 4th Semester (2022)", file: "/docs/cse/syllabus/syllabus-3rd-4th.pdf" }, { title: "Syllabus 5th to 8th Semester (2022)", file: "/docs/cse/syllabus/syllabus-5th-to-8th.pdf" }],
     notices: [{ title: "B.Tech Additional Form 2024", file: "/docs/cse/notices/btech-add-form-2024.pdf" }],
     contactHod: { name: "Dr. Amrik Singh", email: "hod.cse@mbscet.edu.in", phone: "+91-9419130161" },
@@ -36,10 +36,10 @@ const DEPT_DATA: Record<string, {
     image: "/media/general/10-1024x768.jpeg",
     description: "The Department of Electrical Engineering, established in 1999, addresses power systems, electrical machine design, and Industry 4.0 technological innovations. The department has been NBA accredited, recognizing its commitment to quality education. Till date 21 batches of Electrical Engineering Graduates have been awarded degrees.",
     labs: ["Electrical Machines Lab", "Power Electronics Lab", "Control Systems Lab", "Power Systems Lab", "Measurements & Instrumentation Lab", "Network Analysis Lab", "Project Lab"],
-    labImages: ["/media/ee/labs/lab1.png", "/media/ee/labs/lab2.png", "/media/ee/labs/lab3.png"],
-    alumniImages: ["/media/ee/alumni/e1.png", "/media/ee/alumni/e2.png", "/media/ee/alumni/e3.png", "/media/ee/alumni/e4.png", "/media/ee/alumni/e6.png", "/media/ee/alumni/e7.png", "/media/ee/alumni/karamdeep.jpg", "/media/ee/alumni/prabjyot.jpg"],
+    labImages: ["/media/departments/ee/labs/lab1.png", "/media/departments/ee/labs/lab2.png", "/media/departments/ee/labs/lab3.png"],
+    alumniImages: ["/media/departments/ee/alumni/e1.png", "/media/departments/ee/alumni/e2.png", "/media/departments/ee/alumni/e3.png", "/media/departments/ee/alumni/e4.png", "/media/departments/ee/alumni/e6.png", "/media/departments/ee/alumni/e7.png", "/media/departments/ee/alumni/karamdeep.jpg", "/media/departments/ee/alumni/prabjyot.jpg"],
     videos: [],
-    syllabus: [{ title: "EE Syllabus", file: "/docs/cse/syllabus/syllabus-3rd-4th.pdf" }],
+    syllabus: [{ title: "EE Syllabus", file: "/docs/ee/syllabus.pdf" }],
     notices: [{ title: "B.Tech Additional Form 2024", file: "/docs/cse/notices/btech-add-form-2024.pdf" }],
     contactHod: { name: "Dr. Nitin Langer", email: "hod.ee@mbscet.edu.in", phone: "+91-9419130161" },
   },
@@ -50,7 +50,7 @@ const DEPT_DATA: Record<string, {
     labImages: ["/media/general/10-1024x768.jpeg"],
     alumniImages: [],
     videos: [],
-    syllabus: [{ title: "ECE Syllabus", file: "/docs/cse/syllabus/syllabus-3rd-4th.pdf" }],
+    syllabus: [{ title: "ECE Syllabus", file: "/docs/ece/syllabus.pdf" }],
     notices: [{ title: "B.Tech Additional Form 2024", file: "/docs/cse/notices/btech-add-form-2024.pdf" }],
     contactHod: { name: "Dr. Sanjeev Singh", email: "hod.ece@mbscet.edu.in", phone: "+91-9419130161" },
   },
@@ -61,7 +61,7 @@ const DEPT_DATA: Record<string, {
     labImages: ["/media/general/11-1024x768.jpg"],
     alumniImages: [],
     videos: [],
-    syllabus: [{ title: "ME Syllabus", file: "/docs/cse/syllabus/syllabus-3rd-4th.pdf" }],
+    syllabus: [{ title: "ME Syllabus", file: "/docs/me/syllabus.pdf" }],
     notices: [{ title: "B.Tech Additional Form 2024", file: "/docs/cse/notices/btech-add-form-2024.pdf" }],
     contactHod: { name: "Dr. Ritesh Sharma", email: "hod.me@mbscet.edu.in", phone: "+91-9419130161" },
   },

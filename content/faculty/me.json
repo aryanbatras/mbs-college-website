@@ -1,11 +1,59 @@
-[
-  {"name": "Dr. Ritesh Sharma", "designation": "Associate Professor", "qualification": "PhD", "specialization": "Additive Manufacturing"},
-  {"name": "Mr. Abhijit Saini", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "CAD/CAM"},
-  {"name": "Mr. Harinder Pal Singh", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Composite Material"},
-  {"name": "Mr. Mandeep Singh", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Production Engineering"},
-  {"name": "Mr. Rahul Sharma", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Industrial"},
-  {"name": "Mr. Gurpreet Singh", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Thermal"},
-  {"name": "Mr. Satish Kumar Sharma", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Composite Material"},
-  {"name": "Mr. Ripu Daman Singh", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Thermal"},
-  {"name": "Mr. Rahul Sethi", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Tribology"}
-]
+{
+  "department": "me",
+  "members": [
+    {
+      "name": "Dr. Ritesh Sharma",
+      "designation": "Associate Professor",
+      "qualification": "PhD",
+      "specialization": "Additive Manufacturing"
+    },
+    {
+      "name": "Mr. Abhijit Saini",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "CAD/CAM"
+    },
+    {
+      "name": "Mr. Harinder Pal Singh",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Composite Material"
+    },
+    {
+      "name": "Mr. Mandeep Singh",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Production Engineering"
+    },
+    {
+      "name": "Mr. Rahul Sharma",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Industrial"
+    },
+    {
+      "name": "Mr. Gurpreet Singh",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Thermal"
+    },
+    {
+      "name": "Mr. Satish Kumar Sharma",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Composite Material"
+    },
+    {
+      "name": "Mr. Ripu Daman Singh",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Thermal"
+    },
+    {
+      "name": "Mr. Rahul Sethi",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Tribology"
+    }
+  ]
+}

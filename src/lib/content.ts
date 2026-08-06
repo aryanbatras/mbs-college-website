@@ -104,6 +104,13 @@ export interface FacultyMember {
   photo?: string;
 }
 
+export interface PlacementRecord {
+  title: string;
+  year: string;
+  department: string;
+  pdf: string;
+}
+
 // --- Helpers ---
 
 function readJsonFile<T>(relativePath: string): T {
@@ -191,6 +198,18 @@ export function getNotices(): Notice[] {
   return notices.sort((a, b) => (b.date > a.date ? 1 : -1));
 }
 
+// Placement records loader
+export function getPlacements(): PlacementRecord[] {
+  const dir = path.join(CONTENT_DIR, "placements");
+  if (!fs.existsSync(dir)) return [];
+  const files = fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".json"));
+  return files
+    .map((f) => readJsonFile<PlacementRecord>(`placements/${f}`))
+    .sort((a, b) => (b.year > a.year ? 1 : -1));
+}
+
 export function getLatestNews(count: number = 5): NewsArticle[] {
   return getNews().slice(0, count);
 }
@@ -200,10 +219,16 @@ export function getLatestNotices(count: number = 5): Notice[] {
 }
 
 // Faculty loader
+// Faculty files are wrapped objects: { department, members: [...] }.
+// Falls back to legacy raw-array files if present.
 export function getFaculty(deptCode: string): FacultyMember[] {
+  // Some department pages request aliases that map to a shared file
+  const code = deptCode === "civil" ? "ce" : deptCode === "it" ? "cse" : deptCode;
   try {
-    const data = readJsonFile<FacultyMember[]>(`faculty/${deptCode}.json`);
-    return data;
+    const data = readJsonFile<FacultyMember[] | { members: FacultyMember[] }>(
+      `faculty/${code}.json`
+    );
+    return Array.isArray(data) ? data : (data.members ?? []);
   } catch {
     return [];
   }

@@ -1,6 +1,29 @@
-[
-  {"name": "Mr. Ishpal Singh", "designation": "Prof. of Practice", "qualification": "B.E", "specialization": "Construction"},
-  {"name": "Mr. Gurmeet Singh", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Highway Engineering"},
-  {"name": "Ms. Ankita Singh", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Water Resource"},
-  {"name": "Ms. Sana Abass Wani", "designation": "Asst. Professor", "qualification": "M.Tech", "specialization": "Construction Tech. & Management"}
-]
+{
+  "department": "ce",
+  "members": [
+    {
+      "name": "Mr. Ishpal Singh",
+      "designation": "Prof. of Practice",
+      "qualification": "B.E",
+      "specialization": "Construction"
+    },
+    {
+      "name": "Mr. Gurmeet Singh",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Highway Engineering"
+    },
+    {
+      "name": "Ms. Ankita Singh",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Water Resource"
+    },
+    {
+      "name": "Ms. Sana Abass Wani",
+      "designation": "Asst. Professor",
+      "qualification": "M.Tech",
+      "specialization": "Construction Tech. & Management"
+    }
+  ]
+}

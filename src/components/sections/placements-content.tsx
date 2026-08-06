@@ -1,15 +1,6 @@
 import Link from "next/link";
 import { FaArrowRight, FaDownload, FaExternalLinkAlt, FaPhone, FaEnvelope } from "react-icons/fa";
-import { getSiteConfig } from "@/lib/content";
-
-const PLACEMENT_RECORDS = [
-  { department: "CSE", title: "Computer Science & Engineering", year: "2022-2024", pdf: "/docs/placement/cse-placement-2024.pdf" },
-  { department: "CSE", title: "CSE Placement Record", year: "2022", pdf: "/docs/placement/cse-placement.pdf" },
-  { department: "ECE", title: "Electronics & Communication", year: "2022", pdf: "/docs/placement/ece-placement.pdf" },
-  { department: "EE", title: "Electrical Engineering", year: "2022", pdf: "/docs/placement/ee-placement.pdf" },
-  { department: "IT", title: "Information Technology", year: "2022", pdf: "/docs/placement/it-placement.pdf" },
-  { department: "ME", title: "Mechanical Engineering", year: "2022", pdf: "/docs/placement/me-placement.pdf" },
-];
+import { getPlacements } from "@/lib/content";
 
 const PLACEMENT_PHOTOS = [
   { src: "/media/general/Mannat-Abrol-CSE-Batch-2020-for-placement-in-Avi-Software.jpg", alt: "Mannat Abrol CSE Placement" },
@@ -18,7 +9,7 @@ const PLACEMENT_PHOTOS = [
 ];
 
 export function PlacementsContent() {
-  const config = getSiteConfig();
+  const records = getPlacements();
 
   return (
     <div className="bg-white">
@@ -108,7 +99,7 @@ export function PlacementsContent() {
             of our students across various companies.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PLACEMENT_RECORDS.map((record) => (
+            {records.map((record) => (
               <a
                 key={record.pdf}
                 href={record.pdf}

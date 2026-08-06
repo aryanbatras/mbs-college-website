@@ -34,14 +34,14 @@ const LABS = [
 ];
 
 const ALUMNI_IMAGES = [
-  "/media/cse/alumni/al1.jpg", "/media/cse/alumni/al2.jpg", "/media/cse/alumni/al3.jpg",
-  "/media/cse/alumni/al4.jpg", "/media/cse/alumni/al5.jpg", "/media/cse/alumni/al6.jpg",
-  "/media/cse/alumni/al8.jpg", "/media/cse/alumni/al9.jpg", "/media/cse/alumni/al10.jpg"
+  "/media/departments/cse/alumni/al1.jpg", "/media/departments/cse/alumni/al2.jpg", "/media/departments/cse/alumni/al3.jpg",
+  "/media/departments/cse/alumni/al4.jpg", "/media/departments/cse/alumni/al5.jpg", "/media/departments/cse/alumni/al6.jpg",
+  "/media/departments/cse/alumni/al8.jpg", "/media/departments/cse/alumni/al9.jpg", "/media/departments/cse/alumni/al10.jpg"
 ];
 
 const VIDEOS = [
-  { title: "FCFS Scheduling Algorithm", src: "/media/cse/innovative/fcfs.mp4" },
-  { title: "Process Scheduling Animation", src: "/media/cse/innovative/scheduling.mp4" }
+  { title: "FCFS Scheduling Algorithm", src: "/media/departments/cse/innovative/fcfs.mp4" },
+  { title: "Process Scheduling Animation", src: "/media/departments/cse/innovative/scheduling.mp4" }
 ];
 
 const SYLLABUS = [
@@ -311,10 +311,10 @@ export function CSEDepartmentContent({ program, faculty }: CSEDepartmentProps) {
               <h2 className="text-3xl font-bold text-[#00274C] mb-8">Labs & Infrastructure</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 <div className="aspect-[4/3] overflow-hidden bg-gray-100">
-                  <img src="/media/cse/labs/lab1.jpg" alt="CSE Lab 1" className="w-full h-full object-cover" loading="lazy" />
+                  <img src="/media/departments/cse/labs/lab1.jpg" alt="CSE Lab 1" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div className="aspect-[4/3] overflow-hidden bg-gray-100">
-                  <img src="/media/cse/labs/lab2.jpg" alt="CSE Lab 2" className="w-full h-full object-cover" loading="lazy" />
+                  <img src="/media/departments/cse/labs/lab2.jpg" alt="CSE Lab 2" className="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
             </div>

@@ -4,6 +4,12 @@
 # This file defines how content and media are managed through Pages CMS.
 # Non-technical staff can edit content via the Pages CMS web interface.
 # Changes are committed directly to GitHub and trigger Vercel deployment.
+#
+# IMPORTANT conventions used here (all validated against the Pages CMS docs):
+# - Scalar arrays (arrays of strings) use `list: true` on the base type,
+#   e.g. `type: text` + `list: true` — NOT `type: list`.
+# - Object arrays use `type: object` + `list: true` + nested `fields`.
+# - `rich-text` is only used for markdown bodies (news/notices).
 
 # ============================================================
 # MEDIA CONFIGURATION
@@ -48,6 +54,18 @@ media:
         update: "media(videos): update {filename}"
         delete: "media(videos): remove {filename}"
 
+  - name: departmentVideos
+    label: Department Videos
+    input: media/departments
+    output: /media/departments
+    categories: [video]
+    rename: false
+    commit:
+      templates:
+        create: "media(departments): add {filename}"
+        update: "media(departments): update {filename}"
+        delete: "media(departments): remove {filename}"
+
 # ============================================================
 # CONTENT CONFIGURATION
 # Defines editable collections and files.
@@ -58,6 +76,7 @@ content:
   # ----------------------------------------------------------
   # SITE SETTINGS (Single file)
   # Global configuration for the entire website.
+  # Contains every key the website reads from content/site.json.
   # ----------------------------------------------------------
   - name: site
     label: Site Settings
@@ -105,6 +124,10 @@ content:
             type: string
           - name: vicePrincipal
             type: string
+          - name: inquiry
+            label: Inquiry Numbers
+            type: string
+            list: true
           - name: tpCell
             type: string
           - name: landline
@@ -116,6 +139,8 @@ content:
           - name: principal
             type: string
           - name: vicePrincipal
+            type: string
+          - name: deanAcademics
             type: string
           - name: tpCell
             type: string
@@ -133,21 +158,24 @@ content:
             type: string
           - name: linkedin
             type: string
-      - name: vision
-        label: Vision Statement
-        type: text
-      - name: mission
-        label: Mission Statements
-        type: list
-        fields:
-          - name: statement
-            type: text
-      - name: about
-        label: About the College
-        type: rich-text
-      - name: accreditation
-        label: Accreditation Info
+      - name: affiliations
+        label: Affiliations
         type: string
+        list: true
+      - name: accreditation
+        label: Accreditation Summary
+        type: string
+      - name: accreditations
+        label: Accreditations
+        type: object
+        list: true
+        fields:
+          - name: body
+            type: string
+          - name: department
+            type: string
+          - name: status
+            type: string
       - name: stats
         label: Statistics
         type: object
@@ -164,17 +192,147 @@ content:
             type: string
           - name: campusAcres
             type: number
+      - name: vision
+        label: Vision Statement
+        type: text
+      - name: mission
+        label: Mission Statements
+        type: text
+        list: true
+      - name: about
+        label: About the College
+        type: text
+      - name: aboutExtended
+        label: About — Extended History
+        type: text
+      - name: chairman
+        label: Chairman
+        type: object
+        fields:
+          - name: name
+            type: string
+          - name: title
+            type: string
+          - name: organization
+            type: string
+          - name: photo
+            type: image
+            options:
+              media: images
+          - name: message
+            type: text
+      - name: advisor
+        label: Advisor
+        type: object
+        fields:
+          - name: name
+            type: string
+          - name: title
+            type: string
+          - name: organization
+            type: string
+          - name: photo
+            type: image
+            options:
+              media: images
+          - name: message
+            type: text
+      - name: principal
+        label: Principal
+        type: object
+        fields:
+          - name: name
+            type: string
+          - name: title
+            type: string
+          - name: organization
+            type: string
+          - name: photo
+            type: image
+            options:
+              media: images
+          - name: message
+            type: text
+      - name: management
+        label: Management Team
+        type: object
+        list: true
+        fields:
+          - name: name
+            type: string
+          - name: title
+            type: string
+          - name: organization
+            type: string
+          - name: photo
+            type: image
+            options:
+              media: images
+      - name: admissionInfo
+        label: Admission Information
+        type: object
+        fields:
+          - name: totalIntake
+            type: number
+          - name: governmentQuota
+            type: number
+          - name: minorityQuota
+            type: number
+          - name: tuitionFee
+            type: string
+          - name: note
+            type: text
+          - name: eligibility
+            type: text
+          - name: admissionProcess
+            type: text
+      - name: placementInfo
+        label: Placement Cell Info
+        type: object
+        fields:
+          - name: incharge
+            type: string
+          - name: contact
+            type: string
+          - name: email
+            type: string
+          - name: highestPackage
+            type: string
+          - name: averagePackage
+            type: string
+      - name: departments
+        label: Departments Overview
+        type: object
+        list: true
+        fields:
+          - name: code
+            type: string
+          - name: name
+            type: string
+          - name: intake
+            type: number
+          - name: nba
+            type: boolean
       - name: topRecruiters
         label: Top Recruiters
-        type: list
-        fields:
-          - name: company
-            type: string
+        type: string
+        list: true
       - name: clubs
         label: Student Clubs
-        type: list
+        type: string
+        list: true
+      - name: activities
+        label: Campus Activities
+        type: string
+        list: true
+      - name: importantLinks
+        label: Important Links
+        type: object
+        list: true
         fields:
-          - name: club
+          - name: label
+            type: string
+          - name: url
             type: string
 
   # ----------------------------------------------------------
@@ -279,7 +437,7 @@ content:
     label: Academic Programs
     type: collection
     path: content/programs
-    filename: "{primary}.md"
+    filename: "{fields.code}.md"
     format: yaml-frontmatter
     subfolders: false
     fields:
@@ -314,33 +472,34 @@ content:
         type: number
       - name: description
         label: Description
-        type: rich-text
+        type: text
       - name: vision
         label: Vision
         type: text
       - name: mission
         label: Mission
-        type: list
-        fields:
-          - name: point
-            type: text
+        type: text
+        list: true
       - name: peos
         label: Program Educational Objectives
-        type: list
-        fields:
-          - name: peo
-            type: text
+        type: text
+        list: true
       - name: labs
         label: Laboratories
-        type: list
-        fields:
-          - name: lab
-            type: string
+        type: string
+        list: true
       - name: highlights
         label: Key Highlights
-        type: list
+        type: string
+        list: true
+      - name: relatedTabs
+        label: Quick Links (Related Tabs)
+        type: object
+        list: true
         fields:
-          - name: highlight
+          - name: label
+            type: string
+          - name: url
             type: string
     view:
       primary: title
@@ -357,7 +516,7 @@ content:
     label: Departments
     type: collection
     path: content/departments
-    filename: "{primary}.json"
+    filename: "{fields.slug}.json"
     format: json
     subfolders: false
     fields:
@@ -400,28 +559,22 @@ content:
             type: string
       - name: description
         label: Description
-        type: rich-text
+        type: text
       - name: vision
         label: Vision
         type: text
       - name: mission
         label: Mission
-        type: list
-        fields:
-          - name: point
-            type: text
+        type: text
+        list: true
       - name: peos
         label: Program Educational Objectives
-        type: list
-        fields:
-          - name: peo
-            type: text
+        type: text
+        list: true
       - name: labs
         label: Laboratories
-        type: list
-        fields:
-          - name: lab
-            type: string
+        type: string
+        list: true
       - name: images
         label: Images
         type: object
@@ -447,17 +600,19 @@ content:
                 max: 20
       - name: videos
         label: Videos
-        type: list
+        type: object
+        list: true
         fields:
           - name: title
             type: string
           - name: src
             type: file
             options:
-              media: videos
+              media: departmentVideos
       - name: syllabus
         label: Syllabus PDFs
-        type: list
+        type: object
+        list: true
         fields:
           - name: title
             type: string
@@ -467,7 +622,8 @@ content:
               media: documents
       - name: notices
         label: Department Notices
-        type: list
+        type: object
+        list: true
         fields:
           - name: title
             type: string
@@ -477,9 +633,16 @@ content:
               media: documents
       - name: highlights
         label: Key Highlights
-        type: list
+        type: string
+        list: true
+      - name: relatedTabs
+        label: Quick Links (Related Tabs)
+        type: object
+        list: true
         fields:
-          - name: highlight
+          - name: label
+            type: string
+          - name: url
             type: string
     view:
       primary: title
@@ -491,23 +654,32 @@ content:
   # ----------------------------------------------------------
   # FACULTY (Collection)
   # Faculty members grouped by department.
+  # Each file is: { "department": "cse", "members": [ ... ] }
   # ----------------------------------------------------------
   - name: faculty
     label: Faculty Members
     type: collection
     path: content/faculty
-    filename: "{primary}.json"
+    filename: "{fields.department}.json"
     format: json
     subfolders: false
     fields:
       - name: department
         label: Department Code
-        type: string
-        readonly: true
-        hidden: true
+        type: select
+        required: true
+        options:
+          - cse
+          - ee
+          - ece
+          - me
+          - ce
+          - it
+          - mca
       - name: members
         label: Faculty Members
-        type: list
+        type: object
+        list: true
         fields:
           - name: name
             label: Name
@@ -519,7 +691,9 @@ content:
             options:
               - Professor & HOD
               - Professor
+              - Associate Professor
               - Asst. Professor
+              - Prof. of Practice
               - Lecturer
           - name: qualification
             label: Qualification
