@@ -1,0 +1,592 @@
+# Pages CMS Configuration
+# https://pagescms.org/docs/configuration/
+#
+# This file defines how content and media are managed through Pages CMS.
+# Non-technical staff can edit content via the Pages CMS web interface.
+# Changes are committed directly to GitHub and trigger Vercel deployment.
+
+# ============================================================
+# MEDIA CONFIGURATION
+# Defines where uploaded files are stored in the repo
+# and what public URLs are written into content.
+# ============================================================
+
+media:
+  - name: images
+    label: Images
+    input: media
+    output: /media
+    categories: [image]
+    rename: false
+    commit:
+      templates:
+        create: "media(images): add {filename}"
+        update: "media(images): update {filename}"
+        delete: "media(images): remove {filename}"
+
+  - name: documents
+    label: Documents (PDFs)
+    input: media/docs
+    output: /media/docs
+    categories: [document]
+    rename: false
+    commit:
+      templates:
+        create: "media(docs): add {filename}"
+        update: "media(docs): update {filename}"
+        delete: "media(docs): remove {filename}"
+
+  - name: videos
+    label: Videos
+    input: media/videos
+    output: /media/videos
+    categories: [video]
+    rename: false
+    commit:
+      templates:
+        create: "media(videos): add {filename}"
+        update: "media(videos): update {filename}"
+        delete: "media(videos): remove {filename}"
+
+# ============================================================
+# CONTENT CONFIGURATION
+# Defines editable collections and files.
+# ============================================================
+
+content:
+
+  # ----------------------------------------------------------
+  # SITE SETTINGS (Single file)
+  # Global configuration for the entire website.
+  # ----------------------------------------------------------
+  - name: site
+    label: Site Settings
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: name
+        label: College Name
+        type: string
+        required: true
+      - name: shortName
+        label: Short Name
+        type: string
+      - name: established
+        label: Established Year
+        type: number
+      - name: tagline
+        label: Tagline
+        type: string
+      - name: noticeBar
+        label: Notice Bar Text
+        type: text
+      - name: address
+        label: Address
+        type: object
+        fields:
+          - name: line1
+            type: string
+          - name: line2
+            type: string
+          - name: city
+            type: string
+          - name: state
+            type: string
+          - name: pincode
+            type: string
+          - name: country
+            type: string
+      - name: phone
+        label: Phone Numbers
+        type: object
+        fields:
+          - name: principal
+            type: string
+          - name: vicePrincipal
+            type: string
+          - name: tpCell
+            type: string
+          - name: landline
+            type: string
+      - name: email
+        label: Email Addresses
+        type: object
+        fields:
+          - name: principal
+            type: string
+          - name: vicePrincipal
+            type: string
+          - name: tpCell
+            type: string
+          - name: cseHead
+            type: string
+      - name: social
+        label: Social Links
+        type: object
+        fields:
+          - name: facebook
+            type: string
+          - name: instagram
+            type: string
+          - name: youtube
+            type: string
+          - name: linkedin
+            type: string
+      - name: vision
+        label: Vision Statement
+        type: text
+      - name: mission
+        label: Mission Statements
+        type: list
+        fields:
+          - name: statement
+            type: text
+      - name: about
+        label: About the College
+        type: rich-text
+      - name: accreditation
+        label: Accreditation Info
+        type: string
+      - name: stats
+        label: Statistics
+        type: object
+        fields:
+          - name: established
+            type: number
+          - name: departments
+            type: number
+          - name: totalIntake
+            type: number
+          - name: faculty
+            type: number
+          - name: alumni
+            type: string
+          - name: campusAcres
+            type: number
+      - name: topRecruiters
+        label: Top Recruiters
+        type: list
+        fields:
+          - name: company
+            type: string
+      - name: clubs
+        label: Student Clubs
+        type: list
+        fields:
+          - name: club
+            type: string
+
+  # ----------------------------------------------------------
+  # NEWS ARTICLES (Collection)
+  # Markdown files with frontmatter for news/blog posts.
+  # ----------------------------------------------------------
+  - name: news
+    label: News Articles
+    type: collection
+    path: content/news
+    filename: "{year}-{month}-{day}-{primary}.md"
+    format: yaml-frontmatter
+    subfolders: false
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: category
+        label: Category
+        type: select
+        options:
+          - Campus
+          - Event
+          - Workshop
+          - Seminar
+          - Achievement
+          - Placement
+          - General
+      - name: image
+        label: Featured Image
+        type: image
+        options:
+          media: images
+      - name: body
+        label: Content
+        type: rich-text
+    view:
+      primary: title
+      sort: date
+      order: desc
+      fields:
+        - title
+        - date
+        - category
+    commit:
+      templates:
+        create: "news: add {title}"
+        update: "news: update {title}"
+        delete: "news: remove {title}"
+
+  # ----------------------------------------------------------
+  # NOTICES (Collection)
+  # Official notices and circulars.
+  # ----------------------------------------------------------
+  - name: notices
+    label: Notices & Circulars
+    type: collection
+    path: content/notices
+    filename: "{year}-{month}-{day}-{primary}.md"
+    format: yaml-frontmatter
+    subfolders: false
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: pdf
+        label: PDF Attachment
+        type: file
+        options:
+          media: documents
+      - name: body
+        label: Description
+        type: rich-text
+    view:
+      primary: title
+      sort: date
+      order: desc
+      fields:
+        - title
+        - date
+    commit:
+      templates:
+        create: "notice: add {title}"
+        update: "notice: update {title}"
+        delete: "notice: remove {title}"
+
+  # ----------------------------------------------------------
+  # PROGRAMS (Collection)
+  # Academic program descriptions (B.Tech, MCA).
+  # ----------------------------------------------------------
+  - name: programs
+    label: Academic Programs
+    type: collection
+    path: content/programs
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    subfolders: false
+    fields:
+      - name: code
+        label: Program Code
+        type: string
+        required: true
+        pattern: "^[A-Z]+$"
+      - name: title
+        label: Program Name
+        type: string
+        required: true
+      - name: degree
+        label: Degree
+        type: select
+        options:
+          - B.Tech
+          - MCA
+          - M.Tech
+      - name: intake
+        label: Intake (Students)
+        type: number
+        required: true
+      - name: duration
+        label: Duration
+        type: string
+      - name: eligibility
+        label: Eligibility
+        type: text
+      - name: established
+        label: Established Year
+        type: number
+      - name: description
+        label: Description
+        type: rich-text
+      - name: vision
+        label: Vision
+        type: text
+      - name: mission
+        label: Mission
+        type: list
+        fields:
+          - name: point
+            type: text
+      - name: peos
+        label: Program Educational Objectives
+        type: list
+        fields:
+          - name: peo
+            type: text
+      - name: labs
+        label: Laboratories
+        type: list
+        fields:
+          - name: lab
+            type: string
+      - name: highlights
+        label: Key Highlights
+        type: list
+        fields:
+          - name: highlight
+            type: string
+    view:
+      primary: title
+      fields:
+        - code
+        - degree
+        - intake
+
+  # ----------------------------------------------------------
+  # DEPARTMENTS (Collection)
+  # Department-specific configuration and data.
+  # ----------------------------------------------------------
+  - name: departments
+    label: Departments
+    type: collection
+    path: content/departments
+    filename: "{primary}.json"
+    format: json
+    subfolders: false
+    fields:
+      - name: slug
+        label: Department Slug
+        type: string
+        required: true
+        readonly: true
+      - name: title
+        label: Department Name
+        type: string
+        required: true
+      - name: degree
+        label: Degree
+        type: string
+      - name: intake
+        label: Intake
+        type: number
+      - name: duration
+        label: Duration
+        type: string
+      - name: eligibility
+        label: Eligibility
+        type: text
+      - name: established
+        label: Established Year
+        type: number
+      - name: nba
+        label: NBA Accredited
+        type: boolean
+      - name: hod
+        label: Head of Department
+        type: object
+        fields:
+          - name: name
+            type: string
+          - name: email
+            type: string
+          - name: phone
+            type: string
+      - name: description
+        label: Description
+        type: rich-text
+      - name: vision
+        label: Vision
+        type: text
+      - name: mission
+        label: Mission
+        type: list
+        fields:
+          - name: point
+            type: text
+      - name: peos
+        label: Program Educational Objectives
+        type: list
+        fields:
+          - name: peo
+            type: text
+      - name: labs
+        label: Laboratories
+        type: list
+        fields:
+          - name: lab
+            type: string
+      - name: images
+        label: Images
+        type: object
+        fields:
+          - name: hero
+            label: Hero Image
+            type: image
+            options:
+              media: images
+          - name: labs
+            label: Lab Images
+            type: image
+            options:
+              media: images
+              multiple:
+                max: 10
+          - name: alumni
+            label: Alumni Photos
+            type: image
+            options:
+              media: images
+              multiple:
+                max: 20
+      - name: videos
+        label: Videos
+        type: list
+        fields:
+          - name: title
+            type: string
+          - name: src
+            type: file
+            options:
+              media: videos
+      - name: syllabus
+        label: Syllabus PDFs
+        type: list
+        fields:
+          - name: title
+            type: string
+          - name: file
+            type: file
+            options:
+              media: documents
+      - name: notices
+        label: Department Notices
+        type: list
+        fields:
+          - name: title
+            type: string
+          - name: file
+            type: file
+            options:
+              media: documents
+      - name: highlights
+        label: Key Highlights
+        type: list
+        fields:
+          - name: highlight
+            type: string
+    view:
+      primary: title
+      fields:
+        - slug
+        - intake
+        - nba
+
+  # ----------------------------------------------------------
+  # FACULTY (Collection)
+  # Faculty members grouped by department.
+  # ----------------------------------------------------------
+  - name: faculty
+    label: Faculty Members
+    type: collection
+    path: content/faculty
+    filename: "{primary}.json"
+    format: json
+    subfolders: false
+    fields:
+      - name: department
+        label: Department Code
+        type: string
+        readonly: true
+        hidden: true
+      - name: members
+        label: Faculty Members
+        type: list
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: designation
+            label: Designation
+            type: select
+            options:
+              - Professor & HOD
+              - Professor
+              - Asst. Professor
+              - Lecturer
+          - name: qualification
+            label: Qualification
+            type: string
+          - name: specialization
+            label: Specialization
+            type: string
+          - name: photo
+            label: Photo
+            type: image
+            options:
+              media: images
+    view:
+      primary: department
+
+  # ----------------------------------------------------------
+  # PLACEMENTS (Collection)
+  # Placement records and brochures.
+  # ----------------------------------------------------------
+  - name: placements
+    label: Placement Records
+    type: collection
+    path: content/placements
+    filename: "{primary}.json"
+    format: json
+    subfolders: false
+    fields:
+      - name: title
+        label: Record Title
+        type: string
+        required: true
+      - name: year
+        label: Academic Year
+        type: string
+      - name: department
+        label: Department
+        type: select
+        options:
+          - All
+          - CSE
+          - EE
+          - ECE
+          - ME
+          - IT
+          - Civil
+      - name: pdf
+        label: PDF Document
+        type: file
+        options:
+          media: documents
+    view:
+      primary: title
+      sort: year
+      order: desc
+
+# ============================================================
+# SETTINGS
+# Global behavior configuration.
+# ============================================================
+
+settings:
+  content:
+    merge: true  # Preserve extra keys when saving JSON files
+  commit:
+    identity: user  # Use editor's GitHub identity for commits
+    templates:
+      create: "{action}({name}): {path}"
+      update: "{action}({name}): {path}"
+      delete: "{action}({name}): {path}"
+      rename: "{action}({name}): {oldPath} -> {newPath}"
