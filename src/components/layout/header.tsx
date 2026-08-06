@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaBars, FaTimes, FaChevronDown, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import type { SiteConfig } from "@/lib/content";
 
 const NAV_ITEMS = [
@@ -15,7 +15,6 @@ const NAV_ITEMS = [
       { label: "About Us", href: "/about" },
       { label: "College Administration", href: "/about/management" },
       { label: "Chairman's Desk", href: "/about/chairman" },
-      { label: "Advisor's Desk", href: "/about/chairman" },
       { label: "Principal's Desk", href: "/about/principal" },
     ],
   },
@@ -29,19 +28,10 @@ const NAV_ITEMS = [
       { label: "Electrical Engineering", href: "/academics/ee", badge: "NBA" },
       { label: "Mechanical Engineering", href: "/academics/me", badge: "NBA" },
       { label: "Civil Engineering", href: "/academics/civil" },
-      { label: "Applied Science & Humanities", href: "/academics" },
     ],
   },
   { label: "Admissions", href: "/admissions" },
-  {
-    label: "Placement",
-    href: "/placements",
-    children: [
-      { label: "Placement Cell", href: "/placements" },
-      { label: "Placement Record", href: "/placements#records" },
-      { label: "Training Activities", href: "/placements#training" },
-    ],
-  },
+  { label: "Placements", href: "/placements" },
   {
     label: "Campus",
     href: "/campus",
@@ -59,104 +49,85 @@ const NAV_ITEMS = [
 
 interface HeaderProps {
   config: SiteConfig;
-  transparent?: boolean;
 }
 
-export function Header({ config, transparent = false }: HeaderProps) {
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+export function Header({ config }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const [desktopDropdown, setDesktopDropdown] = useState<string | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // For non-transparent pages, always show white background
-  const isScrolled = transparent ? scrolled : true;
-
-  // Prevent body scroll when mobile menu is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
     } else {
       document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
     };
   }, [mobileOpen]);
 
+  const closeMobile = useCallback(() => {
+    setMobileOpen(false);
+    setExpandedItem(null);
+  }, []);
+
+  const toggleExpand = useCallback((label: string) => {
+    setExpandedItem(prev => prev === label ? null : label);
+  }, []);
+
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm"
-      role="banner"
-    >
-      <nav aria-label="Main navigation">
-        <div className="mx-auto max-w-7xl flex items-center justify-between px-5 md:px-8 py-4">
+    <>
+      {/* Fixed header bar */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3" aria-label="MBSCET - Home">
-            <div className="relative size-11 overflow-hidden">
-              <Image
-                src="/logo.png"
-                alt="MBSCET Logo"
-                fill
-                className="object-contain"
-                priority
-              />
+          <Link href="/" className="flex items-center gap-2" onClick={closeMobile}>
+            <div className="relative w-10 h-10">
+              <Image src="/logo.png" alt="MBSCET" fill className="object-contain" priority />
             </div>
-            <div className="sm:block">
-              <div className="text-sm font-bold tracking-tight leading-tight text-[#00274C]">
-                MBSCET
-              </div>
-              <div className="text-[10px] leading-tight mt-0.5 text-[#5C6370]">
-                Est. {config.established} &middot; Jammu
-              </div>
+            <div className="hidden sm:block">
+              <div className="text-sm font-bold text-[#00274C]">MBSCET</div>
+              <div className="text-[10px] text-gray-500">Est. 1999</div>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-0.5" role="menubar">
+          <div className="hidden lg:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => item.children && setOpenDropdown(item.label)}
-                onMouseLeave={() => setOpenDropdown(null)}
-                role="none"
+                onMouseEnter={() => item.children && setDesktopDropdown(item.label)}
+                onMouseLeave={() => setDesktopDropdown(null)}
               >
                 <Link
                   href={item.href}
-                  role="menuitem"
-                  aria-haspopup={item.children ? "true" : undefined}
-                  aria-expanded={item.children ? openDropdown === item.label : undefined}
-                  className="flex items-center gap-1 px-3 py-2.5 text-[13px] font-medium text-[#5C6370] hover:text-[#00274C] transition-colors"
+                  className="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 hover:text-[#00274C] transition-colors"
                 >
                   {item.label}
                   {item.children && (
-                    <FaChevronDown
-                      className={`text-[8px] text-[#9CA3AF] transition-transform ${
-                        openDropdown === item.label ? "rotate-180" : ""
-                      }`}
-                    />
+                    <FaChevronDown className="text-[8px] text-gray-400" />
                   )}
                 </Link>
-
-                {/* Dropdown */}
-                {item.children && openDropdown === item.label && (
-                  <div className="absolute top-full left-0 pt-2 z-50" role="menu">
-                    <div className="min-w-[240px] bg-white shadow-lg py-2">
+                {item.children && desktopDropdown === item.label && (
+                  <div className="absolute top-full left-0 pt-1 z-50">
+                    <div className="bg-white shadow-lg border border-gray-100 py-1 min-w-[200px]">
                       {item.children.map((child) => (
                         <Link
                           key={child.label}
                           href={child.href}
-                          role="menuitem"
-                          className="flex items-center justify-between px-5 py-2.5 text-[13px] text-[#5C6370] hover:text-[#00274C] hover:bg-gray-50 transition-colors"
+                          className="flex items-center justify-between px-4 py-2 text-sm text-gray-600 hover:text-[#00274C] hover:bg-gray-50 transition-colors"
                         >
                           <span>{child.label}</span>
-                          {"badge" in child && child.badge && (
+                          {child.badge && (
                             <span className="text-[9px] font-bold bg-[#00274C] text-white px-1.5 py-0.5">
                               {child.badge}
                             </span>
@@ -170,131 +141,108 @@ export function Header({ config, transparent = false }: HeaderProps) {
             ))}
           </div>
 
-          {/* Desktop CTA + mobile trigger */}
+          {/* Desktop CTA + Mobile hamburger */}
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-bold bg-[#00274C] text-white hover:bg-[#1E406B] transition-all"
+              className="hidden sm:inline-flex px-4 py-2 text-sm font-bold bg-[#00274C] text-white hover:bg-[#1E406B] transition-colors"
             >
               Contact Us
             </Link>
-
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex items-center justify-center size-10 text-[#00274C]"
+              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#00274C]"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
-              {mobileOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
+              {mobileOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu overlay */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-0 z-40 bg-white overflow-y-auto">
-          <div className="px-5 py-6">
-            {/* Mobile header */}
-            <div className="flex items-center justify-between mb-8">
-              <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
-                <div className="relative size-10 overflow-hidden">
-                  <Image src="/logo.png" alt="MBSCET Logo" fill className="object-contain" />
+        <div className="fixed inset-0 z-40 lg:hidden">
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/20" onClick={closeMobile} />
+          
+          {/* Menu panel */}
+          <div className="absolute top-16 left-0 right-0 bottom-0 bg-white overflow-y-auto">
+            <div className="p-4">
+              {/* Logo in mobile menu */}
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
+                <div className="relative w-10 h-10">
+                  <Image src="/logo.png" alt="MBSCET" fill className="object-contain" />
                 </div>
                 <div>
-                  <span className="text-sm font-bold text-[#00274C]">MBSCET</span>
-                  <span className="block text-[10px] text-[#5C6370]">Est. {config.established} &middot; Jammu</span>
+                  <div className="text-sm font-bold text-[#00274C]">MBSCET</div>
+                  <div className="text-[10px] text-gray-500">Est. 1999 &middot; Jammu</div>
                 </div>
-              </Link>
-              <button
-                onClick={() => setMobileOpen(false)}
-                className="size-10 flex items-center justify-center text-[#00274C]"
-                aria-label="Close menu"
-              >
-                <FaTimes className="text-xl" />
-              </button>
-            </div>
+              </div>
 
-            {/* Nav links */}
-            <nav className="flex flex-col" aria-label="Mobile navigation">
-              {NAV_ITEMS.map((item) => (
-                <div key={item.label}>
-                  {item.children ? (
-                    <>
-                      <button
-                        onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
-                        className="flex w-full items-center justify-between py-4 text-[15px] font-bold text-[#00274C] border-b border-[#E5E7EB]"
+              {/* Nav items */}
+              <nav className="space-y-1">
+                {NAV_ITEMS.map((item) => (
+                  <div key={item.label}>
+                    {item.children ? (
+                      <>
+                        <button
+                          onClick={() => toggleExpand(item.label)}
+                          className="flex w-full items-center justify-between py-3 text-[15px] font-semibold text-[#00274C] border-b border-gray-100"
+                        >
+                          {item.label}
+                          <FaChevronDown
+                            className={`text-[10px] text-gray-400 transition-transform ${
+                              expandedItem === item.label ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                        {expandedItem === item.label && (
+                          <div className="pl-4 pb-2">
+                            {item.children.map((child) => (
+                              <Link
+                                key={child.label}
+                                href={child.href}
+                                onClick={closeMobile}
+                                className="flex items-center justify-between py-2.5 text-sm text-gray-600 hover:text-[#00274C]"
+                              >
+                                <span>{child.label}</span>
+                                {child.badge && (
+                                  <span className="text-[9px] font-bold bg-[#00274C] text-white px-1.5 py-0.5">
+                                    {child.badge}
+                                  </span>
+                                )}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={closeMobile}
+                        className="block py-3 text-[15px] font-semibold text-[#00274C] border-b border-gray-100"
                       >
                         {item.label}
-                        <FaChevronDown
-                          className={`text-[10px] text-[#9CA3AF] transition-transform ${
-                            mobileExpanded === item.label ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                      {mobileExpanded === item.label && (
-                        <div className="pl-4 pb-2">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.label}
-                              href={child.href}
-                              onClick={() => setMobileOpen(false)}
-                              className="flex items-center justify-between py-3 text-[14px] text-[#5C6370] hover:text-[#00274C]"
-                            >
-                              <span>{child.label}</span>
-                              {"badge" in child && child.badge && (
-                                <span className="text-[9px] font-bold bg-[#00274C] text-white px-1.5 py-0.5">
-                                  {child.badge}
-                                </span>
-                              )}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="block py-4 text-[15px] font-bold text-[#00274C] border-b border-[#E5E7EB]"
-                    >
-                      {item.label}
-                    </Link>
-                  )}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </nav>
+
+              {/* Contact info */}
+              <div className="mt-6 pt-4 border-t border-gray-100">
+                <p className="text-xs font-bold text-gray-400 mb-2">Contact</p>
+                <div className="space-y-1 text-sm text-gray-600">
+                  <p>Landline: {config.phone.landline}</p>
+                  <p>Principal: {config.phone.principal}</p>
+                  <p>Email: {config.email.principal}</p>
                 </div>
-              ))}
-            </nav>
-
-            {/* Contact info */}
-            <div className="mt-8 pt-6 border-t border-[#E5E7EB]">
-              <p className="text-xs font-bold text-[#00274C] mb-3">Contact</p>
-              <div className="space-y-2 text-sm text-[#5C6370]">
-                <p>Landline: {config.phone.landline}</p>
-                <p>Principal: {config.phone.principal}</p>
-                <p>Email: {config.email.principal}</p>
               </div>
-            </div>
-
-            {/* Social links */}
-            <div className="flex items-center gap-4 mt-6">
-              {config.social.facebook && (
-                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-[#5C6370] hover:text-[#00274C] transition-colors" aria-label="Facebook">
-                  <FaFacebookF className="text-lg" />
-                </a>
-              )}
-              {config.social.instagram && (
-                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="text-[#5C6370] hover:text-[#00274C] transition-colors" aria-label="Instagram">
-                  <FaInstagram className="text-lg" />
-                </a>
-              )}
-              {config.social.linkedin && (
-                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#5C6370] hover:text-[#00274C] transition-colors" aria-label="LinkedIn">
-                  <FaLinkedinIn className="text-lg" />
-                </a>
-              )}
             </div>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

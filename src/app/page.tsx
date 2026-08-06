@@ -28,7 +28,7 @@ export default function HomePage() {
   return (
     <>
       <EducationalOrgJsonLd />
-      <Header config={config} transparent />
+      <Header config={config} />
       <main id="main-content">
         <Hero />
         <AboutStrip config={config} />
