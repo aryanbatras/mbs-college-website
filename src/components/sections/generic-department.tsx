@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { FaArrowLeft, FaDownload, FaExternalLinkAlt, FaPhone, FaEnvelope, FaBook, FaFlask, FaUsers, FaNewspaper, FaFileAlt, FaVideo, FaGraduationCap } from "react-icons/fa";
 import type { Program, FacultyMember } from "@/lib/content";
+import { PdfEmbed } from "@/components/ui/pdf-viewer";
 
 interface GenericDepartmentProps {
   program: Program;
@@ -300,7 +301,7 @@ export function GenericDepartmentContent({
                       </a>
                     </div>
                     <div className="border-t border-gray-100">
-                      <iframe src={`${item.file}#toolbar=0&navpanes=0&scrollbar=0`} className="w-full h-[600px]" title={item.title} loading="lazy" />
+                      <PdfEmbed src={item.file} title={item.title} />
                     </div>
                   </div>
                 ))}
@@ -333,7 +334,7 @@ export function GenericDepartmentContent({
                       </a>
                     </div>
                     <div className="border-t border-gray-100">
-                      <iframe src={`${item.file}#toolbar=0&navpanes=0&scrollbar=0`} className="w-full h-[600px]" title={item.title} loading="lazy" />
+                      <PdfEmbed src={item.file} title={item.title} />
                     </div>
                   </div>
                 ))}
