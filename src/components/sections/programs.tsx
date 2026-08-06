@@ -1,19 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import { getPrograms } from "@/lib/content";
 
-const PROGRAMS_DATA = [
-  { code: "CSE", title: "Computer Science & Engineering", intake: 120, duration: "4 Years", nba: true, description: "Bridging the gap between the physical and the elusive realm of software, equipping students with skills to design, develop, and implement the foundation of modern technology." },
-  { code: "CSE-AIML", title: "CSE with AI & ML", intake: 60, duration: "4 Years", nba: false, description: "Specialized program focusing on artificial intelligence and machine learning applications in computer science." },
-  { code: "IT", title: "Information Technology", intake: 60, duration: "4 Years", nba: false, description: "Focusing on the application of computing and telecommunications systems to store, retrieve, and transmit data." },
-  { code: "ECE", title: "Electronics & Communication Engineering", intake: 30, duration: "4 Years", nba: false, description: "Covering analog and digital transmission, radio engineering, telecommunication, and signal processing." },
-  { code: "EE", title: "Electrical Engineering", intake: 30, duration: "4 Years", nba: true, description: "Dealing with the study and application of electricity, electronics, and electromagnetism across diverse fields." },
-  { code: "ME", title: "Mechanical Engineering", intake: 30, duration: "4 Years", nba: true, description: "Combining engineering physics with mathematics for design, analysis, and manufacturing of mechanical systems." },
-  { code: "CE", title: "Civil Engineering", intake: 60, duration: "4 Years", nba: false, description: "Designing, constructing, and maintaining the physical and naturally built environment including infrastructure." },
-];
+export async function ProgramsSection() {
+  const programs = getPrograms();
 
-export function ProgramsSection() {
   return (
     <section className="bg-white" aria-label="Programs">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
@@ -30,26 +21,21 @@ export function ProgramsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PROGRAMS_DATA.map((program) => (
+          {programs.map((program) => (
             <Link
               key={program.code}
-              href={`/academics/${program.code.toLowerCase().replace(/[^a-z]/g, "")}`}
+              href={`/academics/${program.slug}`}
               className="group block p-8 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors"
             >
-              <div className="flex items-center justify-between mb-5">
+              <div className="mb-5">
                 <span className="text-xs font-bold text-[#00274C] group-hover:text-[#FFCB05] transition-colors tracking-wider">
                   {program.code}
                 </span>
-                {program.nba && (
-                  <span className="text-[9px] font-bold bg-[#FFCB05] text-[#00274C] px-1.5 py-0.5">
-                    NBA
-                  </span>
-                )}
               </div>
               <h3 className="text-lg font-bold text-[#00274C] group-hover:text-white leading-tight mb-3 transition-colors">
                 {program.title}
               </h3>
-              <p className="text-sm text-[#5C6370] group-hover:text-white/60 mb-4 transition-colors leading-relaxed">
+              <p className="text-sm text-[#5C6370] group-hover:text-white/60 mb-4 transition-colors leading-relaxed line-clamp-3">
                 {program.description}
               </p>
               <div className="flex items-center justify-between mt-auto pt-4 border-t border-[#E5E7EB] group-hover:border-white/10 transition-colors">
