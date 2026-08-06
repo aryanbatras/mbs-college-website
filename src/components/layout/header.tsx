@@ -69,6 +69,7 @@ export function Header({ config }: HeaderProps) {
   const scrollY = useRef(0);
   const menuPanelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Check if a nav item is active
   const isActive = useCallback(
@@ -88,7 +89,7 @@ export function Header({ config }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open (proper method)
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileOpen) {
       scrollY.current = window.scrollY;
@@ -96,7 +97,6 @@ export function Header({ config }: HeaderProps) {
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollY.current}px`;
       document.body.style.width = "100%";
-      // Focus close button for accessibility
       setTimeout(() => closeButtonRef.current?.focus(), 100);
     } else {
       document.body.style.overflow = "";
@@ -116,13 +116,9 @@ export function Header({ config }: HeaderProps) {
   // Keyboard support - Escape to close
   useEffect(() => {
     if (!mobileOpen) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        closeMobile();
-      }
+      if (e.key === "Escape") closeMobile();
     };
-
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [mobileOpen]);
@@ -132,6 +128,13 @@ export function Header({ config }: HeaderProps) {
     closeMobile();
   }, [pathname]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    };
+  }, []);
+
   const closeMobile = useCallback(() => {
     setMobileOpen(false);
     setExpandedItem(null);
@@ -139,6 +142,24 @@ export function Header({ config }: HeaderProps) {
 
   const toggleExpand = useCallback((label: string) => {
     setExpandedItem((prev) => (prev === label ? null : label));
+  }, []);
+
+  // Desktop dropdown handlers with delay to prevent accidental close
+  const handleDropdownEnter = useCallback(
+    (label: string) => {
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current);
+        dropdownTimeoutRef.current = null;
+      }
+      setDesktopDropdown(label);
+    },
+    []
+  );
+
+  const handleDropdownLeave = useCallback(() => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setDesktopDropdown(null);
+    }, 150); // 150ms delay before closing
   }, []);
 
   return (
@@ -181,18 +202,21 @@ export function Header({ config }: HeaderProps) {
           <div className="hidden lg:flex items-center gap-0.5">
             {NAV_ITEMS.map((item) => {
               const active = isActive(item.href);
+              const isOpen = desktopDropdown === item.label;
+
               return (
                 <div
                   key={item.label}
                   className="relative"
                   onMouseEnter={() =>
-                    item.children && setDesktopDropdown(item.label)
+                    item.children && handleDropdownEnter(item.label)
                   }
-                  onMouseLeave={() => setDesktopDropdown(null)}
+                  onMouseLeave={() => item.children && handleDropdownLeave()}
                 >
+                  {/* Parent link with hover underline */}
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 px-3 py-2 text-[15px] font-medium transition-colors ${
+                    className={`group relative flex items-center gap-1.5 px-3 py-2 text-[15px] font-medium transition-colors ${
                       active
                         ? "text-[#FFCB05]"
                         : "text-white/80 hover:text-white"
@@ -200,33 +224,80 @@ export function Header({ config }: HeaderProps) {
                   >
                     {item.label}
                     {item.children && (
-                      <FaChevronDown className="text-[8px] text-white/40" />
+                      <FaChevronDown
+                        className={`text-[8px] transition-transform duration-200 ${
+                          isOpen ? "rotate-180" : ""
+                        } ${active ? "text-[#FFCB05]/60" : "text-white/40"}`}
+                      />
                     )}
+                    {/* Hover underline */}
+                    <span
+                      className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#FFCB05] transition-transform duration-300 origin-left ${
+                        isOpen ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
                   </Link>
-                  {item.children && desktopDropdown === item.label && (
-                    <div className="absolute top-full left-0 pt-1 z-50">
-                      <div className="bg-white/95 backdrop-blur-md shadow-xl border border-white/20 py-1 min-w-[260px]">
-                        {item.children.map((child) => {
-                          const childActive = isActive(child.href);
-                          return (
-                            <Link
-                              key={child.label}
-                              href={child.href}
-                              className={`flex items-center justify-between px-4 py-2.5 text-sm transition-colors ${
-                                childActive
-                                  ? "text-[#00274C] bg-[#FFCB05]/10 font-semibold"
-                                  : "text-gray-700 hover:text-[#00274C] hover:bg-gray-50"
-                              }`}
-                            >
-                              <span>{child.label}</span>
-                              {child.badge && (
-                                <span className="text-[9px] font-bold bg-[#FFCB05] text-[#00274C] px-1.5 py-0.5 rounded-sm">
-                                  {child.badge}
+
+                  {/* Dropdown panel with animation */}
+                  {item.children && (
+                    <div
+                      className={`absolute top-full left-0 pt-2 z-50 transition-all duration-200 ${
+                        isOpen
+                          ? "opacity-100 translate-y-0 pointer-events-auto"
+                          : "opacity-0 -translate-y-2 pointer-events-none"
+                      }`}
+                    >
+                      <div className="bg-white/95 backdrop-blur-xl shadow-2xl border border-gray-100/50 rounded-xl overflow-hidden min-w-[260px]">
+                        {/* Top accent */}
+                        <div className="h-[3px] bg-gradient-to-r from-[#FFCB05] via-[#FFC107] to-[#FFCB05]" />
+
+                        <div className="py-2">
+                          {item.children.map((child, index) => {
+                            const childActive = isActive(child.href);
+                            return (
+                              <Link
+                                key={child.label}
+                                href={child.href}
+                                className={`group/item flex items-center justify-between px-4 py-2.5 text-sm transition-all duration-150 ${
+                                  childActive
+                                    ? "text-[#00274C] bg-[#FFCB05]/10 font-semibold"
+                                    : "text-gray-600 hover:text-[#00274C] hover:bg-gray-50"
+                                }`}
+                                style={{
+                                  animationDelay: isOpen
+                                    ? `${index * 30}ms`
+                                    : "0ms",
+                                  opacity: isOpen ? 1 : 0,
+                                  transform: isOpen
+                                    ? "translateX(0)"
+                                    : "translateX(-8px)",
+                                  transition: `opacity 200ms ease ${index * 30}ms, transform 200ms ease ${index * 30}ms, background-color 150ms ease, color 150ms ease`,
+                                }}
+                              >
+                                <span className="flex items-center gap-2">
+                                  {/* Active indicator dot */}
+                                  {childActive && (
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#FFCB05] shrink-0" />
+                                  )}
+                                  <span
+                                    className={`border-b border-transparent transition-all duration-200 ${
+                                      !childActive
+                                        ? "group-hover/item:border-[#00274C]/20"
+                                        : ""
+                                    }`}
+                                  >
+                                    {child.label}
+                                  </span>
                                 </span>
-                              )}
-                            </Link>
-                          );
-                        })}
+                                {child.badge && (
+                                  <span className="text-[9px] font-bold bg-[#FFCB05] text-[#00274C] px-2 py-0.5 rounded-full transition-transform duration-200 group-hover/item:scale-105">
+                                    {child.badge}
+                                  </span>
+                                )}
+                              </Link>
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -239,7 +310,7 @@ export function Header({ config }: HeaderProps) {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex px-5 py-2.5 text-sm font-semibold text-[#00274C] bg-[#FFCB05] hover:bg-[#FFC107] transition-colors rounded-sm"
+              className="hidden sm:inline-flex px-5 py-2.5 text-sm font-semibold text-[#00274C] bg-[#FFCB05] hover:bg-[#FFC107] transition-all duration-200 rounded-sm hover:shadow-[0_4px_12px_rgba(255,203,5,0.4)]"
             >
               Contact Us
             </Link>
@@ -273,7 +344,7 @@ export function Header({ config }: HeaderProps) {
           aria-hidden="true"
         />
 
-        {/* Menu panel - slides from right */}
+        {/* Menu panel */}
         <div
           ref={menuPanelRef}
           className={`absolute top-0 right-0 bottom-0 w-full max-w-[340px] bg-white shadow-2xl transition-transform duration-300 ease-out ${
@@ -341,7 +412,6 @@ export function Header({ config }: HeaderProps) {
                             />
                           </div>
                         </button>
-                        {/* Submenu with smooth height animation */}
                         <div
                           className="overflow-hidden transition-all duration-250 ease-in-out"
                           style={{
@@ -396,10 +466,8 @@ export function Header({ config }: HeaderProps) {
               })}
             </nav>
 
-            {/* Divider */}
             <div className="mx-5 h-px bg-gray-100" />
 
-            {/* Contact section */}
             <div className="mx-5 mt-4 p-4 bg-gray-50 rounded-xl">
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">
                 Contact
@@ -434,7 +502,6 @@ export function Header({ config }: HeaderProps) {
               </div>
             </div>
 
-            {/* External link */}
             <div className="mx-5 mt-3 mb-6">
               <a
                 href="https://www.mbscet.edu.in"
