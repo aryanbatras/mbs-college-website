@@ -30,28 +30,28 @@ export default function HomePage() {
       <EducationalOrgJsonLd />
       <Header config={config} />
       <main id="main-content">
-        {/* Hero - subtle slow parallax */}
-        <div data-speed="0.8">
+        {/* Hero - slow parallax with lag for dreamy effect */}
+        <div data-speed="0.7" data-lag="0.5">
           <Hero />
         </div>
 
-        {/* About - medium parallax for depth */}
-        <div data-speed="0.9">
+        {/* About - medium parallax with slight lag */}
+        <div data-speed="0.85" data-lag="0.3">
           <AboutStrip config={config} />
         </div>
 
-        {/* Management - normal speed */}
+        {/* Management - normal speed, no lag */}
         <div data-speed="1">
           <ManagementSection config={config} />
         </div>
 
-        {/* Programs - slight fast parallax */}
-        <div data-speed="1.1">
+        {/* Programs - fast parallax for energy */}
+        <div data-speed="1.15" data-lag="0.2">
           <ProgramsSection />
         </div>
 
         {/* Campus - slow parallax for depth */}
-        <div data-speed="0.85">
+        <div data-speed="0.8" data-lag="0.4">
           <CampusSection />
         </div>
 
@@ -60,8 +60,8 @@ export default function HomePage() {
           <ActivitiesSection />
         </div>
 
-        {/* Placement - subtle parallax */}
-        <div data-speed="0.95">
+        {/* Placement - subtle parallax with lag */}
+        <div data-speed="0.9" data-lag="0.25">
           <PlacementSection />
         </div>
 
@@ -70,8 +70,8 @@ export default function HomePage() {
           <GallerySection />
         </div>
 
-        {/* Clubs - slight fast parallax */}
-        <div data-speed="1.05">
+        {/* Clubs - fast parallax */}
+        <div data-speed="1.1" data-lag="0.15">
           <ClubsSection />
         </div>
 
@@ -80,8 +80,8 @@ export default function HomePage() {
           <ImportantLinks />
         </div>
 
-        {/* Campus News - slow parallax */}
-        <div data-speed="0.9">
+        {/* Campus News - medium parallax */}
+        <div data-speed="0.85" data-lag="0.3">
           <CampusNewsSection />
         </div>
 
@@ -91,7 +91,7 @@ export default function HomePage() {
         </div>
 
         {/* Testimonials - subtle parallax */}
-        <div data-speed="0.95">
+        <div data-speed="0.9" data-lag="0.2">
           <TestimonialsSection />
         </div>
 
