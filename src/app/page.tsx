@@ -29,7 +29,7 @@ export default function HomePage() {
     <>
       <EducationalOrgJsonLd />
       <ScrollProgress />
-      <Header config={config} />
+      <Header config={config} transparent />
       <main id="main-content">
         <Hero />
         <AboutStrip config={config} />

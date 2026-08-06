@@ -59,9 +59,10 @@ const NAV_ITEMS = [
 
 interface HeaderProps {
   config: SiteConfig;
+  transparent?: boolean;
 }
 
-export function Header({ config }: HeaderProps) {
+export function Header({ config, transparent = false }: HeaderProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -72,6 +73,9 @@ export function Header({ config }: HeaderProps) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // For non-transparent pages, always show white background
+  const isScrolled = transparent ? scrolled : true;
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -88,7 +92,7 @@ export function Header({ config }: HeaderProps) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        isScrolled
           ? "bg-white/95 backdrop-blur-sm shadow-sm"
           : "bg-transparent"
       }`}
@@ -110,14 +114,14 @@ export function Header({ config }: HeaderProps) {
             <div className="sm:block">
               <div
                 className={`text-sm font-bold tracking-tight leading-tight transition-colors duration-300 ${
-                  scrolled ? "text-[#00274C]" : "text-white"
+                  isScrolled ? "text-[#00274C]" : "text-white"
                 }`}
               >
                 MBSCET
               </div>
               <div
                 className={`text-[10px] leading-tight mt-0.5 transition-colors duration-300 ${
-                  scrolled ? "text-[#5C6370]" : "text-white/60"
+                  isScrolled ? "text-[#5C6370]" : "text-white/60"
                 }`}
               >
                 Est. {config.established} &middot; Jammu
@@ -141,7 +145,7 @@ export function Header({ config }: HeaderProps) {
                   aria-haspopup={item.children ? "true" : undefined}
                   aria-expanded={item.children ? openDropdown === item.label : undefined}
                   className={`flex items-center gap-1 px-3 py-2.5 text-[13px] font-medium transition-colors ${
-                    scrolled
+                    isScrolled
                       ? "text-[#5C6370] hover:text-[#00274C]"
                       : "text-white/80 hover:text-white"
                   }`}
@@ -151,7 +155,7 @@ export function Header({ config }: HeaderProps) {
                     <FaChevronDown
                       className={`text-[8px] transition-transform ${
                         openDropdown === item.label ? "rotate-180" : ""
-                      } ${scrolled ? "text-[#9CA3AF]" : "text-white/40"}`}
+                      } ${isScrolled ? "text-[#9CA3AF]" : "text-white/40"}`}
                     />
                   )}
                 </Link>
@@ -187,7 +191,7 @@ export function Header({ config }: HeaderProps) {
             <Link
               href="/contact"
               className={`hidden sm:inline-flex items-center px-5 py-2.5 text-[13px] font-bold transition-all ${
-                scrolled
+                isScrolled
                   ? "bg-[#00274C] text-[#FFCB05] hover:bg-[#1E406B]"
                   : "bg-[#FFCB05] text-[#00274C] hover:bg-white"
               }`}
@@ -198,7 +202,7 @@ export function Header({ config }: HeaderProps) {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden flex items-center justify-center size-10 transition-colors ${
-                scrolled ? "text-[#00274C]" : "text-white"
+                isScrolled ? "text-[#00274C]" : "text-white"
               }`}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
