@@ -58,7 +58,7 @@ export function Footer({ config }: FooterProps) {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <div className="text-xl font-bold tracking-tight text-white">MBSCET</div>
+              <div className="text-xl font-bold tracking-tight text-[#FFCB05]">MBSCET</div>
               <div className="text-sm text-white/60 mt-1 leading-relaxed">
                 Mahant Bachittar Singh College of<br />
                 Engineering & Technology
@@ -69,16 +69,16 @@ export function Footer({ config }: FooterProps) {
             </p>
 
             <div className="flex flex-wrap gap-2 mb-6">
-              <span className="text-[10px] font-bold bg-white/10 text-white px-2 py-1">NBA Accredited</span>
-              <span className="text-[10px] font-bold border border-white/20 text-white/70 px-2 py-1">AICTE Approved</span>
+              <span className="text-[10px] font-bold bg-[#FFCB05] text-[#00274C] px-2 py-1">NBA Accredited</span>
+              <span className="text-[10px] font-bold border border-[#FFCB05] text-[#FFCB05] px-2 py-1">AICTE Approved</span>
             </div>
 
             <div className="space-y-3">
-              <a href={`tel:${config.phone.landline}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-white transition-colors">
+              <a href={`tel:${config.phone.landline}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors">
                 <FaPhone className="text-xs text-white/40 shrink-0" />
                 {config.phone.landline} / {config.phone.principal}
               </a>
-              <a href={`mailto:${config.email.principal}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-white transition-colors">
+              <a href={`mailto:${config.email.principal}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors">
                 <FaEnvelope className="text-xs text-white/40 shrink-0" />
                 {config.email.principal}
               </a>
@@ -96,7 +96,7 @@ export function Footer({ config }: FooterProps) {
           {/* Link columns */}
           {Object.entries(FOOTER_LINKS).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-sm font-bold text-white mb-4">{title}</h3>
+              <h3 className="text-sm font-bold text-[#FFCB05] mb-4">{title}</h3>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.href}>
@@ -124,17 +124,17 @@ export function Footer({ config }: FooterProps) {
 
             <div className="flex items-center gap-3">
               {config.social.facebook && (
-                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-white/10 text-white hover:bg-white/20 transition-all" aria-label="Facebook">
+                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all" aria-label="Facebook">
                   <FaFacebookF className="text-xs" />
                 </a>
               )}
               {config.social.instagram && (
-                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-white/10 text-white hover:bg-white/20 transition-all" aria-label="Instagram">
+                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all" aria-label="Instagram">
                   <FaInstagram className="text-xs" />
                 </a>
               )}
               {config.social.linkedin && (
-                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-white/10 text-white hover:bg-white/20 transition-all" aria-label="LinkedIn">
+                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all" aria-label="LinkedIn">
                   <FaLinkedinIn className="text-xs" />
                 </a>
               )}
@@ -142,7 +142,7 @@ export function Footer({ config }: FooterProps) {
 
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="size-9 flex items-center justify-center bg-white/10 text-white hover:bg-white/20 transition-all"
+              className="size-9 flex items-center justify-center bg-[#FFCB05] text-[#00274C] hover:bg-[#FFC107] transition-all"
               aria-label="Back to top"
             >
               <FaArrowUp className="text-xs" />

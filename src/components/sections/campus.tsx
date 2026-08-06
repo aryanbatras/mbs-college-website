@@ -18,7 +18,7 @@ export function CampusSection() {
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
               Our Campus
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#00274C] leading-[1.05] tracking-tight mb-6">
@@ -47,7 +47,7 @@ export function CampusSection() {
               </Link>
               <Link
                 href="/campus/galleries"
-                className="group inline-flex items-center gap-3 border-2 border-gray-200 text-[#00274C] px-8 py-4 text-sm font-bold hover:border-[#00274C] transition-colors"
+                className="group inline-flex items-center gap-3 border-2 border-[#FFCB05] text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-[#FFCB05] hover:text-[#00274C] transition-colors"
               >
                 Photo Gallery
                 <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />

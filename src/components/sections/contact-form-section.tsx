@@ -43,7 +43,7 @@ export function ContactSection({ config }: ContactSectionProps) {
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
               Get in Touch
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00274C] leading-[1.05] tracking-tight mb-6">
@@ -56,7 +56,7 @@ export function ContactSection({ config }: ContactSectionProps) {
             <div className="space-y-6">
               {/* Address */}
               <div className="flex items-start gap-4">
-                <div className="size-12 flex items-center justify-center bg-gray-100 shrink-0">
+                <div className="size-12 flex items-center justify-center bg-[#FFCB05]/10 shrink-0">
                   <FaMapMarkerAlt className="text-[#00274C] text-lg" />
                 </div>
                 <div>
@@ -71,32 +71,32 @@ export function ContactSection({ config }: ContactSectionProps) {
 
               {/* Phone */}
               <div className="flex items-start gap-4">
-                <div className="size-12 flex items-center justify-center bg-gray-100 shrink-0">
+                <div className="size-12 flex items-center justify-center bg-[#FFCB05]/10 shrink-0">
                   <FaPhone className="text-[#00274C] text-lg" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#00274C] mb-1">Call Us</h3>
                   <p className="text-sm text-[#5C6370]">
                     Landline:{" "}
-                    <a href={`tel:${config.phone.landline}`} className="hover:text-gray-400 transition-colors">
+                    <a href={`tel:${config.phone.landline}`} className="hover:text-[#FFCB05] transition-colors">
                       {config.phone.landline}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
                     Principal:{" "}
-                    <a href={`tel:${config.phone.principal}`} className="hover:text-gray-400 transition-colors">
+                    <a href={`tel:${config.phone.principal}`} className="hover:text-[#FFCB05] transition-colors">
                       {config.phone.principal}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
                     Vice-Principal:{" "}
-                    <a href={`tel:${config.phone.vicePrincipal}`} className="hover:text-gray-400 transition-colors">
+                    <a href={`tel:${config.phone.vicePrincipal}`} className="hover:text-[#FFCB05] transition-colors">
                       {config.phone.vicePrincipal}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
                     Placement Cell:{" "}
-                    <a href={`tel:${config.phone.tpCell}`} className="hover:text-gray-400 transition-colors">
+                    <a href={`tel:${config.phone.tpCell}`} className="hover:text-[#FFCB05] transition-colors">
                       {config.phone.tpCell}
                     </a>
                   </p>
@@ -104,7 +104,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                     Admissions:{" "}
                     {config.phone.inquiry.map((phone, i) => (
                       <span key={phone}>
-                        <a href={`tel:${phone}`} className="hover:text-gray-400 transition-colors">
+                        <a href={`tel:${phone}`} className="hover:text-[#FFCB05] transition-colors">
                           {phone}
                         </a>
                         {i < config.phone.inquiry.length - 1 && " / "}
@@ -116,24 +116,24 @@ export function ContactSection({ config }: ContactSectionProps) {
 
               {/* Email */}
               <div className="flex items-start gap-4">
-                <div className="size-12 flex items-center justify-center bg-gray-100 shrink-0">
+                <div className="size-12 flex items-center justify-center bg-[#FFCB05]/10 shrink-0">
                   <FaEnvelope className="text-[#00274C] text-lg" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#00274C] mb-1">Email Us</h3>
                   <p className="text-sm text-[#5C6370]">
-                    <a href={`mailto:${config.email.principal}`} className="hover:text-gray-400 transition-colors">
+                    <a href={`mailto:${config.email.principal}`} className="hover:text-[#FFCB05] transition-colors">
                       {config.email.principal}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
-                    <a href={`mailto:${config.email.deanAcademics}`} className="hover:text-gray-400 transition-colors">
+                    <a href={`mailto:${config.email.deanAcademics}`} className="hover:text-[#FFCB05] transition-colors">
                       {config.email.deanAcademics}
                     </a>
                   </p>
                   <p className="text-sm text-[#5C6370] mt-1">
                     Placement:{" "}
-                    <a href={`mailto:${config.email.tpCell}`} className="hover:text-gray-400 transition-colors">
+                    <a href={`mailto:${config.email.tpCell}`} className="hover:text-[#FFCB05] transition-colors">
                       {config.email.tpCell}
                     </a>
                   </p>
@@ -144,17 +144,17 @@ export function ContactSection({ config }: ContactSectionProps) {
             {/* Social */}
             <div className="flex items-center gap-4 mt-10">
               {config.social.facebook && (
-                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="size-10 flex items-center justify-center bg-gray-100 text-[#00274C] hover:bg-[#00274C] hover:text-white transition-all" aria-label="Facebook">
+                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="size-10 flex items-center justify-center bg-[#FFCB05]/10 text-[#00274C] hover:bg-[#00274C] hover:text-[#FFCB05] transition-all" aria-label="Facebook">
                   <FaFacebookF className="text-sm" />
                 </a>
               )}
               {config.social.instagram && (
-                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="size-10 flex items-center justify-center bg-gray-100 text-[#00274C] hover:bg-[#00274C] hover:text-white transition-all" aria-label="Instagram">
+                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="size-10 flex items-center justify-center bg-[#FFCB05]/10 text-[#00274C] hover:bg-[#00274C] hover:text-[#FFCB05] transition-all" aria-label="Instagram">
                   <FaInstagram className="text-sm" />
                 </a>
               )}
               {config.social.linkedin && (
-                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="size-10 flex items-center justify-center bg-gray-100 text-[#00274C] hover:bg-[#00274C] hover:text-white transition-all" aria-label="LinkedIn">
+                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="size-10 flex items-center justify-center bg-[#FFCB05]/10 text-[#00274C] hover:bg-[#00274C] hover:text-[#FFCB05] transition-all" aria-label="LinkedIn">
                   <FaLinkedinIn className="text-sm" />
                 </a>
               )}
@@ -165,13 +165,13 @@ export function ContactSection({ config }: ContactSectionProps) {
           <div>
             {submitted ? (
               <div className="bg-[#00274C] p-12 md:p-16 flex flex-col items-center justify-center text-center min-h-[500px]">
-                <div className="size-16 flex items-center justify-center bg-gray-100 mb-6">
+                <div className="size-16 flex items-center justify-center bg-[#FFCB05] mb-6">
                   <FaCheckCircle className="text-3xl text-[#00274C]" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">Message Ready</h3>
                 <p className="text-white/70 mb-6 max-w-sm">
                   Your email client should open shortly. If not, reach us at{" "}
-                  <a href={`mailto:${config.email.principal}`} className="text-gray-400 font-bold hover:underline">
+                  <a href={`mailto:${config.email.principal}`} className="text-[#FFCB05] font-bold hover:underline">
                     {config.email.principal}
                   </a>
                 </p>
@@ -180,7 +180,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                     setSubmitted(false);
                     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
                   }}
-                  className="text-sm font-bold text-gray-400 hover:underline"
+                  className="text-sm font-bold text-[#FFCB05] hover:underline"
                 >
                   Send another message
                 </button>
@@ -204,7 +204,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#00274C] transition-colors"
+                      className="w-full px-4 py-3 border border-white/20 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#FFCB05] transition-colors"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -221,7 +221,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-200 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#00274C] transition-colors"
+                        className="w-full px-4 py-3 border border-white/20 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#FFCB05] transition-colors"
                         placeholder="you@example.com"
                       />
                     </div>
@@ -235,7 +235,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-200 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#00274C] transition-colors"
+                        className="w-full px-4 py-3 border border-white/20 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#FFCB05] transition-colors"
                         placeholder="+91 XXXXX XXXXX"
                       />
                     </div>
@@ -250,7 +250,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-200 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#00274C] transition-colors"
+                      className="w-full px-4 py-3 border border-white/20 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#FFCB05] transition-colors"
                     >
                       <option value="">Select a topic</option>
                       <option value="Admission Inquiry">Admission Inquiry</option>
@@ -273,7 +273,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 border border-gray-200 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#00274C] transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-white/20 bg-white text-[#00274C] text-sm focus:outline-none focus:border-[#FFCB05] transition-colors resize-none"
                       placeholder="Tell us how we can help you..."
                     />
                   </div>
@@ -281,7 +281,7 @@ export function ContactSection({ config }: ContactSectionProps) {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="w-full flex items-center justify-center gap-2 bg-white text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-gray-100 transition-colors disabled:opacity-60"
+                    className="w-full flex items-center justify-center gap-2 bg-[#FFCB05] text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-[#FFC107] transition-colors disabled:opacity-60"
                   >
                     {sending ? (
                       "Opening email..."
@@ -305,7 +305,7 @@ export function ContactSection({ config }: ContactSectionProps) {
         {/* Google Maps */}
         <div className="mt-16 md:mt-24">
           <div className="mb-8">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
               Find Us
             </p>
             <h3 className="text-2xl md:text-3xl font-bold text-[#00274C] tracking-tight">
@@ -332,7 +332,7 @@ export function ContactSection({ config }: ContactSectionProps) {
               href="https://www.google.com/maps/place/MBS+College+of+Engineering+%26+Technology/@32.646,74.815,17z"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors"
+              className="text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
             >
               Open in Google Maps →
             </a>

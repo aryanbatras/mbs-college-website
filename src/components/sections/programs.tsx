@@ -9,7 +9,7 @@ export async function ProgramsSection() {
     <section className="bg-white" aria-label="Programs">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="mb-12 md:mb-16">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
             Academic Programs
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00274C] leading-[1.05] tracking-tight">
@@ -28,7 +28,7 @@ export async function ProgramsSection() {
               className="group block p-8 bg-gray-50 hover:bg-[#00274C] transition-colors"
             >
               <div className="mb-5">
-                <span className="text-xs font-bold text-[#00274C] group-hover:text-gray-400 transition-colors tracking-wider">
+                <span className="text-xs font-bold text-[#FFCB05] group-hover:text-gray-400 transition-colors tracking-wider">
                   {program.code}
                 </span>
               </div>
@@ -42,7 +42,7 @@ export async function ProgramsSection() {
                 <span className="text-xs text-[#9CA3AF] group-hover:text-white/40 transition-colors">
                   {program.duration} &middot; {program.intake} Seats
                 </span>
-                <span className="inline-flex items-center gap-1 text-sm font-bold text-[#00274C] group-hover:text-gray-400 transition-colors">
+                <span className="inline-flex items-center gap-1 text-sm font-bold text-[#FFCB05] group-hover:text-gray-400 transition-colors">
                   Details
                   <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
                 </span>
@@ -57,7 +57,7 @@ export async function ProgramsSection() {
           </p>
           <Link
             href="/academics"
-            className="inline-flex items-center gap-2 text-base font-bold text-[#00274C] hover:text-gray-400 transition-colors group"
+            className="inline-flex items-center gap-2 text-base font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors group"
           >
             View all departments
             <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
