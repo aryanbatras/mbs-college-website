@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { useTexture, Environment, Lightformer } from "@react-three/drei";
 import {
@@ -31,6 +31,7 @@ interface LanyardProps {
   lanyardImage?: string | null;
   lanyardWidth?: number;
   bandColor?: string;
+  animate?: boolean;
 }
 
 export default function Lanyard({
@@ -44,6 +45,7 @@ export default function Lanyard({
   lanyardImage = null,
   lanyardWidth = 1,
   bandColor = "#00274C",
+  animate = false,
 }: LanyardProps) {
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== "undefined" && window.innerWidth < 768
@@ -75,6 +77,7 @@ export default function Lanyard({
             lanyardImage={lanyardImage}
             lanyardWidth={lanyardWidth}
             bandColor={bandColor}
+            animate={animate}
           />
         </Physics>
         <Environment blur={0.75}>
@@ -122,28 +125,7 @@ interface BandProps {
   lanyardImage: string | null;
   lanyardWidth: number;
   bandColor: string;
-}
-
-// Helper to draw rounded rectangle
-function roundRect(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  r: number
-) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
+  animate: boolean;
 }
 
 function Band({
@@ -155,6 +137,7 @@ function Band({
   lanyardImage,
   lanyardWidth,
   bandColor,
+  animate,
 }: BandProps) {
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
@@ -166,6 +149,7 @@ function Band({
   const ang = new THREE.Vector3();
   const rot = new THREE.Vector3();
   const dir = new THREE.Vector3();
+  const hasAnimated = useRef(false);
 
   const segmentProps = {
     type: "dynamic" as const,
@@ -227,8 +211,11 @@ function Band({
     ctx.fillStyle = topGradient;
     ctx.fillRect(0, H - 16, W, 16);
 
-    // Logo - draw the college logo
-    const logoImage = logoTexture.image as HTMLImageElement | HTMLCanvasElement | null;
+    // Logo
+    const logoImage = logoTexture.image as
+      | HTMLImageElement
+      | HTMLCanvasElement
+      | null;
     if (logoImage && logoImage.width > 0) {
       const logoSize = 120;
       const logoX = (W - logoSize) / 2;
@@ -237,17 +224,20 @@ function Band({
       // Logo background circle
       ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
       ctx.beginPath();
-      ctx.arc(W / 2, logoY + logoSize / 2, logoSize / 2 + 10, 0, Math.PI * 2);
+      ctx.arc(
+        W / 2,
+        logoY + logoSize / 2,
+        logoSize / 2 + 10,
+        0,
+        Math.PI * 2
+      );
       ctx.fill();
 
-      // Draw logo
       ctx.drawImage(logoImage, logoX, logoY, logoSize, logoSize);
     } else {
-      // Fallback: Draw text logo
-      const logoSize = 120;
       ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
       ctx.beginPath();
-      ctx.arc(W / 2, 140, logoSize / 2 + 10, 0, Math.PI * 2);
+      ctx.arc(W / 2, 140, 70, 0, Math.PI * 2);
       ctx.fill();
       ctx.fillStyle = "#FFCB05";
       ctx.font = "bold 32px Arial, sans-serif";
@@ -262,7 +252,12 @@ function Band({
     ctx.fillText("MBSCET", W / 2, 260);
 
     // Decorative line
-    const lineGradient = ctx.createLinearGradient(W / 2 - 100, 0, W / 2 + 100, 0);
+    const lineGradient = ctx.createLinearGradient(
+      W / 2 - 100,
+      0,
+      W / 2 + 100,
+      0
+    );
     lineGradient.addColorStop(0, "transparent");
     lineGradient.addColorStop(0.3, "#FFCB05");
     lineGradient.addColorStop(0.7, "#FFCB05");
@@ -361,6 +356,31 @@ function Band({
       return () => void (document.body.style.cursor = "auto");
     }
   }, [hovered, dragged]);
+
+  // Trigger drop animation when animate becomes true
+  useEffect(() => {
+    if (animate && !hasAnimated.current && card.current) {
+      hasAnimated.current = true;
+
+      // Set initial position above the viewport
+      const startPos = new THREE.Vector3(2, 8, 0);
+      card.current.setTranslation(startPos);
+      [card, j1, j2, j3].forEach((ref) => ref.current?.wakeUp());
+
+      // Apply a slight spin for dramatic effect
+      card.current.setAngvel({ x: 0, y: 2, z: 1 });
+
+      // After a short delay, apply downward force
+      setTimeout(() => {
+        if (card.current) {
+          card.current.applyImpulse(
+            { x: -0.5, y: -3, z: 0 },
+            { x: 0, y: 0, z: 0 }
+          );
+        }
+      }, 100);
+    }
+  }, [animate]);
 
   useFrame((state, delta) => {
     if (dragged) {

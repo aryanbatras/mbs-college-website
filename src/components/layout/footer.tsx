@@ -1,6 +1,6 @@
 "use client";
 
-import { Component, type ReactNode, useState, useCallback } from "react";
+import { Component, type ReactNode, useState, useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
@@ -165,6 +165,27 @@ function CollapsibleSection({
 }
 
 export function Footer({ config }: FooterProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const lanyardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (lanyardRef.current) {
+      observer.observe(lanyardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <footer className="bg-[#00274C] text-white" role="contentinfo">
       {/* Mobile Quick Links Bar - visible only on mobile */}
@@ -206,7 +227,7 @@ export function Footer({ config }: FooterProps) {
             </div>
 
             {/* Lanyard 3D Card - hidden on small mobile */}
-            <div className="mb-6 hidden sm:block">
+            <div ref={lanyardRef} className="mb-6 hidden sm:block">
               <LanyardErrorBoundary
                 fallback={
                   <div className="mb-6">
@@ -219,6 +240,7 @@ export function Footer({ config }: FooterProps) {
                   gravity={[0, -40, 0]}
                   frontImage="/logo.png"
                   bandColor="#00274C"
+                  animate={isVisible}
                 />
               </LanyardErrorBoundary>
             </div>
