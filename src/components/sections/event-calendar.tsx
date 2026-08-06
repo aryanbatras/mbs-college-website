@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Calendar, Clock, MapPin, Users, CheckCircle, ArrowRight } from "react-icons/fa";
+import { Calendar, Clock, MapPin, Users, CheckCircle, ArrowRight } from "lucide-react";
 
 const EVENTS = [
   {

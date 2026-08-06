@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight } from "react-icons/fa";
+import { ArrowRight } from "lucide-react";
 
 const RECRUITERS = [
   "Infosys",

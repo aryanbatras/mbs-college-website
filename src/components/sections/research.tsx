@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { BookOpen, Award, Users, TrendingUp, ExternalLink } from "react-icons/fa";
+import { BookOpen, Award, Users, TrendingUp, ExternalLink } from "lucide-react";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 const RESEARCH_METRICS = [

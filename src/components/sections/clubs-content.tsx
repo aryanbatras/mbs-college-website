@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Cpu, Palette, Wrench } from "react-icons/fa";
+import { Cpu, Palette, Wrench } from "lucide-react";
 
 const CLUBS = [
   {

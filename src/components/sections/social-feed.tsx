@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { FaInstagram, FaYoutube, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import { ExternalLink } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const SOCIAL_POSTS = [
   { image: "/media/general/DSC_0123-1024x683.jpg", likes: 124, platform: "instagram" },
@@ -105,7 +105,7 @@ export function SocialFeed() {
             className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-accent transition-colors group"
           >
             View all posts
-            <ExternalLink className="size-4 transition-transform group-hover:translate-x-0.5" />
+            <FaExternalLinkAlt className="size-4 transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>

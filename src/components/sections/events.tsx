@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Calendar, MapPin, Clock, ArrowRight } from "react-icons/fa";
+import { Calendar, MapPin, Clock, ArrowRight } from "lucide-react";
 
 const EVENTS = [
   {

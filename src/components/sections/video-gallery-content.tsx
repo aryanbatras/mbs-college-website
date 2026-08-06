@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Play, ExternalLink } from "react-icons/fa";
+import { Play, ExternalLink } from "lucide-react";
 
 const VIDEOS = [
   { title: "Campus Tour - MBSCET Jammu", description: "Virtual walkthrough of the MBSCET campus facilities" },

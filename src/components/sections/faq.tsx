@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown, HelpCircle } from "react-icons/fa";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
 const FAQS = [
   {

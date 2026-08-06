@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, Briefcase, MapPin } from "react-icons/fa";
+import { ArrowRight, Briefcase, MapPin } from "lucide-react";
 
 const ALUMNI = [
   {

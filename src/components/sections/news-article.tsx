@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowLeft } from "react-icons/fa";
+import { ArrowLeft } from "lucide-react";
 import type { NewsArticle } from "@/lib/content";
 
 interface NewsArticleProps {
