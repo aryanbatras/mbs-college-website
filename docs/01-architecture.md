@@ -95,11 +95,20 @@ export function generateStaticParams() {
 }
 ```
 
-### 3. Server-Side Rendering (SSR)
+### 3. External CMS Integration
 
-Used only for:
-- Admin dashboard (`/admin`)
-- API routes (`/api/*`)
+Content is managed via **Pages CMS** (free, open-source):
+
+- **Admin Interface:** [pagescms.org](https://pagescms.org)
+- **Configuration:** `.pages.yml` at repository root
+- **Storage:** Content files in `content/` folder
+- **Media:** Images/PDFs in `media/` folder
+
+**How it works:**
+1. Staff edits content via Pages CMS web UI
+2. Changes committed to GitHub automatically
+3. Vercel triggers rebuild
+4. Website auto-updates
 
 ---
 
@@ -108,13 +117,13 @@ Used only for:
 ### Content Update Flow
 
 ```
-1. Editor edits JSON/Markdown file
+1. Staff edits content via Pages CMS UI
          │
          ▼
-2. Git commit pushes changes
+2. Pages CMS commits changes to GitHub
          │
          ▼
-3. CI/CD pipeline triggers build
+3. Vercel detects push and triggers build
          │
          ▼
 4. Next.js rebuilds affected pages
@@ -126,7 +135,17 @@ Used only for:
 6. Users see updated content
 ```
 
-**Time to deploy:** ~2-5 minutes
+**Time to deploy:** ~1-2 minutes
+
+### Pages CMS Integration
+
+Pages CMS provides:
+- **Web-based editor** for non-technical staff
+- **Rich text editing** with WYSIWYG
+- **Media management** with drag-and-drop
+- **Schema validation** for content fields
+- **Mobile support** for editing on phones
+- **Free hosting** via GitHub integration
 
 ### Page Request Flow
 
@@ -221,9 +240,10 @@ Atomic, reusable components:
 ### Content Security
 
 - Content files are version-controlled (Git)
-- Changes require code review
-- No user-generated content
-- No file uploads from users
+- Pages CMS uses GitHub OAuth for authentication
+- Changes are committed with user identity
+- No self-hosted admin panel to secure
+- Media uploads are validated by Pages CMS
 
 ---
 
@@ -264,9 +284,13 @@ Atomic, reusable components:
 
 ### Migration Path
 
-The current architecture can easily migrate to:
+The current architecture uses:
 
 - **Next.js App Router** (already using)
 - **Vercel Edge Network** (recommended hosting)
+- **Pages CMS** (free, open-source content management)
+
+**Future enhancements:**
 - **Cloudinary** (for image optimization)
-- **Headless CMS** (if needed in future)
+- **Algolia** (for search)
+- **Plausible** (for analytics)

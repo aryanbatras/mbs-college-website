@@ -99,15 +99,38 @@ function getDepartment(slug: string): Department {
 
 ## Content Management
 
+### Pages CMS
+
+**What it is:** Free, open-source CMS that works with GitHub
+
+**Why we chose it:**
+- Non-technical staff can edit via web UI
+- No database or backend required
+- Rich text editor with WYSIWYG
+- Media management with drag-and-drop
+- Mobile support for editing on phones
+- Free forever (MIT licensed)
+
+**How it works:**
+1. Staff goes to [pagescms.org](https://pagescms.org)
+2. Signs in with GitHub
+3. Edits content via web interface
+4. Changes committed to GitHub
+5. Vercel auto-deploys
+
+**Configuration:** `.pages.yml` at repository root
+
+---
+
 ### Markdown (via gray-matter)
 
 **What it is:** Plain text formatting with frontmatter
 
 **Why we chose it:**
-- Non-technical users can edit
-- Version controlled with Git
 - Human-readable format
+- Version controlled with Git
 - Easy to parse
+- Works with Pages CMS
 
 **Example:**
 ```markdown
@@ -127,7 +150,7 @@ The Department of Computer Science & Engineering was established in 1999.
 **What it is:** Structured data format
 
 **Why we chose it:**
-- Easy to edit (any text editor)
+- Easy to edit via Pages CMS
 - No database required
 - Version controlled
 - Fast to parse
@@ -331,15 +354,21 @@ import { PDFViewer } from "@embedpdf/react-pdf-viewer";
 
 ---
 
-## Why Not a Headless CMS?
+## Why Pages CMS?
 
-| Aspect | Headless CMS | JSON/Markdown |
-|--------|--------------|---------------|
+| Aspect | Headless CMS (Sanity, Contentful) | Pages CMS |
+|--------|-----------------------------------|-----------|
 | **Cost** | $20-500/month | Free |
 | **Complexity** | High | Low |
 | **Learning Curve** | Steep | Minimal |
 | **Vendor Lock-in** | Yes | No |
 | **Customization** | Limited | Unlimited |
 | **Performance** | Good | Excellent |
+| **Database** | Required | None |
+| **Backend** | Required | None |
 
-**Recommendation:** Start with JSON/Markdown, migrate to headless CMS only if needed.
+**Pages CMS combines the best of both worlds:**
+- Free like JSON/Markdown
+- Easy to use like a headless CMS
+- No vendor lock-in
+- Works directly with GitHub
