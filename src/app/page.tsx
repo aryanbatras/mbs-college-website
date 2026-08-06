@@ -16,7 +16,12 @@ import { CampusNewsSection } from "@/components/sections/campus-news";
 import { NewsNotices } from "@/components/sections/news-notices";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { ContactSection } from "@/components/sections/contact-form-section";
-import { getSiteConfig, getPrograms, getLatestNews, getLatestNotices } from "@/lib/content";
+import {
+  getSiteConfig,
+  getPrograms,
+  getLatestNews,
+  getLatestNotices,
+} from "@/lib/content";
 import { EducationalOrgJsonLd } from "@/components/seo/json-ld";
 
 export default function HomePage() {
@@ -31,18 +36,47 @@ export default function HomePage() {
       <Header config={config} />
       <main id="main-content">
         <Hero />
-        <AboutStrip config={config} />
-        <ManagementSection config={config} />
-        <ProgramsSection />
-        <CampusSection />
+
+        <div data-speed="0.95">
+          <AboutStrip config={config} />
+        </div>
+
+        <div data-speed="1.02">
+          <ManagementSection config={config} />
+        </div>
+
+        <div data-speed="0.98">
+          <ProgramsSection />
+        </div>
+
+        <div data-speed="1.03">
+          <CampusSection />
+        </div>
+
         <ActivitiesSection />
-        <PlacementSection />
+
+        <div data-speed="0.97">
+          <PlacementSection />
+        </div>
+
         <GallerySection />
-        <ClubsSection />
+
+        <div data-speed="1.01">
+          <ClubsSection />
+        </div>
+
         <ImportantLinks />
-        <CampusNewsSection />
+
+        <div data-speed="0.99">
+          <CampusNewsSection />
+        </div>
+
         <NewsNotices news={news} notices={notices} />
-        <TestimonialsSection />
+
+        <div data-speed="1.02">
+          <TestimonialsSection />
+        </div>
+
         <ContactSection config={config} />
       </main>
       <Footer config={config} />

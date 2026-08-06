@@ -1,95 +1,148 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
+import { useEffect, useRef, useState } from "react";
 
-// Register plugins
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(SplitText);
-}
-
-interface GsapSplitTextProps {
+interface SplitTextProps {
   text: string;
   className?: string;
-  animateBy?: "chars" | "words" | "lines";
   delay?: number;
-  duration?: number;
   stagger?: number;
-  from?: {
-    opacity?: number;
-    y?: number;
-    rotateX?: number;
-    filter?: string;
-  };
-  ease?: string;
-  onComplete?: () => void;
+  duration?: number;
+  animateBy?: "chars" | "words" | "lines";
+  animation?: "fadeUp" | "fadeIn" | "splitReveal" | "rotateIn";
+  tag?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
+  once?: boolean;
 }
 
-export function GsapSplitText({
+export function SplitText({
   text,
   className = "",
-  animateBy = "chars",
   delay = 0,
+  stagger = 0.02,
   duration = 0.8,
-  stagger = 0.03,
-  from = { opacity: 0, y: 50, rotateX: -90, filter: "blur(10px)" },
-  ease = "back.out(1.7)",
-  onComplete,
-}: GsapSplitTextProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const splitRef = useRef<SplitText | null>(null);
+  animateBy = "chars",
+  animation = "fadeUp",
+  tag: Tag = "span",
+  once = true,
+}: SplitTextProps) {
+  const containerRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const hasAnimated = useRef(false);
 
+  // Intersection Observer for scroll-triggered animation
   useEffect(() => {
     if (!containerRef.current) return;
 
-    let ctx: gsap.Context | null = null;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && (!once || !hasAnimated.current)) {
+          setIsVisible(true);
+          hasAnimated.current = true;
+          if (once) observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
 
-    // Wait for fonts to load before splitting
-    document.fonts.ready.then(() => {
-      if (!containerRef.current) return;
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [once]);
 
-      ctx = gsap.context(() => {
-        // Create SplitText instance
-        splitRef.current = new SplitText(containerRef.current, {
-          type: animateBy,
-          charsClass: "split-char",
-          wordsClass: "split-word",
-          linesClass: "split-line",
-        });
+  // GSAP animation
+  useEffect(() => {
+    if (!isVisible || !containerRef.current) return;
 
-        // Get the elements to animate
-        const elements =
-          animateBy === "chars"
-            ? splitRef.current.chars
-            : animateBy === "words"
-            ? splitRef.current.words
-            : splitRef.current.lines;
+    let ctx: any = null;
 
-        // Animate
-        gsap.from(elements, {
-          ...from,
-          duration,
-          stagger,
-          delay,
-          ease,
-          onComplete,
-        });
-      });
-    });
+    const animate = async () => {
+      try {
+        const gsapModule = await import("gsap");
+        const gsap = gsapModule.default;
+        const { SplitText } = await import("gsap/SplitText");
 
-    // Cleanup
-    return () => {
-      ctx?.revert();
-      splitRef.current?.revert();
+        gsap.registerPlugin(SplitText);
+
+        if (!containerRef.current) return;
+
+        ctx = gsap.context(() => {
+          const splitType = animateBy === "lines" ? "lines" : animateBy;
+          const split = new SplitText(containerRef.current, {
+            type: splitType,
+            charsClass: "split-char",
+            wordsClass: "split-word",
+            linesClass: "split-line",
+          });
+
+          const elements =
+            animateBy === "chars"
+              ? split.chars
+              : animateBy === "words"
+              ? split.words
+              : split.lines;
+
+          // Set initial styles based on animation type
+          const fromStyles: Record<string, any> = {};
+          const toStyles: Record<string, any> = {};
+
+          switch (animation) {
+            case "fadeUp":
+              fromStyles.opacity = 0;
+              fromStyles.y = 40;
+              fromStyles.filter = "blur(4px)";
+              toStyles.opacity = 1;
+              toStyles.y = 0;
+              toStyles.filter = "blur(0px)";
+              break;
+            case "fadeIn":
+              fromStyles.opacity = 0;
+              toStyles.opacity = 1;
+              break;
+            case "splitReveal":
+              fromStyles.opacity = 0;
+              fromStyles.y = 100;
+              fromStyles.rotationX = -90;
+              toStyles.opacity = 1;
+              toStyles.y = 0;
+              toStyles.rotationX = 0;
+              break;
+            case "rotateIn":
+              fromStyles.opacity = 0;
+              fromStyles.rotationY = 90;
+              fromStyles.transformOrigin = "left center";
+              toStyles.opacity = 1;
+              toStyles.rotationY = 0;
+              break;
+          }
+
+          gsap.fromTo(elements, fromStyles, {
+            ...toStyles,
+            duration,
+            stagger,
+            delay,
+            ease: "power3.out",
+          });
+        }, containerRef.current);
+      } catch (error) {
+        console.warn("SplitText animation failed:", error);
+      }
     };
-  }, [text, animateBy, delay, duration, stagger, from, ease, onComplete]);
+
+    animate();
+
+    return () => {
+      if (ctx) ctx.revert();
+    };
+  }, [isVisible, text, delay, stagger, duration, animateBy, animation]);
 
   return (
-    <div ref={containerRef} className={className}>
+    <Tag
+      ref={containerRef as any}
+      className={className}
+      aria-label={text}
+    >
       {text}
-    </div>
+    </Tag>
   );
 }
 
-export default GsapSplitText;
+export default SplitText;

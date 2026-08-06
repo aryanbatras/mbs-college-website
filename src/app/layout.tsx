@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteBackground } from "@/components/layout/site-background";
 import { RouteLoadingIndicator } from "@/components/ui/route-loading";
 import { ScrollToTop } from "@/components/ui/page-transition";
+import { SmoothScroll } from "@/components/layout/smooth-scroll";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -57,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to main content
         </a>
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

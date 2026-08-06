@@ -235,6 +235,33 @@
   }
 }
 
+/* SmoothScroll */
+#smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+}
+
+/* Parallax effects */
+[data-speed] {
+  will-change: transform;
+}
+
+/* SplitText animation classes */
+.split-char,
+.split-word,
+.split-line {
+  will-change: transform, opacity;
+}
+
 /* Lanyard 3D Card Component */
 .lanyard-wrapper {
   position: relative;
