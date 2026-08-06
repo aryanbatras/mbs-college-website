@@ -6,6 +6,8 @@ Official website for **Mahant Bachittar Singh College of Engineering & Technolog
 **Hosting:** Vercel (static generation, free tier)
 **CMS:** [Pages CMS](https://pagescms.org) — free, open-source, GitHub-backed. No database, no backend.
 
+> **Deep dive:** see [**COMPLETE-ARCHITECTURE.md**](./COMPLETE-ARCHITECTURE.md) for the full architecture, build pipeline, CMS workflow, and why Git + static files beat a database or S3 storage.
+
 ---
 
 ## Quick Start
