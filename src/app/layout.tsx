@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteBackground } from "@/components/layout/site-background";
+import { RouteLoadingIndicator } from "@/components/ui/route-loading";
+import { ScrollToTop } from "@/components/ui/page-transition";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -17,7 +19,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "MBSCET | Mahant Bachittar Singh College of Engineering & Technology",
+    default:
+      "MBSCET | Mahant Bachittar Singh College of Engineering & Technology",
     template: "%s | MBSCET",
   },
   description:
@@ -46,6 +49,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-screen flex flex-col pb-16 lg:pb-0">
         <SiteBackground />
+        <RouteLoadingIndicator />
+        <ScrollToTop />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-[#003366] focus:text-[#FFD700] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:outline-none"

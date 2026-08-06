@@ -1,43 +1,61 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 
-export function PageTransition({ children }: { children: React.ReactNode }) {
+interface PageTransitionProps {
+  children: React.ReactNode;
+}
+
+export function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const prevPathname = useRef(pathname);
 
   useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => setIsLoading(false), 300);
-    return () => clearTimeout(timer);
+    // Reset animation on route change
+    if (prevPathname.current !== pathname) {
+      setIsVisible(false);
+      prevPathname.current = pathname;
+
+      // Small delay then animate in
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsVisible(true);
+        });
+      });
+    } else {
+      // Initial load
+      setIsVisible(true);
+    }
   }, [pathname]);
 
   return (
-    <>
-      {/* Progress bar */}
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 left-0 h-0.5 bg-accent z-[60]"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Page content */}
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-      >
-        {children}
-      </motion.div>
-    </>
+    <div
+      className="transition-opacity duration-200 ease-out"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(8px)",
+      }}
+    >
+      {children}
+    </div>
   );
 }
+
+// Scroll to top on route change
+export function ScrollToTop() {
+  const pathname = usePathname();
+  const prevPathname = useRef(pathname);
+
+  useEffect(() => {
+    if (prevPathname.current !== pathname) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      prevPathname.current = pathname;
+    }
+  }, [pathname]);
+
+  return null;
+}
+
+export default PageTransition;
