@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const DEPARTMENTS_DIR = path.join(process.cwd(), "src/content/departments");
+const DEPARTMENTS_DIR = path.join(process.cwd(), "content/departments");
 
 export interface DepartmentData {
   slug: string;

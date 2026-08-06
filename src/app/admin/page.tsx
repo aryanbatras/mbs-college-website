@@ -90,11 +90,11 @@ export default function AdminDashboard() {
           <div>
             <h2 className="text-xl font-bold text-[#00274C] mb-6">Published Articles</h2>
             <p className="text-gray-600 mb-4">
-              Articles are stored as markdown files in <code className="bg-gray-100 px-2 py-1">src/content/news/</code>
+              Articles are stored as markdown files in <code className="bg-gray-100 px-2 py-1">content/news/</code>
             </p>
             <div className="bg-white border border-gray-200 p-6">
               <p className="text-gray-500">
-                To manage articles, add markdown files to the <code>src/content/news/</code> directory.
+                To manage articles, add markdown files to the <code>content/news/</code> directory.
                 Each file should have frontmatter with title, date, and category.
               </p>
               <pre className="mt-4 bg-gray-50 p-4 text-sm text-gray-700 overflow-x-auto">

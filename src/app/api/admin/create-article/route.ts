@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-const NEWS_DIR = path.join(process.cwd(), "src/content/news");
+const NEWS_DIR = path.join(process.cwd(), "content/news");
 
 export async function POST(request: Request) {
   try {
