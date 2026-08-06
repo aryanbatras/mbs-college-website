@@ -94,8 +94,7 @@ export function GallerySection() {
     <section className="bg-white" aria-label="Gallery">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 lg:py-28">
         {/* Header */}
-        <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          <p className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-3 sm:mb-4">
+        <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">            <p className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-3 sm:mb-4">
             Gallery
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#00274C] leading-[1.05] tracking-tight">
@@ -146,7 +145,7 @@ export function GallerySection() {
                   />
                   {/* Play overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-active:bg-black/10 transition-colors">
-                    <div className="size-10 sm:size-12 flex items-center justify-center bg-[#FFCB05] rounded-full group-active:scale-110 transition-transform">
+                    <div className="size-10 sm:size-12 flex items-center justify-center bg-white rounded-full group-active:scale-110 transition-transform">
                       <FaPlay className="text-[#00274C] text-xs sm:text-sm ml-0.5" />
                     </div>
                   </div>
@@ -183,7 +182,7 @@ export function GallerySection() {
                   />
                   {/* Play overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors">
-                    <div className="size-12 flex items-center justify-center bg-[#FFCB05] rounded-full group-hover:scale-110 transition-transform">
+                    <div className="size-12 flex items-center justify-center bg-white rounded-full group-hover:scale-110 transition-transform">
                       <FaPlay className="text-[#00274C] text-sm ml-0.5" />
                     </div>
                   </div>
@@ -237,7 +236,7 @@ export function GallerySection() {
             <div className="text-center mt-6 sm:mt-8">
               <button
                 onClick={() => setShowAllImages(true)}
-                className="inline-flex items-center justify-center gap-2 bg-[#00274C] text-[#FFCB05] px-6 sm:px-8 py-3 sm:py-4 text-sm font-bold hover:bg-[#1E406B] transition-colors w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 bg-[#00274C] text-white px-6 sm:px-8 py-3 sm:py-4 text-sm font-bold hover:bg-[#1E406B] transition-colors w-full sm:w-auto"
               >
                 <FaImages className="text-xs" />
                 View All Photos

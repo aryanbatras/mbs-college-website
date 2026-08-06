@@ -14,11 +14,11 @@ const CAMPUS_FEATURES = [
 
 export function CampusSection() {
   return (
-    <section className="bg-[#F9FAFB]" aria-label="Campus">
+    <section className="bg-gray-50" aria-label="Campus">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
               Our Campus
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#00274C] leading-[1.05] tracking-tight mb-6">
@@ -30,7 +30,7 @@ export function CampusSection() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               {CAMPUS_FEATURES.map((feature) => (
-                <div key={feature.label} className="bg-white p-4 border border-[#E5E7EB]">
+                <div key={feature.label} className="bg-white p-4 border border-gray-100">
                   <p className="text-sm font-bold text-[#00274C]">{feature.label}</p>
                   <p className="text-xs text-[#5C6370] mt-1">{feature.description}</p>
                 </div>
@@ -40,14 +40,14 @@ export function CampusSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/campus"
-                className="group inline-flex items-center gap-3 bg-[#00274C] text-[#FFCB05] px-8 py-4 text-sm font-bold hover:bg-[#1E406B] transition-colors"
+                className="group inline-flex items-center gap-3 bg-[#00274C] text-white px-8 py-4 text-sm font-bold hover:bg-[#1E406B] transition-colors"
               >
                 Explore Campus
                 <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/campus/galleries"
-                className="group inline-flex items-center gap-3 border-2 border-[#00274C]/30 text-[#00274C] px-8 py-4 text-sm font-bold hover:border-[#00274C] transition-colors"
+                className="group inline-flex items-center gap-3 border-2 border-gray-200 text-[#00274C] px-8 py-4 text-sm font-bold hover:border-[#00274C] transition-colors"
               >
                 Photo Gallery
                 <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />

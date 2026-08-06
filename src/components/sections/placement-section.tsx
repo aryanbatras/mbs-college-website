@@ -20,11 +20,11 @@ export function PlacementSection() {
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
               Training & Placement
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-[1.05] tracking-tight mb-6">
-              Building Careers Since 1999
+              Training & Placement Cell
             </h2>
             <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-lg">
               Our Training & Placement Cell bridges academia and industry, preparing students for successful careers through internships, workshops, and campus recruitment drives.
@@ -35,19 +35,19 @@ export function PlacementSection() {
               <div className="space-y-3 text-sm text-white/70">
                 <p className="font-medium text-white/90">Prof. Dr. Sanjeev Singh (Incharge)</p>
                 <p className="flex items-center gap-2">
-                  <FaPhone className="text-[#FFCB05] text-xs" />
-                  <a href="tel:+91-9419130161" className="hover:text-[#FFCB05] transition-colors">+91-9419130161</a>
+                  <FaPhone className="text-gray-400 text-xs" />
+                  <a href="tel:+91-9419130161" className="hover:text-white transition-colors">+91-9419130161</a>
                 </p>
                 <p className="flex items-center gap-2">
-                  <FaEnvelope className="text-[#FFCB05] text-xs" />
-                  <a href="mailto:tpcell@mbscet.edu.in" className="hover:text-[#FFCB05] transition-colors">tpcell@mbscet.edu.in</a>
+                  <FaEnvelope className="text-gray-400 text-xs" />
+                  <a href="mailto:tpcell@mbscet.edu.in" className="hover:text-white transition-colors">tpcell@mbscet.edu.in</a>
                 </p>
               </div>
             </div>
 
             <Link
               href="/placements"
-              className="group inline-flex items-center gap-3 bg-[#FFCB05] text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-white transition-colors"
+              className="group inline-flex items-center gap-3 bg-white text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-gray-100 transition-colors"
             >
               View Placement Records
               <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />

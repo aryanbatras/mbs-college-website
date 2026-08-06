@@ -1,5 +1,3 @@
-import { FaCalendarAlt } from "react-icons/fa";
-
 const ACTIVITIES = [
   {
     title: "Aarohan",
@@ -53,7 +51,7 @@ export function ActivitiesSection() {
     <section className="bg-white" aria-label="Activities">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="mb-12 md:mb-16">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
             Campus Life
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00274C] leading-[1.05] tracking-tight">
@@ -68,20 +66,15 @@ export function ActivitiesSection() {
           {ACTIVITIES.map((activity) => (
             <div
               key={activity.title}
-              className="p-8 bg-[#F9FAFB] hover:bg-[#00274C] transition-colors group"
+              className="p-8 bg-gray-50"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="size-8 flex items-center justify-center bg-[#FFCB05] shrink-0">
-                  <FaCalendarAlt className="text-[#00274C] text-xs" />
-                </div>
-                <span className="text-[10px] font-bold text-[#9CA3AF] group-hover:text-white/40 transition-colors tracking-wider uppercase">
-                  {activity.category}
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-[#00274C] group-hover:text-white transition-colors mb-3">
+              <span className="text-[10px] font-bold text-gray-400 tracking-wider uppercase">
+                {activity.category}
+              </span>
+              <h3 className="text-lg font-bold text-[#00274C] mt-2 mb-3">
                 {activity.title}
               </h3>
-              <p className="text-sm text-[#5C6370] group-hover:text-white/60 transition-colors leading-relaxed">
+              <p className="text-sm text-[#5C6370] leading-relaxed">
                 {activity.description}
               </p>
             </div>
