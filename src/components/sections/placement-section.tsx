@@ -89,24 +89,7 @@ export function PlacementSection() {
               ))}
             </div>
 
-            {/* Placement highlights */}
-            <div className="bg-white/5 p-6">
-              <h4 className="text-base font-bold text-white mb-4">Recent Placements</h4>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-white/70">Mannat Abrol (CSE)</span>
-                  <span className="text-[#FFCB05] font-medium">Avi Software</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-white/70">Priya Sharma (CSE)</span>
-                  <span className="text-[#FFCB05] font-medium">Infosys</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-white/70">Amit Singh (EE)</span>
-                  <span className="text-[#FFCB05] font-medium">NHPC</span>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

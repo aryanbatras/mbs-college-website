@@ -1,72 +1,94 @@
-"use client";
-
-import { motion } from "motion/react";
-import { Quote } from "lucide-react";
+import Link from "next/link";
+import { FaArrowRight, FaQuoteLeft } from "react-icons/fa";
+import { getSiteConfig } from "@/lib/content";
 
 export function ChairmanContent() {
+  const config = getSiteConfig();
+  const chairman = config.chairman;
+
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16 md:py-24">
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="flex items-center gap-2 text-xs text-ink-muted">
-          <span className="inline-block size-1.5 bg-accent" />
-          ABOUT
+    <div className="bg-white">
+      {/* Hero */}
+      <div className="bg-[#00274C] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
+            About
+          </p>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            Chairman&apos;s Desk
+          </h1>
         </div>
-        <h1 className="mt-3 font-heading text-3xl font-bold tracking-tight text-ink md:text-5xl">
-          Chairman&apos;s Desk
-        </h1>
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="mt-10"
-      >
-        {/* Placeholder for photo */}
-        <div className="mb-6 flex items-center gap-4">
-          <div className="size-20 border border-line bg-surface flex items-center justify-center">
-            <span className="font-heading text-lg text-ink-faint">PS</span>
-          </div>
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 lg:gap-16">
+          {/* Photo */}
           <div>
-            <div className="font-heading text-lg font-bold text-ink">Prof. Amar Singh Sudan</div>
-            <div className="text-sm text-ink-faint">Chairman, MBSCET</div>
-            <div className="text-xs text-ink-faint">Sant Manjit Singh Trust</div>
+            {chairman?.photo && (
+              <div className="aspect-[3/4] overflow-hidden bg-[#F9FAFB]">
+                <img
+                  src={chairman.photo}
+                  alt={chairman.name}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            )}
+            <div className="mt-4">
+              <h2 className="text-xl font-bold text-[#00274C]">{chairman?.name}</h2>
+              <p className="text-sm text-[#5C6370]">{chairman?.title}</p>
+              <p className="text-xs text-[#9CA3AF] mt-1">{chairman?.organization}</p>
+            </div>
+          </div>
+
+          {/* Message */}
+          <div>
+            <FaQuoteLeft className="text-[#FFCB05] text-2xl mb-4 opacity-60" />
+            
+            {chairman?.message && (
+              <blockquote className="text-lg md:text-xl text-[#00274C] leading-relaxed mb-8 border-l-2 border-[#FFCB05] pl-6">
+                {chairman.message}
+              </blockquote>
+            )}
+
+            <div className="prose prose-lg max-w-none">
+              <p className="text-[#5C6370] leading-relaxed mb-4">
+                It gives me immense pleasure to welcome you to Mahant Bachittar Singh College of
+                Engineering and Technology, Jammu. Our institution, established in 1999 under the
+                aegis of Dera Sant Pura Nangali Sahib, has been committed to providing quality
+                technical education to the youth of Jammu &amp; Kashmir.
+              </p>
+              <p className="text-[#5C6370] leading-relaxed mb-4">
+                Since its inception, MBSCET has grown into a reputable institution affiliated with
+                the University of Jammu and approved by AICTE. We offer B.Tech programs across
+                multiple engineering disciplines and postgraduate programs, nurturing students to become
+                competent professionals ready to serve industry and society.
+              </p>
+              <p className="text-[#5C6370] leading-relaxed mb-4">
+                Under the guidance of the Sant Manjit Singh Trust, our college continues to uphold
+                the values of academic excellence, ethical conduct, and holistic development. I
+                encourage our students to pursue knowledge with dedication and contribute positively
+                to the nation.
+              </p>
+              <p className="text-[#5C6370] leading-relaxed">
+                I extend my best wishes to all students, faculty, and staff for a successful
+                academic year ahead.
+              </p>
+            </div>
+
+            {/* Back link */}
+            <div className="mt-12 pt-8 border-t border-[#E5E7EB]">
+              <Link
+                href="/about"
+                className="group inline-flex items-center gap-3 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors"
+              >
+                <FaArrowRight className="text-xs rotate-180 transition-transform group-hover:-translate-x-1" />
+                Back to About
+              </Link>
+            </div>
           </div>
         </div>
-
-        <div className="border-l-2 border-accent pl-6 mb-8">
-          <Quote className="mb-2 size-4 text-accent" />
-          <blockquote className="text-base leading-relaxed text-ink-muted italic">
-            It gives me immense pleasure to welcome you to Mahant Bachittar Singh College of
-            Engineering and Technology, Jammu. Our institution, established in 1999 under the
-            aegis of Dera Sant Pura Nangali Sahib, has been committed to providing quality
-            technical education to the youth of Jammu &amp; Kashmir.
-          </blockquote>
-        </div>
-
-        <div className="flex flex-col gap-4 text-sm leading-relaxed text-ink-muted">
-          <p>
-            Since its inception, MBSCET has grown into a reputable institution affiliated with
-            the University of Jammu and approved by AICTE. We offer eight undergraduate
-            engineering programs and postgraduate programs, nurturing students to become
-            competent professionals ready to serve industry and society.
-          </p>
-          <p>
-            Under the guidance of the Sant Manjit Singh Trust, our college continues to uphold
-            the values of academic excellence, ethical conduct, and holistic development. I
-            encourage our students to pursue knowledge with dedication and contribute positively
-            to the nation.
-          </p>
-          <p>
-            I extend my best wishes to all students, faculty, and staff for a successful
-            academic year ahead.
-          </p>
-        </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
