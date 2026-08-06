@@ -76,18 +76,12 @@ export function Footer({ config }: FooterProps) {
               </div>
             </div>
 
-            {/* 3D Lanyard Card */}
-            <div className="mb-6 h-[300px] md:h-[350px] overflow-hidden rounded-lg">
-              <Lanyard
-                position={[0, 0, 24]}
-                gravity={[0, -40, 0]}
-                frontImage="/logo.png"
-                backImage="/lanyard/card-back.svg"
-                imageFit="cover"
-                lanyardImage="/lanyard/lanyard.png"
-                lanyardWidth={1.2}
-                bandColor="#00274C"
-              />
+            {/* 3D Lanyard Card - Temporarily disabled for testing */}
+            <div className="mb-6 h-[300px] md:h-[350px] overflow-hidden rounded-lg bg-[#1E406B] flex items-center justify-center">
+              <div className="text-center text-white/50">
+                <div className="text-4xl mb-2">🎓</div>
+                <div className="text-sm">College ID Card</div>
+              </div>
             </div>
 
             <p className="text-sm text-white/50 leading-relaxed max-w-sm mb-6">
