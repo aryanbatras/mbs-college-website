@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { getSiteConfig, getProgramBySlug, getFaculty } from "@/lib/content";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
@@ -13,7 +12,6 @@ export default function EEDepartmentPage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", url: "/" }, { name: "Academics", url: "/academics" }, { name: "EE Department", url: "/academics/ee" }]} />
-      <Header config={config} />
       <main id="main-content" className="flex-1">
         <GenericDepartmentContent
           program={program}

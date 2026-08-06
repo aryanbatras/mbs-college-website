@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { getSiteConfig, getNews } from "@/lib/content";
 import { NewsArticlePage } from "@/components/sections/news-article";
@@ -24,7 +23,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         { name: "News", url: "/news" },
         { name: article.title, url: `/news/${article.slug}` },
       ]} />
-      <Header config={config} />
       <main id="main-content" className="flex-1">
         <NewsArticlePage article={article} />
       </main>

@@ -5,6 +5,8 @@ import { SiteBackground } from "@/components/layout/site-background";
 import { RouteLoadingIndicator } from "@/components/ui/route-loading";
 import { ScrollToTop } from "@/components/ui/page-transition";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
+import { Header } from "@/components/layout/header";
+import { getSiteConfig } from "@/lib/content";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -43,6 +45,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const config = getSiteConfig();
   return (
     <html
       lang="en"
@@ -58,6 +61,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to main content
         </a>
+        {/* Header rendered OUTSIDE SmoothScroll so fixed positioning works */}
+        <Header config={config} />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

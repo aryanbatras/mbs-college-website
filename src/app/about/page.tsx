@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { getSiteConfig } from "@/lib/content";
 import { AboutContent } from "@/components/sections/about-content";
@@ -13,7 +12,6 @@ export default function AboutPage() {
         { name: "Home", url: "/" },
         { name: "About", url: "/about" },
       ]} />
-      <Header config={config} />
       <main id="main-content" className="flex-1">
         <AboutContent config={config} />
       </main>

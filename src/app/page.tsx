@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BackToTop } from "@/components/ui/back-to-top";
 
@@ -33,7 +32,6 @@ export default function HomePage() {
   return (
     <>
       <EducationalOrgJsonLd />
-      <Header config={config} />
       <main id="main-content">
         <Hero />
 

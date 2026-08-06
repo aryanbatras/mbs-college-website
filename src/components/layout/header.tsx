@@ -93,23 +93,20 @@ export function Header({ config }: HeaderProps) {
   useEffect(() => {
     if (mobileOpen) {
       scrollY.current = window.scrollY;
+      document.body.classList.add("mobile-menu-open");
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY.current}px`;
-      document.body.style.width = "100%";
       setTimeout(() => closeButtonRef.current?.focus(), 100);
     } else {
+      document.body.classList.remove("mobile-menu-open");
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
       window.scrollTo(0, scrollY.current);
     }
     return () => {
+      document.body.classList.remove("mobile-menu-open");
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
     };
   }, [mobileOpen]);
 
@@ -166,7 +163,7 @@ export function Header({ config }: HeaderProps) {
     <>
       {/* Fixed header - glass/translucent */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[110] transition-all duration-300 site-header ${
           scrolled
             ? "bg-[#00274C]/95 backdrop-blur-xl shadow-lg"
             : "bg-black/20 backdrop-blur-md"
@@ -328,7 +325,7 @@ export function Header({ config }: HeaderProps) {
 
       {/* Mobile menu - fullscreen slide-in */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[100] lg:hidden transition-opacity duration-300 mobile-menu-overlay ${
           mobileOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -347,7 +344,7 @@ export function Header({ config }: HeaderProps) {
         {/* Menu panel */}
         <div
           ref={menuPanelRef}
-          className={`absolute top-0 right-0 bottom-0 w-full max-w-[340px] bg-white shadow-2xl transition-transform duration-300 ease-out ${
+          className={`absolute top-0 right-0 bottom-0 w-full max-w-[360px] bg-white shadow-2xl transition-transform duration-300 ease-out mobile-menu-panel ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
           role="dialog"

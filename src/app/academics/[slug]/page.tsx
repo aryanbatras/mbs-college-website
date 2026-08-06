@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { getSiteConfig, getPrograms, getFaculty } from "@/lib/content";
 import { DepartmentContent } from "@/components/sections/department-content";
@@ -36,7 +35,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         { name: "Academics", url: "/academics" },
         { name: program.title, url: `/academics/${program.slug}` },
       ]} />
-      <Header config={config} />
       <main id="main-content" className="flex-1">
         <DepartmentContent program={program} faculty={faculty} />
       </main>

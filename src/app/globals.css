@@ -243,11 +243,44 @@
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 #smooth-content {
   overflow: visible;
   width: 100%;
+}
+
+/* Mobile menu must be above SmoothScroll wrapper */
+.mobile-menu-overlay {
+  position: fixed !important;
+  z-index: 100 !important;
+}
+
+.mobile-menu-panel {
+  position: fixed !important;
+  z-index: 101 !important;
+}
+
+/* Header must be above everything */
+.site-header {
+  z-index: 110 !important;
+}
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile menu panel - fill properly without overflow */
+.mobile-menu-panel {
+  width: min(100%, 360px) !important;
+}
+
+/* When mobile menu is open, disable smooth scroll */
+body.mobile-menu-open #smooth-wrapper {
+  overflow: hidden !important;
 }
 
 /* Parallax effects */
