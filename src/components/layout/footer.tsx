@@ -1,16 +1,53 @@
 "use client";
 
+import { Component, type ReactNode } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaArrowUp } from "react-icons/fa";
+import {
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaArrowUp,
+} from "react-icons/fa";
 import { CollegeIdCard } from "@/components/ui/college-id-card";
 import type { SiteConfig } from "@/lib/content";
+
+// Error boundary for heavy 3D components
+class LanyardErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode; fallback: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    return this.state.hasError ? this.props.fallback : this.props.children;
+  }
+}
+
+// Dynamically import Lanyard to avoid SSR issues
+const Lanyard = dynamic(() => import("@/components/ui/lanyard"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[300px] flex items-center justify-center text-white/20 text-sm">
+      Loading 3D card...
+    </div>
+  ),
+});
 
 interface FooterProps {
   config: SiteConfig;
 }
 
 const FOOTER_LINKS = {
-  "About": [
+  About: [
     { label: "About Us", href: "/about" },
     { label: "Chairman's Desk", href: "/about/chairman" },
     { label: "Principal's Desk", href: "/about/principal" },
@@ -36,18 +73,48 @@ const FOOTER_LINKS = {
     { label: "Contact Us", href: "/contact" },
   ],
   "Important Links": [
-    { label: "Mandatory Disclosure", href: "https://www.mbscet.edu.in/mandatory-disclosure/" },
-    { label: "AICTE Approvals", href: "https://www.mbscet.edu.in/acite_approvals" },
+    {
+      label: "Mandatory Disclosure",
+      href: "https://www.mbscet.edu.in/mandatory-disclosure/",
+    },
+    {
+      label: "AICTE Approvals",
+      href: "https://www.mbscet.edu.in/acite_approvals",
+    },
     { label: "Anti Ragging", href: "https://www.mbscet.edu.in/anti-ragging/" },
-    { label: "Grievance Cell", href: "https://www.mbscet.edu.in/grievances-redressal-cell/" },
-    { label: "Alumni Registration", href: "https://www.mbscet.edu.in/alumni-registration/" },
-    { label: "Virtual Tour", href: "https://www.mbscet.edu.in/campus-virtual-tour/" },
-    { label: "College Calendar", href: "https://www.mbscet.edu.in/college-calendar/" },
-    { label: "College Magazine", href: "https://www.mbscet.edu.in/college-magazine/" },
-    { label: "College Newsletter", href: "https://www.mbscet.edu.in/college-newsletter/" },
-    { label: "National Digital Library", href: "https://www.mbscet.edu.in/national-digital-library/" },
+    {
+      label: "Grievance Cell",
+      href: "https://www.mbscet.edu.in/grievances-redressal-cell/",
+    },
+    {
+      label: "Alumni Registration",
+      href: "https://www.mbscet.edu.in/alumni-registration/",
+    },
+    {
+      label: "Virtual Tour",
+      href: "https://www.mbscet.edu.in/campus-virtual-tour/",
+    },
+    {
+      label: "College Calendar",
+      href: "https://www.mbscet.edu.in/college-calendar/",
+    },
+    {
+      label: "College Magazine",
+      href: "https://www.mbscet.edu.in/college-magazine/",
+    },
+    {
+      label: "College Newsletter",
+      href: "https://www.mbscet.edu.in/college-newsletter/",
+    },
+    {
+      label: "National Digital Library",
+      href: "https://www.mbscet.edu.in/national-digital-library/",
+    },
     { label: "JGate Journals", href: "https://www.mbscet.edu.in/jgate/" },
-    { label: "AICTE Suggested Books", href: "https://www.mbscet.edu.in/ict-books/" },
+    {
+      label: "AICTE Suggested Books",
+      href: "https://www.mbscet.edu.in/ict-books/",
+    },
   ],
 };
 
@@ -56,27 +123,49 @@ export function Footer({ config }: FooterProps) {
     <footer className="bg-[#00274C] text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
-          {/* Brand column with ID Card */}
+          {/* Brand column with Lanyard */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <div className="text-xl font-bold tracking-tight text-[#FFCB05]">MBSCET</div>
+              <div className="text-xl font-bold tracking-tight text-[#FFCB05]">
+                MBSCET
+              </div>
               <div className="text-sm text-white/60 mt-1 leading-relaxed">
-                Mahant Bachittar Singh College of<br />
+                Mahant Bachittar Singh College of
+                <br />
                 Engineering & Technology
               </div>
             </div>
 
-            {/* College ID Card */}
+            {/* Lanyard 3D Card */}
             <div className="mb-6">
-              <CollegeIdCard />
+              <LanyardErrorBoundary
+                fallback={
+                  <div className="mb-6">
+                    <CollegeIdCard />
+                  </div>
+                }
+              >
+                <Lanyard
+                  position={[0, 0, 24]}
+                  gravity={[0, -40, 0]}
+                  frontImage="/logo.png"
+                  bandColor="#00274C"
+                />
+              </LanyardErrorBoundary>
             </div>
 
             <div className="space-y-3">
-              <a href={`tel:${config.phone.landline}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors">
+              <a
+                href={`tel:${config.phone.landline}`}
+                className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors"
+              >
                 <FaPhone className="text-xs text-white/40 shrink-0" />
                 {config.phone.landline} / {config.phone.principal}
               </a>
-              <a href={`mailto:${config.email.principal}`} className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors">
+              <a
+                href={`mailto:${config.email.principal}`}
+                className="flex items-center gap-3 text-sm text-white/60 hover:text-[#FFCB05] transition-colors"
+              >
                 <FaEnvelope className="text-xs text-white/40 shrink-0" />
                 {config.email.principal}
               </a>
@@ -94,7 +183,9 @@ export function Footer({ config }: FooterProps) {
           {/* Link columns */}
           {Object.entries(FOOTER_LINKS).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-sm font-bold text-[#FFCB05] mb-4">{title}</h3>
+              <h3 className="text-sm font-bold text-[#FFCB05] mb-4">
+                {title}
+              </h3>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.href}>
@@ -117,22 +208,41 @@ export function Footer({ config }: FooterProps) {
         <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-xs text-white/40">
-              &copy; {new Date().getFullYear()} MBSCET. All rights reserved. Affiliated to University of Jammu.
+              &copy; {new Date().getFullYear()} MBSCET. All rights reserved.
+              Affiliated to University of Jammu.
             </div>
 
             <div className="flex items-center gap-3">
               {config.social.facebook && (
-                <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all" aria-label="Facebook">
+                <a
+                  href={config.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all"
+                  aria-label="Facebook"
+                >
                   <FaFacebookF className="text-xs" />
                 </a>
               )}
               {config.social.instagram && (
-                <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all" aria-label="Instagram">
+                <a
+                  href={config.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all"
+                  aria-label="Instagram"
+                >
                   <FaInstagram className="text-xs" />
                 </a>
               )}
               {config.social.linkedin && (
-                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all" aria-label="LinkedIn">
+                <a
+                  href={config.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="size-9 flex items-center justify-center bg-[#FFCB05]/20 text-[#FFCB05] hover:bg-[#FFCB05]/30 transition-all"
+                  aria-label="LinkedIn"
+                >
                   <FaLinkedinIn className="text-xs" />
                 </a>
               )}
