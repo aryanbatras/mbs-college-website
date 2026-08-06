@@ -15,14 +15,19 @@ interface PdfEmbedProps {
 
 export function PdfEmbed({ src, title, height = "600px" }: PdfEmbedProps) {
   return (
-    <div style={{ height }} className="w-full">
-      <PDFViewer
-        config={{
-          src,
-          theme: { preference: "light" },
-          disabledCategories: ["annotation", "redaction"],
-        }}
-      />
+    <div className="w-full">
+      {title && (
+        <p className="mb-2 text-sm font-medium text-[#00274C]">{title}</p>
+      )}
+      <div style={{ height }} className="w-full">
+        <PDFViewer
+          config={{
+            src,
+            theme: { preference: "light" },
+            disabledCategories: ["annotation", "redaction"],
+          }}
+        />
+      </div>
     </div>
   );
 }

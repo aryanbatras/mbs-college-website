@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 "use client";
 
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { useTexture, Environment, Lightformer } from "@react-three/drei";
 import {
@@ -27,7 +27,6 @@ interface LanyardProps {
   transparent?: boolean;
   frontImage?: string | null;
   backImage?: string | null;
-  imageFit?: "cover" | "contain";
   lanyardImage?: string | null;
   lanyardWidth?: number;
   bandColor?: string;
@@ -41,7 +40,6 @@ export default function Lanyard({
   transparent = true,
   frontImage = null,
   backImage = null,
-  imageFit = "cover",
   lanyardImage = null,
   lanyardWidth = 1,
   bandColor = "#00274C",
@@ -69,16 +67,15 @@ export default function Lanyard({
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-          <Band
-            isMobile={isMobile}
-            frontImage={frontImage}
-            backImage={backImage}
-            imageFit={imageFit}
-            lanyardImage={lanyardImage}
-            lanyardWidth={lanyardWidth}
-            bandColor={bandColor}
-            animate={animate}
-          />
+        <Band
+          isMobile={isMobile}
+          frontImage={frontImage}
+          backImage={backImage}
+          lanyardImage={lanyardImage}
+          lanyardWidth={lanyardWidth}
+          bandColor={bandColor}
+          animate={animate}
+        />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
@@ -121,7 +118,6 @@ interface BandProps {
   isMobile: boolean;
   frontImage: string | null;
   backImage: string | null;
-  imageFit: string;
   lanyardImage: string | null;
   lanyardWidth: number;
   bandColor: string;
@@ -133,7 +129,6 @@ function Band({
   minSpeed = 0,
   isMobile = false,
   frontImage,
-  imageFit,
   lanyardImage,
   lanyardWidth,
   bandColor,
