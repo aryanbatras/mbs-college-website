@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import BlurText from "@/components/ui/blur-text";
-import { Highlighter } from "@/components/ui/highlighter";
+import { HeroSubtitle } from "@/components/ui/hero-subtitle";
 import { DotPattern } from "@/components/design-system/DotPattern";
 
 const HERO_IMAGES = [
@@ -70,35 +70,28 @@ export function Hero() {
           />
         </div>
 
-        {/* Subtitle - character by character blur with highlighted words */}
+        {/* Subtitle - GSAP SplitText with character animation and highlights */}
         <div className="mb-8">
-          <BlurText
-            text="College of "
-            delay={30}
-            animateBy="letters"
-            direction="bottom"
-            className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight inline"
+          <HeroSubtitle
+            text="College of Engineering & Technology"
+            delay={1.2}
+            highlights={[
+              {
+                word: "Engineering",
+                action: "circle",
+                color: "#FFFFFF",
+              },
+              {
+                word: "Technology",
+                action: "box",
+                color: "#FFFFFF",
+              },
+            ]}
+            className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight"
           />
-          <Highlighter action="circle" color="#FFCB05" strokeWidth={2} animationDuration={800} isView={true}>
-            <span className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight">
-              Engineering
-            </span>
-          </Highlighter>
-          <BlurText
-            text=" & "
-            delay={30}
-            animateBy="letters"
-            direction="bottom"
-            className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight inline"
-          />
-          <Highlighter action="box" color="#FFCB05" strokeWidth={2} animationDuration={800} isView={true}>
-            <span className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight">
-              Technology
-            </span>
-          </Highlighter>
         </div>
 
-        {/* Affiliations - clean text, no highlighter */}
+        {/* Affiliations - clean text */}
         <p className="text-xs sm:text-sm text-white/60 font-medium tracking-widest uppercase px-4">
           AICTE Approved &middot; Affiliated to University of Jammu &middot; Est. 1999
         </p>
