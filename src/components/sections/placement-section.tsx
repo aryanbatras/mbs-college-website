@@ -20,7 +20,7 @@ export function PlacementSection() {
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-4">
               Training & Placement
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-[1.05] tracking-tight mb-6">
@@ -35,11 +35,11 @@ export function PlacementSection() {
               <div className="space-y-3 text-sm text-white/70">
                 <p className="font-medium text-white/90">Prof. Dr. Sanjeev Singh (Incharge)</p>
                 <p className="flex items-center gap-2">
-                  <FaPhone className="text-gray-400 text-xs" />
+                  <FaPhone className="text-[#FFCB05] text-xs" />
                   <a href="tel:+91-9419130161" className="hover:text-white transition-colors">+91-9419130161</a>
                 </p>
                 <p className="flex items-center gap-2">
-                  <FaEnvelope className="text-gray-400 text-xs" />
+                  <FaEnvelope className="text-[#FFCB05] text-xs" />
                   <a href="mailto:tpcell@mbscet.edu.in" className="hover:text-white transition-colors">tpcell@mbscet.edu.in</a>
                 </p>
               </div>
@@ -47,7 +47,7 @@ export function PlacementSection() {
 
             <Link
               href="/placements"
-              className="group inline-flex items-center gap-3 bg-white text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-gray-100 transition-colors"
+              className="group inline-flex items-center gap-3 bg-[#FFCB05] text-[#00274C] px-8 py-4 text-sm font-bold hover:bg-[#FFC107] transition-colors"
             >
               View Placement Records
               <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />

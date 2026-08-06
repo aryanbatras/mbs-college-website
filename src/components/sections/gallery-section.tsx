@@ -94,7 +94,8 @@ export function GallerySection() {
     <section className="bg-white" aria-label="Gallery">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 lg:py-28">
         {/* Header */}
-        <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">            <p className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-3 sm:mb-4">
+        <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <p className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#FFCB05] mb-3 sm:mb-4">
             Gallery
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#00274C] leading-[1.05] tracking-tight">
@@ -145,7 +146,7 @@ export function GallerySection() {
                   />
                   {/* Play overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-active:bg-black/10 transition-colors">
-                    <div className="size-10 sm:size-12 flex items-center justify-center bg-white rounded-full group-active:scale-110 transition-transform">
+                    <div className="size-10 sm:size-12 flex items-center justify-center bg-[#FFCB05] rounded-full group-active:scale-110 transition-transform">
                       <FaPlay className="text-[#00274C] text-xs sm:text-sm ml-0.5" />
                     </div>
                   </div>
@@ -182,7 +183,7 @@ export function GallerySection() {
                   />
                   {/* Play overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors">
-                    <div className="size-12 flex items-center justify-center bg-white rounded-full group-hover:scale-110 transition-transform">
+                    <div className="size-12 flex items-center justify-center bg-[#FFCB05] rounded-full group-hover:scale-110 transition-transform">
                       <FaPlay className="text-[#00274C] text-sm ml-0.5" />
                     </div>
                   </div>
@@ -205,7 +206,7 @@ export function GallerySection() {
             </h3>
             <button
               onClick={() => setShowAllImages(!showAllImages)}
-              className="inline-flex items-center justify-center gap-2 text-sm font-bold text-[#00274C] hover:text-gray-400 transition-colors py-2 sm:py-0"
+              className="inline-flex items-center justify-center gap-2 text-sm font-bold text-[#00274C] hover:text-[#FFCB05] transition-colors py-2 sm:py-0"
             >
               <FaImages className="text-xs" />
               {showAllImages ? "Show Less" : `View All (${GALLERY_IMAGES.length})`}
@@ -254,7 +255,7 @@ export function GallerySection() {
         >
           <button
             onClick={() => setPlayingVideo(null)}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 size-10 sm:size-12 flex items-center justify-center text-white hover:text-gray-400 transition-colors z-10"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 size-10 sm:size-12 flex items-center justify-center text-white hover:text-[#FFCB05] transition-colors z-10"
             aria-label="Close video"
           >
             <FaTimes className="text-lg sm:text-xl" />
@@ -289,7 +290,7 @@ export function GallerySection() {
         >
           <button
             onClick={() => setLightboxImage(null)}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 size-10 sm:size-12 flex items-center justify-center text-white hover:text-gray-400 transition-colors z-10"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 size-10 sm:size-12 flex items-center justify-center text-white hover:text-[#FFCB05] transition-colors z-10"
             aria-label="Close image"
           >
             <FaTimes className="text-lg sm:text-xl" />
@@ -298,14 +299,14 @@ export function GallerySection() {
           {/* Navigation arrows - visible on all screens */}
           <button
             onClick={(e) => { e.stopPropagation(); navigateImage("prev"); }}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 size-10 sm:size-12 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white hover:text-gray-400 transition-colors z-10"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 size-10 sm:size-12 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white hover:text-[#FFCB05] transition-colors z-10"
             aria-label="Previous image"
           >
             <FaChevronLeft className="text-sm sm:text-base" />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); navigateImage("next"); }}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 size-10 sm:size-12 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white hover:text-gray-400 transition-colors z-10"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 size-10 sm:size-12 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white hover:text-[#FFCB05] transition-colors z-10"
             aria-label="Next image"
           >
             <FaChevronRight className="text-sm sm:text-base" />
