@@ -57,14 +57,9 @@ export function Hero() {
         />
       </div>
 
-      {/* Glassmorphism overlay */}
-      <div className="absolute inset-0 z-[2]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#00274C]/40 via-transparent to-[#00274C]/60" />
-      </div>
-
       {/* Content - full width, no margins */}
       <div className="relative z-10 w-full text-center px-4 sm:px-8">
-        {/* Main title with BlurText animation */}
+        {/* Main title - word by word blur */}
         <div className="mb-4">
           <BlurText
             text="MAHANT BACHITTAR SINGH"
@@ -75,41 +70,39 @@ export function Hero() {
           />
         </div>
 
-        {/* Subtitle with Highlighter */}
+        {/* Subtitle - character by character blur with highlighted words */}
         <div className="mb-8">
           <BlurText
-            text="College of Engineering & Technology"
-            delay={100}
-            animateBy="words"
+            text="College of "
+            delay={30}
+            animateBy="letters"
             direction="bottom"
-            className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight justify-center"
+            className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight inline"
           />
+          <Highlighter action="circle" color="#FFCB05" strokeWidth={2} animationDuration={800} isView={true}>
+            <span className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight">
+              Engineering
+            </span>
+          </Highlighter>
+          <BlurText
+            text=" & "
+            delay={30}
+            animateBy="letters"
+            direction="bottom"
+            className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight inline"
+          />
+          <Highlighter action="box" color="#FFCB05" strokeWidth={2} animationDuration={800} isView={true}>
+            <span className="text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] font-bold text-[#FFCB05] uppercase tracking-tight">
+              Technology
+            </span>
+          </Highlighter>
         </div>
 
-        {/* Affiliations with highlighter */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
-          <Highlighter action="highlight" color="#FFCB05" isView={true}>
-            <span className="text-xs sm:text-sm text-white/90 font-medium tracking-widest uppercase">
-              AICTE Approved
-            </span>
-          </Highlighter>
-          <span className="text-white/40">·</span>
-          <Highlighter action="highlight" color="#FFCB05" isView={true}>
-            <span className="text-xs sm:text-sm text-white/90 font-medium tracking-widest uppercase">
-              Affiliated to University of Jammu
-            </span>
-          </Highlighter>
-          <span className="text-white/40">·</span>
-          <Highlighter action="highlight" color="#FFCB05" isView={true}>
-            <span className="text-xs sm:text-sm text-white/90 font-medium tracking-widest uppercase">
-              Est. 1999
-            </span>
-          </Highlighter>
-        </div>
+        {/* Affiliations - clean text, no highlighter */}
+        <p className="text-xs sm:text-sm text-white/60 font-medium tracking-widest uppercase px-4">
+          AICTE Approved &middot; Affiliated to University of Jammu &middot; Est. 1999
+        </p>
       </div>
-
-      {/* Bottom gradient for smooth transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-[3]" />
     </section>
   );
 }
